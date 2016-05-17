@@ -27,4 +27,7 @@ Specifying CRX Host/Port
 The CRX host and port can be specified on the command line with:
 mvn -Dcrx.host=otherhost -Dcrx.port=5502 <goals>
 
+per creare un progetto nuovo maven aem
+mvn archetype:generate -DarchetypeRepository=http://repo.adobe.com/nexus/content/groups/public/ -DarchetypeGroupId=com.day.jcr.vault -DarchetypeArtifactId=multimodule-content-package-archetype -DarchetypeVersion=1.0.2 -DgroupId=com.aem.eaga -DartifactId=eagaproject -Dversion=1.0-SNAPSHOT -Dpackage=com.aem.eaga -DappsFolderName=eaga -DartifactName="E-AGA Project" -DcqVersion="5.6.1" -DpackageGroup="E-AGA"
+
 
