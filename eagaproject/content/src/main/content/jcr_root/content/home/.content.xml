@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2016-05-17T16:57:03.528+02:00"
+        cq:lastModifiedBy="admin"
+        cq:lastReplicated="{Date}2016-05-17T17:33:26.038+02:00"
+        cq:lastReplicatedBy="admin"
+        cq:lastReplicationAction="Activate"
+        cq:template="/apps/eaga/templates/homepage"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[mix:versionable]"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Eaga HomePage"
+        jcr:uuid="f78bd650-0b9b-46a6-955b-ca3fd48dd762"
+        sling:resourceType="eaga/components/page/homepage"/>
+    <products/>
+</jcr:root>
