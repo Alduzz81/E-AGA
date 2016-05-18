@@ -3,16 +3,16 @@
 <properties>
 <comment>FileVault Package Properties</comment>
 <entry key="createdBy">admin</entry>
-<entry key="name">components</entry>
-<entry key="lastModified">2016-05-18T14:54:44.194+02:00</entry>
+<entry key="name">content e global</entry>
+<entry key="lastModified">2016-05-18T15:15:09.452+02:00</entry>
 <entry key="lastModifiedBy">admin</entry>
-<entry key="created">2016-05-18T14:54:44.793+02:00</entry>
+<entry key="created">2016-05-18T15:15:09.504+02:00</entry>
 <entry key="buildCount">1</entry>
 <entry key="version"/>
 <entry key="dependencies"/>
 <entry key="packageFormatVersion">2</entry>
 <entry key="description"/>
-<entry key="lastWrapped">2016-05-18T14:54:44.194+02:00</entry>
+<entry key="lastWrapped">2016-05-18T15:15:09.452+02:00</entry>
 <entry key="group">my_packages</entry>
 <entry key="lastWrappedBy">admin</entry>
 </properties>
