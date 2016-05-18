@@ -1,12 +1,7 @@
-<%--
-
-  page component.
-
-  base page
-
---%><%
-%><%@include file="/libs/foundation/global.jsp"%><%
-%><%@page session="false" %><%
-%><%
-	// TODO add you code here
-%>
+<%@include file="../../../global.jsp" %>
+<%@page session="false"%>
+<!doctype html>
+<html>
+<cq:include script="head.jsp"/>
+<cq:include script="body.jsp"/>
+</html>

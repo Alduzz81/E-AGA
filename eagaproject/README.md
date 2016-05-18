@@ -32,3 +32,8 @@ mvn archetype:generate -DarchetypeRepository=http://repo.adobe.com/nexus/content
 
 Build 
 mvn clean install -PautoInstallPackage
+
+Links:
+https://docs.adobe.com/docs/en/aem/6-1/develop/the-basics/website.html
+
+https://helpx.adobe.com/experience-manager/using/creating-aem-project-using-eclipse.html
