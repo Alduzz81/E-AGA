@@ -26,7 +26,7 @@
     <% } %>
     <title><%= currentPage.getTitle() == null ? xssAPI.encodeForHTML(currentPage.getName()) : xssAPI.encodeForHTML(currentPage.getTitle()) %></title>
 
-    <cq:includeClientLib css="vodafone.main"/>
+    <cq:includeClientLib css="aeg.main"/>
 
 
     <script src="//tags.tiqcdn.com/utag/vodafone/ie-main/prod/utag.sync.js"></script>
