@@ -1,0 +1,10 @@
+.vf_container {
+	border: 1px solid #ff0000;
+	margin: 5px 0;
+	text-align: center;
+	font-weight: bold;
+}
+
+.slider-container .slider-wrap-about .slick-list {
+	overflow: hidden;
+}
