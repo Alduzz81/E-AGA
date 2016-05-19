@@ -4,7 +4,9 @@
 
 <cq:includeClientLib js="eaga.main"/>
 
-<div class="col-sm-3">questo è il footer</div>
-<div class="col-sm-3">questo sadas il footer</div>
-<div class="col-sm-3">questoadsdas il footer</div>
-<div class="col-sm-3">questo èdasdsa il footer</div>
+<div class="col-sm-12 footer">
+	<div class="col-sm-3">footer 1</div>
+	<div class="col-sm-3">footer 2</div>
+	<div class="col-sm-3">footer 3</div>
+	<div class="col-sm-3">footer 4</div>
+</div>

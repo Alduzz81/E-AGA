@@ -1,17 +1,8 @@
-<%--
+<%@include file="../../../global.jsp" %>
+<%@page session="false"%>
 
-  homepage component.
-
-  homepage
-
---%><%@page session="false" contentType="text/html; charset=utf-8" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-
-<head>
-     
-</head>
-ciao, io sono la homepage
-
-<div class="col-sm-6"> ciaofrrrrrrrrrrrrrrrrrrrrrrrr</div>
-<div class="col-sm-3"> ciaofrrrrrrrrrrrrrrrrrrrrrrrr</div>
-<div class="col-sm-3"> ciaofrrrrrrrrrrrrrrrrrrrrrrrr</div>
+<div class="col-sm-12 container_16">
+	<div class="col-sm-12">ciao, io sono la homepage</div>
+	<div class="col-sm-12">qui ci va il carosello</div>
+	<div class="col-sm-12">qui ci va un'anteprima di prodotti</div>
+</div>
