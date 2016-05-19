@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cq:Dialog"
+          title="Login"
+          xtype="panel">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <indirizzoMailNumero
+            name="./indirizzoMailNumero"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Indirizzo e-mail o numero di cellulare"
+            allowBlank="false"
+            xtype="textfield" />
+        <labelPassword
+            name="./labelPassword"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Password"
+            allowBlank="false"
+            xtype="textfield" />
+        <labelPasswordDimenticata
+            name="./labelPasswordDimenticata"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="E-mail"
+            allowBlank="false"
+            xtype="textfield" />
+          <labelButtonAccedi
+            name="./labelButtonAccedi"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Accedi"
+            allowBlank="false"
+            xtype="textfield" />
+          <labelButtonCrea
+            name="./labelButtonCrea"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Crea il tuo account Amazon"
+            allowBlank="false"
+            xtype="textfield" />
+    </items>
+</jcr:root>
