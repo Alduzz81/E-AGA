@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cq:Dialog"
+          title="Registration"
+          xtype="panel">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <title
+            name="./firstMsg"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="First message"
+            allowBlank="false"
+            xtype="textfield" />
+        <labelUtente
+            name="./labelUtente"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Il tuo nome Utente"
+            allowBlank="false"
+            xtype="textfield" />
+        <labelEmail
+            name="./labelEmail"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="E-mail"
+            allowBlank="false"
+            xtype="textfield" />
+         <labelPassword
+            name="./labelPassword"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Password"
+            allowBlank="false"
+            xtype="textfield" />
+          <labelPassword2
+            name="./labelPassword2"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Verifica Password"
+            allowBlank="false"
+            xtype="textfield" />
+          <labelButtonReq
+            name="./labelButtonReq"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Crea il tuo Account"
+            allowBlank="false"
+            xtype="textfield" />
+    </items>
+</jcr:root>
