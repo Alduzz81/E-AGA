@@ -14951,6 +14951,14 @@ label.label-radio-green-flag {
     }
 }
 
+.login-container{
+	 display: inline-block;
+	 border: 1px dotted;
+	 margin: 10px;	 
+	 width: 35%;
+	 heigth:35%;
+}
+
 /*********************
  END PIECHART
  *********************/
