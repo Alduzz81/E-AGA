@@ -2,6 +2,6 @@
 <%@page session="false"%>
 
 
-<cq:includeClientLib js="aeg.main"/>
+<cq:includeClientLib js="eaga.main"/>
 
-<div class="col-sm-3">questo Ã¨ il footer</div>
+<div class="col-sm-3">questo è il footer</div>

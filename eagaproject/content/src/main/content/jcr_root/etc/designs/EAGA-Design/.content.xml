@@ -8,7 +8,7 @@
         cq:lastModifiedBy="admin"
         cq:template="/libs/wcm/core/templates/designpage"
         jcr:primaryType="cq:PageContent"
-        jcr:title="AEG Design"
+        jcr:title="EAGA Design"
         sling:resourceType="wcm/core/components/designer"/>
     <images/>
     <static.css/>
