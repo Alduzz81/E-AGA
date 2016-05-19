@@ -14,5 +14,15 @@
         jcr:title="Eaga HomePage"
         jcr:uuid="f78bd650-0b9b-46a6-955b-ca3fd48dd762"
         sling:resourceType="eaga/components/page/homepage"/>
+        <search
+	        jcr:created="{Date}2016-02-25T11:59:07.984+01:00"
+	        jcr:createdBy="admin"
+	        cq:lastModified="{Date}2016-05-17T16:57:03.528+02:00"
+        	cq:lastModifiedBy="admin"
+	        jcr:primaryType="nt:unstructured"
+	        sling:resourceType="etc/foundation/components/search"
+	        noResultsText="questa è una prova 2"
+	        searchButtonText="cerca"/>
     <products/>
+     </jcr:content>
 </jcr:root>

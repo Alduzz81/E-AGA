@@ -9,6 +9,55 @@
  * Config saved to config.json and https://gist.github.com/5168da1f180f86016f42
  */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+.new-header {
+    background: #008080;
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+}
+
+.new-footer {
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    clear: both;
+    background: #008080;
+}
+
+.new-bg {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #c0c0c0;
+}
+
+.page-content{
+	padding: 20px;
+	height: 300px;
+    background: white;
+}
+
+.logo{
+	max-width: 90px;
+	padding-left: 20px;
+}
+
+.img-header{
+	max-width: 40px;
+	padding-left: 20px;
+	display: inline;
+}
+
+.label-header{
+	color: #ffffff;
+	padding-left: 10px;
+}
+
+/****************************
+Here begin original classes
+****************************/
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
