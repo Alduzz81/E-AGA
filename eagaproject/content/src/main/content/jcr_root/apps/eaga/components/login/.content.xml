@@ -3,4 +3,4 @@
     jcr:primaryType="cq:Component"
     jcr:title="Login"
     sling:resourceSuperType="foundation/components/parbase"
-    componentGroup=".hidden"/>
+    componentGroup="E-AGA"/>
