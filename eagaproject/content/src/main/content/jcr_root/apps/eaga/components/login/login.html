@@ -1,6 +1,6 @@
 <div class="login-container">
 	<div>Accedi</div>
-	<div>Indirizzo e-mail o numero di cellulare</div>
+	<div>${properties.indirizzoMailNumero ? properties.indirizzoMailNumero : "Indirizzo e-mail o numero di cellulare" @context='html'}</div>
 	<div><input type="text"></div>
 	<div>Password</div><div>Password dimenticata</div>
 	<div><input type="password"></div>
