@@ -51,7 +51,9 @@
 
 .label-header{
 	color: #ffffff;
-	padding-left: 10px;
+	padding-left: 15px;
+	font-variant: small-caps;
+	font-family: "verdana";
 }
 
 /****************************
