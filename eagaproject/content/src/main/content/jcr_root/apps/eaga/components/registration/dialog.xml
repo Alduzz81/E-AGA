@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" 
+xmlns:jcr="http://www.jcp.org/jcr/1.0"
           jcr:primaryType="cq:Dialog"
           title="Registration"
           xtype="panel">
@@ -38,6 +39,12 @@
             name="./labelButtonReq"
             jcr:primaryType="cq:Widget"
             fieldLabel="Crea il tuo Account"
+            allowBlank="false"
+            xtype="textfield" />
+		<txtInformativa
+            name="./txtInformativa"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Accedendo dichiari di aver letto e accetti integralmente le nostre Condizioni generali di uso e vendita, la nostra Informativa sulla privacy e le nostre policy su Cookies e pubblicità su Internet. "
             allowBlank="false"
             xtype="textfield" />
     </items>
