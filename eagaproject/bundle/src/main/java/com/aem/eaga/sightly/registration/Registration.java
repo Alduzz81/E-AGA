@@ -1,4 +1,4 @@
-/*package com.aem.eaga.sightly.registration;
+package com.aem.eaga.sightly.registration;
  
  
 
@@ -47,4 +47,3 @@ public class Registration   extends CommonUse  {
 	                : true;
 	    }
 }
-*/
