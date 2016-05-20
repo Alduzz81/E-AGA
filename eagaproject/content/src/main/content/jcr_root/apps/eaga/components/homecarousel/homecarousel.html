@@ -1,0 +1,38 @@
+<div data-sly-use.carousel="${'gr.vodafone.aem.sightly.carousel.CarouselUse' @ currentNode=currentNode}"
+    data-sly-unwrap>
+	<div data-sly-test="${!carousel.empty}" data-sly-unwrap>
+
+		<div class="slider-wrap" data-time-autoplay="${carousel.timing}">
+		    <div class="image-slider-wrap" data-sly-list.item="${carousel.carouselItems}">
+		        <div class="images-slider-single">
+		            <img class="img-breakpoint" alt="${item.imageAlt}"
+                        src="${item.image}/${carousel.pathWebRendition @ context='html'}.1280.1280.jpeg"
+                        data-minwidth0px="${item.image}/${carousel.pathWebRendition @ context='html'}.640.480.jpeg"
+                        data-minwidth1200px="${item.image}/${carousel.pathWebRendition @ context='html'}.1280.1280.jpeg">
+		        </div>
+		    </div>	    
+		    <div class="control-wrap">
+		        <div class="dots-wrap"></div>
+		        <a href="#" class="slider-toggle">
+		            <span class="icon-slider-toggle"></span>
+		        </a>
+		    </div>	
+		    <div class="container-fluid">
+		        <div class="cta-slider-wrap" data-sly-list.carouselItem="${carousel.carouselItems}">
+		            <div class="cta-slider-single">
+		                <a href="#" data-sly-attribute.href="${carouselItem.imageHref}">
+			                <span class="cta-slider-headline">
+			                    <span data-sly-text="${carouselItem.msg @ context='html'}">Pay as you go phones</span>
+			                </span>
+		                    <span class="cta-red chevron cta-slider-btn">Discover more</span>
+		                </a>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
+	</div>
+	<div data-sly-test="${carousel.author && carousel.empty}" data-sly-unwrap>
+		Configure Carousel Component
+	</div>
+</div>
