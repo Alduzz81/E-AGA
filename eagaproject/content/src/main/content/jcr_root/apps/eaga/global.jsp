@@ -67,5 +67,5 @@
 		IncludeOptions.getOptions(request, true).setDecorationTagName("");
 	}
 
-    final String homePath = "/content/e-AGA";
+    final String homePath = "/content/home";
 %>
