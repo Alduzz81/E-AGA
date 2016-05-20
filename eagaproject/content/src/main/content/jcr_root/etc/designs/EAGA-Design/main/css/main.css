@@ -14951,13 +14951,35 @@ label.label-radio-green-flag {
     }
 }
 
-.login-container{
+.login-container
+{
 	 display: inline-block;
 	 border: 1px dotted;
-	 margin: 10px;	 
-	 width: 22%;
-	 heigth:15%;
+	 margin: 30px;	 
+	 width: 30%;
+	 heigth:40%;
 }
+
+.login-format-padding
+{
+	padding-bottom: 15px;
+}
+
+.login-password-dimenticata
+{
+    margin-right: -8px;
+}
+.login-input-type{
+    width: 80%;
+}
+
+.login-password
+{
+    float: left;
+    margin-left: 32px;
+}
+  
+
 
 /*********************
  END PIECHART

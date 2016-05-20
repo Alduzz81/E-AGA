@@ -1,10 +1,25 @@
 <div class="login-container">
-	<div>Accedi</div>
-	<div>${properties.indirizzoMailNumero ? properties.indirizzoMailNumero : "Indirizzo e-mail o numero di cellulare" @context='html'}</div>
-	<div><input type="text"></div>
-	<div>Password</div><div>Password dimenticata</div>
-	<div><input type="password"></div>
-	<button>Accedi</button>
-	<div>Sei nuovo su Amazon?</div>
-	<button>Crea il tuo account Amazon</button>
+	<div class="text-center login-format-padding">
+		<div class="login-format-padding">
+			<h2>Accedi</h2>
+		</div>
+		<div>
+			<b>${properties.indirizzoMailNumero ? properties.indirizzoMailNumero : 'Indirizzo e-mail o numero di cellulare' @context='html'}</b>
+		</div>
+		<div class="login-format-padding">
+			<input class="login-input-type" type="email" required>
+		</div>
+			<span class="login-password-margin">${properties.labelPassword ? properties.labelPassword : 'Password' @context='html'}</span>
+			<span class="login-password-dimenticata">${properties.labelPasswordDimenticata ? properties.labelPasswordDimenticata : 'Password dimenticata' @context='html'}</span>
+		<div class="login-format-padding">
+			<input class="login-input-type" type="password" required>
+		</div>
+		<div class="login-format-padding">
+			<button class="login-input-type">${properties.labelButtonAccedi ? properties.labelButtonAccedi : 'Accedi' @context='html'}</button>
+		</div><br>
+		<div class="text-center login-format-padding">${properties.labelSeiNuovo ? properties.labelSeiNuovo : '----Sei nuovo su Amazon?----' @context='html'}</div>
+		<div class="login-format-padding">
+			<button class="login-input-type">${properties.labelButtonCrea ? properties.labelButtonCrea : 'Crea il tuo account Amazon' @context='html'}</button>
+		</div>
+	</div>
 </div>

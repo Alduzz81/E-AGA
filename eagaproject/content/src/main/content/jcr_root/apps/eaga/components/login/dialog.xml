@@ -9,30 +9,42 @@
             jcr:primaryType="cq:Widget"
             fieldLabel="Indirizzo e-mail o numero di cellulare"
             allowBlank="false"
-            xtype="textfield" />
+            defaultValue="Indirizzo e-mail o numero di cellulare"
+            xtype="textfield"/>
         <labelPassword
             name="./labelPassword"
             jcr:primaryType="cq:Widget"
             fieldLabel="Password"
             allowBlank="false"
-            xtype="textfield" />
+            defaultValue="Password"
+            xtype="textfield"/>
         <labelPasswordDimenticata
             name="./labelPasswordDimenticata"
             jcr:primaryType="cq:Widget"
-            fieldLabel="E-mail"
+            fieldLabel="Password Dimenticata"
             allowBlank="false"
-            xtype="textfield" />
+            defaultValue="Password Dimenticata"
+            xtype="textfield"/>
+         <labelSeiNuovo
+            name="./labelSeiNuovo"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Label Sei nuovo"
+            allowBlank="false"
+            defaultValue="----Sei nuovo su Amazon?----"
+            xtype="textfield"/>
           <labelButtonAccedi
             name="./labelButtonAccedi"
             jcr:primaryType="cq:Widget"
             fieldLabel="Accedi"
             allowBlank="false"
-            xtype="textfield" />
+            defaultValue="Accedi"
+            xtype="textfield"/>
           <labelButtonCrea
             name="./labelButtonCrea"
             jcr:primaryType="cq:Widget"
             fieldLabel="Crea il tuo account Amazon"
             allowBlank="false"
-            xtype="textfield" />
+            defaultValue="Crea il tuo account Amazon"
+            xtype="textfield"/>
     </items>
 </jcr:root>

@@ -1,4 +1,4 @@
-package com.aem.eaga.sightly.registration;
+/*package com.aem.eaga.sightly.registration;
  
 import com.adobe.cq.sightly.WCMUse;
 import javax.jcr.Node;
@@ -36,3 +36,4 @@ public class Registration  extends WCMUse  {
 	        LOG.debug("====================== LoginCta Activate End ======================");
 	 }
 }
+*/
