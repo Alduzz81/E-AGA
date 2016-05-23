@@ -7423,8 +7423,8 @@ strong, b, .text-bold {
 .cta-red {
     background-color: #E60000;
     color: #FFFFFF;
-    padding: 10px;
-    font-size: 18px;
+    padding: 10px 25px;
+    font-size: 15px;
 }
 
 .cta-red.max-180 {
@@ -11576,7 +11576,7 @@ START SLIDER HOME
     background-color: #EFEFEF;
     display: block;
     font-family: VodafoneLight;
-    font-size: 30px;
+    font-size: 20px;
     line-height: 1.2;
     line-height: 0px;
     padding: 22px 25px 12px;
