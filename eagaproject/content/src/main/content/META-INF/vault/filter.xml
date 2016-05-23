@@ -8,10 +8,7 @@
     	<exclude pattern=".*/rep:policy(/.*)?" />
         <include pattern="/etc/designs/EAGA-Design" />
     </filter>
-    <filter root="/content/dam/eaga">
- 		<exclude pattern=".*/rep:policy(/.*)?" />
-        <include pattern="/content/dam/eaga" />
-    </filter>
+   
     <filter root="/content/home">
     	<exclude pattern=".*/rep:policy(/.*)?" />
         <include pattern="/content/home" />

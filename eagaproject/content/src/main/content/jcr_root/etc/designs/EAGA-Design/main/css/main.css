@@ -11560,7 +11560,7 @@ START SLIDER HOME
 
 .slider-wrap .cta-slider-wrap .cta-slider-single {
     padding-left: 10px;
-    margin-top: 0;
+    margin-top: 40px;
     -webkit-transition: margin-top .3s;
     transition: margin-top .3s;
     -webkit-transition-delay: .25s;
@@ -11578,8 +11578,8 @@ START SLIDER HOME
     font-family: VodafoneLight;
     font-size: 30px;
     line-height: 1.2;
-    line-height: 30px;
-    padding: 35px 25px 25px;
+    line-height: 0px;
+    padding: 22px 25px 12px;
 }
 
 .slider-wrap .cta-slider-wrap .cta-slider-single .cta-slider-info {
@@ -11605,7 +11605,7 @@ START SLIDER HOME
 }
 
 .slider-wrap .cta-slider-wrap .cta-slider-single.slick-current {
-    margin-top: -50px;
+    margin-top: -10px;
 }
 
 .slider-wrap .cta-slider-wrap .cta-slider-single.slick-current a {
@@ -11645,10 +11645,10 @@ START SLIDER HOME
 
 .slider-wrap .control-wrap {
     position: absolute;
-    top: 270px;
+    top: 160px;
     z-index: 1;
     background-color: rgba(54, 54, 54, 0.6);
-    padding: 15px 25px 15px 50px;
+    padding: 13px 25px 13px 50px;
 }
 
 .slider-wrap .control-wrap .dots-wrap {
