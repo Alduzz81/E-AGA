@@ -1,4 +1,4 @@
-var myApp=angular.module("myApp",[]);
+/*var myApp=angular.module("myApp",[]);
 
 myApp.controller("LoginController", ['$scope', '$rootScope', function($scope, $rootScope) {  
     $scope.utenti =   
@@ -17,3 +17,7 @@ myApp.controller("LoginController", ['$scope', '$rootScope', function($scope, $r
 			}
 		]
 }]);
+*/
+function loginAccount(){
+	console.log("Ciao");
+}
