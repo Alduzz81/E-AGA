@@ -9,16 +9,9 @@
   mixin
   - sling:resourceType (string)
 
-[cq:ClientLibraryFolder] > sling:Folder
-  - channels (string) multiple
-  - categories (string) multiple
-  - dependencies (string) multiple
-  - embed (string) multiple
-
-[sling:Folder] > nt:folder
-  - * (undefined) multiple
-  - * (undefined)
-  + * (nt:base) = sling:Folder version
+[sling:Redirect] > sling:Resource
+  mixin
+  - sling:target (undefined)
 
 [cq:Page] > nt:hierarchyNode
   orderable primaryitem jcr:content
@@ -61,6 +54,15 @@
   - cq:lastReplicationStatus (string) ignore
   - cq:lastPublished (date) ignore
   - cq:lastReplicated (date) ignore
+
+[sling:OrderedFolder] > sling:Folder
+  orderable
+  + * (nt:base) = sling:OrderedFolder version
+
+[sling:Folder] > nt:folder
+  - * (undefined) multiple
+  - * (undefined)
+  + * (nt:base) = sling:Folder version
 
 [rep:RepoAccessControllable]
   mixin
