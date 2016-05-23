@@ -4,14 +4,18 @@
  		<exclude pattern=".*/rep:policy(/.*)?" />
         <include pattern="/apps/eaga(/.*)?" />
     </filter>
- 	
     <filter root="/etc/designs/EAGA-Design">
     	<exclude pattern=".*/rep:policy(/.*)?" />
         <include pattern="/etc/designs/EAGA-Design" />
     </filter>
-    <filter root="/content/dam/eaga" />
-
-    
+    <filter root="/content/dam/eaga">
+ 		<exclude pattern=".*/rep:policy(/.*)?" />
+        <include pattern="/content/dam/eaga" />
+    </filter>
+    <filter root="/content/home">
+    	<exclude pattern=".*/rep:policy(/.*)?" />
+        <include pattern="/content/home" />
+    </filter>
     <filter root="/etc/workflow/models/eaga/update_asset">
         <exclude pattern=".*/rep:policy(/.*)?" />
         <include pattern="/etc/workflow/models/eaga/update_asset" />

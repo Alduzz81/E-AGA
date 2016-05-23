@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:lastModified="{Date}2016-05-17T16:57:03.528+02:00"
@@ -13,16 +13,23 @@
         jcr:primaryType="cq:PageContent"
         jcr:title="Eaga HomePage"
         jcr:uuid="f78bd650-0b9b-46a6-955b-ca3fd48dd762"
-        sling:resourceType="eaga/components/page/homepage"/>
+        sling:resourceType="eaga/components/page/homepage">
+        <homecarousel
+            jcr:lastModified="{Date}2016-05-23T14:57:37.908+02:00"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="eaga/components/homecarousel"
+            carouselitems="[{&quot;image&quot;:&quot;/content/dam/eaga/images/dive.jpg&quot;\,&quot;imageAlt&quot;:&quot;ferag&quot;\,&quot;imageHref&quot;:&quot;/content/home/products&quot;\,&quot;msg&quot;:&quot;&lt;p>ghrwt&lt;/p>\\n&quot;},{&quot;image&quot;:&quot;/content/dam/eaga/images/aurora.jpg&quot;\,&quot;imageAlt&quot;:&quot;gwtrhey&quot;\,&quot;imageHref&quot;:&quot;/content/home/products&quot;\,&quot;msg&quot;:&quot;&lt;p>fewtqetg&lt;/p>\\n&quot;},{&quot;image&quot;:&quot;/content/dam/eaga/images/food.jpg&quot;\,&quot;imageAlt&quot;:&quot;gw5hgt&quot;\,&quot;imageHref&quot;:&quot;/content/home/products&quot;\,&quot;msg&quot;:&quot;&lt;p>g5454wh&lt;/p>\\n&quot;},{&quot;image&quot;:&quot;/content/dam/eaga/images/city.jpg&quot;\,&quot;imageAlt&quot;:&quot;cregre&quot;\,&quot;imageHref&quot;:&quot;/content/home/products&quot;\,&quot;msg&quot;:&quot;&lt;p>nuova&lt;/p>\\n&quot;}]"
+            timing="3000"/>
         <search
-	        jcr:created="{Date}2016-02-25T11:59:07.984+01:00"
-	        jcr:createdBy="admin"
-	        cq:lastModified="{Date}2016-05-17T16:57:03.528+02:00"
-        	cq:lastModifiedBy="admin"
-	        jcr:primaryType="nt:unstructured"
-	        sling:resourceType="etc/foundation/components/search"
-	        noResultsText="questa è una prova 2"
-	        searchButtonText="cerca"/>
+            cq:lastModified="{Date}2016-05-17T16:57:03.528+02:00"
+            cq:lastModifiedBy="admin"
+            jcr:created="{Date}2016-02-25T11:59:07.984+01:00"
+            jcr:createdBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="etc/foundation/components/search"
+            noResultsText="Sorry, no results for this search"
+            searchButtonText="search "/>
+    </jcr:content>
     <products/>
-     </jcr:content>
 </jcr:root>
