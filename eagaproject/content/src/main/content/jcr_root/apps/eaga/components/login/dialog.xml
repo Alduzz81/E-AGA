@@ -35,9 +35,9 @@
 	         <labelSeiNuovo
 	            name="./labelSeiNuovo"
 	            jcr:primaryType="cq:Widget"
-	            fieldLabel="Label Sei nuovo su Amazon?"
+	            fieldLabel="Label Sei nuovo su E-AGA"
 	            allowBlank="false"
-	            defaultValue="----Sei nuovo su Amazon?----"
+	            defaultValue="----Sei nuovo su E-AGA?----"
 	            xtype="textfield"/>
 	          <labelButtonAccedi
 	            name="./labelButtonAccedi"
@@ -49,9 +49,9 @@
 	          <labelButtonCrea
 	            name="./labelButtonCrea"
 	            jcr:primaryType="cq:Widget"
-	            fieldLabel="Label Button Crea il tuo account Amazon"
+	            fieldLabel="Label Button Crea il tuo account E-AGA"
 	            allowBlank="false"
-	            defaultValue="Crea il tuo account Amazon"
+	            defaultValue="Crea il tuo account E-AGA"
 	            xtype="textfield"/>
 	    </items>
 </jcr:root>

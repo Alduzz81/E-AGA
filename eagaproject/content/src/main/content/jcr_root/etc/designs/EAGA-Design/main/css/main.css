@@ -14953,16 +14953,17 @@ label.label-radio-green-flag {
 
 .login-container
 {
-	 display: inline-block;
-	 border: 1px dotted;
-	 margin: 30px;	 
-	 width: 30%;
-	 heigth:40%;
+	padding-top: -30px;
+	display: inline-block;
+	border: 1px dotted;
+	margin: 30px;	 
+	width: 30%;
+	heigth:40%;
 }
 
 .login-logo-format-padding
 {
-	padding-top: 15px;
+	padding-top: -30px;
 }
 
 .login-format-padding

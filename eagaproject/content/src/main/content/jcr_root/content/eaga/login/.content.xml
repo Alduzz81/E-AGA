@@ -21,10 +21,10 @@
             sling:resourceType="eaga/components/login"
             labelAccedi="Accedi"
             labelButtonAccedi="Accedi"
-            labelButtonCrea="Crea il tuo account Amazon"
+            labelButtonCrea="Crea il tuo account EAGA"
             labelIndirizzoMailNumero="Indirizzo e-mail o numero di cellulare"
             labelPassword="Password"
             labelPasswordDimenticata="Password Dimenticata"
-            labelSeiNuovo="----Sei nuovo su Amazon?----"/>
+            labelSeiNuovo="----Sei nuovo su EAGA?----"/>
       </jcr:content>       
 </jcr:root>
