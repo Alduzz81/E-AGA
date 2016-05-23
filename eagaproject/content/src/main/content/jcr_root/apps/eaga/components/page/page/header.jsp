@@ -12,7 +12,7 @@
 		<cq:include path="search" resourceType="foundation/components/search"/>
 	</div>
 	<div class="col-sm-2">
-		<a href="https://www.amazon.it/" class="">
+		<a href="<%=homePath%>/login.html">
 			<img class="img-header" src="/etc/designs/EAGA-Design/images/login.png">
 			<span class="label-header">Login</span> 
 	    </a>
