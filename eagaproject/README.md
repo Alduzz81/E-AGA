@@ -37,3 +37,14 @@ Links:
 https://docs.adobe.com/docs/en/aem/6-1/develop/the-basics/website.html
 
 https://helpx.adobe.com/experience-manager/using/creating-aem-project-using-eclipse.html
+
+---------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/content/eaga"/>
+    <filter root="/apps/eaga"/>
+    <filter root="/etc/designs/EAGA-Design"/>
+    <filter root="/content/dam/eaga"/>
+</workspaceFilter>
+
+----------------------------------------------------------------------------------------

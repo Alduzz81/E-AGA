@@ -6,23 +6,23 @@
 <div class="login-container">
 	<div class="text-center login-format-padding">		
 		<div class="login-format-padding">
-			<h2>${properties.labelAccedi ? properties.labelAccedi : 'Accedi' @context='html'}</h2>
+			<h2>${properties.labelAccedi @context='html'}</h2>
 		</div>
 		<div>
-			<b>${properties.labelIndirizzoMailNumero ? properties.labelIndirizzoMailNumero : 'Indirizzo e-mail o numero di cellulare' @context='html'}</b>
+			<b>${properties.labelIndirizzoMailNumero @context='html'}</b>
 		</div>
 		<div class="login-format-padding">
 			<input class="login-input-type" type="email" required>
 		</div>
-			<span class="login-password-margin">${properties.labelPassword ? properties.labelPassword : 'Password' @context='html'}</span>
-			<span class="login-password-dimenticata">${properties.labelPasswordDimenticata ? properties.labelPasswordDimenticata : 'Password dimenticata' @context='html'}</span>
+			<span class="login-password-margin">${properties.labelPassword @context='html'}</span>
+			<span class="login-password-dimenticata">${properties.labelPasswordDimenticata @context='html'}</span>
 		<div class="login-format-padding">
 			<input class="login-input-type" type="password" required>
 		</div>
 		<div class="login-format-padding">
 			<input type="submit" class="login-input-type" value="${properties.labelButtonAccedi ? properties.labelButtonAccedi : 'Accedi' @context='html'}" onclick="loginAccount()">
 		</div><br>
-		<div class="text-center login-format-padding">${properties.labelSeiNuovo ? properties.labelSeiNuovo : '----Sei nuovo su Amazon?----' @context='html'}</div>
+		<div class="text-center login-format-padding">${properties.labelSeiNuovo @context='html'}</div>
 		<div class="login-format-padding">
 			<input type="submit" class="login-input-type" value="${properties.labelButtonCrea ? properties.labelButtonCrea : 'Crea il tuo account Amazon' @context='html'}">
 		</div>

@@ -13,7 +13,9 @@
         jcr:primaryType="cq:PageContent"
         jcr:title="E-AGA HomePage"
         jcr:uuid="97dc0c9f-e635-4e71-a17f-781d52e512f5"
-        sling:resourceType="eaga/components/page/homepage"/>
+        sling:resourceType="eaga/components/page/homepage">
+        
+       </jcr:content>
     <products/>
     <login/>
 </jcr:root>
