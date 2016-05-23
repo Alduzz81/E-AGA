@@ -7423,7 +7423,7 @@ strong, b, .text-bold {
 .cta-red {
     background-color: #E60000;
     color: #FFFFFF;
-    padding: 17px;
+    padding: 10px;
     font-size: 18px;
 }
 
@@ -11605,7 +11605,7 @@ START SLIDER HOME
 }
 
 .slider-wrap .cta-slider-wrap .cta-slider-single.slick-current {
-    margin-top: -10px;
+    margin-top: 8px;
 }
 
 .slider-wrap .cta-slider-wrap .cta-slider-single.slick-current a {

@@ -23,5 +23,5 @@
         <exclude pattern=".*/rep:policy(/.*)?" />
         <include pattern="/etc/workflow/launcher/config/eaga_update_asset_mod" />
     </filter>
-    <filter root="/content/dam/eaga"/>
+    
 </workspaceFilter>
