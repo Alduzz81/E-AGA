@@ -1,8 +1,5 @@
 <%@include file="../../../global.jsp"%><%@page session="false"%>
-
-
 <div class="col-sm-12 new-header">
-
 	<div class="col-sm-2">
 		<a href="<%=homePath%>.html" >
 			<img class="logo" src="/etc/designs/EAGA-Design/images/eaga-logo.jpg">
