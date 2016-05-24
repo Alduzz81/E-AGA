@@ -3,18 +3,18 @@
 		<img src="/etc/designs/EAGA-Design/images/eaga-logo-login.png">
 	</a>
 </div>
-<div class="login-container">
+<div class="login-container" ng-controller="LoginController">
 	<div class="text-center login-format-padding">		
 		<div class="login-format-padding">
-			<h2>${properties.labelAccedi @context='html'}</h2>
+			<h2><b>${properties.labelAccedi @context='html'}</b></h2>
 		</div>
 		<div>
-			<b>${properties.labelIndirizzoMailNumero @context='html'}</b>
+			<b>${properties.labelIndirizzoMail @context='html'}</b>
 		</div>
 		<div class="login-format-padding">
 			<input class="login-input-type" type="email" required>
 		</div>
-			<span class="login-password-margin">${properties.labelPassword @context='html'}</span>
+			<span class="login-password-margin"><b>${properties.labelPassword @context='html'}</b></span>
 			<span class="login-password-dimenticata">${properties.labelPasswordDimenticata @context='html'}</span>
 		<div class="login-format-padding">
 			<input class="login-input-type" type="password" required>
@@ -27,4 +27,5 @@
 			<input type="submit" class="login-input-type" value="${properties.labelButtonCrea ? properties.labelButtonCrea : 'Crea il tuo account Amazon' @context='html'}">
 		</div>
 	</div>
+	{{utenti1}}
 </div>

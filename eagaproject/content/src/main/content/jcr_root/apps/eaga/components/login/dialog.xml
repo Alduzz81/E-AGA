@@ -11,12 +11,12 @@
 	            allowBlank="false"
 	            defaultValue="Accedi"
 	            xtype="textfield"/>
-	        <labelIndirizzoMailNumero
-	            name="./labelIndirizzoMailNumero"
+	        <labelIndirizzoMail
+	            name="./labelIndirizzoMail"
 	            jcr:primaryType="cq:Widget"
-	            fieldLabel="Label Indirizzo e-mail o numero di cellulare"
+	            fieldLabel="Label Indirizzo e-mail"
 	            allowBlank="false"
-	            defaultValue="Indirizzo e-mail o numero di cellulare"
+	            defaultValue="Indirizzo e-mail"
 	            xtype="textfield"/>
 	        <labelPassword
 	            name="./labelPassword"

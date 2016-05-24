@@ -1,7 +1,10 @@
-/*var myApp=angular.module("myApp",[]);
+//var eagaApp = angular.module('eagaApp1', []);
 
-myApp.controller("LoginController", ['$scope', '$rootScope', function($scope, $rootScope) {  
-    $scope.utenti =   
+eagaApp.controller("LoginController", ['$scope', function($scope) {  
+	$scope.utenti1=1;
+	
+	
+	/*$scope.utenti =   
 	    [
 			{
 				email:"eaga1@eag.it",
@@ -15,9 +18,9 @@ myApp.controller("LoginController", ['$scope', '$rootScope', function($scope, $r
 				email:"eaga3@eag.it",
 				passwrod:"123"
 			}
-		]
+		]*/
 }]);
-*/
+
 function loginAccount(){
 	console.log("Ciao");
 }

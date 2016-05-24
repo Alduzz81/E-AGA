@@ -22,7 +22,7 @@
             labelAccedi="Accedi"
             labelButtonAccedi="Accedi"
             labelButtonCrea="Crea il tuo account EAGA"
-            labelIndirizzoMailNumero="Indirizzo e-mail o numero di cellulare"
+            labelIndirizzoMail="Indirizzo e-mail"
             labelPassword="Password"
             labelPasswordDimenticata="Password Dimenticata"
             labelSeiNuovo="----Sei nuovo su EAGA?----"/>

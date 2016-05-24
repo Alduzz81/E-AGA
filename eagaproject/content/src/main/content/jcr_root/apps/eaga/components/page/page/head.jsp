@@ -7,7 +7,7 @@
         favIcon = null;
     }
 %><head>
-
+	
 	<meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
 	<meta name="keywords" content="<%= xssAPI.encodeForHTMLAttr(WCMUtils.getKeywords(currentPage, false)) %>"<%=xs%>>
@@ -27,8 +27,7 @@
     <title><%= currentPage.getTitle() == null ? xssAPI.encodeForHTML(currentPage.getName()) : xssAPI.encodeForHTML(currentPage.getTitle()) %></title>
 
     <cq:includeClientLib css="eaga.main"/>
-
-
+    
     <script src="//tags.tiqcdn.com/utag/vodafone/ie-main/prod/utag.sync.js"></script>
     <cq:include path="clientcontext" resourceType="cq/personalization/components/clientcontext"/>
 </head>
