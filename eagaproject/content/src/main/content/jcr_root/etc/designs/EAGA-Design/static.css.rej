@@ -1,0 +1,15 @@
+diff a/eagaproject/content/src/main/content/jcr_root/etc/designs/EAGA-Design/static.css b/eagaproject/content/src/main/content/jcr_root/etc/designs/EAGA-Design/static.css	(rejected hunks)
+@@ -33,6 +33,13 @@
+     background: #f9f9f9 url(images/footer_bg.gif) repeat-x 0 0;
+ }
+ 
++.new-footer {
++    width: 100%;
++    margin-top: 20px;
++    padding: 0 20px 20px 20px;
++    clear: both;
++    background: #008080;
++}
+ 
+ .alpha {
+     margin-left: 0 !important;

@@ -3,5 +3,25 @@
     <filter root="/content/eaga"/>
     <filter root="/apps/eaga"/>
     <filter root="/etc/designs/EAGA-Design"/>
-    <filter root="/content/dam/eaga"/>
+    <filter root="/etc/workflow/models/eaga/update_asset">
+        <exclude pattern=".*/rep:policy(/.*)?" />
+        <include pattern="/etc/workflow/models/eaga/update_asset" />
+    </filter>
+    <filter root="/etc/workflow/launcher/config/update_asset_create">
+        <exclude pattern=".*/rep:policy(/.*)?" />
+        <include pattern="/etc/workflow/launcher/config/update_asset_create" />
+    </filter>
+    <filter root="/etc/workflow/launcher/config/update_asset_mod">
+        <exclude pattern=".*/rep:policy(/.*)?" />
+        <include pattern="/etc/workflow/launcher/config/update_asset_mod" />
+    </filter>
+    <filter root="/etc/workflow/launcher/config/eaga_update_asset_create">
+        <exclude pattern=".*/rep:policy(/.*)?" />
+        <include pattern="/etc/workflow/launcher/config/eaga_update_asset_create" />
+    </filter>
+    <filter root="/etc/workflow/launcher/config/eaga_update_asset_mod">
+        <exclude pattern=".*/rep:policy(/.*)?" />
+        <include pattern="/etc/workflow/launcher/config/eaga_update_asset_mod" />
+    </filter>
+    
 </workspaceFilter>
