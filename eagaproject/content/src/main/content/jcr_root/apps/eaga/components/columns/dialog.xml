@@ -42,38 +42,6 @@
 							value="43333" />
 					</options>
 				</columns>
-				<!-- tablet jcr:primaryType="cq:Widget" allowEmpty="false"
-					fieldLabel="Tablet Columns" name="./tablet" type="select" xtype="selection">
-					<options jcr:primaryType="cq:WidgetCollection">
-						<_x0031_ jcr:primaryType="nt:unstructured" text="1 Columns per row"
-							value="1" />
-						<_x0032_ jcr:primaryType="nt:unstructured" text="2 Columns per row"
-							value="2" />
-						<_x0033_ jcr:primaryType="nt:unstructured" text="3 Columns per row"
-							value="3" />
-						<_x0034_ jcr:primaryType="nt:unstructured" text="4 Columns per row"
-							value="4" />
-					</options>
-				</tablet>
-				<smart jcr:primaryType="cq:Widget" allowEmpty="false"
-					fieldLabel="Smartphone Columns" name="./smart" type="select" xtype="selection">
-					<options jcr:primaryType="cq:WidgetCollection">
-						<_x0031_ jcr:primaryType="nt:unstructured" text="1 Columns per row"
-							value="1" />
-						<_x0032_ jcr:primaryType="nt:unstructured" text="2 Columns per row"
-							value="2" />
-						<_x0033_ jcr:primaryType="nt:unstructured" text="3 Columns per row"
-							value="3" />
-						<_x0034_ jcr:primaryType="nt:unstructured" text="4 Columns per row"
-							value="4" />
-					</options>
-				</smart>
-				<lock jcr:primaryType="cq:Widget" allowEmpty="false"
-					fieldLabel="Lock Columns" name="./locked" type="checkbox" xtype="selection" defaultValue="true">
-				</lock>
-				<nopadding jcr:primaryType="cq:Widget" allowEmpty="false"
-					fieldLabel="Columns without padding/margin" name="./nopadding" type="checkbox" xtype="selection">
-				</nopadding-->
 			</items>
 		</tab1>
 	</items>
