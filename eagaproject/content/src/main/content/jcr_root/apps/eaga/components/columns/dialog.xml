@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Dialog"
+    title="Columns Layout"
+    xtype="dialog">
+	<items jcr:primaryType="cq:WidgetCollection">
+		<tab1 jcr:primaryType="cq:Widget" title="Flex Columns Layout" xtype="panel">
+			<items jcr:primaryType="cq:WidgetCollection">
+				<layout jcr:primaryType="cq:Widget" allowEmpty="false"
+					fieldLabel="Layout Width" name="./layout" type="select" xtype="selection">
+					<options jcr:primaryType="cq:WidgetCollection">
+						<full jcr:primaryType="nt:unstructured" text="Full Page (100%)"
+							value="full" />
+						<col jcr:primaryType="nt:unstructured" text="Large Columns"
+							value="col" />
+					</options>
+				</layout>
+				<columns jcr:primaryType="cq:Widget" allowEmpty="false"
+					fieldLabel="Columns" name="./desktop" type="select" xtype="selection">
+					<options jcr:primaryType="cq:WidgetCollection">
+						<_x00311-1_ jcr:primaryType="nt:unstructured" text="1 Column (100%)"
+							value="1" />
+						<_x00311-2_ jcr:primaryType="nt:unstructured" text="2 Columns (50% / 50%)"
+							value="266" />
+						<_x00312-23_ jcr:primaryType="nt:unstructured" text="2 Columns (33% / 66%)"
+							value="248" />
+						<_x00313-27_ jcr:primaryType="nt:unstructured" text="2 Columns (66% / 33%)"
+							value="284" />
+						<_x00314-23_ jcr:primaryType="nt:unstructured" text="2 Columns (25% / 75%)"
+							value="239" />
+						<_x00315-27_ jcr:primaryType="nt:unstructured" text="2 Columns (75% / 25%)"
+							value="293" />
+						<_x00316-3_ jcr:primaryType="nt:unstructured" text="3 Columns (33% / 34% / 33%)"
+							value="3444" />
+						<_x00317-325_ jcr:primaryType="nt:unstructured" text="3 Columns (25% / 50% / 25%)"
+							value="3363" />
+						<_x00318-322_ jcr:primaryType="nt:unstructured" text="3 Columns (25% / 25% / 50%)"
+							value="3336" />
+						<_x00319-352_ jcr:primaryType="nt:unstructured" text="3 Columns (50% / 25% / 25%)"
+							value="3633" />
+						<_x00320-4_ jcr:primaryType="nt:unstructured" text="4 Columns (25% / 25% / 25% / 25%)"
+							value="43333" />
+					</options>
+				</columns>
+				<!-- tablet jcr:primaryType="cq:Widget" allowEmpty="false"
+					fieldLabel="Tablet Columns" name="./tablet" type="select" xtype="selection">
+					<options jcr:primaryType="cq:WidgetCollection">
+						<_x0031_ jcr:primaryType="nt:unstructured" text="1 Columns per row"
+							value="1" />
+						<_x0032_ jcr:primaryType="nt:unstructured" text="2 Columns per row"
+							value="2" />
+						<_x0033_ jcr:primaryType="nt:unstructured" text="3 Columns per row"
+							value="3" />
+						<_x0034_ jcr:primaryType="nt:unstructured" text="4 Columns per row"
+							value="4" />
+					</options>
+				</tablet>
+				<smart jcr:primaryType="cq:Widget" allowEmpty="false"
+					fieldLabel="Smartphone Columns" name="./smart" type="select" xtype="selection">
+					<options jcr:primaryType="cq:WidgetCollection">
+						<_x0031_ jcr:primaryType="nt:unstructured" text="1 Columns per row"
+							value="1" />
+						<_x0032_ jcr:primaryType="nt:unstructured" text="2 Columns per row"
+							value="2" />
+						<_x0033_ jcr:primaryType="nt:unstructured" text="3 Columns per row"
+							value="3" />
+						<_x0034_ jcr:primaryType="nt:unstructured" text="4 Columns per row"
+							value="4" />
+					</options>
+				</smart>
+				<lock jcr:primaryType="cq:Widget" allowEmpty="false"
+					fieldLabel="Lock Columns" name="./locked" type="checkbox" xtype="selection" defaultValue="true">
+				</lock>
+				<nopadding jcr:primaryType="cq:Widget" allowEmpty="false"
+					fieldLabel="Columns without padding/margin" name="./nopadding" type="checkbox" xtype="selection">
+				</nopadding-->
+			</items>
+		</tab1>
+	</items>
+</jcr:root>
