@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Dialog"
+    height="600"
+    title="Home Products Component"
+    width="1000"
+    xtype="dialog">
+    <items
+        jcr:primaryType="cq:Widget"
+        width="1000"
+        xtype="panel">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <timing
+                jcr:primaryType="cq:Widget"
+                allowBlank="{Boolean}false"
+                allowDecimals="{Boolean}false"
+                allowNegative="{Boolean}false"
+                defaultValue="3000"
+                fieldDescription="Duration in milliseconds during which a banner is displayed. Usually is 3000"
+                fieldLabel="Timing (ms)"
+                name="./timing"
+                xtype="numberfield"/>
+            <multifielditems
+                jcr:primaryType="cq:Widget"
+                fieldLabel="Items"
+                hideLabel="false"
+                name="./homeproductitems"
+                title="Home Product Items"
+                xtype="multifield">
+                <fieldConfig
+                    jcr:primaryType="cq:Widget"
+                    border="true"
+                    hideLabel="true"
+                    layout="form"
+                    padding="10px"
+                    width="1000"
+                    xtype="multi-field-panel">
+                    <items jcr:primaryType="cq:WidgetCollection">
+                        <productPath
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="{Boolean}false"
+                            dName="image"
+                            editable="{Boolean}true"
+                            fieldLabel="Image Path"
+                            rootPath="/etc/designs/EAGA-Design/images/products"
+                            width="400"
+                            xtype="pathfield"/>
+                        <productAlt
+                            jcr:primaryType="cq:Widget"
+                            dName="imageAlt"
+                            fieldLabel="Alt Text"
+                            width="400"
+                            xtype="textfield"/>
+                        <poductHref
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="{Boolean}false"
+                            dName="imageHref"
+                            rootPath="/content/eaga"
+                            fieldLabel="Link to"
+                            width="400"
+                            xtype="pathfield"/>
+                        <productLabel
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="{Boolean}false"
+                            dName="name"
+                            externalStyleSheets="[/apps/eaga/components/homeproducts/clientlib/homeproducts.css]"
+                            fieldLabel="Product name"
+                            width="400"
+                            xtype="richtext">
+                            <rtePlugins jcr:primaryType="nt:unstructured">
+                                <styles
+                                    jcr:primaryType="nt:unstructured"
+                                    features="*">
+                                    <styles jcr:primaryType="cq:WidgetCollection">
+                                        <subtitles
+                                            jcr:primaryType="nt:unstructured"
+                                            cssName="cta-slider-info"
+                                            text="subtitle"/>
+                                    </styles>
+                                </styles>
+                                <justify
+                                    jcr:primaryType="nt:unstructured"
+                                    features="[\0]"/>
+                                <links
+                                    jcr:primaryType="nt:unstructured"
+                                    features="[\0]"/>
+                                <lists
+                                    jcr:primaryType="nt:unstructured"
+                                    features="[\0]"/>
+                            </rtePlugins>
+                        </productLabel>
+                    </items>
+                </fieldConfig>
+            </multifielditems>
+        </items>
+    </items>
+</jcr:root>

@@ -1,0 +1,38 @@
+<div data-sly-use.homeprod="${'com.aem.eaga.sightly.homeproduct.HomeProductUse' @ currentNode=currentNode}"
+    data-sly-unwrap>
+	<div data-sly-test="${!homeprod.empty}" data-sly-unwrap>
+
+		<div class="slider-wrap" data-time-autoplay="${homeprod.timing}">
+		    <div class="image-slider-wrap" data-sly-list.item="${homeprod.homeProductItems}">
+		        <div class="images-slider-single">
+		            <img class="img-breakpoint" alt="${item.imageAlt}"
+                        src="${item.image}"
+                        data-minwidth0px="${item.image}"
+                        data-minwidth1200px="${item.image}">
+		        </div>
+		    </div>	    
+		    <div class="control-wrap">
+		        <div class="dots-wrap"></div>
+		        <a href="#" class="slider-toggle">
+		            <span class="icon-slider-toggle"></span>
+		        </a>
+		    </div>	
+		    <div class="container-fluid">
+		        <div class="cta-slider-wrap" data-sly-list.homeprodItem="${homeprod.homeProductItems}">
+		            <div class="cta-slider-single">
+		                <a href="#" data-sly-attribute.href="${homeprodItem.imageHref}">
+			                <span class="cta-slider-headline">
+			                    <span data-sly-text="${homeprodItem.name @ context='html'}">Pay as you go phones</span>
+			                </span>
+		                    <span class="cta-red chevron cta-slider-btn">Discover more</span>
+		                </a>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
+	</div>
+	<div data-sly-test="${homeprod.author && homeprod.empty}" data-sly-unwrap>
+		Configure Home-Products Component
+	</div>
+</div>
