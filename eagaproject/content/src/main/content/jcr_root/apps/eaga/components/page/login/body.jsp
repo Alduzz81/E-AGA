@@ -3,6 +3,7 @@
 	
 <div class="text-center">
 	<cq:include path="login" resourceType="eaga/components/login"/>
+	<cq:includeClientLib js="eaga.main"/>
 </div>
 
 
