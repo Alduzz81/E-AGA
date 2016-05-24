@@ -1,0 +1,33 @@
+.login-container
+{
+	padding-top: -30px;
+	display: inline-block;
+	border: 1px dotted;
+	margin: 30px;	 
+	width: 30%;
+	heigth:40%;
+}
+
+.login-logo-format-padding
+{
+	padding-top: -30px;
+}
+
+.login-format-padding
+{
+	padding-bottom: 15px;
+}
+
+.login-password-dimenticata
+{
+    margin-right: -8px;
+}
+.login-input-type{
+    width: 80%;
+}
+
+.login-password
+{
+    float: left;
+    margin-left: 32px;
+}
