@@ -55,7 +55,7 @@
                             jcr:primaryType="cq:Widget"
                             allowBlank="{Boolean}false"
                             dName="imageHref"
-                            rootPath="/content/home"
+                            rootPath="/content/eaga"
                             fieldLabel="Link to"
                             width="400"
                             xtype="pathfield"/>

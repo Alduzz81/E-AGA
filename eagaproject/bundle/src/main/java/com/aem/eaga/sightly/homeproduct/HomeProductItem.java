@@ -41,7 +41,7 @@ public class HomeProductItem {
 		return name;
 	}
 	
-	public void setName(String msg) {
-        this.name = msg;
+	public void setName(String name) {
+        this.name = name;
     }
 }
