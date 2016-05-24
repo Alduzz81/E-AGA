@@ -14959,6 +14959,7 @@ label.label-radio-green-flag {
 	margin: 30px;	 
 	width: 30%;
 	heigth:40%;
+	background:#e8e8e8;
 }
 
 .login-logo-format-padding
@@ -14984,6 +14985,12 @@ label.label-radio-green-flag {
     float: left;
     margin-left: 32px;
 }
+
+.body-login
+{
+	background:#009f9f;
+}
+
   
 
 
