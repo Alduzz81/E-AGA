@@ -4,5 +4,5 @@
 <cq:includeClientLib js="eaga.main"/>
 
 <div class="col-sm-12 new-footer">
-	<cq:include path="columns" resourceType="eaga/components/columns"/>
+	<cq:include path="<%=homePath + "/jcr:content/columns"%>" resourceType="vodafone/components/columns" />
 </div>
