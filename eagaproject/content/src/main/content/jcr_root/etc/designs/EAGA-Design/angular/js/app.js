@@ -1,2 +1,2 @@
-var eagaApp = angular.module('eagaApp', []);
+//var eagaApp = angular.module('eagaApp', []);
 
