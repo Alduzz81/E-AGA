@@ -2,22 +2,22 @@
     data-sly-unwrap>
 	<div data-sly-test="${!homeprod.empty}" data-sly-unwrap>
 
-		<div class="slider-wrap" data-time-autoplay="${homeprod.timing}">
-		    <div class="image-slider-wrap" data-sly-list.item="${homeprod.homeProductItems}">
-		        <div class="images-slider-single">
+		<div class="slider-wrap-prod" data-time-autoplay="${homeprod.timing}">
+		    <div class="image-slider-wrap-prod" data-sly-list.item="${homeprod.homeProductItems}">
+		        <div class="images-slider-single-prod">
 		            <img class="img-breakpoint" alt="${item.imageAlt}"
                         src="${item.image}"
                         data-minwidth0px="${item.image}"
                         data-minwidth1200px="${item.image}">
 		        </div>
 		    </div>	    
-		    <div class="control-wrap">
-		        <div class="dots-wrap"></div>
-		        <a href="#" class="slider-toggle">
-		            <span class="icon-slider-toggle"></span>
+		     <div class="control-wrap-prod">
+		        <div class="dots-wrap-prod">qui dot</div>
+		        <a href="#" class="slider-toggle-prod">
+		            <span class="icon-slider-toggle-prod"></span>
 		        </a>
-		    </div>	
-		    <div class="container-fluid">
+		    </div>	 
+		   <!--  <div class="container-fluid">
 		        <div class="cta-slider-wrap" data-sly-list.homeprodItem="${homeprod.homeProductItems}">
 		            <div class="cta-slider-single">
 		                <a href="#" data-sly-attribute.href="${homeprodItem.imageHref}">
@@ -28,7 +28,7 @@
 		                </a>
 		            </div>
 		        </div>
-		    </div>
+		    </div>-->
 		</div>
 
 	</div>
