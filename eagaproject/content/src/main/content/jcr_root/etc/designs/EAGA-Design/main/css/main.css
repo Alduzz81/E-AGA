@@ -14985,6 +14985,29 @@ label.label-radio-green-flag {
     margin-left: 32px;
 }
 
+.footer-links-title
+{
+   font-size: 15px;
+   color: gray;
+   
+}
+
+.footer-links a:link{
+    background-color: #ffffff;
+}
+
+.footer-links a:visited {
+    background-color: #808080;
+}
+
+.footer-links a:hover {
+    background-color: #c0c0c0;
+}
+
+.footer-links a:active {
+    background-color: #ff0000;
+} 
+
 /*********************
  END PIECHART
  *********************/

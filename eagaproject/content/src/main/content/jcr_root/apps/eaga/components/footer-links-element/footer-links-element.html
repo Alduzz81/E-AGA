@@ -1,8 +1,11 @@
-<div>Guadagna con Amazon</div>
-<div>Vendi su Amazon</div>
-<div>Diventa affiliato</div>
-<div>Logistica di Amazon</div>
-<div>Diventa fornitore di Amazon</div>
-<div>Pubblica con noi da indipendente</div>
-<div>Promuovi i tuoi prodotti</div>
-
+<div data-sly-use.myFooterLinksElement="${'com.aem.eaga.sightly.footerLinksElement.FooterLinksElementUse' @ currentNode=currentNode}">  
+	<div data-sly-test.emptyLinks="${ myFooterLinksElement.author && myFooterLinksElement.linksEmpty }">
+	   	<div><a href='#'>Configure the component</a></div>
+	</div>
+	<div data-sly-test.emptyLinks="${ !myFooterLinksElement.linksEmpty }">
+	    <div class="footer-links-title">${properties.title @context='html'}</div>
+		<ul data-sly-list.key="${ myFooterLinksElement.map }">
+  			<li class="footer-links"><a href='${ myFooterLinksElement.map[key] }'>${key}</a></li>
+		</ul>
+	</div>
+</div>   

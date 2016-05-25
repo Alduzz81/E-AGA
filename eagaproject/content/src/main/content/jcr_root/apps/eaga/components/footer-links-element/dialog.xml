@@ -14,7 +14,7 @@
                 <items jcr:primaryType="cq:WidgetCollection">
 					<link-label
                         jcr:primaryType="cq:Widget"
-                        name="title"
+                        name="./title"
                         fieldLabel="Label Title"
                         width="90%"
                         allowBlank="{Boolean}false"
@@ -46,6 +46,8 @@
                                     dName="url"
                                     fieldLabel="Url"
                                     width="90%"
+                                    rootPath="/content/eaga"
+                                    editable="{Boolean}false"
                                     allowBlank="{Boolean}false"
                                     xtype="pathfield"/>
                             </items>
