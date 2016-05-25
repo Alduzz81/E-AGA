@@ -22,15 +22,15 @@ START SLIDER HOME PROD
 .slider-wrap-prod .image-slider-wrap-prod .images-slider-single-prod img {
     left: 50%;
     position: absolute;
-    top: 50%;
+    top: 35%;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     padding: 0;
-    max-height: 100%;
-    min-height: 100%;
-    min-width: 100%;
-    max-width: none;
+    max-height: 80%;
+    /*min-height: 100%;
+    min-width: 100%;*/
+    max-width: 33%;
 }
 
 .slider-wrap-prod .cta-slider-wrap {
@@ -200,6 +200,11 @@ START SLIDER HOME PROD
     overflow: hidden;
     background: none;
 }
+
+/*.img-breakpoint-prod {
+	height: 100px;
+	width: 100px;
+}*/
 
 /*********************
 END SLIDER HOME PROD
