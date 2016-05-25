@@ -51,10 +51,10 @@ START SLIDER HOME PROD
 .slider-wrap-prod .cta-slider-wrap .cta-slider-single {
     padding-left: 10px;
     margin-top: 40px;
-    -webkit-transition: margin-top .3s;
+    /*-webkit-transition: margin-top .3s;
     transition: margin-top .3s;
     -webkit-transition-delay: .25s;
-    transition-delay: .25s;
+    transition-delay: .25s;*/
 }
 
 .slider-wrap-prod .cta-slider-wrap .cta-slider-single a {
@@ -94,8 +94,13 @@ START SLIDER HOME PROD
     display: block;
 }
 
-.slider-wrap-prod .cta-slider-wrap .cta-slider-single.slick-current {
-    margin-top: 8px;
+.slider-wrap-prod .cta-slider-wrap .cta-slider-single .slick-current {
+    margin-top: 40px;
+}
+
+.slider-wrap-prod .slick-current .cta-slider-headline {
+    background: #E60000;
+    color: #fff;
 }
 
 .slider-wrap-prod .cta-slider-wrap .cta-slider-single.slick-current a {
