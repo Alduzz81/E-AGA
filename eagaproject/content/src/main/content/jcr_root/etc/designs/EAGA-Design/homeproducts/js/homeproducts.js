@@ -3,7 +3,6 @@
  ******************************************************************************/
 
 function initSliderHomeProd () {
-	console.log("sono dentro a funzione slider home prod");
 
     var numSlideShow = 3;
     var numSlideShowTablet = 2;
