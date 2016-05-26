@@ -28,7 +28,7 @@ public class CookiePolicyUse extends CommonUse {
         return text;
     }
     
-    public boolean isEmpty() {   	
-    	return (text == null) ? true : false;
+    public boolean isTextEmpty() {   	
+    	return (text == null) || (text=="") ? true : false;
     }
 }
