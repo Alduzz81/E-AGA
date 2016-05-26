@@ -1,4 +1,7 @@
 <%@include file="../../../global.jsp"%><%@page session="false"%>
+
+<cq:include path="<%=homePath + "/jcr:content/cookie-policy"%>" resourceType="eaga/components/cookie-policy" />
+
 <div class="col-sm-12 new-header">
 	<div class="col-sm-2">
 		<a href="<%=homePath%>.html" >

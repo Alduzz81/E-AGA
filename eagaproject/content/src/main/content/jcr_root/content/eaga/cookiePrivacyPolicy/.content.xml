@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2016-05-26T17:45:52.121+02:00"
+        cq:lastModifiedBy="admin"
+        cq:template="/apps/eaga/templates/cookiePrivacyPolicy"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Cookie Privacy Policy"
+        sling:resourceType="eaga/components/page/cookiePrivacyPolicy">
+        <cookiePrivacyPolicy
+            jcr:lastModified="{Date}2016-05-26T17:45:52.120+02:00"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="eaga/components/cookiePrivacyPolicy"
+            cookiePrivacyPolicy="&lt;p>About cookies&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>A cookie is a small piece of data stored on your computer. We use cookies to Vodafone.gr to manage sessions, provide personalized web pages and adjust advertising and other content to reflect your specific needs and interests. Cookies can also be used to compile aggregated statistics that allow us to understand how people use the site and help us to improve the structure and its content. You can change your browser settings to reject some or all cookies. However, your experience of Vodafone.gr and the services we are able to offer, may be affected if you do not allow cookies.&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>What kind of information we collect?&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>We've put our cookies in to the following categories, to make it easier for you to understand why we need them:&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>Strictly necessary cookies&amp;amp;nbsp;&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>Strictly necessary cookies are essential for the proper operation of Vodafone.gr, allowing visitors to browse and use functions such as access to secure areas or use of the shopping cart or My account. Without these cookies, we cannot offer efficient operation of our website.&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>Performance Cookies&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>These cookies collect information about how visitors use the website, i.e. what pages they visit most and if they get error messages. These cookies collect aggregated information and are used solely to improve the performance of our website.&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>Functionality Cookies&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>These cookies allow the website to remember our visitors’ options such as user name, language, region to provide improved and personalized features. They can also be used to provide services requested by the user, such as viewing videos or using social media. The information collected by these cookies can be made anonymous and cannot watch the activity of browsing other websites.&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>Targeting Cookies&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p>These cookies are used to serve personalised content based on the users’ interests. The information gathered can also be used for targeting purposes of promotion advertising campaigns, and/or promotions.&lt;/p>&#xa;"/>
+    </jcr:content>
+</jcr:root>
