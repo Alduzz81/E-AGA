@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cq:Dialog"
+          title="Cookie Policy"
+          xtype="panel">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <cookie-policy
+            name="./cookie-policy"
+            jcr:primaryType="cq:Widget"
+            removeSingleParagraphContainer="true"
+            fieldLabel="Cookie Disclaimer Text"
+            xtype="richtext">
+            <rtePlugins jcr:primaryType="nt:unstructured">
+                <format jcr:primaryType="nt:unstructured"
+                        features="[\0]"/>
+                <justify jcr:primaryType="nt:unstructured"
+                         features="[\0]"/>
+                <lists jcr:primaryType="nt:unstructured"
+                       features="[\0]"/>
+                <links jcr:primaryType="nt:unstructured"
+                       features="[modifylink,unlink]"/>
+            </rtePlugins>    
+        </cookie-policy>
+    </items>
+</jcr:root>

@@ -1,0 +1,7 @@
+<div class="notification">
+    <p data-sly-use.cookiePolicy="${'com.aem.eaga.sightly.cookiepolicy.CookiePolicyUse' @ currentNode=currentNode}"
+       class="notification-content">
+        ${cookiePolicy.text @context='html'}  
+        <a class="notification-btn-close js-notification-btn-close"></a>
+    </p>
+</div>
