@@ -1,7 +1,9 @@
-<div class="notification">
-    <p data-sly-use.cookiePolicy="${'com.aem.eaga.sightly.cookiepolicy.CookiePolicyUse' @ currentNode=currentNode}"
-       class="notification-content">
-        ${cookiePolicy.text @context='html'}  
-        <a class="notification-btn-close js-notification-btn-close"></a>
+<div data-sly-use.myCokiePolicy="${'com.aem.eaga.sightly.cookiePolicy.CookiePolicyUse' @ currentNode=currentNode}">
+    <div data-sly-test.emptyLinks="${ myCokiePolicy.author && myCokiePolicy.empty }">
+	   	<div>Configure the component</div>
+	</div>
+    <p>
+        ${myCokiePolicy.text @context='html'}  
     </p>
 </div>
+

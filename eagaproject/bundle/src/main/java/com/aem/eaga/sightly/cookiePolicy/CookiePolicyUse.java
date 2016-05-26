@@ -1,4 +1,4 @@
-package com.aem.eaga.sightly.cookiepolicy;
+package com.aem.eaga.sightly.cookiePolicy;
 import javax.jcr.Node;
 import com.aem.eaga.common.CommonUse;
 
@@ -8,23 +8,27 @@ public class CookiePolicyUse extends CommonUse {
 
     @Override
     public void activate() throws Exception {
+    	super.activate();
+    	
         currentNode = get("currentNode", Node.class);
         if (currentNode == null) {
             return;
         }
         
-        if (!currentNode.hasProperty("cookie-policy")) {
+        if (!currentNode.hasProperty("cookiePolicy")) {
             return;
         }
-        text = currentNode.getProperty("cookie-policy").getString();
+        text = currentNode.getProperty("cookiePolicy").getString();
     }
 
     public String getText() {
         if (text == null) {
             return "";
         }
-
-        text = text.replace("<a ", "<a class='text-underline' ");
         return text;
+    }
+    
+    public boolean isEmpty() {   	
+    	return (text == null) ? true : false;
     }
 }
