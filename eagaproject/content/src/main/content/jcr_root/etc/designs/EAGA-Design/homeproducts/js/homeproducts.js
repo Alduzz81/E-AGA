@@ -45,43 +45,6 @@ function initSliderHomeProd () {
         autoplaySpeed: $('.slider-wrap-prod').attr('data-time-autoplay')
     });
 
-    /*$('.slider-wrap-prod .cta-slider-wrap').slick({
-        slidesToShow: numSlideToShow,
-        slidesToScroll: 1,
-        asNavFor: '.image-slider-wrap-prod',
-        dots: true,
-        arrows: false,
-        pauseOnHover: false,
-        centerMode: true,
-        centerPadding: '60px',
-        appendDots: $('.control-wrap-prod .dots-wrap-prod'),
-
-        autoplay: true,
-        autoplaySpeed: $('.slider-wrap-prod').attr('data-time-autoplay'),
-        responsive: [ {
-            breakpoint: 969,
-            settings: {
-                slidesToShow: numSlideShowTablet,
-                slidesToScroll: 1
-            }
-        }, {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: numSlideShowMobile,
-                slidesToScroll: 1
-            }
-        } ]
-    });*/
-
-    $('.control-wrap-prod .slider-toggle-prod').on('click', function (e) {
-        e.preventDefault();
-        $(this).toggleClass('slider-toggle-paused');
-        if ($(this).hasClass('slider-toggle-paused')) {
-            $('.slider-wrap-prod .cta-slider-wrap').slick('slickPause');
-        } else {
-            $('.slider-wrap-prod .cta-slider-wrap').slick('slickPlay');
-        }
-    });
 }
 
 /*******************************************************************************
@@ -91,6 +54,12 @@ function initSliderHomeProd () {
 
 $(document).ready(function () {
 	initSliderHomeProd ();
-	$('.arrows-prod .slick-prev').html("<span class='prev-arr'>❬</span>");
-	$('.arrows-prod .slick-next').html("<span class='next-arr'>❭</span>");
+	$('.arrows-prod .slick-prev').html("<span class='prev-arr'>❮</span>");
+	$('.arrows-prod .slick-next').html("<span class='next-arr'>❯</span>");
+	$('.slider-wrap-prod').mouseover(function() {
+		  $( ".arrows-prod" ).removeClass( "hidden" );
+	});
+	$('.slider-wrap-prod').mouseleave(function() {
+		  $( ".arrows-prod" ).addClass( "hidden" );
+	});
 });
