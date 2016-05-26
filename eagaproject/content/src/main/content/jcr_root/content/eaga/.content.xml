@@ -62,7 +62,7 @@
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="eaga/components/footer-links-element"
-                    footerLinksElement="[{&quot;label&quot;:&quot;OpportunitÃ  di lavoro&quot;\,&quot;url&quot;:&quot;/content/eaga/products&quot;},{&quot;label&quot;:&quot;Area stampa&quot;\,&quot;url&quot;:&quot;/content/eaga/login&quot;},{&quot;label&quot;:&quot;Storie di E-aga&quot;\,&quot;url&quot;:&quot;/content/eaga/products&quot;}]"
+                    footerLinksElement="[{&quot;label&quot;:&quot;Opportunità di lavoro&quot;\,&quot;url&quot;:&quot;/content/eaga/products&quot;},{&quot;label&quot;:&quot;Area stampa&quot;\,&quot;url&quot;:&quot;/content/eaga/login&quot;},{&quot;label&quot;:&quot;Storie di E-aga&quot;\,&quot;url&quot;:&quot;/content/eaga/products&quot;}]"
                     title="Per conoscerci meglio"/>
             </col-par-columns-1>
             <col-par-columns-2
@@ -101,7 +101,7 @@
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="eaga/components/footer-links-element"
-                    footerLinksElement="[{&quot;label&quot;:&quot;Visualizza o traccia un ordine&quot;\,&quot;url&quot;:&quot;/content/eaga/login&quot;},{&quot;label&quot;:&quot;Costi e modalitÃ  di spedizione&quot;\,&quot;url&quot;:&quot;/content/eaga/products&quot;},{&quot;label&quot;:&quot;Garanzia legale&quot;\,&quot;url&quot;:&quot;/content/eaga/login&quot;}]"
+                    footerLinksElement="[{&quot;label&quot;:&quot;Visualizza o traccia un ordine&quot;\,&quot;url&quot;:&quot;/content/eaga/login&quot;},{&quot;label&quot;:&quot;Costi e modalità di spedizione&quot;\,&quot;url&quot;:&quot;/content/eaga/products&quot;},{&quot;label&quot;:&quot;Garanzia legale&quot;\,&quot;url&quot;:&quot;/content/eaga/login&quot;}]"
                     title="Bisogno di aiuto?"/>
             </col-par-columns-4>
         </columns>
