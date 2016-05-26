@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/content/eaga"/>
+    <filter root="/apps/eaga"/>
+    <filter root="/etc/designs/EAGA-Design"/>
+    <filter root="/content/dam/eaga"/>
 </workspaceFilter>
