@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+	jcr:primaryType="cq:Dialog"
+    title="Cookie Privacy Policy"
+    xtype="panel">
+	<items jcr:primaryType="cq:WidgetCollection">
+		<cookiePrivacyPolicy
+		    name="./cookiePrivacyPolicy"
+		    jcr:primaryType="cq:Widget"
+		    fieldLabel="Cookie Privacy Policy"
+		    allowBlank="false"
+		    defaultValue="By using E-aga, you're consenting to the use of cookies in accordance with our cookie policy."
+		    xtype="richtext"/>
+	</items>
+</jcr:root>
+
