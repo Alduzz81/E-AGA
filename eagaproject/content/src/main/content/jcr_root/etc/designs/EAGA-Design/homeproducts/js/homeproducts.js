@@ -44,7 +44,6 @@ function initSliderHomeProd () {
         autoplay: true,
         autoplaySpeed: $('.slider-wrap-prod').attr('data-time-autoplay')
     });
-
 }
 
 /*******************************************************************************
@@ -54,8 +53,10 @@ function initSliderHomeProd () {
 
 $(document).ready(function () {
 	initSliderHomeProd ();
+	
 	$('.arrows-prod .slick-prev').html("<span class='prev-arr'>❮</span>");
 	$('.arrows-prod .slick-next').html("<span class='next-arr'>❯</span>");
+	
 	$('.slider-wrap-prod').mouseover(function() {
 		  $( ".arrows-prod" ).removeClass( "hidden" );
 	});
