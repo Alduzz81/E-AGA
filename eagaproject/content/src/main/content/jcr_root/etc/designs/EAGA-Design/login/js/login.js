@@ -1,9 +1,27 @@
-//var eagaApp = angular.module('eagaApp1', []);
+//var eagaApp = angular.module('eagaApp', []);
+
+eagaApp.controller("LoginController", ['$scope', function($scope) {
+    // I contain the details of the customer to be rendered.
+	$scope.utenti=1;
+	$scope.fullName = function() {
+		$scope.utenti=5;
+    };
+}]);
+
+
 /*
 eagaApp.controller("LoginController", ['$scope', function($scope) {  
 	$scope.utenti1=1;
+	$scope.fullName = function() {
+		console.log("Ciao");
+		$scope.utenti1=5;
+    };
 	
+	$scope.loginAccount= function(){
+		$scope.utenti1=5;
+	}
 	
+	/*
 	$scope.utenti =   
 	    [
 			{
@@ -19,8 +37,8 @@ eagaApp.controller("LoginController", ['$scope', function($scope) {
 				passwrod:"123"
 			}
 		]
-}]);
-*/
+}]);*/
+/*
 function loginAccount(){
 	console.log("Ciao");
-}
+}*/

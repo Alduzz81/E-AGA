@@ -2,3 +2,4 @@
 angular.js
 modernizr.js
 img-breakpoint.js
+angular-route.js
