@@ -6,28 +6,20 @@
 		    <div class="image-slider-wrap-prod" data-sly-list.item="${homeprod.homeProductItems}">
 		        <div class="images-slider-single-prod">
 		            <img class="img-breakpoint" alt="${item.imageAlt}" src="${item.image}">
-		        </div>
-		    </div>	    
-		     <div class="control-wrap-prod">
-		        <div class="dots-wrap-prod"></div>
-		        <a href="#" class="slider-toggle-prod">
-		            <span class="icon-slider-toggle-prod"></span>
-		        </a>
-		    </div>	 
-		   <div class="container-fluid">
-		        <div class="cta-slider-wrap" data-sly-list.homeprodItem="${homeprod.homeProductItems}">
-		            <div class="cta-slider-single">
-		                <a href="#" data-sly-attribute.href="${homeprodItem.imageHref}">
-			                <span class="cta-slider-headline">
-			                    <span data-sly-text="${homeprodItem.name @ context='html'}">Pay as you go phones</span>
+		            <div class="cta-slider-single-prod">
+		                <a href="#" data-sly-attribute.href="${item.imageHref}">
+			                <span class="cta-slider-headline-prod">
+			                    <span data-sly-text="${item.name @ context='html'}">Pay as you go phones</span>
 			                </span>
-		                    <!-- <span class="cta-red chevron cta-slider-btn">Discover more</span>   -->
 		                </a>
 		            </div>
 		        </div>
-		    </div>
+		    </div>	   
+		    <div class="arrows-prod"></div>
+		    <div class="control-wrap-prod">
+		        <div class="dots-wrap-prod"></div>
+		   	</div>		    
 		</div>
-
 	</div>
 	<div data-sly-test="${homeprod.author && homeprod.empty}" data-sly-unwrap>
 		Configure Home-Products Component
