@@ -3,16 +3,16 @@
 <properties>
 <comment>FileVault Package Properties</comment>
 <entry key="createdBy">admin</entry>
-<entry key="name">eagaproject-content</entry>
-<entry key="lastModified">2016-05-23T10:53:41.153+02:00</entry>
+<entry key="name">E-AGA</entry>
+<entry key="lastModified">2016-05-26T17:47:05.845+02:00</entry>
 <entry key="lastModifiedBy">admin</entry>
-<entry key="created">2016-05-23T10:53:41.191+02:00</entry>
-<entry key="buildCount">1</entry>
-<entry key="version">1.0-SNAPSHOT</entry>
+<entry key="created">2016-05-26T17:47:05.897+02:00</entry>
+<entry key="buildCount">7</entry>
+<entry key="version"/>
 <entry key="dependencies"/>
 <entry key="packageFormatVersion">2</entry>
-<entry key="description">Maven Multimodule project for E-AGA Project.</entry>
-<entry key="lastWrapped">2016-05-23T10:53:41.153+02:00</entry>
-<entry key="group">E-AGA</entry>
+<entry key="description"/>
+<entry key="lastWrapped">2016-05-26T17:47:05.845+02:00</entry>
+<entry key="group">my_packages</entry>
 <entry key="lastWrappedBy">admin</entry>
 </properties>
