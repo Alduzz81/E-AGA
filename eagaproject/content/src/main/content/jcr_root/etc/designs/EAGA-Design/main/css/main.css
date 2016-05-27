@@ -14979,6 +14979,10 @@ label.label-radio-green-flag {
     width: 80%;
 }
 
+.login-invalid{
+    color: red;
+}
+
 .login-password
 {
     float: left;

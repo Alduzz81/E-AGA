@@ -8,26 +8,35 @@
 		<div class="login-format-padding">
 			<h2><b>${properties.labelAccedi @context='html'}</b></h2>
 		</div>
-		<form name="myForm" ng-submit="onSubmit()">
+		<form name="myForm">
 			<div>
 				<b>${properties.labelIndirizzoMail @context='html'}</b>
 			</div>
 			<div class="login-format-padding">
-				<input class="login-input-type" type="email" name="userEmail" ng-model="email" ng-pattern="/^([\w]+@[\w_]+\.[\w_]+)$/" required/>
-				<span ng-show="myForm.userEmail.$error.pattern" ng-if="myForm.userEmail.$dirty">Invalid email</span>
-				<span ng-show="myForm.userEmail.$error.required" ng-if="myForm.userEmail.$dirty">Required</span>
+				<input class="login-input-type" type="email" value="" name="userEmail" ng-model="email" ng-pattern="/^([\w]{3,}@[\w_]{3,}\.[\w]{2,3})$/"required>
+				<div class="login-invalid">
+					<span ng-show="myForm.userEmail.$error.pattern" ng-if="myForm.userEmail.$dirty">Invalid email</span>
+					<span ng-show="myForm.userEmail.$error.required" ng-if="myForm.userEmail.$dirty">Required</span>
+				</div>
 			</div>
 			<span class="login-password-margin"><b>${properties.labelPassword @context='html'}</b></span>
 			<span class="login-password-dimenticata">${properties.labelPasswordDimenticata @context='html'}</span>
 			<div class="login-format-padding">
-				<input class="login-input-type" type="password" required/>
+				<input class="login-input-type" type="password" value="" name="userPass" ng-model="password" ng-pattern="/^[\w]{3,7}$/" required>
+				<div class="login-invalid">
+					<span ng-show="myForm.userPass.$error.pattern" ng-if="myForm.userPass.$dirty">Invalid password</span>
+					<span ng-show="myForm.userPass.$error.required" ng-if="myForm.userPass.$dirty">Required</span>
+				</div>
 			</div>
 			<div class="login-format-padding">
-				<input type="submit" class="login-input-type" value="${properties.labelButtonAccedi ? properties.labelButtonAccedi : 'Accedi' @context='html'}"/>
+				<input type="submit" class="login-input-type" value="${properties.labelButtonAccedi ? properties.labelButtonAccedi : 'Accedi' @context='html'}" ng-click="loginValidate()">
+				<div class="login-invalid">
+					<span ng-show="!valid">Invalid email o password</span>
+				</div>
 			</div><br>
 			<div class="text-center login-format-padding">${properties.labelSeiNuovo @context='html'}</div>
 			<div class="login-format-padding">
-				<input type="submit" class="login-input-type" value="${properties.labelButtonCrea ? properties.labelButtonCrea : 'Crea il tuo account E-AGA' @context='html'}"/>
+				<input type="submit" class="login-input-type" value="${properties.labelButtonCrea ? properties.labelButtonCrea : 'Crea il tuo account E-AGA' @context='html'}">
 			</div>
 		</form>
 	</div>
