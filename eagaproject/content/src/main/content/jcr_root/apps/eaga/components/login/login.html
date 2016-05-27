@@ -3,29 +3,32 @@
 		<img src="/etc/designs/EAGA-Design/images/eaga-logo-login.png">
 	</a>
 </div>
-<div class="login-container" ng-controller="LoginController">{{utenti}} {{5+5}}
+<div class="login-container" ng-controller="LoginController">
 	<div class="text-center login-format-padding">		
 		<div class="login-format-padding">
 			<h2><b>${properties.labelAccedi @context='html'}</b></h2>
 		</div>
-		<div>
-			<b>${properties.labelIndirizzoMail @context='html'}</b>
-		</div>
-		<div class="login-format-padding">
-			<input class="login-input-type" type="email" required>
-		</div>
+		<form name="myForm" ng-submit="onSubmit()">
+			<div>
+				<b>${properties.labelIndirizzoMail @context='html'}</b>
+			</div>
+			<div class="login-format-padding">
+				<input class="login-input-type" type="email" name="userEmail" ng-model="email" ng-pattern="/^([\w]+@[\w_]+\.[\w_]+)$/" required/>
+				<span ng-show="myForm.userEmail.$error.pattern" ng-if="myForm.userEmail.$dirty">Invalid email</span>
+				<span ng-show="myForm.userEmail.$error.required" ng-if="myForm.userEmail.$dirty">Required</span>
+			</div>
 			<span class="login-password-margin"><b>${properties.labelPassword @context='html'}</b></span>
 			<span class="login-password-dimenticata">${properties.labelPasswordDimenticata @context='html'}</span>
-		<div class="login-format-padding">
-			<input class="login-input-type" type="password" required>
-		</div>
-		<div class="login-format-padding">
-			<input type="submit" class="login-input-type" value="${properties.labelButtonAccedi ? properties.labelButtonAccedi : 'Accedi' @context='html'}" ng-click="fullName()">
-		</div><br>
-		<div class="text-center login-format-padding">${properties.labelSeiNuovo @context='html'}</div>
-		<div class="login-format-padding">
-			<input type="submit" class="login-input-type" value="${properties.labelButtonCrea ? properties.labelButtonCrea : 'Crea il tuo account E-AGA' @context='html'}">
-		</div>
+			<div class="login-format-padding">
+				<input class="login-input-type" type="password" required/>
+			</div>
+			<div class="login-format-padding">
+				<input type="submit" class="login-input-type" value="${properties.labelButtonAccedi ? properties.labelButtonAccedi : 'Accedi' @context='html'}"/>
+			</div><br>
+			<div class="text-center login-format-padding">${properties.labelSeiNuovo @context='html'}</div>
+			<div class="login-format-padding">
+				<input type="submit" class="login-input-type" value="${properties.labelButtonCrea ? properties.labelButtonCrea : 'Crea il tuo account E-AGA' @context='html'}"/>
+			</div>
+		</form>
 	</div>
-	{{utenti}}
 </div>

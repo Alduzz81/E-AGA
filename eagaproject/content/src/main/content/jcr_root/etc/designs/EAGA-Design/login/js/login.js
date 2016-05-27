@@ -1,10 +1,10 @@
 //var eagaApp = angular.module('eagaApp', []);
 
-eagaApp.controller("LoginController", ['$scope', function($scope) {
+eagaApp.controller("LoginController", ['$scope', '$window', function($scope,$window) {
     // I contain the details of the customer to be rendered.
 	$scope.utenti=1;
-	$scope.fullName = function() {
-		$scope.utenti=5;
+	$scope.loginValidate() = function() {
+		$window.location.href = '/content/eaga/products.html';
     };
 }]);
 
