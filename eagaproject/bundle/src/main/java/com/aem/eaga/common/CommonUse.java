@@ -2,10 +2,14 @@ package com.aem.eaga.common;
 
 import com.adobe.cq.sightly.SightlyWCMMode;
 import com.adobe.cq.sightly.WCMUsePojo;
+import com.day.cq.personalization.ClientContextUtil;
 import com.day.cq.wcm.api.LanguageManager;
- 
+
+import com.aem.eaga.request.RequestWrapper;
+import com.aem.eaga.Context;
 
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,15 +30,38 @@ public class CommonUse extends WCMUsePojo {
     private static final String VIDEO_RENDITION_M4V = "hq.m4v";
     private static final String VIDEO_RENDITION_MP4 = "iehq.mp4";
 
-     
-
+    protected Context context;
+    private static final Logger logger = LoggerFactory.getLogger(CommonUse.class);
+    static int ID = 0;
     
+    @Override
     public void activate() throws Exception {
+    	int id = ++ID;
         LanguageManager languageManager = getService(LanguageManager.class);
         
+        if(languageManager ==  null){
+    		logger.error("languageManager null " + id);
+    	} else {
+    		logger.error("languageManager NON null " + id);
+    	}
+        
         SlingHttpServletRequest request = getRequest();
-         
-        LOG.debug("CommonUse class activated");
+        
+        if(request ==  null){
+    		logger.error("request null " + id);
+    	} else {
+    		logger.error("request NON null " + id);
+    	}
+        
+        context = getContextInstance(request, getResponse(), languageManager); 
+        
+        if(context ==  null){
+    		logger.error("context null " + id);
+    	} else {
+    		logger.error("context NON null in activate " + id);
+    	}
+        
+        LOG.debug("CommonUse class activated " + id);
     }
 
     public String getValidLink(String link) {
@@ -130,5 +157,38 @@ public class CommonUse extends WCMUsePojo {
         return getSlingScriptHelper().getService(serviceInterfaceClass);
     }
  
- 
+    private static Context getContextInstance(SlingHttpServletRequest request, SlingHttpServletResponse response,
+            LanguageManager languageManager) {
+        return new Context(request, response, languageManager);
+    }
+    
+    public String getId() {
+    	logger.error("dentro a getID " + ID);
+    	
+    	if(context ==  null){
+    		logger.error("context null");
+    	} else {
+    		logger.error("context NON null");
+    	}
+        RequestWrapper wrapper = context.getRequestWrapper();
+        if(wrapper ==  null){
+    		logger.error("wrapper null");
+    	} else {
+    		logger.error("wrapper NON null");
+    	}
+        Resource res = wrapper.getResource();
+        if(res ==  null){
+    		logger.error("res null");
+    	} else {
+    		logger.error("res NON null");
+    	}
+        String path = res.getPath();
+        if(path ==  null){
+    		logger.error("path null");
+    	} else {
+    		logger.error("path NON null");
+    	}
+        return ClientContextUtil.getId(path);
+        //return ClientContextUtil.getId(context.getRequestWrapper().getResource().getPath());
+    }
 }

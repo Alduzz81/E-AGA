@@ -50,9 +50,9 @@ public class HomeProductUse extends CommonUse {
             items.add(homeproductItem);
         }
         
-        log.info("====================== CarouselUse Activate Start ======================");
+        log.info("====================== HomePorducts Activate Start ======================");
         log.info("                       Current Name: " + currentNode.getName());
-        log.info("====================== CarouselUse Activate End ======================");
+        log.info("====================== HomePorducts Activate End ======================");
     }
     
     public List<HomeProductItem> getHomeProductItems() {

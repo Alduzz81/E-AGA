@@ -1,5 +1,5 @@
-<div data-sly-use.homeprod="${'com.aem.eaga.sightly.homeproduct.HomeProductUse' @ currentNode=currentNode}"
-    data-sly-unwrap>
+<div data-sly-use.homeprod="${'com.aem.eaga.sightly.homeproduct.HomeProductUse' @ currentNode=currentNode}" id="${homeprod.id}" >
+
 	<div data-sly-test="${!homeprod.empty}" data-sly-unwrap>
 
 		<div class="slider-wrap-prod" data-time-autoplay="${homeprod.timing}">
