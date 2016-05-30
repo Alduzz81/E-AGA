@@ -247,5 +247,6 @@
   <modules>
     <module>eaga-presentation</module>
     <module>eaga-content</module>
+    <module>eaga-integration</module>
   </modules>
 </project>
