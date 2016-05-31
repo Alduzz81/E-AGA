@@ -9,7 +9,6 @@ function initSliderHomeProd () {
     var numSlideShowMobile = 1;
     var numSlide = $('.slider-wrap-prod .cta-slider-wrap .cta-slider-single').length;
     var numSlideToShow = 5;
-    console.log("numslide: ", numSlide);
 
     switch (numSlide) {
     case 1:
