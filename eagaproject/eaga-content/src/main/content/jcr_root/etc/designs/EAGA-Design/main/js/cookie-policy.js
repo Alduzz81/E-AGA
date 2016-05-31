@@ -1,4 +1,4 @@
-var cookieValueP=false;
+/*var cookieValueP=false;
 
 //document.cookie = "COOKIE_NAME=" false; 
 function initNotification () {	
@@ -15,4 +15,4 @@ $("#notification-close").on("click", function () {
 });
 
 
-
+*/
