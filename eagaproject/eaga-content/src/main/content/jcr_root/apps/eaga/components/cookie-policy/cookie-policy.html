@@ -1,10 +1,10 @@
-<div class="notification" data-sly-use.myCookiePolicy="${'com.aem.eaga.sightly.cookiePolicy.CookiePolicyUse' @ currentNode=currentNode}">
+<div class="notification" id="ccc" data-sly-use.myCookiePolicy="${'com.aem.eaga.sightly.cookiePolicy.CookiePolicyUse' @ currentNode=currentNode}">
 	<div class="notification-content">
 	    <div data-sly-test="${(wcmmode.edit || wcmmode.design) && myCookiePolicy.textEmpty}">
 		   	<div>Configure the component</div>
 		</div>
 	    <div>
-	    	<a href="/content/eaga/cookiePrivacyPolicy.html">${myCookiePolicy.text @context='html'}</a>
+	    	<a id="notification-close" href="/content/eaga/cookiePrivacyPolicy.html">${myCookiePolicy.text @context='html'}</a>
 	    </div>
 	</div>   
 </div>   
