@@ -29,7 +29,7 @@
 				</div>
 			</div>
 			<div class="login-format-padding">
-				<input type="submit" class="login-input-type" value="${properties.labelButtonAccedi ? properties.labelButtonAccedi : 'Accedi' @context='html'}" ng-click="loginValidate()">
+				<input type="submit" class="login-input-type"  onclick="$.portal.login();" value="${properties.labelButtonAccedi ? properties.labelButtonAccedi : 'Accedi' @context='html'}" ng-click="loginValidate()">
 				<div class="login-invalid">
 					<span ng-show="!valid">Invalid email o password</span>
 				</div>

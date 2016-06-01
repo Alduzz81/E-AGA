@@ -1,4 +1,4 @@
-var cookie = {
+/*var cookie = {
     setCookie: function (key, value, time) {
         var expires = new Date();
         expires.setTime(expires.getTime() + time);
@@ -28,4 +28,4 @@ function initNotification () {
         cookie.setCookie("cookie-policy-bar-vodafone", "true", 10 * 60 * 1000);
         console.log("END " + cookie.getCookie("cookie-policy-bar-vodafone"));
     });
-}
+}*/
