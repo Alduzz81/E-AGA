@@ -12,7 +12,7 @@ var cookie = {
 
 function initNotification () {
     var cookieValue = cookie.getCookie("cookie-policy-bar-vodafone");
-    console.log("cookieValue:" + cookieValue);
+    //console.log("cookieValue:" + cookieValue);
 
     if (cookieValue === "true") {
         console.log("CLOSE1");
