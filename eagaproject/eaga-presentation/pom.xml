@@ -218,6 +218,11 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>com.aem.eaga.eagaproject-bundle</Bundle-SymbolicName>
+                        <Bundle-Category>Eaga</Bundle-Category>
+                
+		                <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+		                <Embed-Transitive>true</Embed-Transitive>
+		                <Import-Package>*</Import-Package>
                     </instructions>
                 </configuration>
             </plugin>

@@ -32,7 +32,9 @@ import org.apache.sling.auth.core.spi.AuthenticationInfo;
 import org.apache.sling.jcr.api.SlingRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.aem.eaga.api.portal.customer.*;
+
+import com.aem.eaga.api.portal.customer.Customer;
+
 import static  com.aem.eaga.api.portal.customer.impl.CustomerImpl.XTOKEN;
 
 @Component
