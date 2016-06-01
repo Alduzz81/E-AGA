@@ -4,4 +4,4 @@ portal.js
 events.js
 main.js
 common.js
-cookie-policy-bar.js
+cookie-policy.js
