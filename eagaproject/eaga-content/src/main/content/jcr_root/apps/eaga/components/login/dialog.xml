@@ -4,6 +4,15 @@
           title="Login"
           xtype="panel">
 	    <items jcr:primaryType="cq:WidgetCollection">
+	    	<logo
+	            name="./logo"
+	            jcr:primaryType="cq:Widget"
+	            fieldLabel="Logo Path"
+	            allowBlank="false"
+	            rootPath="/etc/designs/EAGA-Design/images"
+	            value="/etc/designs/EAGA-Design/images/eaga-logo-login.png"
+	            defaultValue="/etc/designs/EAGA-Design/images/eaga-logo-login.png"
+	            xtype="pathfield" />
 	    	<labelAccedi
 	            name="./labelAccedi"
 	            jcr:primaryType="cq:Widget"

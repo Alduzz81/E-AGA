@@ -1,10 +1,14 @@
+/******************************
+ * START LOGIN
+ *****************************/
+
 .login-container
 {
 	padding-top: -30px;
 	display: inline-block;
 	border: 1px dotted;
 	margin: 30px;	 
-	width: 30%;
+	width: 400px;
 	heigth:40%;
 }
 
@@ -20,10 +24,17 @@
 
 .login-password-dimenticata
 {
-    margin-right: -8px;
+    float: right;
+    padding-right: 10%;
 }
+
 .login-input-type{
     width: 80%;
+    height: 35px;
+}
+
+.login-invalid{
+    color: red;
 }
 
 .login-password
@@ -31,3 +42,17 @@
     float: left;
     margin-left: 32px;
 }
+
+.label-left{
+	float: left;
+	padding-left: 10%;
+	font-weight: bold;
+}
+
+.login-logo img{
+	max-width: 200px;
+}
+
+/******************************
+ * END LOGIN
+ *****************************/

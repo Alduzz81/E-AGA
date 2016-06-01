@@ -1,6 +1,6 @@
-<div class="text-center">
+<div class="text-center login-logo">
 	<a href="/content/eaga.html" >
-		<img src="/etc/designs/EAGA-Design/images/eaga-logo-login.png">
+		<img src="${properties.logo @context='html'}">
 	</a>
 </div>
 <div class="login-container" ng-controller="LoginController">
@@ -9,8 +9,8 @@
 			<h2><b>${properties.labelAccedi @context='html'}</b></h2>
 		</div>
 		<form name="myForm">
-			<div>
-				<b>${properties.labelIndirizzoMail @context='html'}</b>
+			<div class="label-left">
+				${properties.labelIndirizzoMail @context='html'}
 			</div>
 			<div class="login-format-padding">
 				<input class="login-input-type" type="email" value="" name="userEmail" ng-model="email" ng-pattern="/^([\w]{3,}@[\w_]{3,}\.[\w]{2,3})$/"required>
@@ -19,7 +19,7 @@
 					<span ng-show="myForm.userEmail.$error.required" ng-if="myForm.userEmail.$dirty">Required</span>
 				</div>
 			</div>
-			<span class="login-password-margin"><b>${properties.labelPassword @context='html'}</b></span>
+			<span class="label-left">${properties.labelPassword @context='html'}</span>
 			<span class="login-password-dimenticata">${properties.labelPasswordDimenticata @context='html'}</span>
 			<div class="login-format-padding">
 				<input class="login-input-type" type="password" value="" name="userPass" ng-model="password" ng-pattern="/^[\w]{3,7}$/" required>
@@ -36,7 +36,9 @@
 			</div><br>
 			<div class="text-center login-format-padding">${properties.labelSeiNuovo @context='html'}</div>
 			<div class="login-format-padding">
-				<input type="submit" class="login-input-type" value="${properties.labelButtonCrea ? properties.labelButtonCrea : 'Crea il tuo account E-AGA' @context='html'}">
+				<a href="/content/eaga/registration.html">
+					<input type="button" class="login-input-type" value="${properties.labelButtonCrea ? properties.labelButtonCrea : 'Crea il tuo account E-AGA' @context='html'}">
+				</a>
 			</div>
 		</form>
 	</div>

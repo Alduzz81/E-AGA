@@ -5,46 +5,69 @@ xmlns:jcr="http://www.jcp.org/jcr/1.0"
           title="Registration"
           xtype="panel">
     <items jcr:primaryType="cq:WidgetCollection">
+    	<logo
+            name="./logo"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Logo Path"
+            allowBlank="false"
+            rootPath="/etc/designs/EAGA-Design/images"
+            value="/etc/designs/EAGA-Design/images/eaga-logo-login.png"
+            defaultValue="/etc/designs/EAGA-Design/images/eaga-logo-login.png"
+            xtype="pathfield" />
         <title
-            name="./firstMsg"
+            name="./title"
             jcr:primaryType="cq:Widget"
-            fieldLabel="First message"
+            fieldLabel="Titolo"
+            allowBlank="false"
+            value="Crea il tuo account"
+            defaultValue="Crea il tuo account"
+            xtype="textfield" />
+        <user
+            name="./user"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Username"
+            value="Inserisci il tuo nome utente"
+            defaultValue="Inserisci il tuo nome utente"
             allowBlank="false"
             xtype="textfield" />
-        <labelUtente
-            name="./labelUtente"
-            jcr:primaryType="cq:Widget"
-            fieldLabel="Il tuo nome Utente"
-            allowBlank="false"
-            xtype="textfield" />
-        <labelEmail
-            name="./labelEmail"
+        <email
+            name="./email"
             jcr:primaryType="cq:Widget"
             fieldLabel="E-mail"
+            value="Inserisci la tua Email"
+            defaultValue="Inserisci la tua Email"
             allowBlank="false"
             xtype="textfield" />
-         <labelPassword
-            name="./labelPassword"
+         <password
+            name="./password"
             jcr:primaryType="cq:Widget"
             fieldLabel="Password"
+            value="Inserisci la password"
+            defaultValue="Inserisci la password"
             allowBlank="false"
             xtype="textfield" />
-          <labelPassword2
-            name="./labelPassword2"
+          <password2
+            name="./password2"
             jcr:primaryType="cq:Widget"
             fieldLabel="Verifica Password"
+            value="Reinserisci la password"
+            defaultValue="Reinserisci la password"
             allowBlank="false"
             xtype="textfield" />
-          <labelButtonReq
-            name="./labelButtonReq"
+          <buttonReq
+            name="./buttonReq"
             jcr:primaryType="cq:Widget"
-            fieldLabel="Crea il tuo Account"
+            fieldLabel="Button"
+            value="Crea il tuo account Eaga"
+            defaultValue="Crea il tuo account Eaga"
             allowBlank="false"
             xtype="textfield" />
-		<txtInformativa
-            name="./txtInformativa"
+		<informativa
+            name="./informativa"
             jcr:primaryType="cq:Widget"
-            fieldLabel="Accedendo dichiari di aver letto e accetti integralmente le nostre Condizioni generali di uso e vendita, la nostra Informativa sulla privacy e le nostre policy su Cookies e pubblicità su Internet. "
+            fieldLabel="Informativa"
+            value="Accedendo dichiari di aver letto e accetti integralmente le nostre Condizioni generali di uso e vendita, la nostra Informativa sulla privacy e le nostre policy su Cookies e pubblicità su Internet. "
+            defaultValue="Accedendo dichiari di aver letto e accetti integralmente le nostre Condizioni generali di uso e vendita, la nostra Informativa sulla privacy e le nostre policy su Cookies e pubblicità su Internet. "
             allowBlank="false"
             xtype="textfield" />
     </items>

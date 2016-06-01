@@ -14951,67 +14951,6 @@ label.label-radio-green-flag {
     }
 }
 
-.login-container
-{
-	padding-top: -30px;
-	display: inline-block;
-	border: 1px dotted;
-	margin: 30px;	 
-	width: 30%;
-	heigth:40%;
-}
-
-.login-logo-format-padding
-{
-	padding-top: -30px;
-}
-
-.login-format-padding
-{
-	padding-bottom: 15px;
-}
-
-.login-password-dimenticata
-{
-    margin-right: -8px;
-}
-.login-input-type{
-    width: 80%;
-}
-
-.login-invalid{
-    color: red;
-}
-
-.login-password
-{
-    float: left;
-    margin-left: 32px;
-}
-
-.footer-links-title
-{
-   font-size: 25px;
-   color: #FDFEFF;
-   
-}
-
-.footer-links a:link{
-    color: #FDFEFF;
-}
-
-.footer-links a:visited {
-    color: #e9e9e9;
-}
-
-.footer-links a:hover {
-    color: #cfcfcf;
-}
-
-.footer-links a:active {
-   color: #ffd2d2;
-} 
-
 /*********************
  END PIECHART
  *********************/

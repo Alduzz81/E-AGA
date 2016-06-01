@@ -1,3 +1,36 @@
- 
- <div>pippo - ${ properties.firstMsg ? properties.firstMsg : "mail" } 
-    </div>
+<div data-sly-use.reg="${'com.aem.eaga.sightly.registration.Registration' @ currentNode=currentNode}">
+	<div class="text-center reg-logo">
+		<a href="/content/eaga.html" >
+			<img src="${ reg.logo }">
+		</a>
+	</div>
+	<div class="reg-problems">
+		<img class="alert-img" src="/etc/designs/EAGA-Design/images/icons/alert-icon-red.png" />
+		<div class="alert-txt">
+			<p class="reg-alert">Si è verificato un problema!</p>
+			<p class="reg-alert-msg"></p>
+		</div>
+	</div>
+	
+	<div class="registration-container">
+		<form id="reg-form">
+			<fieldset class="reg-form-group">
+				<h2 class="reg-title" data-sly-text="${ reg.title }">${ reg.title }</h2> 
+				
+				<label for="username" data-sly-text="${ reg.user }">${ reg.user }</label>
+				<input type="text" class="reg-form-control" id="reg-username" name="username" required />
+				<label for="email" data-sly-text="${ reg.email }"></label>
+				<input type="email" class="reg-form-control" id="reg-email" name="email" required />
+				<label for="password" data-sly-text="${ reg.password }"></label>
+				<input type="password" class="reg-form-control" id="reg-password" name="password" 
+						placeholder="Almeno sei caratteri" required minlength=6 />
+				<label for="password2" data-sly-text="${ reg.password2 }">${reg.password2 }</label>
+				<input type="password" class="reg-form-control"	id="reg-password2" name="password2" required minlength=6 />
+					
+				<input class="submit-btn text-center" type="submit" value="${ reg.buttonReq }" onclick="regSubmit()" />
+			</fieldset>
+		</form>
+		
+		<div class="reg-info" data-sly-text="${ reg.informativa }"> </div>
+	</div>
+</div>

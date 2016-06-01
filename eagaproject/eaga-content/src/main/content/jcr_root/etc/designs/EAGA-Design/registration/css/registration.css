@@ -1,0 +1,77 @@
+/*********************
+* START REGISTRATION
+*********************/
+
+.registration-container{
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px dotted;
+	border-radius: 5px;
+}
+
+.reg-logo{
+	margin-bottom: 30px;
+}
+
+.reg-logo img{
+	max-width: 200px;
+}
+
+.reg-form-group{
+	display: inline-flex;
+	padding: 20px;
+	width: 100%;
+	text-align: center;
+}
+
+.reg-form-control, .reg-title, .submit-btn{
+	margin-bottom: 20px;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+	height: 35px;
+	border-radius: 3px;
+	padding: 0px 15px;
+}
+
+.reg-info{
+	padding: 20px;
+}
+
+.reg-form-control:focus{
+	outline: none;
+	border-color: #dd6b04;
+    box-shadow: 0 0 10px #dd6b04;
+}
+
+.reg-problems{
+	display: none;
+    box-shadow: 0 0 0 4px #fcf4f4 inset;
+    border: 2px solid #bf0000;
+    border-radius: 5px;
+    width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px 20px;
+    margin-bottom: 20px
+}
+
+.alert-img{
+	width: 40px;
+	float: left;
+}
+
+.reg-alert{
+	color: #bf0000;
+	font-size: 20px;
+}
+
+.alert-txt{
+	display: inline-block;
+    margin-left: 40px;
+}
+
+/*********************
+* END REGISTRATION
+*********************/

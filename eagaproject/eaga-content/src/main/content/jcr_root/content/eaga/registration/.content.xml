@@ -2,7 +2,8 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2016-05-23T10:01:47.787+02:00"
+        cq:designPath="/etc/designs/EAGA-Design"
+        cq:lastModified="{Date}2016-05-31T17:22:56.036+02:00"
         cq:lastModifiedBy="admin"
         cq:lastReplicated="{Date}2016-05-23T10:30:28.648+02:00"
         cq:lastReplicatedBy="admin"
@@ -11,8 +12,8 @@
         jcr:isCheckedOut="{Boolean}true"
         jcr:mixinTypes="[mix:versionable]"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Login"
-        jcr:uuid="94b0eb87-ac2f-489f-9894-59492b2e7790"
+        jcr:title="Registration"
+        jcr:uuid="261767a2-0357-4ea3-b3cf-0247745a0cb9"
         sling:resourceType="eaga/components/page/noheader">
         <par
             jcr:primaryType="nt:unstructured"
@@ -29,19 +30,21 @@
                 <col-par-columns-2
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="foundation/components/parsys">
-                    <login
-			            jcr:lastModified="{Date}2016-05-23T12:49:15.606+02:00"
-			            jcr:lastModifiedBy="admin"
-			            jcr:primaryType="nt:unstructured"
-			            sling:resourceType="eaga/components/login"
-			            logo="/etc/designs/EAGA-Design/images/eaga-logo-login.png"
-			            labelAccedi="Accedi"
-			            labelButtonAccedi="Accedi"
-			            labelButtonCrea="Crea il tuo account EAGA"
-			            labelIndirizzoMail="Indirizzo e-mail"
-			            labelPassword="Password"
-			            labelPasswordDimenticata="Password Dimenticata"
-			            labelSeiNuovo="----Sei nuovo su EAGA?----"/>
+                    <registration
+                        jcr:created="{Date}2016-05-31T17:22:56.035+02:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2016-06-01T09:16:26.667+02:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="eaga/components/registration"
+                        buttonReq="Crea il tuo account Eaga"
+                        email="Inserisci la tua Email"
+                        informativa="Accedendo dichiari di aver letto e accetti integralmente le nostre Condizioni generali di uso e vendita, la nostra Informativa sulla privacy e le nostre policy su Cookies e pubblicità su Internet. "
+                        password="Inserisci la password"
+                        password2="Reinserisci la password"
+                        title="Crea il tuo account"
+                        user="Inserisci il tuo nome utente"
+                        logo="/etc/designs/EAGA-Design/images/eaga-logo-login.png"/>
                 </col-par-columns-2>
             </columns>
         </par>
