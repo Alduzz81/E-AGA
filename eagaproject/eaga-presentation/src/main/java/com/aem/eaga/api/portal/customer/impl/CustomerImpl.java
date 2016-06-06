@@ -110,7 +110,7 @@ public class CustomerImpl implements Customer {
     	try {
     		 Class.forName("com.mysql.jdbc.Driver");
     		 Connection conn = DriverManager.getConnection(
-    		 "jdbc:mysql://localhost/eaga?" + "user=eaga&password=eaga"
+    		 "jdbc:mysql://10.107.104.16/eaga?" + "user=eaga&password=eaga"
     		 );
     		 Statement stmt;
     		 PreparedStatement pstmt;
