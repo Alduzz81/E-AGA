@@ -39,9 +39,11 @@ var regSubmit = function(){
 			$('#reg-password2').val('');
 		} else {
 			$(".reg-problems").hide();
+			writeUserInDB();
 		}
 	} else {
 		$(".reg-problems").hide();
+		writeUserInDB();
 	}	
 }
 
@@ -50,6 +52,28 @@ function isEmail(email) {
 	var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	return regex.test(email);
 }
+
+
+
+function writeUserInDB() {
+    var params = {
+	        'j_username': $("input[name=username]").val(),
+	        'j_password': $("input[name=password]").val()
+    	};
+    var path = CQ.shared.HTTP.getPath();
+
+    $.ajax({
+        type: 'GET',
+        url: path + '.loadRegistration.json',
+        data: params,
+        success: function (data) {
+        	console.log('dentro a success! ');
+        },
+        error: function (data, status) {
+            console.log('dentro a procedure failed: ' + status);
+        }
+    });
+};
 	
 /*******************************************************************************
  * END REGISTRATION
@@ -58,4 +82,6 @@ function isEmail(email) {
 
 $(document).ready(function () {
 
+	
+	
 });
