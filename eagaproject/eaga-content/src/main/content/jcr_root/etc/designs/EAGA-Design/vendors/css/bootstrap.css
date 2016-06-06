@@ -11,7 +11,8 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 .new-header {
-    background: #008080;
+    /*background: #008080;*/
+    background: url(/etc/designs/EAGA-Design/images/texture9.jpeg) center center no-repeat;
     width: 100%;
     height: 100px;
     padding: 20px;
@@ -22,7 +23,7 @@
     height: 200px;
     padding: 20px;
     clear: both;
-    background: #008080;
+    background: url(/etc/designs/EAGA-Design/images/texture9.jpeg) center center no-repeat;
 }
 
 .new-bg {
