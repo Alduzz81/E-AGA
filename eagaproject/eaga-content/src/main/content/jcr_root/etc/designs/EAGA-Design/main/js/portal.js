@@ -2,22 +2,25 @@
     if ($.portal === undefined) {
         $.portal = {
             login: function () {
+            	console.log("dentro a function");
                 var params = {
                     '_charset_': 'UTF-8',
                     'j_username': $("input[name=j_username]").val(),
                     'j_password': $("input[name=j_password]").val()
                 };
-                var path = CQ.shared.HTTP.getPath();
+                /*var path = CQ.shared.HTTP.getPath();*/
+                var path = "/content/eaga";
 
                 $.ajax({
                     type: 'POST',
                     url: path + '/j_security_check',
                     data: params,
                     success: function (data) {
-                        $.portal.closeMainMenu();
+                        /*$.portal.closeMainMenu();*/
+                    	console.log("dentro a success");
                         CQ_Analytics.ProfileDataMgr.loadProfile($("input[name=j_username]").val());
-                        $.portal.toggleAuthorized();
-                        location.reload();
+                       /* $.portal.toggleAuthorized();*/
+                       /* location.reload();*/
                     },
                     error: function (data, status) {
                         console.log('Login procedure failed: ' + status);

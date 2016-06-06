@@ -117,17 +117,22 @@ public class CustomerImpl implements Customer {
     		 ResultSet rs;
     		 stmt = conn.createStatement();
     		 rs = stmt.executeQuery("SELECT * from utenti where email='"+username+"' and password='"+password+"'");
-    		 if (rs.next())
-    		 {
+    		 if (rs.next()) {
     			 System.out.println("loggato");
     			 stmt.close(); 
         		 
         		 rs.close();
         		 conn.close();
     			 return "loggato";
+    			 
+    			 /*Class.forName(driver);  
+    				conn = DriverManager.getConnection(url+database, user, password);
+    				stmt = conn.createStatement();
+    				rs = stmt.executeQuery(“SELECT…”);
+    				while(rs.next()){*/
+
     		 }
-    		 else
-    		 {
+    		 else {
     			 System.out.println("non loggato");
     			 stmt.close(); 
         		 

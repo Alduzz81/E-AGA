@@ -13,23 +13,23 @@
 				${properties.labelIndirizzoMail @context='html'}
 			</div>
 			<div class="login-format-padding">
-				<input class="login-input-type" type="email" value="" name="userEmail" ng-model="email" ng-pattern="/^([\w]{3,}@[\w_]{3,}\.[\w]{2,3})$/"required>
+				<input class="login-input-type" type="email" value="" name="j_username" ng-model="email" ng-pattern="/^([\w]{3,}@[\w_]{3,}\.[\w]{2,3})$/" required>
 				<div class="login-invalid">
-					<span ng-show="myForm.userEmail.$error.pattern" ng-if="myForm.userEmail.$dirty">Invalid email</span>
-					<span ng-show="myForm.userEmail.$error.required" ng-if="myForm.userEmail.$dirty">Required</span>
+					<span ng-show="myForm.j_username.$error.pattern" ng-if="myForm.j_username.$dirty">Invalid email</span>
+					<span ng-show="myForm.j_username.$error.required" ng-if="myForm.j_username.$dirty">Required</span>
 				</div>
 			</div>
 			<span class="label-left">${properties.labelPassword @context='html'}</span>
 			<span class="login-password-dimenticata">${properties.labelPasswordDimenticata @context='html'}</span>
 			<div class="login-format-padding">
-				<input class="login-input-type" type="password" value="" name="userPass" ng-model="password" ng-pattern="/^[\w]{3,7}$/" required>
+				<input class="login-input-type" type="password" value="" name="j_password" ng-model="password" ng-pattern="/^[\w]{3,7}$/" required>
 				<div class="login-invalid">
-					<span ng-show="myForm.userPass.$error.pattern" ng-if="myForm.userPass.$dirty">Invalid password</span>
-					<span ng-show="myForm.userPass.$error.required" ng-if="myForm.userPass.$dirty">Required</span>
+					<span ng-show="myForm.j_password.$error.pattern" ng-if="myForm.j_password.$dirty">Invalid password</span>
+					<span ng-show="myForm.j_password.$error.required" ng-if="myForm.j_password.$dirty">Required</span>
 				</div>
 			</div>
 			<div class="login-format-padding">
-				<input type="submit" class="login-input-type" value="${properties.labelButtonAccedi ? properties.labelButtonAccedi : 'Accedi' @context='html'}" ng-click="loginValidate()">
+				<input type="submit" class="login-input-type" value="${properties.labelButtonAccedi ? properties.labelButtonAccedi : 'Accedi' @context='html'}" ng-click="portal.login()">
 				<div class="login-invalid">
 					<span ng-show="!valid">Invalid email o password</span>
 				</div>

@@ -1,7 +1,7 @@
 #base=js
-plugins.min.js
 portal.js
 events.js
 main.js
 common.js
 cookie-policy.js
+plugins.min.js
