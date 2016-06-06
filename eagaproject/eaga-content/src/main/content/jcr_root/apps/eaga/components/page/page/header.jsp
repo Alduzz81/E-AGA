@@ -5,7 +5,7 @@
 <div class="col-sm-12 new-header">
 	<div class="col-sm-2">
 		<a href="<%=homePath%>.html" >
-			<img class="logo" src="/etc/designs/EAGA-Design/images/logo-ver2.png">
+			<img class="logo" src="/etc/designs/EAGA-Design/images/icons/eaga_trasparent.png">
     	</a>
 	</div>
 	<div class="col-sm-6">

@@ -1,0 +1,14 @@
+<div data-sly-use.menus="${'com.aem.eaga.sightly.topnav.TopNavUse' @ currentPage=currentPage}"
+    data-sly-unwrap>
+	<nav>
+    <div class="header-navigation">
+        <div class="header-secondary-wrap hidden-xs hidden-sm">
+            <ul class="header-secondary js-header-secondary" data-sly-list.menu="${menus.topNavItems}"> 
+               <li>
+                    <a href="${menu.pagePath}" data-menu="#menu-${menu.pageClassname}">${menu.pageTitle}</a>
+				</li>
+    		</ul>
+    	</div>
+    </div>
+    </nav>
+</div>
