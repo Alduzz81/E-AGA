@@ -4,4 +4,7 @@
     <filter root="/apps/eaga"/>
     <filter root="/etc/designs/EAGA-Design"/>
     <filter root="/content/dam/eaga"/>
+    <filter root="/home/groups/e/AGYjJ0S9MnGJ3f-cFKBy">
+        <include pattern=".*/rep:policy(/.*)?" />
+    </filter> 
 </workspaceFilter>

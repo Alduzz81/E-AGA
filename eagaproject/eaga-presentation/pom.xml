@@ -21,17 +21,12 @@
 
    <dependencies>
   
-            <dependency>
-                <groupId>com.adobe.aem.jar</groupId>
-                <artifactId>vodafone-cxf</artifactId>
-                <version>2.6.8</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
+<dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
-    <version>5.1.6</version>
+    <version>5.1.39</version>
 </dependency>
+
             <!-- OSGi -->
             <dependency>
                 <groupId>org.osgi</groupId>
@@ -186,12 +181,7 @@
     <artifactId>org.apache.felix.scr.annotations</artifactId>
     <version>1.9.0</version>
 </dependency> 
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>eaga-integration</artifactId>
-             <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
+ 
         </dependencies>
 
     <!-- ====================================================================== -->
@@ -223,7 +213,7 @@
                         <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
                         <Embed-Transitive>true</Embed-Transitive>
                         <Import-Package>
-                            *
+                            *;resolution:=optional
                         </Import-Package>
                     </instructions>
                 </configuration>

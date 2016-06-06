@@ -95,6 +95,7 @@
                 <version>4.8.1</version>
                 <scope>test</scope>
             </dependency>
+    
         </dependencies>
     </dependencyManagement>
 
@@ -247,6 +248,5 @@
   <modules>
     <module>eaga-presentation</module>
     <module>eaga-content</module>
-    <module>eaga-integration</module>
   </modules>
 </project>

@@ -4,8 +4,8 @@
             login: function () {
                 var params = {
                     '_charset_': 'UTF-8',
-                    'j_username': $("input[name=j_username]").val(),
-                    'j_password': $("input[name=j_password]").val()
+                    'j_username': $("input[name=userEmail]").val(),
+                    'j_password': $("input[name=userPass]").val()
                 };
                 var path = CQ.shared.HTTP.getPath();
 
@@ -14,9 +14,9 @@
                     url: path + '/j_security_check',
                     data: params,
                     success: function (data) {
-                        $.portal.closeMainMenu();
-                        CQ_Analytics.ProfileDataMgr.loadProfile($("input[name=j_username]").val());
-                        $.portal.toggleAuthorized();
+                       // $.portal.closeMainMenu();
+                        CQ_Analytics.ProfileDataMgr.loadProfile($("input[name=userEmail]").val());
+                       // $.portal.toggleAuthorized();
                         location.reload();
                     },
                     error: function (data, status) {

@@ -116,10 +116,12 @@ public class CustomerImpl implements Customer {
     		 PreparedStatement pstmt;
     		 ResultSet rs;
     		 stmt = conn.createStatement();
-    		 rs = stmt.executeQuery("SELECT * from utenti where email='"+username+"' and password='"+password+"'");
+    		 String sql ="SELECT * from utenti where email='"+username+"' and password='"+password+"'";
+    		 logger.error("Alduzz sql="+sql);
+    		 rs = stmt.executeQuery(sql);
     		 if (rs.next())
     		 {
-    			 System.out.println("loggato");
+    			 logger.error("loggato");
     			 stmt.close(); 
         		 
         		 rs.close();
@@ -128,7 +130,7 @@ public class CustomerImpl implements Customer {
     		 }
     		 else
     		 {
-    			 System.out.println("non loggato");
+    			 logger.error("non loggato");
     			 stmt.close(); 
         		 
         		 rs.close();
@@ -139,13 +141,13 @@ public class CustomerImpl implements Customer {
     		 
     	}  catch(ClassNotFoundException e)
     	 {
-    	    System.out.println(e);
+    		 logger.error(e.getMessage());
     	 }
     	   catch(SQLException e)
     	 
     	        {
 
-    	            System.out.println(e);
+    		   logger.error(e.getMessage());
 
     	        }
 
@@ -176,12 +178,8 @@ public class CustomerImpl implements Customer {
         customer = new HashMap<>();
         customer.put("contactID", username);
         customer.put("password", password);
-        if (token.equalsIgnoreCase("abcdefg")) {
-            customer.put("name", "Pippo");
-            customer.put("surname", "Pluto");
-            return customer;
-        }
-        return new HashMap<>();
+        return customer;
+         
     }
  
 }

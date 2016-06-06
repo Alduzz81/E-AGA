@@ -60,9 +60,9 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
     private static final String J_USER_NAME = "j_username";
     private static final String J_PASSWORD = "j_password";
     private static final String AUTH_TYPE = "TOKEN";
-    private static final String REQUEST_URL_SUFFIX = "/j_security_check";
-    private static final String CUG_ID_PROP_DEFAULT = "equinoxcug";
-    private static final String CUG_ID_PROP_NAME = "equinox.cug.groupid";
+    private static final String REQUEST_URL_SUFFIX = "j_security_check";
+    private static final String CUG_ID_PROP_DEFAULT = "eagacug";
+    private static final String CUG_ID_PROP_NAME = "eagacug.cug.groupid";
 
     @Property(label = "NS3 CUG group ADDRESS_ID",
               description = "Group userd in NS3 to access protected resources",
@@ -83,8 +83,9 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
 
     @Activate
     protected void activate(final Map<String, String> config) {
+    	logger.error("Alduzz mi Attivo");
         this.wrappedIsAuthFeedbackHandler = false;
-
+        logger.error("Alduzz wrappedAuthHandler="+wrappedAuthHandler);
         if (wrappedAuthHandler != null) {
             logger.debug("Registered wrapped authentication feedback handler");
             this.wrappedIsAuthFeedbackHandler = wrappedAuthHandler instanceof AuthenticationFeedbackHandler;
@@ -97,18 +98,20 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
         // Wrap the response object to capture any calls to sendRedirect(..) so it can be released in a controlled
         // manner later.
         final DeferredRedirectHttpServletResponse deferredRedirectResponse = new DeferredRedirectHttpServletResponse(httpServletRequest,
-                                                                                                                     httpServletResponse);
+        		                                                                                                          httpServletResponse);
         final String username = httpServletRequest.getParameter(J_USER_NAME);
         final String password = httpServletRequest.getParameter(J_PASSWORD);
+        logger.error("Alduzz username="+username);  
+        logger.error("Alduzz password="+password);  
         if (REQUEST_METHOD.equals(httpServletRequest.getMethod())
             && httpServletRequest.getRequestURI().endsWith(REQUEST_URL_SUFFIX) && username != null) {
 
             if (!AuthUtil.isValidateRequest(httpServletRequest)) {
                 AuthUtil.setLoginResourceAttribute(httpServletRequest, httpServletRequest.getContextPath());
             }
-            logger.debug("AFTER RETRIEVE TOKEN");
-            String token = customer.getToken(username, password);
-            logger.debug("TOKEN RETRIEVED: ", token);
+            logger.error("AFTER RETRIEVE TOKEN");
+            String token =  customer.getToken(username, password);
+            logger.error("TOKEN RETRIEVED: "+ token);
             if (token != null && !token.isEmpty()) {
                 SimpleCredentials creds = new SimpleCredentials(username, password.toCharArray());
                 creds.setAttribute(ATTR_HOST_NAME_FROM_REQUEST, httpServletRequest.getServerName());
@@ -137,6 +140,7 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
         Session impersonatedSession = null;
 
         final String customerId = credentialMap.get("contactID");
+        logger.error("Alduzz contactID="+customerId);
         try {
             adminSession = slingRepository.loginAdministrative(null);
             JackrabbitSession jackrabbitSession = (JackrabbitSession) adminSession;
