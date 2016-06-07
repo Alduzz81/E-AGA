@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" 
+xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cq:Dialog"
+          title="Top Navigation Bar"
+          width="600"
+          height="500"
+          xtype="panel">
+    <items jcr:primaryType="cq:WidgetCollection">
+    	<login
+            name="./loginIcon"
+            jcr:primaryType="cq:Widget"
+            width="500"
+            fieldLabel="Login Icon"
+            rootPath="/etc/designs/EAGA-Design/images"
+            xtype="pathfield" />
+        <cart
+            name="./cartIcon"
+            jcr:primaryType="cq:Widget"
+            width="500"
+            fieldLabel="Cart Icon"
+            rootPath="/etc/designs/EAGA-Design/images"
+            xtype="pathfield" />
+    </items>
+</jcr:root>

@@ -11514,6 +11514,7 @@ START SLIDER HOME
 *********************/
 .slider-wrap {
     position: relative;
+    bottom: -79px;
 }
 
 .slider-wrap .image-slider-wrap {

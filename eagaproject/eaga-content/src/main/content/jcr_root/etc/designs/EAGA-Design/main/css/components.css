@@ -409,3 +409,38 @@ input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-oute
     -webkit-appearance: none; 
     margin: 0; 
 }
+
+/******************************************/
+/*     START ADDITIONAL TOPNAV 		      */
+/******************************************/
+.topnav-list{
+	position: relative;
+}
+.topnav-list li{
+	float: right;
+}
+.topnav-list li a{
+	height: 30px;
+	min-width: 20px;
+	font-size: 14px;
+    text-align: center;
+    position: relative;
+    padding: 0;
+    display: block;
+}
+.topnav-item{
+    position: relative;
+    top: 4px;
+    max-width: 20px;
+    padding-left: 0px;
+    height: 20px;
+}
+.topnav-list .cart{
+    right:10px;
+}
+.topnav-list .login{
+    right:70px;
+}
+/******************************************/
+/*     END ADDITIONAL TOPNAV			  */
+/******************************************/
