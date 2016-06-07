@@ -5,6 +5,12 @@ import com.aem.eaga.api.portal.customer.Customer;
 import com.aem.eaga.servlet.commands.AbstractContextCommand;
 import com.aem.eaga.servlet.commands.HttpMethodEnum;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,6 +39,30 @@ public class LoadRegistrationCommand extends AbstractContextCommand {
     	final String username = request.getParameter(J_USER_NAME);
     	final String email = request.getParameter(J_EMAIL);
         final String password = request.getParameter(J_PASSWORD);
+        
+        
+        try {
+	   		 Class.forName("com.mysql.jdbc.Driver");
+	   		 Connection conn = DriverManager.getConnection("jdbc:mysql://10.107.104.16/eaga?" + "user=eaga&password=eaga" );
+	   		 Statement stmt;
+	   		 stmt = conn.createStatement();
+	   		 String sql ="INSERT INTO utenti (Nome, Email, Password) VALUES ('"+username+"', '"+email+"', '"+password+"')";
+	   		 logger.error("string sql= "+sql);
+	   		 boolean res = stmt.execute(sql);
+	   		 
+	   		 if (!res){
+	   			 logger.error("Success! New record inserted!");
+	   			 stmt.close(); 
+	       		 conn.close();
+	       	} else {
+	   			 stmt.close(); 
+	       		 conn.close();
+	   		 }	   		 
+	   	} catch(ClassNotFoundException e) {
+	   		logger.error(e.getMessage());
+	   	} catch(SQLException e) {
+	   		logger.error(e.getMessage());
+	   	}
         
         try {            
         	JSONObject answer = new JSONObject();
