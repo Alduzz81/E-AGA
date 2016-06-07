@@ -72,10 +72,6 @@ function writeUserInDB() {
         			+ ',\n\tpassword: '+ msg.j_password
         			+ ',\n\tresult: '+ msg.j_result
         			+ ',\n\tstatus: '+ msg.j_status);
-        	/*console.log('Registration success! - ' + msg.j_email);
-        	console.log('Registration success! - ' + msg.j_password);
-        	console.log('Registration success! - ' + msg.j_result);
-        	console.log('Registration success! - ' + msg.j_status);*/
         	
         	if(msg.j_status){
         		window.location.href = '/content/eaga/login.html';
