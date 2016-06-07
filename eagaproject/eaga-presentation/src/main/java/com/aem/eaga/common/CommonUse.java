@@ -2,10 +2,12 @@ package com.aem.eaga.common;
 
 import com.adobe.cq.sightly.SightlyWCMMode;
 import com.adobe.cq.sightly.WCMUsePojo;
+import com.aem.eaga.Context;
 import com.day.cq.wcm.api.LanguageManager;
  
 
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,17 +27,34 @@ public class CommonUse extends WCMUsePojo {
     private static final String VIDEO_RENDITION_OGG = "firefoxhq.ogg";
     private static final String VIDEO_RENDITION_M4V = "hq.m4v";
     private static final String VIDEO_RENDITION_MP4 = "iehq.mp4";
-
+    protected Context context;
      
 
     
     public void activate() throws Exception {
+    	
         LanguageManager languageManager = getService(LanguageManager.class);
         
         SlingHttpServletRequest request = getRequest();
-         
+        context = getContextInstance(request, getResponse(), languageManager);
         LOG.debug("CommonUse class activated");
     }
+    
+
+    private static Context getContextInstance(SlingHttpServletRequest request, SlingHttpServletResponse response,
+            LanguageManager languageManager ) {
+        return new Context(request, response, languageManager);
+    }
+    
+    
+    public boolean isAuthenticated() {
+        return context.isAuthenticated();
+    }
+    
+    public boolean isComponentVisible() {
+        return isAuthor() || context.isAuthenticated();
+    }
+
 
     public String getValidLink(String link) {
         if (null != link) {
