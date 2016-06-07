@@ -70,6 +70,7 @@ function writeUserInDB() {
         	console.log('Registration success! - ' + msg.j_username);
         	console.log('Registration success! - ' + msg.j_email);
         	console.log('Registration success! - ' + msg.j_password);
+        	console.log('Registration success! - ' + msg.j_result);
         },
         error: function (data, status) {
             console.log('Procedure failed: ' + status);

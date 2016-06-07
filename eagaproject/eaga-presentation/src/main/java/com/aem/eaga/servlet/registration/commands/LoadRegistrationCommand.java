@@ -26,6 +26,7 @@ public class LoadRegistrationCommand extends AbstractContextCommand {
 	private static final String J_USER_NAME = "j_username";
 	private static final String J_EMAIL = "j_email";
     private static final String J_PASSWORD = "j_password";
+    private static final String J_RESULT = "j_result";
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 	
     public LoadRegistrationCommand(HttpMethodEnum methods) {
@@ -39,36 +40,51 @@ public class LoadRegistrationCommand extends AbstractContextCommand {
     	final String username = request.getParameter(J_USER_NAME);
     	final String email = request.getParameter(J_EMAIL);
         final String password = request.getParameter(J_PASSWORD);
-        
+        String result = "";
         
         try {
 	   		 Class.forName("com.mysql.jdbc.Driver");
-	   		 Connection conn = DriverManager.getConnection("jdbc:mysql://10.107.104.16/eaga?" + "user=eaga&password=eaga" );
+	   		 Connection conn = DriverManager.getConnection("jdbc:mysql://10.107.104.16/eaga?" 
+	   				 		   + "user=eaga&password=eaga" );
 	   		 Statement stmt;
+	   		 ResultSet rs;
 	   		 stmt = conn.createStatement();
-	   		 String sql ="INSERT INTO utenti (Nome, Email, Password) VALUES ('"+username+"', '"+email+"', '"+password+"')";
-	   		 logger.error("string sql= "+sql);
-	   		 boolean res = stmt.execute(sql);
+	   		 String checkEmailSql = "SELECT * "
+	   		 		+ "FROM utenti "
+	   		 		+ "WHERE Email = '"+email+"'";
+	   		 rs = stmt.executeQuery(checkEmailSql);
 	   		 
-	   		 if (!res){
-	   			 logger.error("Success! New record inserted!");
+	   		 if(!rs.next()){
+	   			 String newRecordSql = "INSERT INTO utenti "
+		   		 		+ "(Nome, Email, Password) "
+		   		 		+ "VALUES ('"+username+"', '"+email+"', '"+password+"')";
+		   		 boolean res = stmt.execute(newRecordSql);
+		   		 
+		   		 if (!res){
+		   			 result = "Success! New record inserted!";
+		   			 logger.error(result);
+		   			 stmt.close(); 
+		       		 conn.close();
+		       		 rs.close();
+		       	}
+	   		 } else {
+	   			 result = "Error! This email is already recorded";
 	   			 stmt.close(); 
 	       		 conn.close();
-	       	} else {
-	   			 stmt.close(); 
-	       		 conn.close();
-	   		 }	   		 
+	       		 rs.close();
+	   		 }
 	   	} catch(ClassNotFoundException e) {
 	   		logger.error(e.getMessage());
 	   	} catch(SQLException e) {
 	   		logger.error(e.getMessage());
-	   	}
+	   	} 
         
         try {            
         	JSONObject answer = new JSONObject();
             answer.put(J_USER_NAME, username);
             answer.put(J_EMAIL, email);
             answer.put(J_PASSWORD, password);
+            answer.put(J_RESULT, result);
             
             write(context, answer);
         } catch (Exception e) {
