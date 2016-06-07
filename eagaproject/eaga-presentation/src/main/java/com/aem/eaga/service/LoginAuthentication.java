@@ -60,7 +60,7 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
     private static final String J_USER_NAME = "j_username";
     private static final String J_PASSWORD = "j_password";
     private static final String AUTH_TYPE = "TOKEN";
-    private static final String REQUEST_URL_SUFFIX = "j_security_check";
+    private static final String REQUEST_URL_SUFFIX = "eaga_security_check";
     private static final String CUG_ID_PROP_DEFAULT = "eagacug";
     private static final String CUG_ID_PROP_NAME = "eagacug.cug.groupid";
 

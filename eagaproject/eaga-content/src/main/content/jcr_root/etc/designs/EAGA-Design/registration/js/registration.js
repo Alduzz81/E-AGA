@@ -39,9 +39,11 @@ var regSubmit = function(){
 			$('#reg-password2').val('');
 		} else {
 			$(".reg-problems").hide();
+			writeUserInDB();
 		}
 	} else {
 		$(".reg-problems").hide();
+		writeUserInDB();
 	}	
 }
 
@@ -50,6 +52,31 @@ function isEmail(email) {
 	var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	return regex.test(email);
 }
+
+
+function writeUserInDB() {
+    var params = {
+	        'j_username': $("input[name=username]").val(),
+	        'j_email': $("input[name=email]").val(),
+	        'j_password': $("input[name=password]").val()
+    	};
+    var path = CQ.shared.HTTP.getPath();
+
+    $.ajax({
+        type: 'GET',
+        url: path + '.loadRegistration.json',
+        data: params,
+        success: function (msg) {
+        	console.log('Registration success! - ' + msg.j_username);
+        	console.log('Registration success! - ' + msg.j_email);
+        	console.log('Registration success! - ' + msg.j_password);
+        	console.log('Registration success! - ' + msg.j_result);
+        },
+        error: function (data, status) {
+            console.log('Procedure failed: ' + status);
+        }
+    });
+};
 	
 /*******************************************************************************
  * END REGISTRATION
@@ -58,4 +85,5 @@ function isEmail(email) {
 
 $(document).ready(function () {
 
+	
 });
