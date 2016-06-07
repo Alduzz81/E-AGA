@@ -54,10 +54,10 @@ function isEmail(email) {
 }
 
 
-
 function writeUserInDB() {
     var params = {
 	        'j_username': $("input[name=username]").val(),
+	        'j_email': $("input[name=email]").val(),
 	        'j_password': $("input[name=password]").val()
     	};
     var path = CQ.shared.HTTP.getPath();
@@ -66,11 +66,13 @@ function writeUserInDB() {
         type: 'GET',
         url: path + '.loadRegistration.json',
         data: params,
-        success: function (data) {
-        	console.log('dentro a success! ');
+        success: function (msg) {
+        	console.log('Registration success! - ' + msg.j_username);
+        	console.log('Registration success! - ' + msg.j_email);
+        	console.log('Registration success! - ' + msg.j_password);
         },
         error: function (data, status) {
-            console.log('dentro a procedure failed: ' + status);
+            console.log('Procedure failed: ' + status);
         }
     });
 };
@@ -82,6 +84,5 @@ function writeUserInDB() {
 
 $(document).ready(function () {
 
-	
 	
 });
