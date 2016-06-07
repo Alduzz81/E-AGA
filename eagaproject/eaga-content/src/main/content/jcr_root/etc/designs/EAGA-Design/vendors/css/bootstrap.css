@@ -33,14 +33,15 @@
 }
 
 .page-content{
-	padding: 20px;
+	/*padding: 20px;*/
 	min-height: 300px;
     background: white;
 }
 
-.logo{
-	max-width: 90px;
-	padding-left: 20px;
+.img-logo{
+	max-width: 200px;
+    padding-left: 40px;
+    margin-top: -10px;
 }
 
 .img-header{
