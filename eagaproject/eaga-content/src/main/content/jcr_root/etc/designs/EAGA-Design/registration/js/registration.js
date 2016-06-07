@@ -67,10 +67,26 @@ function writeUserInDB() {
         url: path + '.loadRegistration.json',
         data: params,
         success: function (msg) {
-        	console.log('Registration success! - ' + msg.j_username);
-        	console.log('Registration success! - ' + msg.j_email);
-        	console.log('Registration success! - ' + msg.j_password);
-        	console.log('Registration success! - ' + msg.j_result);
+        	console.log('Registration success! - \n\tusername: ' + msg.j_username 
+        			+ ',\n\temail: '+ msg.j_email
+        			+ ',\n\tpassword: '+ msg.j_password
+        			+ ',\n\tresult: '+ msg.j_result
+        			+ ',\n\tstatus: '+ msg.j_status);
+        	
+        	if(msg.j_status){
+        		window.location.href = '/content/eaga/login.html';
+        		$('#reg-username').val('');
+        		$('#reg-email').val('');
+    			$('#reg-password').val('');
+    			$('#reg-password2').val('');
+        	} else {
+        		var newMsg = "Un utente con questo indirizzo email è già stato registrato.<br> Inserire un nuovo indirizzo";
+        		$(".reg-alert-msg").html(newMsg);
+        		$(".reg-problems").show();
+        		$('#reg-email').val('');
+    			$('#reg-password').val('');
+    			$('#reg-password2').val('');
+        	}
         },
         error: function (data, status) {
             console.log('Procedure failed: ' + status);
