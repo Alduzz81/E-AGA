@@ -1,0 +1,23 @@
+<div data-sly-use.myMenu="${ 'com.aem.eaga.sightly.menuLogin.MenuLoginUse' @ currentNode=currentNode }">
+    
+    <div class="header-navigation">
+        <ul id="authed-menu" data-sly-test.emptyMenu="${ myMenu.author && myMenu.menuEmpty }"
+            class="header-primary-sub header-hamburger-menu header-transform header-hide">
+            <li>
+            	<a href='#'>Configure the component</a>
+            </li>
+        </ul>
+        <ul id="authed-menu" data-sly-test="${ !myMenu.menuEmpty }" data-sly-list.key="${ myMenu.map }"
+			class="header-primary-sub header-hamburger-menu header-transform header-hide">
+            <li data-sly-test="${ key != 'Logout'}">
+                <a href='${ myMenu.map[key] }'>${key}</a>
+            </li>
+            <li data-sly-test="${ key == 'Logout' }">
+                <div>
+                    <input type="hidden" name="logout" value="true">
+                    <button type="submit" class="btn btn-link">${key}</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
