@@ -13,7 +13,8 @@
         jcr:primaryType="cq:PageContent"
         jcr:title="Login"
         jcr:uuid="94b0eb87-ac2f-489f-9894-59492b2e7790"
-        sling:resourceType="eaga/components/page/noheader">
+        sling:resourceType="eaga/components/page/noheader"
+		hideInNav="true">
         <par
             jcr:primaryType="nt:unstructured"
             sling:resourceType="foundation/components/parsys">

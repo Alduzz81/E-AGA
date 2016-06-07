@@ -8484,7 +8484,8 @@ header .brand .brand-logo {
 }
 
 header .header-navigation {
-    top: 0;
+    top: 50px;
+    left: 0px;
     width: 100%;
     z-index: 8000;
     position: relative;
@@ -8495,7 +8496,7 @@ header .header-secondary-wrap {
     background-color: rgba(51, 51, 51, 0.7);
     position: absolute;
     left: 0;
-    padding-left: 224px;
+    padding-left: 40px;
     right: 0;
 }
 
@@ -8511,9 +8512,9 @@ header .header-secondary-wrap ul {
 
 header .header-secondary-wrap ul.header-secondary {
     position: relative;
-    height: 60px;
+    height: 30px;
     letter-spacing: -.31em;
-    padding-left: 3px;
+    padding-left: 40px;
 }
 
 header .header-secondary-wrap ul.header-secondary li {
@@ -8526,8 +8527,8 @@ header .header-secondary-wrap ul.header-secondary li a {
     letter-spacing: 0;
     display: block;
     font-family: VodafoneLight;
-    font-size: 22px;
-    line-height: 1.2;
+    font-size: 18px;
+    line-height: 0.2;
     color: #FFFFFF;
 }
 
@@ -10217,7 +10218,7 @@ START HELP TAB MOBILE
     padding: 5px;
 }
 
-.help-mobile.show_mobile .tabs .tab .box-help .manufacturers .device-logo {
+.help-mobile.show_mobile .tabs .tab .box-help .manufacturers .device- {
     float: left;
     text-align: center;
     padding: 5px;
@@ -11513,6 +11514,7 @@ START SLIDER HOME
 *********************/
 .slider-wrap {
     position: relative;
+    bottom: -79px;
 }
 
 .slider-wrap .image-slider-wrap {
