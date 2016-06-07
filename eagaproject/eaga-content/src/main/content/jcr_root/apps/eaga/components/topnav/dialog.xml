@@ -10,14 +10,14 @@ xmlns:jcr="http://www.jcp.org/jcr/1.0"
     	<login
             name="./loginIcon"
             jcr:primaryType="cq:Widget"
-            width="500"
+            width="400"
             fieldLabel="Login Icon"
             rootPath="/etc/designs/EAGA-Design/images"
             xtype="pathfield" />
         <cart
             name="./cartIcon"
             jcr:primaryType="cq:Widget"
-            width="500"
+            width="400"
             fieldLabel="Cart Icon"
             rootPath="/etc/designs/EAGA-Design/images"
             xtype="pathfield" />
