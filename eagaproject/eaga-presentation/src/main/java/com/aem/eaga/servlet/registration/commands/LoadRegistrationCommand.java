@@ -27,6 +27,7 @@ public class LoadRegistrationCommand extends AbstractContextCommand {
 	private static final String J_EMAIL = "j_email";
     private static final String J_PASSWORD = "j_password";
     private static final String J_RESULT = "j_result";
+    private static final String J_STATUS = "j_status";
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 	
     public LoadRegistrationCommand(HttpMethodEnum methods) {
@@ -41,6 +42,7 @@ public class LoadRegistrationCommand extends AbstractContextCommand {
     	final String email = request.getParameter(J_EMAIL);
         final String password = request.getParameter(J_PASSWORD);
         String result = "";
+        boolean status = true;
         
         try {
 	   		 Class.forName("com.mysql.jdbc.Driver");
@@ -69,6 +71,7 @@ public class LoadRegistrationCommand extends AbstractContextCommand {
 		       	}
 	   		 } else {
 	   			 result = "Error! This email is already recorded";
+	   			 status = false;
 	   			 stmt.close(); 
 	       		 conn.close();
 	       		 rs.close();
@@ -85,6 +88,7 @@ public class LoadRegistrationCommand extends AbstractContextCommand {
             answer.put(J_EMAIL, email);
             answer.put(J_PASSWORD, password);
             answer.put(J_RESULT, result);
+            answer.put(J_STATUS, status);
             
             write(context, answer);
         } catch (Exception e) {
