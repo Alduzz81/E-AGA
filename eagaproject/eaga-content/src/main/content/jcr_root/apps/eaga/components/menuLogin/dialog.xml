@@ -33,6 +33,8 @@
                                     fieldLabel="Label"
                                     width="90%"
                                     allowBlank="{Boolean}false"
+                                    rootPath="/content/eaga"
+                                    editable="{Boolean}false"
                                     xtype="textfield"/>
                                 <link-url
                                     jcr:primaryType="cq:Widget"
@@ -40,6 +42,8 @@
                                     fieldLabel="Url"
                                     width="90%"
                                     allowBlank="{Boolean}false"
+                                    rootPath="/content/eaga"
+                                    editable="{Boolean}false"
                                     xtype="pathfield"/>
                             </items>
                         </fieldConfig>

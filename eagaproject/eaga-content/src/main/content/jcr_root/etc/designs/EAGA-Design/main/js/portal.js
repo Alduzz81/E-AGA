@@ -39,7 +39,7 @@
                 if (redirectTarget) {
                     window.location.href = redirectTarget;
                 } else {
-                    window.location.href = '/content/vodafone-gr.html';
+                    window.location.href = '/content/eaga.html';
                 }
             },
             clearSession: function() {

@@ -19,8 +19,7 @@ public class MenuLoginUse extends CommonUse {
 
 	@Override
 	public void activate() throws Exception {
-		super.activate();
-	/*	
+		super.activate();	
 		currentNode = get("currentNode", Node.class);
         if (currentNode == null) {
             return;
@@ -43,10 +42,9 @@ public class MenuLoginUse extends CommonUse {
                 url = json.getString("url");
                 menuloginlinks.put(json.getString("label"), getValidLink(url));
             }
-        }*/
-        menuloginlinks.put("abvcda", "#");
-        menuloginlinks.put("fasd", "#");
-        menuloginlinks.put("Logout", "#");
+        }
+        menuloginlinks.put("My Profile", "/content/eaga/products.html");
+        menuloginlinks.put("Logout", "/content/eaga.html");
 	}
 	
 	public static Property getProperty(Node currentNode, String propertyName) throws RepositoryException {
