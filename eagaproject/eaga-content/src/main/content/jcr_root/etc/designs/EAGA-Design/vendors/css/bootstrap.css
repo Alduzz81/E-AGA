@@ -64,34 +64,6 @@
 * END Homepage and general classes
 *******************************/
 
-/****************************
-* Here begin product classes
-****************************/
-
-.img-column-container{
-	padding: 10px;
-}
-
-.img-column-item{
-	padding: 10px;
-}
-
-.img-column-item{
-	padding: 20px 20px 0px 20px;
-    width: 100%;
-}
-
-.img-column{
-	padding: 20px;
-}
-
-.img-column img{
-	width: 100%;
-}
-
-/****************************
-* Here end product classes
-****************************/
 
 /****************************
 * Here begin original classes
