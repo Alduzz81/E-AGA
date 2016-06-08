@@ -36,5 +36,7 @@
 }
 
 .menu-hide{
-    transform: translateY(0%);
+	-webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
 }

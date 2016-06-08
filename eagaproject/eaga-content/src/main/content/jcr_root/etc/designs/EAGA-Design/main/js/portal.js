@@ -17,7 +17,9 @@
                        // $.portal.closeMainMenu();
                         CQ_Analytics.ProfileDataMgr.loadProfile($("input[name=userEmail]").val());
                        // $.portal.toggleAuthorized();
+                        console.log('Login procedure correct: ' + status);
                         location.reload();
+                        window.location.href = '/content/eaga.html';
                     },
                     error: function (data, status) {
                         console.log('Login procedure failed: ' + status);

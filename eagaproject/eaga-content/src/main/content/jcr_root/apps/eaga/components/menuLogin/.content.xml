@@ -3,4 +3,4 @@
     jcr:primaryType="cq:Component"
     jcr:title="Menu Login"
     sling:resourceSuperType="foundation/components/parbase"
-    componentGroup="eaga"/>
+    componentGroup=".hidden"/>
