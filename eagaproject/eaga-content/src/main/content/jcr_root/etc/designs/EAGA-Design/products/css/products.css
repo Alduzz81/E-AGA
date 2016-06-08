@@ -1,0 +1,42 @@
+/******************************************/
+/*     START  ADD PRODUCT 			      */
+/******************************************/
+.addproduct-container{
+	display: inline-block;
+    border: 1px dotted;
+    margin: 30px;
+    width: 480px;
+}
+.product-form-group input{
+	margin-bottom: 20px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 35px;
+    border-radius: 3px;
+    padding: 0px 15px;
+    right: 5px;
+    position: relative;
+    float: right;
+    auto
+}
+.product-form-group label{
+	float: left;
+	margin-left: 15px;
+	line-height: 35px;
+	margin-bottom: 20px;
+	margin-right: 7px;
+}
+.product-form-empty{
+	border-right-color: red;
+    border-bottom-color: red;
+    border-right-style: dotted;
+    border-bottom-style: dotted;
+}
+#productquantity, #productprice{
+	width: 32%;
+    margin-right: 182px;
+}
+/******************************************/
+/*     END ADD PRODUCT					  */
+/******************************************/

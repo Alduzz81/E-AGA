@@ -1,0 +1,29 @@
+<div class="text-center login-logo">
+	<a href="/content/eaga.html" >
+		<img src="/etc/designs/EAGA-Design/images/eaga-logo-login.png">
+	</a>
+</div>
+<div class="addproduct-container" ng-controller="LoginController">
+	<div class="text-center login-format-padding">		
+		<div class="login-format-padding">
+			<h2><b>Add a Product</b></h2>
+		</div>
+		<form id="product-form" autocomplete="off">
+			<fieldset class="product-form-group">
+				<ul>
+                	<li><label for="productname">Nome del prodotto: </label>
+						<input type="text" id="productname" name="productname" required /></li>
+					<li><label for="productcategory">Categoria: </label>
+						<input type="text"id="productcategory" name="productcategory" required /></li>
+					<li><label for="productdescription">Descrizione: </label>
+						<input type="textarea" id="productdescription" name="productdescription"/></li>
+					<li><label for="productprice">Prezzo: </label>
+						<input type="text" id="productprice" name="productprice" required/></li>
+					<li><label for="productquantity">Quantita': </label>
+						<input type="text" id="productquantity" name="productquantity" required/></li>	
+					<li class="text-center"><input class="submit-btn" type="submit" value="Add Product" onclick="productSubmit()" /></li>
+				</ul>
+			</fieldset>
+		</form>
+	</div>
+</div>
