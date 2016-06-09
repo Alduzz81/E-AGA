@@ -13,12 +13,6 @@
 			<cq:include path="search" resourceType="foundation/components/search"/>
 		</div>
 			<cq:include path="topnav" resourceType="eaga/components/topnav"/>
+			<cq:include path="<%=homePath + "/jcr:content/menuLogin"%>" resourceType="eaga/components/menuLogin" />
 	</div>
-	
-	<div class="col-sm-6">
-		<cq:include path="search" resourceType="foundation/components/search"/>
-	</div>
-	<cq:include path="topnav" resourceType="eaga/components/topnav"/>
-	<cq:include path="<%=homePath + "/jcr:content/menuLogin"%>" resourceType="eaga/components/menuLogin" />
-</div>
 </header>

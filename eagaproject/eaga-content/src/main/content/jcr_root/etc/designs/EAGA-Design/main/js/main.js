@@ -388,7 +388,6 @@ function initNotification () {
  ******************************************************************************/
 
 function initSliderHome () {
-
     var numSlideShow = 3;
     var numSlideShowTablet = 2;
     var numSlideShowMobile = 1;
@@ -919,7 +918,6 @@ var initCustomSelect = function() {
 
 
 $(document).ready(function () {
-
     initCustomSelect();
     initCustomDatapicker();
     initHeader();
