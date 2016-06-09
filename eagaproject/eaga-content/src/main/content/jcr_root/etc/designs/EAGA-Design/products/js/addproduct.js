@@ -40,12 +40,16 @@ function addProductInDB() {
         url: path + '.InsertProduct.json',
         data: params,
         success: function (msg) {
-        	console.log('Add product success '+ status);
-        	window.alert("Product "+ $("input[name=productname]").val() +" added");
+        	var suc;
+        	if(msg.J_RESULT === "Success"){
+        		suc = "Product "+ $("input[name=productname]").val() +" added!"
+        	}else{
+        		suc = "Product "+ $("input[name=productname]").val() +" already existing!"
+        	}
+        	window.alert(suc);
         	$('input').val('');
         },
         error: function (data, status) {
-            console.log('Procedure failed: ' + status);
             window.alert("Something went wrong");
         }
     });

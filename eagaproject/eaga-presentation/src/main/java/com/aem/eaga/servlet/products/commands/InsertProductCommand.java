@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import org.slf4j.Logger;
@@ -36,6 +37,7 @@ public class InsertProductCommand extends AbstractContextCommand {
     public void process(Context context) throws IOException {
     
     	SlingHttpServletRequest request = context.getSlingRequest();
+    	SlingHttpServletResponse response = context.getSlingResponse();
     	final String nomeProdotto = request.getParameter(j_nomeProdotto);
     	final String descrizioneProdotto = request.getParameter(j_descrizioneProdotto);
         final String prezzoProdotto = request.getParameter(j_prezzoProdotto);
@@ -52,7 +54,7 @@ public class InsertProductCommand extends AbstractContextCommand {
 	   		 ResultSet rs;
 	   		 stmt = conn.createStatement();
 	   		 String sqlCheckProdotto = "SELECT * "
-	   		 		+ "FROM prodotti "
+	   		 		+ "FROM eaga.prodotti "
 	   		 		+ "WHERE nome = '"+nomeProdotto+"'";
 	   		 rs = stmt.executeQuery(sqlCheckProdotto);
 	   		 
@@ -71,7 +73,7 @@ public class InsertProductCommand extends AbstractContextCommand {
 	   			 
 		   		 
 		   		 if (!res){
-		   			 result = "Success! New record inserted!";
+		   			 result = "Success";
 		   			 logger.error(result);
 		   			 stmt.close(); 
 		       		 conn.close();
