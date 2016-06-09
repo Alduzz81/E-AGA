@@ -1,18 +1,19 @@
 <%@include file="../../../global.jsp" %>
 <%@page session="false"%>
 
+
 <div class="col-sm-12 page-content">
 	<div class="col-sm-4">
 		<div class="col-sm-2">
 			<div class="img-column-container">
-				<img class="img-column-item" src="/etc/designs/EAGA-Design/images/icons/alert-icon-red.png" />
-				<img class="img-column-item" src="/etc/designs/EAGA-Design/images/icons/facebook.gif" />
-				<img class="img-column-item" src="/etc/designs/EAGA-Design/images/icons/twitter.gif" />
-				<img class="img-column-item" src="/etc/designs/EAGA-Design/images/icons/mobile.gif" />
+				<img class="img-column-item" src="/etc/designs/EAGA-Design/images/large/alert-icon-red.png" />
+				<img class="img-column-item" src="/etc/designs/EAGA-Design/images/large/facebook.gif" />
+				<img class="img-column-item" src="/etc/designs/EAGA-Design/images/large/twitter.gif" />
+				<img class="img-column-item" src="/etc/designs/EAGA-Design/images/large/mobile.gif" />
 			</div>
 		</div>
 		<div class="col-sm-10 img-column">
-			<img src="/etc/designs/EAGA-Design/images/icons/alert-icon-red.png" />
+			<img class="front-img" src="" data-zoom-image="" />
 		</div>
 	</div>
 	<div class="col-sm-5">
@@ -40,7 +41,12 @@
 			<input class="wishlist-input" type="submit" name="wishlist" value="Aggiungi alla lista dei desideri" />
 		</div>
 	</div>
-	<div class="col-sm-12">qui la descrizione estesa</div>
+	<div class="col-sm-12">
+		<div class="details-container">
+			<hr>
+			qui la descrizione estesa
+		</div>
+	</div>
 	<div class="col-sm-12">
 		<cq:include path="par" resourceType="foundation/components/parsys"/>
 	</div>
