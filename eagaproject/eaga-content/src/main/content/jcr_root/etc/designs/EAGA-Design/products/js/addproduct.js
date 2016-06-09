@@ -36,12 +36,13 @@ function addProductInDB() {
     var path = CQ.shared.HTTP.getPath();
 
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: path + '.InsertProduct.json',
         data: params,
         success: function (msg) {
         	console.log('Add product success '+ status);
-        	window.alert("Product added");
+        	window.alert("Product "+ $("input[name=productname]").val() +" added");
+        	$('input').val('');
         },
         error: function (data, status) {
             console.log('Procedure failed: ' + status);

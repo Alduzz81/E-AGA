@@ -78,7 +78,7 @@ public class InsertProductCommand extends AbstractContextCommand {
 		       		 rs.close();
 		       	}
 	   		 } else {
-	   			 result = "Error! This email is already recorded";
+	   			 result = "Error! This product is already recorded";
 	   			 status = false;
 	   			 stmt.close(); 
 	       		 conn.close();
