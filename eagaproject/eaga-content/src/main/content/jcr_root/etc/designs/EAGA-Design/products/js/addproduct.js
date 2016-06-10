@@ -51,7 +51,6 @@ function addProductInDB() {
 	        'j_quantitaProdotto': $("input[name=productquantity]").val()
     	};
     var path = CQ.shared.HTTP.getPath();
-    console.log("ENTRATO");
      $.ajax({
         type: 'POST',
         url: path + '.InsertProduct.json',
@@ -60,16 +59,16 @@ function addProductInDB() {
         	if(msg.J_RESULT === ""){
         		suc = "SERVER DOWN!"
         	}else if(msg.J_RESULT === "Success"){
-        		suc = "Product "+ $("input[name=productname]").val() +" added!"
+        		suc = "Prodotto "+ $("input[name=productname]").val() +" aggiunto!"
         		$('input').val('');
         	}else{
-        		suc = "Product "+ $("input[name=productname]").val() +" already existing!"
+        		suc = "Product "+ $("input[name=productname]").val() +" gia' esistente!"
         		$('#productname').val('');
         	}
 			done = true;
 		},
         error: function (data, status) {
-           suc = "Something went wrong";
+           suc = "Qualcosa e' andata in errore!";
            done = true;
         }
     });
