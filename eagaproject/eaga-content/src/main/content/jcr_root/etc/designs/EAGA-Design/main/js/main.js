@@ -905,6 +905,75 @@ var initCustomDatapicker = function() {
  * END CLEAR FIELD BUTTON
  *******************************************************************************/
 
+/*******************************************************************************
+ * START GO TO SINGLE PRODUCT PAGE
+ *******************************************************************************/
+
+function goToSingleProductPageByID(idProdotto) {
+	
+	//probabilmente bisogna settare anche l'utente per evitare conflitti
+	setCookie("singleIdProduct", idProdotto, 1);
+	window.location.href = '/content/eaga/product.html';
+
+};
+
+/*******************************************************************************
+ * END GO TO SINGLE PRODUCT PAGE
+ *******************************************************************************/
+
+/*******************************************************************************
+ * START COOKIE FUNCTIONS
+ *******************************************************************************/
+
+function setCookie(ckName, ckValue, expDays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (expDays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = ckName + "=" + ckValue + "; " + expires;
+};
+
+function getCookie(ckName) {
+    var name = ckName + "=";
+    var ckArr = document.cookie.split(';');
+    for(var i = 0; i <ckArr.length; i++) {
+        var c = ckArr[i];
+       // console.log("cookie index "+i +": " + c);
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+}
+
+//Da rivedere questa funzione!!!!
+function checkCookie(ckName) {
+    var user = getCookie(ckName);
+    if (user != "") {
+        alert("Welcome again " + user);  
+    } else {
+        user = prompt("Please enter your name:", "");
+        if (user != "" && user != null) {
+            setCookie(ckName, user, 365);
+        }
+    }
+}
+
+function deleteCookie(ckName){
+	var str = ckName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+	console.log("str IN delete: " + str);
+	document.cookie = str;
+	var newCk = getCookie(ckName);
+	console.log("single id product cookie IN delete: " + newCk);
+}
+
+/*******************************************************************************
+ * END COOKIE FUNCTIONS
+ *******************************************************************************/
+
+
 var initCustomSelect = function() {
     /* Init Custom Select */
     $.each($('select.style-select'), function () {
