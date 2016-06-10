@@ -1,6 +1,11 @@
 package com.aem.eaga.servlet.registration.commands;
 
 import com.aem.eaga.Context;
+<<<<<<< HEAD:eagaproject/eaga-presentation/src/main/java/com/aem/eaga/servlet/registration/commands/LoadRegistrationCommand.java
+=======
+import com.aem.eaga.api.portal.customer.Customer;
+import com.aem.eaga.common.DbUtility;
+>>>>>>> master:eagaproject/eaga-presentation/src/main/java/com/aem/eaga/servlet/registration/commands/InsertRegistrationCommand.java
 import com.aem.eaga.servlet.commands.AbstractContextCommand;
 import com.aem.eaga.servlet.commands.HttpMethodEnum;
 import java.io.IOException;
@@ -15,7 +20,7 @@ import org.apache.sling.commons.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LoadRegistrationCommand extends AbstractContextCommand {
+public class InsertRegistrationCommand extends AbstractContextCommand {
 	
 	private static final String J_USER_NAME = "j_username";
 	private static final String J_EMAIL = "j_email";
@@ -24,7 +29,7 @@ public class LoadRegistrationCommand extends AbstractContextCommand {
     private static final String J_STATUS = "j_status";
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 	
-    public LoadRegistrationCommand(HttpMethodEnum methods) {
+    public InsertRegistrationCommand(HttpMethodEnum methods) {
         super(methods);
     }
 
@@ -37,11 +42,9 @@ public class LoadRegistrationCommand extends AbstractContextCommand {
         final String password = request.getParameter(J_PASSWORD);
         String result = "";
         boolean status = true;
-        
-        try {
-	   		 Class.forName("com.mysql.jdbc.Driver");
-	   		 Connection conn = DriverManager.getConnection("jdbc:mysql://10.107.104.16/eaga?" 
-	   				 		   + "user=eaga&password=eaga" );
+        DbUtility dbu = new DbUtility();
+	    try {
+		 Connection conn = dbu.getConnection();
 	   		 Statement stmt;
 	   		 ResultSet rs;
 	   		 stmt = conn.createStatement();

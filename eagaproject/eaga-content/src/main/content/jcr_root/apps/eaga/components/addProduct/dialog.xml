@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" 
+xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cq:Dialog"
+          title="Add a Product"
+          width="500"
+          xtype="panel">
+    <items jcr:primaryType="cq:WidgetCollection">
+    	<name
+            name="./name"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Label per il nome:"
+            xtype="textfield" />
+        <category
+            name="./category"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Label per la categoria:"
+            xtype="textfield" />
+        <description
+            name="./description"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Label per la descrizione:"
+            xtype="textfield" />
+        <price
+            name="./price"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Label per il prezzo:"
+            xtype="textfield" />
+        <quantity
+            name="./quantity"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Label per la quantita':"
+            xtype="textfield" />
+        <submit
+            name="./submit"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Label per il buttone':"
+            xtype="textfield" />
+        <priceunit
+            name="./priceunit"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Prezzo unitario:"
+            xtype="textfield" />
+        <quantityunit
+            name="./quantityunit"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Quantita' unitaria"
+            xtype="textfield" />         
+    </items>
+</jcr:root>
