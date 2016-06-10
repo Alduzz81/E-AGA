@@ -3,7 +3,7 @@
 		<img src="/etc/designs/EAGA-Design/images/eaga-logo-login.png">
 	</a>
 </div>
-<div class="addproduct-container" ng-controller="LoginController">
+<div class="addproduct-container">
 	<div class="text-center login-format-padding">		
 		<div class="login-format-padding">
 			<h2><b>Add a Product</b></h2>
@@ -30,8 +30,12 @@
 						<input type="text" id="productquantity" name="productquantity" onkeypress="return isNumberKey(event)" required/>
 						<label id="productquantitylabel">
 							${properties.quantityunit ? properties.quantityunit : 'pezzi' @ context='html'}</label></li>	
-					<li class="text-center">
-						<input class="submit-btn" type="submit" value="${properties.submit ? properties.submit : 'Add Product' @ context='html'}" onclick="productSubmit()"/></li>
+					<li>
+                    	<input type='file' id="productimage" /></li>
+						<input class="submit-btn submit-prod" type="submit" value="${properties.image ? properties.image : 'Aggiunge un immagine' @ context='html'}" onclick="addImage()"/></li>
+						<img id="myimage" src="#" />
+                    <li class="text-center">
+						<input class="submit-btn submit-prod" type="submit" value="${properties.submit ? properties.submit : 'Aggiunge il prodotto' @ context='html'}" onclick="productSubmit()"/></li>
 				</ul>
 			</fieldset>
 		</form>

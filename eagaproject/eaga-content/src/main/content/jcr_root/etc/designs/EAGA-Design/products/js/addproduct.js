@@ -24,6 +24,22 @@ function isNumberKey(evt)
 		return false;
 	return true;
 };
+function imageIsLoaded(e) {
+    $('#myimage').attr('src', e.target.result);
+};
+function loadImage(e){
+	if (e.files && e.files[0]) {
+		var reader = new FileReader();
+        reader.onload = imageIsLoaded;
+        reader.readAsDataURL(e.files[0]);
+        $('#myimage').css('display','block');
+     }
+};
+var addImage = function(){
+	$('.submit-btn[type="submit"]').css('margin-top','20px');
+    $('#productimage').css('display','block');
+    $('.submit-img').css('display','none')
+};
 var productSubmit = function(){
 	notready=false;
 
@@ -48,10 +64,9 @@ function addProductInDB() {
 	        'j_categoriaProdotto': $("input[name=productcategory]").val(),
 	        'j_descrizioneProdotto': $("input[name=productdescription]").val(),
 	        'j_prezzoProdotto': $("input[name=productprice]").val(),
-	        'j_quantitaProdotto': $("input[name=productquantity]").val()
+	        'j_quantitaProdotto': $("input[name=productquantity]").val(),
     	};
     var path = CQ.shared.HTTP.getPath();
-    console.log("ENTRATO");
      $.ajax({
         type: 'POST',
         url: path + '.InsertProduct.json',
@@ -60,16 +75,16 @@ function addProductInDB() {
         	if(msg.J_RESULT === ""){
         		suc = "SERVER DOWN!"
         	}else if(msg.J_RESULT === "Success"){
-        		suc = "Product "+ $("input[name=productname]").val() +" added!"
+        		suc = "Prodotto "+ $("input[name=productname]").val() +" aggiunto!"
         		$('input').val('');
         	}else{
-        		suc = "Product "+ $("input[name=productname]").val() +" already existing!"
+        		suc = "Product "+ $("input[name=productname]").val() +" gia' esistente!"
         		$('#productname').val('');
         	}
 			done = true;
 		},
         error: function (data, status) {
-           suc = "Something went wrong";
+           suc = "Qualcosa e' andata in errore!";
            done = true;
         }
     });
@@ -92,6 +107,10 @@ $(document).ready(function () {
 			$(this).removeClass('product-form-empty');
      	}
 	});
+
+	$(":file").change(function () {
+		loadImage(this);
+    });
     $('.close-modal').on('click',function() {
     	$('#eagamodal').css('display','none');
 	});
