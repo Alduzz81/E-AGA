@@ -1,11 +1,8 @@
 package com.aem.eaga.servlet.registration.commands;
 
 import com.aem.eaga.Context;
-<<<<<<< HEAD:eagaproject/eaga-presentation/src/main/java/com/aem/eaga/servlet/registration/commands/LoadRegistrationCommand.java
-=======
 import com.aem.eaga.api.portal.customer.Customer;
 import com.aem.eaga.common.DbUtility;
->>>>>>> master:eagaproject/eaga-presentation/src/main/java/com/aem/eaga/servlet/registration/commands/InsertRegistrationCommand.java
 import com.aem.eaga.servlet.commands.AbstractContextCommand;
 import com.aem.eaga.servlet.commands.HttpMethodEnum;
 import java.io.IOException;
