@@ -9,7 +9,7 @@ function updatePDDB() {
 
     $.ajax({
         type: 'GET',
-        url: path + '.loadPersonalDetails.json',
+        url: path + '.updatePersonalDetails.json',
         data: params,
         success: function (msg) {
         	console.log('Update success! - \n\tid: ' + msg.j_id 
