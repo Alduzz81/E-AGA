@@ -24,6 +24,22 @@ function isNumberKey(evt)
 		return false;
 	return true;
 };
+function imageIsLoaded(e) {
+    $('#myimage').attr('src', e.target.result);
+};
+function loadImage(e){
+	if (e.files && e.files[0]) {
+		var reader = new FileReader();
+        reader.onload = imageIsLoaded;
+        reader.readAsDataURL(e.files[0]);
+        $('#myimage').css('display','block');
+     }
+};
+var addImage = function(){
+	$('.submit-btn[type="submit"]').css('margin-top','20px');
+    $('#productimage').css('display','block');
+    $('.submit-img').css('display','none')
+};
 var productSubmit = function(){
 	notready=false;
 
@@ -48,7 +64,7 @@ function addProductInDB() {
 	        'j_categoriaProdotto': $("input[name=productcategory]").val(),
 	        'j_descrizioneProdotto': $("input[name=productdescription]").val(),
 	        'j_prezzoProdotto': $("input[name=productprice]").val(),
-	        'j_quantitaProdotto': $("input[name=productquantity]").val()
+	        'j_quantitaProdotto': $("input[name=productquantity]").val(),
     	};
     var path = CQ.shared.HTTP.getPath();
      $.ajax({
@@ -91,6 +107,10 @@ $(document).ready(function () {
 			$(this).removeClass('product-form-empty');
      	}
 	});
+
+	$(":file").change(function () {
+		loadImage(this);
+    });
     $('.close-modal').on('click',function() {
     	$('#eagamodal').css('display','none');
 	});

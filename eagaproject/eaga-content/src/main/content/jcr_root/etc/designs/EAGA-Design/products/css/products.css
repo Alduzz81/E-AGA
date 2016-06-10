@@ -51,7 +51,7 @@
 	margin-right: 5px;
 	width: 25%
 }
-.submit-btn[type="submit"]{
+.submit-prod[type="submit"]{
 	float: none;
     width: 35%;
     margin-left: 28px;
@@ -95,6 +95,19 @@
 }
 #add-product-result{
 	padding-top: 45px;
+}
+#productimage{
+    float: left;
+    padding-left: 20px;
+    margin-bottom: -35px;
+}
+#myimage{
+	padding-top: 40px;
+    padding-left: 40px;
+    margin-right: 30px;
+}
+#productimage, #myimage{
+	display: none;
 }
 /******************************************/
 /*     END MODAL						  */
