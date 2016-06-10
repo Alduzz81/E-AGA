@@ -1,0 +1,43 @@
+<div data-sly-unwrap></div>
+<div id="my-personaldetail-container" class="container-fluid">
+	<div id="my-personaldetail-base" class="row">
+		<div class="accordion-container margin-bottom-50">
+			<div class="accordion active">
+				<h3>
+					<span class="js-accordion col-sm-12 col-xs-12"> 
+						<span class="title"> 
+							<span class="text-regular padding-top-20"> ${properties.titletab1 ? properties.titletab1 : "My Personal Details" @ context='html'} </span>
+							<a class="text-regular padding-top-20">Modifica</a>
+						</span>
+					</span> 
+					
+				</h3>
+				<div class="accordion-body" style="display: block;">
+					<div class="persona-data-container">
+						<div class="row padding-bottom-20">
+							<div class="col-sm-4">
+								<div class="box-data">
+									<span class="text-bold"> ${properties.name ? properties.name : "Customer Name:" @ context='html'} </span> 
+									<span>Da popolare</span>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="box-data">
+									<span class="text-bold"> ${properties.email ? properties.email : "E-mail Address:" @ context='html'} </span> 
+									<span>Da popolare</span>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="box-data">
+									<span class="text-bold"> ${properties.password ? properties.password : "Password:" @ context='html'} </span> 
+									<span class="dots"> <!--{{logindetails.Password}}  --> ......</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<input type="submit" value="update" onclick="updatePDDB()"/>
+			</div>
+		</div>
+	</div>
+</div>
