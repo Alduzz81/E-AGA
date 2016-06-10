@@ -34,8 +34,13 @@ xmlns:jcr="http://www.jcp.org/jcr/1.0"
         <submit
             name="./submit"
             jcr:primaryType="cq:Widget"
-            fieldLabel="Label per il buttone':"
+            fieldLabel="Label per il buttone:"
             xtype="textfield" />
+        <image
+            name="./image"
+            jcr:primaryType="cq:Widget"
+            fieldLabel="Label per l'immagine :"
+            xtype="textfield" />    
         <priceunit
             name="./priceunit"
             jcr:primaryType="cq:Widget"
