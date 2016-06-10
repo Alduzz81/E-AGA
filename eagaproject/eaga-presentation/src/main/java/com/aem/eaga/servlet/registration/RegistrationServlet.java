@@ -2,7 +2,7 @@ package com.aem.eaga.servlet.registration;
 
 import com.aem.eaga.servlet.StrategyContextServlet;
 import com.aem.eaga.servlet.commands.HttpMethodEnum;
-import com.aem.eaga.servlet.registration.commands.LoadRegistrationCommand;
+import com.aem.eaga.servlet.registration.commands.InsertRegistrationCommand;
 import org.apache.felix.scr.annotations.Service;
 import org.apache.felix.scr.annotations.sling.SlingServlet;
 
@@ -19,7 +19,7 @@ public class RegistrationServlet extends StrategyContextServlet {
 
     @Override
     protected void initStrategies() {
-        addStrategy("loadRegistration", new LoadRegistrationCommand(HttpMethodEnum.GET));
+        addStrategy("loadRegistration", new InsertRegistrationCommand(HttpMethodEnum.GET));
     }
 
 }
