@@ -2,12 +2,28 @@
  * START ADD PRODUCT
  ******************************************************************************/
 var notready;
+var interval;
+var done = false;
+var suc;
 function formEmpty(sel,mes){
 	$(sel).addClass('product-form-empty');
 	$(sel).val(mes);
 	notready = true;
 };
-
+function doModal(){
+	$('#add-product-result').html(suc);
+    console.log(suc + " .. " + done);
+    if(done === true){
+		clearInterval(interval);
+    }
+};  
+function isNumberKey(evt)
+{
+	var charCode = (evt.which) ? evt.which : evt.keyCode;
+	if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 44)
+		return false;
+	return true;
+};
 var productSubmit = function(){
 	notready=false;
 
@@ -26,6 +42,7 @@ var productSubmit = function(){
 	}
 };
 function addProductInDB() {
+    suc = "Sta caricando...."
     var params = {
 	        'j_nomeProdotto': $("input[name=productname]").val(),
 	        'j_categoriaProdotto': $("input[name=productcategory]").val(),
@@ -34,35 +51,52 @@ function addProductInDB() {
 	        'j_quantitaProdotto': $("input[name=productquantity]").val()
     	};
     var path = CQ.shared.HTTP.getPath();
-
-    $.ajax({
+    console.log("ENTRATO");
+     $.ajax({
         type: 'POST',
         url: path + '.InsertProduct.json',
         data: params,
         success: function (msg) {
-        	var suc;
-        	if(msg.J_RESULT === "Success"){
+        	if(msg.J_RESULT === ""){
+        		suc = "SERVER DOWN!"
+        	}else if(msg.J_RESULT === "Success"){
         		suc = "Product "+ $("input[name=productname]").val() +" added!"
+        		$('input').val('');
         	}else{
         		suc = "Product "+ $("input[name=productname]").val() +" already existing!"
+        		$('#productname').val('');
         	}
-        	window.alert(suc);
-        	$('input').val('');
-        },
+			done = true;
+		},
         error: function (data, status) {
-            window.alert("Something went wrong");
+           suc = "Something went wrong";
+           done = true;
         }
     });
+	$('#add-product-result').html(suc);
+	$('#eagamodal').css('display','block');
+	interval = setInterval(doModal, 2000);
 };
-	
+
 /*******************************************************************************
  * END ADD PRODUCT
  ******************************************************************************/
 
 
 $(document).ready(function () {
-    $('input').on('dblclick',function() {
-		$(this).val('');
-        $(this).removeClass('product-form-empty');
+    $('input').on('click',function() {
+		var compare = $(this).val().indexOf("Inserisci") > -1;
+    	if(compare)
+    	{
+        	$(this).val('');
+			$(this).removeClass('product-form-empty');
+     	}
 	});
+    $('.close-modal').on('click',function() {
+    	$('#eagamodal').css('display','none');
+	});
+	window.onclick = function(event) {
+    if (event.target == $('#eagamodal')) {
+        $('#eagamodal').css('display','none');
+    }};
 });

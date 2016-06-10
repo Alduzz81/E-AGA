@@ -22,18 +22,24 @@
 						<input type="textarea" id="productdescription" name="productdescription"/></li>
 					<li><label for="productprice">
 							${properties.price ? properties.price : 'Prezzo' @ context='html'}: </label>
-						<input type="text" id="productprice" name="productprice" required/>
+						<input type="text" id="productprice" name="productprice" onkeypress="return isNumberKey(event)" required/>
 						<label id="productpricelabel">
 							${properties.priceunit ? properties.priceunit : '&euro;' @ context='html'}</label></li>
 					<li><label for="productquantity">
 							${properties.quantity ? properties.quantity : 'Quantita' @ context='html'}: </label>
-						<input type="text" id="productquantity" name="productquantity" required/>
+						<input type="text" id="productquantity" name="productquantity" onkeypress="return isNumberKey(event)" required/>
 						<label id="productquantitylabel">
 							${properties.quantityunit ? properties.quantityunit : 'pezzi' @ context='html'}</label></li>	
 					<li class="text-center">
-						<input class="submit-btn" type="submit" value="${properties.submit ? properties.submit : 'Add Product' @ context='html'}" onclick="productSubmit()" style="{float:none;}"/></li>
+						<input class="submit-btn" type="submit" value="${properties.submit ? properties.submit : 'Add Product' @ context='html'}" onclick="productSubmit()"/></li>
 				</ul>
 			</fieldset>
 		</form>
 	</div>
+</div>
+<div id="eagamodal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times</span>
+    <p id="add-product-result"></p>
+  </div>
 </div>
