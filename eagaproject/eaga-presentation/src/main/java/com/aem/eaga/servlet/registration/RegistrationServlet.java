@@ -9,7 +9,7 @@ import org.apache.felix.scr.annotations.sling.SlingServlet;
 @Service
 @SlingServlet(
         resourceTypes = {"cq:Page"},
-        selectors = {"loadRegistration"},
+        selectors = {"insertRegistration"},
         extensions = {"json"},
         methods = {"GET"}
 )
@@ -19,7 +19,7 @@ public class RegistrationServlet extends StrategyContextServlet {
 
     @Override
     protected void initStrategies() {
-        addStrategy("loadRegistration", new InsertRegistrationCommand(HttpMethodEnum.GET));
+        addStrategy("insertRegistration", new InsertRegistrationCommand(HttpMethodEnum.GET));
     }
 
 }
