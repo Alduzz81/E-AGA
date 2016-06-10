@@ -64,7 +64,7 @@ function writeUserInDB() {
 
     $.ajax({
         type: 'GET',
-        url: path + '.loadRegistration.json',
+        url: path + '.insertRegistration.json',
         data: params,
         success: function (msg) {
         	console.log('Registration success!!\n\n\tusername:\t\t' + msg.j_username 

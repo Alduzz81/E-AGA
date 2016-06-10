@@ -14,7 +14,7 @@ import org.apache.felix.scr.annotations.sling.SlingServlet;
         resourceTypes = {"cq:Page"},
         selectors = {"InsertProduct","LoadProducts","LoadSingleProduct"},
         extensions = {"json"},
-        methods = {"GET"}
+        methods = {"GET", "POST"}
 )
 public class ProductsServlet extends StrategyContextServlet {
 
@@ -22,7 +22,7 @@ public class ProductsServlet extends StrategyContextServlet {
 
     @Override
     protected void initStrategies() {
-        addStrategy("InsertProduct", new InsertProductCommand(HttpMethodEnum.GET));
+        addStrategy("InsertProduct", new InsertProductCommand(HttpMethodEnum.POST));
         addStrategy("LoadProducts", new LoadProductsCommand(HttpMethodEnum.GET));
         addStrategy("LoadSingleProduct", new LoadSingleProductCommand(HttpMethodEnum.GET));
     }
