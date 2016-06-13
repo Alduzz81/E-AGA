@@ -905,15 +905,6 @@ var initCustomDatapicker = function() {
  * END CLEAR FIELD BUTTON
  *******************************************************************************/
 
-/*******************************************************************************
- * START GO TO SINGLE PRODUCT PAGE
- *******************************************************************************/
-
-
-
-/*******************************************************************************
- * END GO TO SINGLE PRODUCT PAGE
- *******************************************************************************/
 
 /*******************************************************************************
  * START COOKIE FUNCTIONS
@@ -956,11 +947,7 @@ function checkCookie(ckName) {
 }
 
 function deleteCookie(ckName){
-	//var str = ckName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-	//console.log("str IN delete: " + str);
 	document.cookie = ckName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-	//var newCk = getCookie(ckName);
-	//console.log("single id product cookie IN delete: " + newCk);
 }
 
 /*******************************************************************************

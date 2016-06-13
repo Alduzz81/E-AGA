@@ -28,8 +28,6 @@ function loadSingleProductByID(idProdotto) {
         	$(".product-price").text(msg.PrezzoProdotto);
         	
         	deleteCookie(ckToFind);
-    		var newCk = getCookie(ckToFind);
-    		console.log("single id product cookie dopo delete 1: " + newCk+1);
         	
         },
         error: function (data, status) {
