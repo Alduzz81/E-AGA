@@ -1,28 +1,28 @@
 <div data-sly-use.menus="${'com.aem.eaga.sightly.topnav.TopNavUse' @ currentPage=currentPage}"
     data-sly-unwrap>
 	<nav>
-    <div class="header-navigation">
-        <div class="header-secondary-wrap hidden-xs hidden-sm">
-            <ul class="header-secondary js-header-secondary" data-sly-list.menu="${menus.topNavItems}"> 
-               <li>
-                    <a href="${menu.pagePath}" data-menu="#menu-${menu.pageClassname}">${menu.pageTitle}</a>
-				</li>
-    		</ul>
-    	</div>
-    	<ul class="topnav-list">
-            <li>
-                <a href="/content/eaga/login.html" >
-                	<img class="img-header topnav-item login" src="${properties.loginIcon ? properties.loginIcon : '/etc/designs/EAGA-Design/images/login.png' @context='html'}">
-                <!--  <span class="label-header ">Login</span> -->
-                </a>
-            </li>
-            <li>
-                <a href="http://www.ebay.it/">
-                	<img class="img-header topnav-item cart" src="${properties.cartIcon ? properties.cartIcon : '/etc/designs/EAGA-Design/images/cart.png' @context='html'}">
-                <!--  <span class="label-header ">Cart</span> -->
-                </a>
-            </li>
-        </ul>
-    </div>
+	    <div class="header-navigation">
+	        <div class="header-secondary-wrap hidden-xs hidden-sm">
+	            <ul class="header-secondary js-header-secondary" data-sly-list.menu="${menus.topNavItems}"> 
+	               <li>
+	                    <a href="${menu.pagePath}" data-menu="#menu-${menu.pageClassname}">${menu.pageTitle}</a>
+					</li>
+	    		</ul>
+	    	</div>
+	    	<ul class="topnav-list">
+	            <li>
+	                <a href="/content/eaga/login.html" >
+	                	<img class="img-header topnav-item login" src="${properties.loginIcon ? properties.loginIcon : '/etc/designs/EAGA-Design/images/login.png' @context='html'}">
+	                <!--  <span class="label-header ">Login</span> -->
+	                </a>
+	            </li>
+	            <li>
+	                <a href="http://www.ebay.it/">
+	                	<img class="img-header topnav-item cart" src="${properties.cartIcon ? properties.cartIcon : '/etc/designs/EAGA-Design/images/cart.png' @context='html'}">
+	                <!--  <span class="label-header ">Cart</span> -->
+	                </a>
+	            </li>
+	        </ul>
+	    </div>
     </nav>
 </div>

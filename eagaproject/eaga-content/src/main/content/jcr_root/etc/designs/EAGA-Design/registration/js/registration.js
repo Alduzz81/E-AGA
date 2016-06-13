@@ -67,11 +67,11 @@ function writeUserInDB() {
         url: path + '.insertRegistration.json',
         data: params,
         success: function (msg) {
-        	console.log('Registration success! - \n\tusername: ' + msg.j_username 
-        			+ ',\n\temail: '+ msg.j_email
-        			+ ',\n\tpassword: '+ msg.j_password
-        			+ ',\n\tresult: '+ msg.j_result
-        			+ ',\n\tstatus: '+ msg.j_status);
+        	console.log('Registration success!!\n\n\tusername:\t\t' + msg.j_username 
+        			+ ',\n\temail:\t\t\t'+ msg.j_email
+        			+ ',\n\tpassword:\t\t'+ msg.j_password
+        			+ ',\n\tresult:\t\t\t'+ msg.j_result
+        			+ ',\n\tstatus:\t\t\t'+ msg.j_status);
         	
         	if(msg.j_status){
         		window.location.href = '/content/eaga/login.html';

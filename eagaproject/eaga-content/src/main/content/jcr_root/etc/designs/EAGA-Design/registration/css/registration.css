@@ -25,7 +25,7 @@
 	text-align: center;
 }
 
-.reg-form-control, .reg-title, .submit-btn{
+.reg-form-control, .reg-title, .reg-submit-btn{
 	margin-bottom: 20px;
 	width: 85%;
 	margin-left: auto;

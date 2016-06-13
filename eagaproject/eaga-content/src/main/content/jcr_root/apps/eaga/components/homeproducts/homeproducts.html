@@ -4,7 +4,7 @@
 
 		<div class="slider-wrap-prod" data-time-autoplay="${homeprod.timing}">
 		    <div class="image-slider-wrap-prod" data-sly-list.item="${homeprod.homeProductItems}">
-		        <div class="images-slider-single-prod">
+		        <div class="images-slider-single-prod" onclick="goToSingleProductPageByID(4)">
 		            <img class="img-breakpoint" alt="${item.imageAlt}" src="${item.image}">
 		            <div class="cta-slider-single-prod">
 		                <a href="#" data-sly-attribute.href="${item.imageHref}">
