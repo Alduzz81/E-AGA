@@ -8390,7 +8390,7 @@ COMPONENTS
 START HEADER
 *********************/
 header {
-    position: absolute;
+    position: relative;
     width: 100%;
     z-index: 9000;
 }
@@ -11518,7 +11518,7 @@ START SLIDER HOME
 *********************/
 .slider-wrap {
     position: relative;
-    bottom: -79px;
+    heigth: 300px;
 }
 
 .slider-wrap .image-slider-wrap {

@@ -27,31 +27,31 @@ public class LoadSingleProductCommand  extends AbstractContextCommand {
 		 DbUtility dbu = new DbUtility();
 		    try {
    		 Connection conn = dbu.getConnection();
-   		Statement stmt;
+   		 Statement stmt;
  		 ResultSet rs;
  		 stmt = conn.createStatement();
  		 String sqlProdotti = "SELECT * "
  		 		+ "FROM prodotti where IdProdotto=" +idProdotto;
  		 rs = stmt.executeQuery(sqlProdotti);
- 		JSONObject prodotti = new JSONObject();
+ 		 
+ 		 JSONObject prodotto = new JSONObject();
  		 while (rs.next())
  		 {
  			  try { 
- 			JSONObject prodotto = new JSONObject();
  			 
- 			prodotto.put("IdProdotto", rs.getInt("IdProdotto"));
- 			prodotto.put("NomeProdotto", rs.getString("Nome"));
- 			prodotto.put("DescrizioneProdotto", rs.getString("Descrizione"));
- 			prodotto.put("PrezzoProdotto", rs.getString("Prezzo"));
- 			prodotto.put("QuantitaProdotto", rs.getInt("Quantita"));
- 			prodotto.put("CategoriaProdotto", rs.getString("Categoria"));
- 			prodotti.put("Prodotto-"+rs.getInt("IdProdotto"), prodotto);
+	 			prodotto.put("IdProdotto", rs.getInt("IdProdotto"));
+	 			prodotto.put("NomeProdotto", rs.getString("Nome"));
+	 			prodotto.put("DescrizioneProdotto", rs.getString("Descrizione"));
+	 			prodotto.put("PrezzoProdotto", rs.getFloat("Prezzo")); //getString
+	 			prodotto.put("QuantitaProdotto", rs.getInt("Quantita"));
+	 			prodotto.put("CategoriaProdotto", rs.getString("Categoria"));
+
  			 } catch (Exception e) {
  				logger.error("Alduzz Errore =" +e.getMessage());
  	            throw new IOException(e);
  	        }
  		 }
- 		   write(context, prodotti);
+ 		   write(context, prodotto);
 	   	} catch(ClassNotFoundException e) {
 	   		logger.error(e.getMessage());
 	   	} catch(SQLException e) {
