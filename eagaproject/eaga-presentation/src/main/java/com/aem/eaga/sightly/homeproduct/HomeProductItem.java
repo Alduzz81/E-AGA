@@ -1,22 +1,33 @@
 package com.aem.eaga.sightly.homeproduct;
 
 public class HomeProductItem {
+	private int productId;
 	private String image;
 	private String imageAlt;
 	private String imageHref;
 	private String name;
 	
-	public HomeProductItem(String image, String imageHref, String imageAlt, String name) {
-	    this.image = image;
+	public HomeProductItem(int productId, String image, String imageHref, String imageAlt, String name) {
+	    this.productId = productId;
+		this.image = image;
 	    this.imageHref = imageHref;
 	    this.imageAlt = imageAlt;
 	    this.name = name;
+	}
+	
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productID) {
+		this.productId = productID;
 	}
 
 	public String getImage() {
 		return image;
 	}
 	
+
 	public void setImage(String image) {
         this.image = image;
     }

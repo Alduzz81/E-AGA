@@ -20,6 +20,12 @@
                 fieldLabel="Timing (ms)"
                 name="./timing"
                 xtype="numberfield"/>
+            <title
+                jcr:primaryType="cq:Widget"
+                allowBlank="{Boolean}true"
+                fieldLabel="Title"
+                name="./title"
+                xtype="textfield"/>
             <multifielditems
                 jcr:primaryType="cq:Widget"
                 fieldLabel="Items"
@@ -36,6 +42,13 @@
                     width="1000"
                     xtype="multi-field-panel">
                     <items jcr:primaryType="cq:WidgetCollection">
+                    	<productId
+			                jcr:primaryType="cq:Widget"
+			                allowBlank="{Boolean}false"
+			                fieldDescription="Product ID used to retrieve information about the product itself"
+			                fieldLabel="Product ID"
+			                dName="productId"
+			                xtype="numberfield"/>
                         <productPath
                             jcr:primaryType="cq:Widget"
                             allowBlank="{Boolean}false"

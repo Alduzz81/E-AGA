@@ -14,9 +14,12 @@ public class HomeProductUse extends CommonUse {
     private static final String PROPERTY_HOMEPRODUCT_ITEMS = "homeproductitems";
     private static final String PROPERTY_TIMING = "timing";
     private static final String HOMEPRODUCT_DEFAULT_TIMING = "3000";
+    private static final String PROPERTY_TITLE = "title";
+    private static final String HOMEPRODUCT_DEFAULT_TITLE = "Smart occasions";
     private final Logger log = LoggerFactory.getLogger(getClass());
     private final List<HomeProductItem> items = new LinkedList<HomeProductItem>();
     private String timing;
+    private String title;
     private Node currentNode;
     
     @Override
@@ -34,6 +37,7 @@ public class HomeProductUse extends CommonUse {
         }
         
         timing = currentNode.getProperty(PROPERTY_TIMING).getString();
+        title = currentNode.getProperty(PROPERTY_TITLE).getString();
 
         if (currentNode.getProperty(PROPERTY_HOMEPRODUCT_ITEMS).isMultiple()) {
             values = currentNode.getProperty(PROPERTY_HOMEPRODUCT_ITEMS).getValues();
@@ -43,14 +47,15 @@ public class HomeProductUse extends CommonUse {
         
         for (Value value : values) {
             json = new JSONObject(value.getString());
-            homeproductItem = new HomeProductItem(json.getString("image"), 
+            homeproductItem = new HomeProductItem(json.getInt("productId"), json.getString("image"), 
                                             getValidLink(json.getString("imageHref")), 
                                             json.getString("imageAlt"), 
                                             json.getString("name"));
             items.add(homeproductItem);
+            log.error("====================== CarouselUse items size: "+ items.size() +" ======================");
         }
         
-        log.info("====================== CarouselUse Activate Start ======================");
+        log.info("====================== CarouselUse Activate Start items size: "+ items.size() +" ======================");
         log.info("                       Current Name: " + currentNode.getName());
         log.info("====================== CarouselUse Activate End ======================");
     }
@@ -69,4 +74,12 @@ public class HomeProductUse extends CommonUse {
     	}
         return timing;
     }
+
+	public String getTitle() {
+		if (title == null || title.isEmpty()) {
+            return HOMEPRODUCT_DEFAULT_TITLE;
+    	}
+		return title;
+	}
+
 }

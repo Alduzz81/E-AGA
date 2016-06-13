@@ -1,6 +1,12 @@
 /*********************
 START SLIDER HOME PROD
 *********************/
+.categories-prod{
+	font-family: VodafoneLight;
+    font-size: 30px;
+    margin-left: 30px;
+}
+
 .slider-wrap-prod {
     position: relative;
 }
