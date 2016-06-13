@@ -45,6 +45,19 @@ function initSliderHomeProd () {
     });
 }
 
+eagaApp.controller("HomeProductController", ['$scope', '$window', function($scope,$window) {
+	
+	$scope.goToSingleProductPageById = function(idProduct){
+	
+		//probabilmente bisogna settare anche l'utente per evitare conflitti
+		console.log("id product: "+ idProduct);
+		setCookie("singleIdProduct", idProduct, 1);
+		window.location.href = '/content/eaga/product.html';
+
+	}
+}]);
+
+
 /*******************************************************************************
  * END SLIDER HOME PROD
  ******************************************************************************/
@@ -62,4 +75,5 @@ $(document).ready(function () {
 	$('.slider-wrap-prod').mouseleave(function() {
 		  $( ".arrows-prod" ).addClass( "hidden" );
 	});
+	
 });

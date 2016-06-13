@@ -905,27 +905,13 @@ var initCustomDatapicker = function() {
  * END CLEAR FIELD BUTTON
  *******************************************************************************/
 
-/*******************************************************************************
- * START GO TO SINGLE PRODUCT PAGE
- *******************************************************************************/
-
-function goToSingleProductPageByID(idProdotto) {
-	
-	//probabilmente bisogna settare anche l'utente per evitare conflitti
-	setCookie("singleIdProduct", idProdotto, 1);
-	window.location.href = '/content/eaga/product.html';
-
-};
-
-/*******************************************************************************
- * END GO TO SINGLE PRODUCT PAGE
- *******************************************************************************/
 
 /*******************************************************************************
  * START COOKIE FUNCTIONS
  *******************************************************************************/
 
 function setCookie(ckName, ckValue, expDays) {
+	console.log("cookie value :"+ ckValue +", type of: " + typeof ckValue);
     var d = new Date();
     d.setTime(d.getTime() + (expDays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
@@ -937,7 +923,6 @@ function getCookie(ckName) {
     var ckArr = document.cookie.split(';');
     for(var i = 0; i <ckArr.length; i++) {
         var c = ckArr[i];
-       // console.log("cookie index "+i +": " + c);
         while (c.charAt(0)==' ') {
             c = c.substring(1);
         }
@@ -962,11 +947,7 @@ function checkCookie(ckName) {
 }
 
 function deleteCookie(ckName){
-	var str = ckName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-	console.log("str IN delete: " + str);
-	document.cookie = str;
-	var newCk = getCookie(ckName);
-	console.log("single id product cookie IN delete: " + newCk);
+	document.cookie = ckName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 }
 
 /*******************************************************************************
