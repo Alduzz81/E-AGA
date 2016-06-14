@@ -1,6 +1,7 @@
 /*******************************************************************************
  * START PRODUCT PAGE
  ******************************************************************************/
+
 function loadSingleProductByID(idProdotto) {
 	
 	var ckToFind = "singleIdProduct";
@@ -27,6 +28,16 @@ function loadSingleProductByID(idProdotto) {
         	$(".product-desc").text(msg.NomeProdotto);
         	$(".product-price").text(msg.PrezzoProdotto);
         	
+        	var quantity = 10;
+        	if(msg.QuantitaProdotto != undefined){
+        		//qui servirebbe il numero massimo di prodotti acquistabile
+        		quantity = msg.QuantitaProdotto;
+        	}
+       		
+    		for(var i = 1; i <= quantity; i++){
+    			$('<option>').val(i).text(i).appendTo('#product-select');
+			}
+        	
         	deleteCookie(ckToFind);
         	
         },
@@ -36,6 +47,7 @@ function loadSingleProductByID(idProdotto) {
     });
     
 };
+
 
 /*******************************************************************************
  * END PRODUCT PAGE
@@ -53,14 +65,12 @@ $(document).ready(function () {
 		if(ck != "" && ck != undefined){
 			loadSingleProductByID(ck);
 		}
-		
-		
+
 		var pathForFrontImg = $(".img-column-item").first().attr("src");
 		$(".front-img").attr("src", pathForFrontImg);
 		var pathForFrontLargeImg = pathForFrontImg.replace("icons", "large");
 		$(".front-img").attr("data-zoom-image", pathForFrontLargeImg);
-		$(".img-column-item").first().addClass("img-shadow");
-		
+		$(".img-column-item").first().addClass("img-shadow");	
 	}	
 	
 	$(".img-column-item").click(function(){
