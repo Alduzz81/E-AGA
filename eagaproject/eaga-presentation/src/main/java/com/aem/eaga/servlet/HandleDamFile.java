@@ -82,6 +82,8 @@ public class HandleDamFile extends SlingAllMethodsServlet {
  private static final long serialVersionUID = 2598426539166789515L;
         
  private Session session;
+ private List<String> paths = new ArrayList<String>();
+ private String id;
        
  //Inject a Sling ResourceResolverFactory
  @Reference
@@ -100,19 +102,17 @@ public class HandleDamFile extends SlingAllMethodsServlet {
            if (isMultipart) {
              final java.util.Map<String, org.apache.sling.api.request.RequestParameter[]> params = request.getRequestParameterMap();
              for (final java.util.Map.Entry<String, org.apache.sling.api.request.RequestParameter[]> pairs : params.entrySet()) {
-               final String k = pairs.getKey();
+               id = pairs.getKey();
                final org.apache.sling.api.request.RequestParameter[] pArr = pairs.getValue();
-               final org.apache.sling.api.request.RequestParameter param = pArr[0];
-               final InputStream stream = param.getInputStream();
                 
-               		//save the uploaded file in the DB
-               String path = writeToDam(stream,param.getFileName());
-               out.println("The Sling Servlet placed the uploaded file here: " + path);
-               InsertProductImageCommand.addImage(path);
-                   //Save the uploaded file into the Adobe CQ DAM
-                
-               
+               for(int i=0;i<pArr.length;i++){
+                   final org.apache.sling.api.request.RequestParameter param = pArr[i];
+                   final InputStream stream = param.getInputStream();
+                   paths.add(writeToDam(stream,param.getFileName()));
+                  
+               }
              }
+             InsertProductImageCommand.addImage(id, paths);
            }
          }
            
@@ -133,7 +133,7 @@ try
      
     //Use AssetManager to place the file into the AEM DAM
     com.day.cq.dam.api.AssetManager assetMgr = resourceResolver.adaptTo(com.day.cq.dam.api.AssetManager.class);
-    String newFile = "/content/dam/eaga/products/"+fileName ; 
+    String newFile = "/content/dam/Eaga/products/"+fileName ; 
     assetMgr.createAsset(newFile, is,"image/jpeg", true);
          
     // Return the path to the file was stored

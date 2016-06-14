@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +28,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 public class InsertProductImageCommand{
 	
-	public static String addImage(String productImagePath) throws IOException{
+	public static String addImage(String idProduct, List<String> productImagePath) throws IOException{
        try {
         	DbUtility dbu = new DbUtility();
 	   		  

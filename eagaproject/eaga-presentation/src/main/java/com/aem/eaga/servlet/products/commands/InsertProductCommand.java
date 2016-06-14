@@ -79,12 +79,15 @@ public class InsertProductCommand extends AbstractContextCommand {
 			   		 		+ "FROM eaga.prodotti "
 			   		 		+ "WHERE nome = '"+nomeProdotto+"'";
 		   			ResultSet rsconferma = stmt.executeQuery(sqlCheckProdotto);
-		   			rsconferma.next();
-		   			  idprodotto=rs.getInt("IdProdotto");
+		   			 
+		   			if(rsconferma.next()){
+		   			  idprodotto=rsconferma.getInt("IdProdotto");
+		   			rsconferma.close();
+		   			}
 		   			 logger.error(result);
 		   			 stmt.close(); 
 		       		 conn.close();
-		       		 rsconferma.close();
+		       		 
 		       		 rs.close();
 		       	}
 	   		 } else {
