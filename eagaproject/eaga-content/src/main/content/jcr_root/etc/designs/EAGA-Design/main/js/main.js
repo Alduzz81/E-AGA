@@ -388,7 +388,6 @@ function initNotification () {
  ******************************************************************************/
 
 function initSliderHome () {
-
     var numSlideShow = 3;
     var numSlideShowTablet = 2;
     var numSlideShowMobile = 1;
@@ -906,6 +905,56 @@ var initCustomDatapicker = function() {
  * END CLEAR FIELD BUTTON
  *******************************************************************************/
 
+
+/*******************************************************************************
+ * START COOKIE FUNCTIONS
+ *******************************************************************************/
+
+function setCookie(ckName, ckValue, expDays) {
+	console.log("cookie value :"+ ckValue +", type of: " + typeof ckValue);
+    var d = new Date();
+    d.setTime(d.getTime() + (expDays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = ckName + "=" + ckValue + "; " + expires;
+};
+
+function getCookie(ckName) {
+    var name = ckName + "=";
+    var ckArr = document.cookie.split(';');
+    for(var i = 0; i <ckArr.length; i++) {
+        var c = ckArr[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+}
+
+//Da rivedere questa funzione!!!!
+function checkCookie(ckName) {
+    var user = getCookie(ckName);
+    if (user != "") {
+        alert("Welcome again " + user);  
+    } else {
+        user = prompt("Please enter your name:", "");
+        if (user != "" && user != null) {
+            setCookie(ckName, user, 365);
+        }
+    }
+}
+
+function deleteCookie(ckName){
+	document.cookie = ckName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+}
+
+/*******************************************************************************
+ * END COOKIE FUNCTIONS
+ *******************************************************************************/
+
+
 var initCustomSelect = function() {
     /* Init Custom Select */
     $.each($('select.style-select'), function () {
@@ -919,7 +968,6 @@ var initCustomSelect = function() {
 
 
 $(document).ready(function () {
-
     initCustomSelect();
     initCustomDatapicker();
     initHeader();

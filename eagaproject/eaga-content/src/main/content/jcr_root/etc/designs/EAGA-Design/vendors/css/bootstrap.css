@@ -10,6 +10,10 @@
  */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
+/******************************
+* START Homepage and general classes
+*******************************/
+
 .new-header {
     background: #008080;
     width: 100%;
@@ -33,14 +37,14 @@
 }
 
 .page-content{
-	padding: 20px;
 	min-height: 300px;
     background: white;
 }
 
-.logo{
-	max-width: 90px;
-	padding-left: 20px;
+.img-logo{
+	max-width: 200px;
+    padding-left: 40px;
+    margin-top: -10px;
 }
 
 .img-header{
@@ -56,8 +60,13 @@
 	font-family: "verdana";
 }
 
+/******************************
+* END Homepage and general classes
+*******************************/
+
+
 /****************************
-Here begin original classes
+* Here begin original classes
 ****************************/
 
 html {

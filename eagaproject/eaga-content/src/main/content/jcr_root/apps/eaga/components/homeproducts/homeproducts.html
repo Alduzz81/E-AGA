@@ -1,10 +1,10 @@
 <div data-sly-use.homeprod="${'com.aem.eaga.sightly.homeproduct.HomeProductUse' @ currentNode=currentNode}"
     data-sly-unwrap>
 	<div data-sly-test="${!homeprod.empty}" data-sly-unwrap>
-
-		<div class="slider-wrap-prod" data-time-autoplay="${homeprod.timing}">
+		<div class="categories-prod" data-sly-text="${homeprod.title @ context='html'}"></div>
+		<div class="slider-wrap-prod" data-time-autoplay="${homeprod.timing}" ng-controller="HomeProductController">
 		    <div class="image-slider-wrap-prod" data-sly-list.item="${homeprod.homeProductItems}">
-		        <div class="images-slider-single-prod">
+		        <div id="${item.productId}" class="images-slider-single-prod" ng-click="goToSingleProductPageById(${item.productId})">                   
 		            <img class="img-breakpoint" alt="${item.imageAlt}" src="${item.image}">
 		            <div class="cta-slider-single-prod">
 		                <a href="#" data-sly-attribute.href="${item.imageHref}">

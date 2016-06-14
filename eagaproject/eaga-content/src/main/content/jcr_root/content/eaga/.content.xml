@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
+    <add-product/>
+    <product/>
+    <login/>
+    <registration/>
     <jcr:content
-        cq:lastModified="{Date}2016-05-26T17:12:41.208+02:00"
+        cq:lastModified="{Date}2016-06-13T17:27:27.956+02:00"
         cq:lastModifiedBy="admin"
         cq:lastReplicated="{Date}2016-05-17T17:33:26.038+02:00"
         cq:lastReplicatedBy="admin"
@@ -31,12 +35,13 @@
             noResultsText="Sorry, no results found"
             searchButtonText="search"/>
         <homeproducts
-            jcr:lastModified="{Date}2016-05-25T11:47:05.585+02:00"
+            jcr:lastModified="{Date}2016-06-13T17:27:27.937+02:00"
             jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="eaga/components/homeproducts"
-            homeproductitems="[{&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/pen0.jpg&quot;\,&quot;imageAlt&quot;:&quot;pen0&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/products&quot;\,&quot;name&quot;:&quot;&lt;p>New pendrive&lt;/p>\\n&quot;},{&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/fins0.jpg&quot;\,&quot;imageAlt&quot;:&quot;fins0&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/login&quot;\,&quot;name&quot;:&quot;&lt;p>New fins&lt;/p>\\n&quot;},{&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/chair.jpg&quot;\,&quot;imageAlt&quot;:&quot;chair&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/products&quot;\,&quot;name&quot;:&quot;&lt;p>New Chair&lt;/p>\\n&quot;},{&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/pen0.jpg&quot;\,&quot;imageAlt&quot;:&quot;pen0&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/products&quot;\,&quot;name&quot;:&quot;&lt;p>New pendrive&lt;/p>\\n&quot;},{&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/fins0.jpg&quot;\,&quot;imageAlt&quot;:&quot;fins0&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/login&quot;\,&quot;name&quot;:&quot;&lt;p>New fins&lt;/p>\\n&quot;},{&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/chair.jpg&quot;\,&quot;imageAlt&quot;:&quot;chair&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/products&quot;\,&quot;name&quot;:&quot;&lt;p>New Chair&lt;/p>\\n&quot;}]"
-            timing="3000"/>
+            homeproductitems="[{&quot;productId&quot;:1\,&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/pen0.jpg&quot;\,&quot;imageAlt&quot;:&quot;pen0&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/products&quot;\,&quot;name&quot;:&quot;&lt;p>New pendrive&lt;/p>\\n&quot;},{&quot;productId&quot;:2\,&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/fins0.jpg&quot;\,&quot;imageAlt&quot;:&quot;fins0&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/login&quot;\,&quot;name&quot;:&quot;&lt;p>New fins&lt;/p>\\n&quot;},{&quot;productId&quot;:3\,&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/chair.jpg&quot;\,&quot;imageAlt&quot;:&quot;chair&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/products&quot;\,&quot;name&quot;:&quot;&lt;p>New Chair&lt;/p>\\n&quot;},{&quot;productId&quot;:4\,&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/pen0.jpg&quot;\,&quot;imageAlt&quot;:&quot;pen0&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/products&quot;\,&quot;name&quot;:&quot;&lt;p>New pendrive&lt;/p>\\n&quot;},{&quot;productId&quot;:5\,&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/fins0.jpg&quot;\,&quot;imageAlt&quot;:&quot;fins0&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/login&quot;\,&quot;name&quot;:&quot;&lt;p>New fins&lt;/p>\\n&quot;},{&quot;productId&quot;:6\,&quot;image&quot;:&quot;/etc/designs/EAGA-Design/images/products/chair.jpg&quot;\,&quot;imageAlt&quot;:&quot;chair&quot;\,&quot;imageHref&quot;:&quot;/content/eaga/products&quot;\,&quot;name&quot;:&quot;&lt;p>New Chair&lt;/p>\\n&quot;}]"
+            timing="3000"
+            title=""/>
         <columns
             jcr:lastModified="{Date}2016-05-25T12:08:05.319+02:00"
             jcr:lastModifiedBy="admin"
@@ -102,7 +107,12 @@
             jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="eaga/components/cookie-policy"
-            cookiePolicy="By using E-aga, you're consenting to the use of cookies in accordance with our."/>
+            cookiePolicy="By using E-aga, you're consenting to the use of cookies in accordance with our. Click here for info!!!"/>
+        <menuLogin
+            jcr:lastModified="{Date}2016-06-08T11:56:58.981+02:00"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="eaga/components/menuLogin"/>
     </jcr:content>
     <products/>
     <cookiePrivacyPolicy/>

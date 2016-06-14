@@ -1,0 +1,91 @@
+/*********************
+START PRODUCT PAGE
+*********************/
+
+.img-column-container{
+	padding: 20px 10px 0px 20px;
+}
+
+.img-column-item{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 2px;
+    border: 1px solid #c0c0c0;
+    border-radius: 3px;
+}
+
+.img-shadow{
+	outline: none;
+	border-color: #008080;
+    box-shadow: 0 0 10px #008080;
+}
+
+.img-column{
+	padding: 20px;
+	height: 400px;
+}
+
+.front-img{
+	width: 100%;
+}
+
+.product-container{
+	padding: 0px 35px;
+}
+
+.cart-container{
+	padding: 20px;
+	border: 1px solid #c0c0c0;
+	border-radius: 5px;
+	margin-top: 50px;
+    margin-right: 20px;
+}
+
+.quantity{
+	margin-bottom: 20px;
+}
+
+.quantity-label{
+	margin-right: 10px;
+}
+
+.quantity-select{
+	border-radius: 5px;
+	width: 50px;
+    padding-left: 5px;
+}
+
+.cart-input, .wishlist-input{
+	margin-bottom: 20px;
+	text-align: center;
+	width: 100%;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.cart-input {
+	 background: #008080;
+	color: #fff;
+}
+
+.cart-input:hover {
+	 background: #00b7b7;
+}
+
+.details-container{
+	padding: 20px;
+}
+
+.price-container{
+	color: #008080;
+	font-size: 20px;
+}
+
+.product-price{
+	font-weight: bold;
+	margin-left: 10px;
+}
+/****************************
+* END PRODUCT PAGE
+****************************/

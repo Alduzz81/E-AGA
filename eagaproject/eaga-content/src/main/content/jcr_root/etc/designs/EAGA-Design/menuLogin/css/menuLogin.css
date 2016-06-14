@@ -1,0 +1,42 @@
+.header-menuLogin 
+{
+    top: -20px;
+    float: right;
+    left: 40px;
+    position: relative;
+    color: #000000;
+    width: 10%;
+    background: #C5C2C2;
+}
+
+.menuLogin-border
+{
+	border: 1px ridge;
+}
+
+.menu-links a:link{
+    color: #000000;
+}
+
+.menu-links a:visited {
+    color: #000000;
+}
+
+.menu-links a:hover {
+    color: #000000;
+}
+
+.menu-links a:active {
+    color: #000000;
+}
+
+.menu-links-btn{
+    color: #000000;
+    width: 100%;
+}
+
+.menu-hide{
+	-webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
