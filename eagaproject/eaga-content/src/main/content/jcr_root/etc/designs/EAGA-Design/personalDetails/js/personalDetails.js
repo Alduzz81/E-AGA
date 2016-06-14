@@ -1,20 +1,26 @@
+eagaApp.controller("PersonalDetailsController", ['$scope', '$window', function($scope,$window) {	
+	
+}]);
+
+function loadPD() {
+
+};
+
 function updatePDDB() {
     var params = {
     		'j_id': $("input[name=id]").val(),
-	        'j_username': $("input[name=name]").val(),
-	        'j_email': $("input[name=email]").val(),
 	        'j_password': $("input[name=password]").val()
     	};
     var path = CQ.shared.HTTP.getPath();
 
     $.ajax({
-        type: 'GET',
-        url: path + '.updatePersonalDetails.json',
+        type: 'POST',
+        url: path + '.UpdatePersonalDetails.json',
         data: params,
         success: function (msg) {
+        	$('.personalM').hide();
+        	$('.personalV').show();
         	console.log('Update success! - \n\tid: ' + msg.j_id 
-        			+ ',\n\tname: '+ msg.j_name
-        			+ ',\n\temail: '+ msg.j_email
         			+ ',\n\tpassword: '+ msg.j_password
         			+ ',\n\tresult: '+ msg.j_result
         			+ ',\n\tstatus: '+ msg.j_status);
@@ -26,6 +32,11 @@ function updatePDDB() {
 };
 	
 $(document).ready(function () {
+	$('.personalM').hide();
+	$('.personalV').show();
+});
 
-	
+$('#modifiy-personal-details').on('click', function(){
+	$('.personalV').hide();
+	$('.personalM').show();
 });
