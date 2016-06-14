@@ -1,4 +1,4 @@
-package com.aem.eaga.api.servlets;
+package com.aem.eaga.servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;

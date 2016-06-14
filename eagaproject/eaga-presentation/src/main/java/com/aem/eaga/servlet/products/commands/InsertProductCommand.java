@@ -45,7 +45,7 @@ public class InsertProductCommand extends AbstractContextCommand {
         final String categoriaProdotto = request.getParameter(j_categoriaProdotto);
         String result = "";
         boolean status = true;
-        
+    	int idprodotto=-1;
         try {
         	DbUtility dbu = new DbUtility();
 	   		  
@@ -69,14 +69,22 @@ public class InsertProductCommand extends AbstractContextCommand {
 	   	      // execute the preparedstatement
 	   	boolean res = preparedStmt.execute();
 	   	       
-	   	      conn.close();
-	   			 
+	   	      
+	   
 		   		 
 		   		 if (!res){
 		   			 result = "Success";
+		   			
+		   			  sqlCheckProdotto = "SELECT * "
+			   		 		+ "FROM eaga.prodotti "
+			   		 		+ "WHERE nome = '"+nomeProdotto+"'";
+		   			ResultSet rsconferma = stmt.executeQuery(sqlCheckProdotto);
+		   			rsconferma.next();
+		   			  idprodotto=rs.getInt("IdProdotto");
 		   			 logger.error(result);
 		   			 stmt.close(); 
 		       		 conn.close();
+		       		 rsconferma.close();
 		       		 rs.close();
 		       	}
 	   		 } else {
@@ -96,7 +104,7 @@ public class InsertProductCommand extends AbstractContextCommand {
         	JSONObject answer = new JSONObject();
             
             answer.put("J_RESULT", result);
-            
+            answer.put("J_IdProdotto",idprodotto);
             
             write(context, answer);
         } catch (Exception e) {
