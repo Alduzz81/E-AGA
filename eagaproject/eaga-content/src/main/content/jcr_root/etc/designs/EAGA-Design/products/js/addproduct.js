@@ -1,10 +1,8 @@
 /*******************************************************************************
  * START ADD PRODUCT
  ******************************************************************************/
-var notready;
-var interval;
-var done = false;
-var suc;
+var notready, interval, hasImage, cont, img_ready, suc;
+var done = false, images = [];
 function formEmpty(sel,mes){
 	$(sel).addClass('product-form-empty');
 	$(sel).val(mes);
@@ -12,7 +10,6 @@ function formEmpty(sel,mes){
 };
 function doModal(){
 	$('#add-product-result').html(suc);
-    console.log(suc + " .. " + done);
     if(done === true){
 		clearInterval(interval);
     }
@@ -25,20 +22,54 @@ function isNumberKey(evt)
 	return true;
 };
 function imageIsLoaded(e) {
-    $('#myimage').attr('src', e.target.result);
+    $('#imgid-'+cont).attr('src', e.target.result);
+    hasImage = true;
+    cont++;
 };
 function loadImage(e){
-	if (e.files && e.files[0]) {
+    if (e.files && e.files[0]) {
 		var reader = new FileReader();
         reader.onload = imageIsLoaded;
         reader.readAsDataURL(e.files[0]);
-        $('#myimage').css('display','block');
+        $('.myimage').css('display','block');
+        images[cont] = e.files[0];
+        img_ready = true;
      }
 };
+function initImageUpload(id) {
+	var formData = new FormData();
+    for(var i = 0; i<cont; i++){
+		formData.append(id, images[i]);
+    }
+     sendXHRequest(formData);
+};
+function sendXHRequest(formData) {
+	var test = 0; 
+	$.ajax({
+       type: 'POST',    
+       url:'/bin/updamfile',
+       processData: false,  
+       contentType: false,  
+       data:formData,
+       success: function(){
+    	   $('.tfield').val('');
+           $('.pimage').remove();
+           $('.submit-img').removeAttr('id');
+   	   }
+   });
+};
 var addImage = function(){
-	$('.submit-btn[type="submit"]').css('margin-top','20px');
-    $('#productimage').css('display','block');
-    $('.submit-img').css('display','none')
+    var newimage = "<li class='pimage'><input type='file' class='productimage' id='prodimg-"+cont+
+        		"'/><img class='myimage' src='#' id='imgid-"+cont+"'/></li>";
+    if(img_ready || cont === 0){
+		$('.image-list').append(newimage);
+        $('#prodimg-'+cont).css('display','block');
+    	$('.submit-img').attr('id', 'prod-img');
+        img_ready=false;
+        $(":file").change(function () {
+			loadImage(this);
+    	});
+	}
 };
 var productSubmit = function(){
 	notready=false;
@@ -47,9 +78,9 @@ var productSubmit = function(){
         formEmpty('#productname', 'Inserisci un nome.');
 	}if($('#productcategory').val() == '' ){
         formEmpty('#productcategory', 'Inserisci una categoria.');
-	}if($('#productdescription').val() == '' ){
+	}/*if($('#productdescription').val() == '' ){
 		formEmpty('#productdescription', 'Inserisci una descrizione.');
-	}if($('#productprice').val() == '' ){
+	}*/if($('#productprice').val() == '' ){
 		formEmpty('#productprice', 'Inserisci il prezzo.');
 	}if($('#productquantity').val() == '' ){
 		formEmpty('#productquantity', 'Inserisci la quantita.');
@@ -73,12 +104,14 @@ function addProductInDB() {
         data: params,
         success: function (msg) {
         	if(msg.J_RESULT === ""){
-        		suc = "SERVER DOWN!"
+        		suc = "SERVER DOWN!";
         	}else if(msg.J_RESULT === "Success"){
-        		suc = "Prodotto "+ $("input[name=productname]").val() +" aggiunto!"
-        		$('input').val('');
+        		suc = "Prodotto "+ $("input[name=productname]").val() +" aggiunto!";
+                if(hasImage){
+					initImageUpload(msg.J_IdProdotto + ","+ $("input[name=productcategory]").val());
+                }
         	}else{
-        		suc = "Product "+ $("input[name=productname]").val() +" gia' esistente!"
+        		suc = "Product "+ $("input[name=productname]").val() +" gia' esistente!";
         		$('#productname').val('');
         	}
 			done = true;
@@ -97,8 +130,11 @@ function addProductInDB() {
  * END ADD PRODUCT
  ******************************************************************************/
 
-
 $(document).ready(function () {
+    hasImage = false;
+    cont=0;
+    imgcnt=1;
+    img_ready = false;
     $('input').on('click',function() {
 		var compare = $(this).val().indexOf("Inserisci") > -1;
     	if(compare)
@@ -107,10 +143,6 @@ $(document).ready(function () {
 			$(this).removeClass('product-form-empty');
      	}
 	});
-
-	$(":file").change(function () {
-		loadImage(this);
-    });
     $('.close-modal').on('click',function() {
     	$('#eagamodal').css('display','none');
 	});
