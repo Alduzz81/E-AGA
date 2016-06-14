@@ -83,7 +83,8 @@ public class HandleDamFile extends SlingAllMethodsServlet {
         
  private Session session;
  private List<String> paths = new ArrayList<String>();
- private String id;
+ private String id, category;
+ private final String damPath = "/content/dam/Eaga/products/";
        
  //Inject a Sling ResourceResolverFactory
  @Reference
@@ -102,7 +103,11 @@ public class HandleDamFile extends SlingAllMethodsServlet {
            if (isMultipart) {
              final java.util.Map<String, org.apache.sling.api.request.RequestParameter[]> params = request.getRequestParameterMap();
              for (final java.util.Map.Entry<String, org.apache.sling.api.request.RequestParameter[]> pairs : params.entrySet()) {
-               id = pairs.getKey();
+               String paramSet = pairs.getKey();
+               String paramArray [] = paramSet.split(",");
+               id = paramArray[0];
+               category = paramArray[1];
+               
                final org.apache.sling.api.request.RequestParameter[] pArr = pairs.getValue();
                 
                for(int i=0;i<pArr.length;i++){
@@ -133,7 +138,7 @@ try
      
     //Use AssetManager to place the file into the AEM DAM
     com.day.cq.dam.api.AssetManager assetMgr = resourceResolver.adaptTo(com.day.cq.dam.api.AssetManager.class);
-    String newFile = "/content/dam/Eaga/products/"+fileName ; 
+    String newFile = damPath+category+"/"+fileName ; 
     assetMgr.createAsset(newFile, is,"image/jpeg", true);
          
     // Return the path to the file was stored

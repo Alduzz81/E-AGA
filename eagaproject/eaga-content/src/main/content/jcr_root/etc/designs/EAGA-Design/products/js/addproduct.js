@@ -1,14 +1,8 @@
 /*******************************************************************************
  * START ADD PRODUCT
  ******************************************************************************/
-var notready;
-var interval;
-var done = false;
-var hasImage;
-var image;
-var cont;
-var img_ready;
-var suc;
+var notready, interval, hasImage, cont, img_ready, suc;
+var done = false, images = [];
 function formEmpty(sel,mes){
 	$(sel).addClass('product-form-empty');
 	$(sel).val(mes);
@@ -16,7 +10,6 @@ function formEmpty(sel,mes){
 };
 function doModal(){
 	$('#add-product-result').html(suc);
-    console.log(suc + " .. " + done);
     if(done === true){
 		clearInterval(interval);
     }
@@ -29,7 +22,6 @@ function isNumberKey(evt)
 	return true;
 };
 function imageIsLoaded(e) {
-    console.log("OK"+cont)
     $('#imgid-'+cont).attr('src', e.target.result);
     hasImage = true;
     cont++;
@@ -40,22 +32,15 @@ function loadImage(e){
         reader.onload = imageIsLoaded;
         reader.readAsDataURL(e.files[0]);
         $('.myimage').css('display','block');
-        image = e.files[0];
+        images[cont] = e.files[0];
         img_ready = true;
      }
 };
 function initImageUpload(id) {
 	var formData = new FormData();
     for(var i = 0; i<cont; i++){
-		formData.append(id, image);
+		formData.append(id, images[i]);
     }
-	// Since this is the file only, we send it to a specific location
-    //   var action = '/upload';
-    // FormData only has the file
-    //while(images.hasNext()){
-    //	formData.append($("input[name=productname]").val(), images);
-    //}
-  	// Code common to both variants
      sendXHRequest(formData);
 };
 function sendXHRequest(formData) {
@@ -66,8 +51,10 @@ function sendXHRequest(formData) {
        processData: false,  
        contentType: false,  
        data:formData,
-       success: function(msg){
-       alert(msg); //display the data returned by the servlet
+       success: function(){
+    	   $('.tfield').val('');
+           $('.pimage').remove();
+           $('.submit-img').removeAttr('id');
    	   }
    });
 };
@@ -80,7 +67,6 @@ var addImage = function(){
     	$('.submit-img').attr('id', 'prod-img');
         img_ready=false;
         $(":file").change(function () {
-        	console.log("OK");
 			loadImage(this);
     	});
 	}
@@ -118,21 +104,14 @@ function addProductInDB() {
         data: params,
         success: function (msg) {
         	if(msg.J_RESULT === ""){
-        		suc = "SERVER DOWN!"
-         	//SOLO PER PROVARE QUANDO IL SERVER NON FUNZIONA	
-        		/*if(hasImage){
-					initImageUpload();
-                }*/
+        		suc = "SERVER DOWN!";
         	}else if(msg.J_RESULT === "Success"){
-        		suc = "Prodotto "+ $("input[name=productname]").val() +" aggiunto!"
+        		suc = "Prodotto "+ $("input[name=productname]").val() +" aggiunto!";
                 if(hasImage){
-					initImageUpload(msg.J_IdProdotto);
+					initImageUpload(msg.J_IdProdotto + ","+ $("input[name=productcategory]").val());
                 }
-                $('.tfield').val('');
-                $('.pimage').remove();
-                $('.submit-img').removeAttr('id');
         	}else{
-        		suc = "Product "+ $("input[name=productname]").val() +" gia' esistente!"
+        		suc = "Product "+ $("input[name=productname]").val() +" gia' esistente!";
         		$('#productname').val('');
         	}
 			done = true;
@@ -151,7 +130,6 @@ function addProductInDB() {
  * END ADD PRODUCT
  ******************************************************************************/
 
-
 $(document).ready(function () {
     hasImage = false;
     cont=0;
@@ -165,8 +143,6 @@ $(document).ready(function () {
 			$(this).removeClass('product-form-empty');
      	}
 	});
-
-
     $('.close-modal').on('click',function() {
     	$('#eagamodal').css('display','none');
 	});
