@@ -1,6 +1,7 @@
 /*******************************************************************************
  * START PRODUCT PAGE
  ******************************************************************************/
+
 function loadSingleProductByID(idProdotto) {
 	
 	var ckToFind = "singleIdProduct";
@@ -24,8 +25,21 @@ function loadSingleProductByID(idProdotto) {
 			+ ',\n\tCategogy:\t\t\t'+ msg.CategoriaProdotto);
         	
         	$(".product-name").text(msg.NomeProdotto);
-        	$(".product-desc").text(msg.NomeProdotto);
+        	$(".product-desc").text(msg.DescrizioneProdotto);
         	$(".product-price").text(msg.PrezzoProdotto);
+        	
+        	var quantity = 0;
+        	if(msg.QuantitaProdotto != undefined){
+        		if(msg.QuantitaProdotto < 30){
+        			quantity = msg.QuantitaProdotto;
+        		} else {
+        			quantity = 30;
+        		}
+        	}
+       		
+    		for(var i = 1; i <= quantity; i++){
+    			$('<option>').val(i).text(i).appendTo('#productPage-select');
+			}
         	
         	deleteCookie(ckToFind);
         	
@@ -37,8 +51,21 @@ function loadSingleProductByID(idProdotto) {
     
 };
 
+function addToCart(){
+	var addedProducts = $( "#productPage-select" ).val();
+	alert("ciao, i prodotti acquistati sono " + addedProducts);
+	
+};
+
+function addToWishList(){
+	var addedProducts = $( "#productPage-select" ).val();
+	alert("ciao, i prodotti desiderati sono " + addedProducts);
+	
+};
+
+
 /*******************************************************************************
- * END PRODUCT PAGE
+ * PRODUCT PAGE AT DOCUMENT READY
  ******************************************************************************/
 
 
@@ -53,14 +80,12 @@ $(document).ready(function () {
 		if(ck != "" && ck != undefined){
 			loadSingleProductByID(ck);
 		}
-		
-		
+
 		var pathForFrontImg = $(".img-column-item").first().attr("src");
 		$(".front-img").attr("src", pathForFrontImg);
 		var pathForFrontLargeImg = pathForFrontImg.replace("icons", "large");
 		$(".front-img").attr("data-zoom-image", pathForFrontLargeImg);
-		$(".img-column-item").first().addClass("img-shadow");
-		
+		$(".img-column-item").first().addClass("img-shadow");	
 	}	
 	
 	$(".img-column-item").click(function(){
@@ -81,3 +106,7 @@ $(document).ready(function () {
 	$(".front-img").elevateZoom({zoomWindowPosition: 1, zoomWindowOffetx: 20, zoomWindowHeight: 500, zoomWindowWidth:500, scrollZoom : true});
 	
 });
+
+/*******************************************************************************
+ * END PRODUCT PAGE
+ ******************************************************************************/
