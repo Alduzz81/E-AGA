@@ -78,9 +78,9 @@ var productSubmit = function(){
         formEmpty('#productname', 'Inserisci un nome.');
 	}if($('#productcategory').val() == '' ){
         formEmpty('#productcategory', 'Inserisci una categoria.');
-	}if($('#productdescription').val() == '' ){
+	}/*if($('#productdescription').val() == '' ){
 		formEmpty('#productdescription', 'Inserisci una descrizione.');
-	}if($('#productprice').val() == '' ){
+	}*/if($('#productprice').val() == '' ){
 		formEmpty('#productprice', 'Inserisci il prezzo.');
 	}if($('#productquantity').val() == '' ){
 		formEmpty('#productquantity', 'Inserisci la quantita.');

@@ -4,8 +4,8 @@
 	</a>
 </div>
 <div class="addproduct-container">
-	<div class="text-center login-format-padding">		
-		<div class="login-format-padding">
+	<div class="text-center add-product-padding">		
+		<div class="add-product-padding">
 			<h2><b>Add a Product</b></h2>
 		</div>
 		<form id="product-form" autocomplete="off">
@@ -13,21 +13,21 @@
 				<ul>
                 	<li><label for="productname" id="productnamelabel">
                 			${properties.name ? properties.name : 'Nome del prodotto' @ context='html'}: </label>
-						<input class="tfield" type="text" id="productname" name="productname" required /></li>
+						<input class="tfield" type="text" id="productname" name="productname" /></li>
 					<li><label for="productcategory">
 							${properties.category ? properties.category : 'Categoria' @ context='html'}: </label>
-						<input class="tfield" type="text"id="productcategory" name="productcategory" required /></li>
+						<input class="tfield" type="text"id="productcategory" name="productcategory" /></li>
 					<li><label for="productdescription">
 							${properties.description ? properties.description : 'Descrizione' @ context='html'}: </label>
 						<input class="tfield" id="productdescription" name="productdescription"/></li>
 					<li><label for="productprice">
 							${properties.price ? properties.price : 'Prezzo' @ context='html'}: </label>
-						<input class="tfield" type="text" id="productprice" name="productprice" onkeypress="return isNumberKey(event)" required/>
+						<input class="tfield" type="text" id="productprice" name="productprice" onkeypress="return isNumberKey(event)" />
 						<label id="productpricelabel">
 							${properties.priceunit ? properties.priceunit : '&euro;' @ context='html'}</label></li>
 					<li><label for="productquantity">
 							${properties.quantity ? properties.quantity : 'Quantita' @ context='html'}: </label>
-						<input class="tfield" type="text" id="productquantity" name="productquantity" onkeypress="return isNumberKey(event)" required/>
+						<input class="tfield" type="text" id="productquantity" name="productquantity" onkeypress="return isNumberKey(event)" />
 						<label id="productquantitylabel">
 							${properties.quantityunit ? properties.quantityunit : 'pezzi' @ context='html'}</label></li>	
 					<li>
