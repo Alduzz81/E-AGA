@@ -1,10 +1,8 @@
 package com.aem.eaga.servlet.categorie;
 
 import com.aem.eaga.servlet.StrategyContextServlet;
+import com.aem.eaga.servlet.categorie.commands.LoadCategorieCommand;
 import com.aem.eaga.servlet.commands.HttpMethodEnum;
-import com.aem.eaga.servlet.products.commands.InsertProductCommand;
-import com.aem.eaga.servlet.products.commands.LoadProductsCommand;
-import com.aem.eaga.servlet.products.commands.LoadSingleProductCommand;
 
 import org.apache.felix.scr.annotations.Service;
 import org.apache.felix.scr.annotations.sling.SlingServlet;
@@ -22,7 +20,7 @@ public class CategorieServlet extends StrategyContextServlet {
 
     @Override
     protected void initStrategies() {     
-        addStrategy("LoadCategorie", new LoadProductsCommand(HttpMethodEnum.GET));
+        addStrategy("LoadCategorie", new LoadCategorieCommand(HttpMethodEnum.GET));
     }
 
 }
