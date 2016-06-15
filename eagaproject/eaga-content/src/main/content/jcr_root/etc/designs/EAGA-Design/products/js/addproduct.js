@@ -29,9 +29,13 @@ function imageIsLoaded(e) {
 function loadImage(e){
     if (e.files && e.files[0]) {
 		var reader = new FileReader();
-        reader.onload = imageIsLoaded;
+        console.log(e.files[0]);
+        console.log(cont);
         reader.readAsDataURL(e.files[0]);
-        $('.myimage').css('display','block');
+        reader.onload = imageIsLoaded;
+		$('.myimage').css('display','block');
+        $('.del-img-btn').css('display','block');
+        //$('.submit-img').css('margin-top','0px');
         images[cont] = e.files[0];
         img_ready = true;
      }
@@ -44,27 +48,34 @@ function initImageUpload(id) {
      sendXHRequest(formData);
 };
 function sendXHRequest(formData) {
-	var test = 0; 
+	var test = 0;
 	 $.ajax({
-       type: 'POST',    
+       type: 'POST',
        url:'/bin/updamfile',
-       processData: false,  
-       contentType: false,  
+       processData: false,
+       contentType: false,
        data:formData,
        success: function(){
     	   $('.tfield').val('');
            $('.pimage').remove();
            $('.submit-img').removeAttr('id');
            cont = 0;
-           //data.abort();
    	   }
    });
 	 
 };
+var deleteImage = function(){
+	$('.myimage').css('display','none');
+    $('.del-img-btn').css('display','none');
+    $('.productimage[type=file]').val('');
+    cont--;
+    img_ready = false;
+};
 var addImage = function(){
-    var newimage = "<li class='pimage'><input type='file' class='productimage' id='prodimg-"+cont+
-        		"'/><img class='myimage' src='#' id='imgid-"+cont+"'/></li>";
-    if(img_ready || cont === 0){
+    $('.submit-prod').addClass('move-add-btn');
+	var newimage = "<li class='pimage'><input type='file' class='productimage' id='prodimg-"+cont+
+        "'/><img class='myimage' src='#' id='imgid-"+cont+"'/><input class='del-img-btn' type='submit' value='X' onclick='deleteImage()'/></li>";
+    if(img_ready || (img_ready && cont === 0)){
 		$('.image-list').append(newimage);
         $('#prodimg-'+cont).css('display','block');
     	$('.submit-img').attr('id', 'prod-img');
@@ -76,7 +87,6 @@ var addImage = function(){
 };
 var productSubmit = function(){
 	notready=false;
-
 	if($('#productname').val() == '' ){
         formEmpty('#productname', 'Inserisci un nome.');
 	}if($('#productcategory').val() == '' ){
@@ -137,7 +147,7 @@ $(document).ready(function () {
     hasImage = false;
     cont=0;
     imgcnt=1;
-    img_ready = false;
+    img_ready = true;
     $('input').on('click',function() {
 		var compare = $(this).val().indexOf("Inserisci") > -1;
     	if(compare)
