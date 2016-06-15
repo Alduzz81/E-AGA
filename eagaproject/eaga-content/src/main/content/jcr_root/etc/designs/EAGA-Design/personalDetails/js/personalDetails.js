@@ -11,6 +11,7 @@ function updatePDDB() {
         success: function (msg) {
         	$('.personalM').hide();
         	$('.personalV').show();
+        	loadPD();
         	console.log('Update success! - \n\tid: ' + msg.j_id 
         			+ ',\n\tpassword: '+ msg.j_password
         			+ ',\n\tresult: '+ msg.j_result
@@ -21,11 +22,9 @@ function updatePDDB() {
         }
     });
 };
-	
-$(document).ready(function () {
-	$('.personalM').hide();
-	$('.personalV').show();
-	var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId");
+
+function loadPD(){
+var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId");
     console.log('ID: ' + authorizableId);
     var params = {
     		'j_id': authorizableId
@@ -38,7 +37,7 @@ $(document).ready(function () {
         success: function (msg) {
         	$('.personalM').hide();
         	$('.personalV').show();
-        	console.log('Load data success! - \n\tid: ' + msg.IdUtente 
+        	console.log('Load data success! - \n\tid: ' + msg.IdUtente
         			+ ',\n\tnome: '+ msg.Nome
         			+ ',\n\temail: '+ msg.Email
         			+ ',\n\tpassword: '+ msg.Password
@@ -47,11 +46,17 @@ $(document).ready(function () {
         	$("#nameC").text(msg.Nome);
         	$("#emailC").text(msg.Email);
         	$("#passwordC").text(msg.Password);
-        },
-        error: function (data, status) {
-            console.log('Load data failed: ' + status);
-        }
-    });
+               },
+               error: function (data, status) {
+                   console.log('Load data failed: ' + status);
+               }
+           });
+};
+
+$(document).ready(function () {
+	$('.personalM').hide();
+	$('.personalV').show();
+	loadPD();
 });
 
 $('#modifiy-personal-details').on('click', function(){

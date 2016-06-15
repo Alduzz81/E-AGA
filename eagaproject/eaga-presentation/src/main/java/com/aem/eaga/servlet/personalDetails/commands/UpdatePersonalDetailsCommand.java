@@ -29,24 +29,19 @@ public class UpdatePersonalDetailsCommand extends AbstractContextCommand {
 	public void process(Context context) throws IOException {
 
 		SlingHttpServletRequest request = context.getSlingRequest();
-		final String id = request.getParameter(J_ID);
+		final String id = "20";//request.getParameter(J_ID);
 		final String password = request.getParameter(J_PASSWORD);
 		String result = "";
 		boolean status = true;
-		
-		// MOCK
-		String id1 = "20";
-		String password1 = "1234";
-		// FINE MOCK
-		
+
 		DbUtility dbu = new DbUtility();
 		try {
 			Connection conn = dbu.getConnection();
 			Statement stmt;
 			stmt = conn.createStatement();
 
-			String updateRecordSql = "UPDATE utenti " + "SET Password='" + password1 + "' "
-									+"WHERE utenti.IdUtente='" + id1 + "' ";
+			String updateRecordSql = "UPDATE utenti " + "SET Password='" + password + "' "
+									+"WHERE utenti.IdUtente='" + id + "' ";
 			
 			boolean res = stmt.execute(updateRecordSql);
 			if (res) {
@@ -66,8 +61,8 @@ public class UpdatePersonalDetailsCommand extends AbstractContextCommand {
 		}
 		try {
 			JSONObject answer = new JSONObject();
-			answer.put(J_ID, id1);
-			answer.put(J_PASSWORD, password1);
+			answer.put(J_ID, id);
+			answer.put(J_PASSWORD, password);
 			answer.put(J_RESULT, result);
 			answer.put(J_STATUS, status);
 			write(context, answer);
