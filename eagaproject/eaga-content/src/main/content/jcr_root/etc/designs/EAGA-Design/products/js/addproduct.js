@@ -38,14 +38,14 @@ function loadImage(e){
 };
 function initImageUpload(id) {
 	var formData = new FormData();
-    for(var i = 0; i<cont; i++){
+   for(var i = 0; i<cont; i++){
 		formData.append(id, images[i]);
     }
      sendXHRequest(formData);
 };
 function sendXHRequest(formData) {
 	var test = 0; 
-	$.ajax({
+	 $.ajax({
        type: 'POST',    
        url:'/bin/updamfile',
        processData: false,  
@@ -55,8 +55,11 @@ function sendXHRequest(formData) {
     	   $('.tfield').val('');
            $('.pimage').remove();
            $('.submit-img').removeAttr('id');
+           cont = 0;
+           //data.abort();
    	   }
    });
+	 
 };
 var addImage = function(){
     var newimage = "<li class='pimage'><input type='file' class='productimage' id='prodimg-"+cont+

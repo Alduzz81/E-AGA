@@ -8,6 +8,10 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.rmi.ServerException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Dictionary;
 import java.util.Calendar;
 import java.io.*;
@@ -72,7 +76,8 @@ import org.apache.sling.api.resource.ResourceResolverFactory ;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.Resource;
 
-import com.aem.eaga.servlet.products.commands.InsertProductImageCommand;
+import com.aem.eaga.common.DbUtility;
+ 
 //AssetManager
 import com.day.cq.dam.api.AssetManager; 
   
@@ -82,7 +87,7 @@ public class HandleDamFile extends SlingAllMethodsServlet {
  private static final long serialVersionUID = 2598426539166789515L;
         
  private Session session;
- private List<String> paths = new ArrayList<String>();
+ //private List<String> paths = new ArrayList<String>();
  private String id, category;
  private final String damPath = "/content/dam/Eaga/products/";
        
@@ -113,11 +118,11 @@ public class HandleDamFile extends SlingAllMethodsServlet {
                for(int i=0;i<pArr.length;i++){
                    final org.apache.sling.api.request.RequestParameter param = pArr[i];
                    final InputStream stream = param.getInputStream();
-                   paths.add(writeToDam(stream,param.getFileName()));
                   
+                   addImage(id, writeToDam(stream,param.getFileName()));
                }
              }
-             InsertProductImageCommand.addImage(id, paths);
+              
            }
          }
            
@@ -127,7 +132,26 @@ public class HandleDamFile extends SlingAllMethodsServlet {
        
      }
        
-     
+ public static boolean addImage(String idProduct,  String  productImagePath) throws IOException{
+     try {
+      	DbUtility dbu = new DbUtility();
+	   		  
+	   		 Connection conn = dbu.getConnection();
+	    
+	   		 String newRecordSql = "INSERT INTO eaga.immagini_prodotti (IdProdotto,PathImmagine)VALUES(?,?);";
+   			 PreparedStatement preparedStmt = conn.prepareStatement(newRecordSql);
+   	      preparedStmt.setInt (1, Integer.parseInt(idProduct));
+   	      preparedStmt.setString (2, productImagePath);
+   	    
+   	boolean res = preparedStmt.execute();
+   	       
+   		preparedStmt.close();     
+	   	      conn.close();
+	   	return res;
+  }catch(Exception e) {
+      throw new IOException(e);
+  } 
+	}
 //Save the uploaded file into the AEM DAM using AssetManager APIs
 private String writeToDam(InputStream is, String fileName)
 {
