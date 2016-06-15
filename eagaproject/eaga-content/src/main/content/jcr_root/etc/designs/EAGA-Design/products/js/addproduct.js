@@ -59,6 +59,8 @@ function sendXHRequest(formData) {
     	   $('.tfield').val('');
            $('.pimage').remove();
            $('.submit-img').removeAttr('id');
+           $('.submit-prod').removeClass('move-add-btn');
+
            cont = 0;
    	   }
    });
