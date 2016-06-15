@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import com.aem.eaga.Context;
 import com.aem.eaga.common.DbUtility;
@@ -20,6 +21,37 @@ public class LoadCategorieCommand extends AbstractContextCommand {
 
 	@Override
 	public void process(Context context) throws IOException {
-		// Per Jimmy
+
+		DbUtility dbu = new DbUtility();
+		JSONObject categorie = new JSONObject();
+		try {
+			Connection conn = dbu.getConnection();
+			Statement stmt;
+			ResultSet rs;
+			stmt = conn.createStatement();
+			
+			
+			String loadRecordSql = "SELECT * "
+					+"FROM categorie ";
+				
+			rs = stmt.executeQuery(loadRecordSql);
+			int i=0;
+			while (rs.next()) {
+				JSONObject categoria = new JSONObject();
+				try{
+					categoria.put("IdCategoria", rs.getInt("IdCategoria"));
+					categoria.put("Nome", rs.getString("Nome"));
+					categorie.put("IdCategoria_"+i,categoria);
+					i++;
+				} catch (Exception e) {
+					throw new IOException(e);
+				}
+			}
+			write(context, categorie);
+		} catch (ClassNotFoundException e) {
+			logger.error(e.getMessage());
+		} catch (SQLException e) {
+			logger.error(e.getMessage());
+		}
 	}
 }
