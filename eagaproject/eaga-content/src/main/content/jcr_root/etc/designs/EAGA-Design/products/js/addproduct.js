@@ -59,6 +59,7 @@ function sendXHRequest(formData) {
     	   $('.tfield').val('');
            $('.pimage').remove();
            $('.submit-img').removeAttr('id');
+           cont = 0;
    	   }
    });
 };
