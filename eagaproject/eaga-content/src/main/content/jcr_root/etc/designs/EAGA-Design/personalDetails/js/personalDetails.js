@@ -40,9 +40,7 @@ var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId");
         	console.log('Load data success! - \n\tid: ' + msg.IdUtente
         			+ ',\n\tnome: '+ msg.Nome
         			+ ',\n\temail: '+ msg.Email
-        			+ ',\n\tpassword: '+ msg.Password
-        			+ ',\n\tresult: '+ msg.j_result
-        			+ ',\n\tstatus: '+ msg.j_status);
+        			+ ',\n\tpassword: '+ msg.Password);
         	$("#nameC").text(msg.Nome);
         	$("#emailC").text(msg.Email);
         	$("#passwordC").text(msg.Password);

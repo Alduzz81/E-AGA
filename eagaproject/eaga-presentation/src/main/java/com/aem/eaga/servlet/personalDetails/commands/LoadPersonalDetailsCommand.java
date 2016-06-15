@@ -21,13 +21,7 @@ public class LoadPersonalDetailsCommand extends AbstractContextCommand {
 
 	@Override
 	public void process(Context context) throws IOException {		
-		String result = "";
-		boolean status = true;
-		
-		// MOCK
-		String J_ID1="20";
-		// FINE MOCK
-		
+
 		DbUtility dbu = new DbUtility();
 		try {
 			Connection conn = dbu.getConnection();
@@ -37,13 +31,13 @@ public class LoadPersonalDetailsCommand extends AbstractContextCommand {
 			
 			String loadRecordSql = "SELECT utenti.Nome, utenti.Email, utenti.Password "
 					+"FROM utenti "
-					+"WHERE utenti.IdUtente='" + J_ID1 + "' ";
+					+"WHERE utenti.IdUtente='" + J_ID + "' ";
 				
 			rs = stmt.executeQuery(loadRecordSql);
 			JSONObject utente = new JSONObject();
 			while (rs.next()) {
 				try {
-					utente.put("IdUtente", J_ID1);
+					utente.put("IdUtente", J_ID);
 					utente.put("Nome", rs.getString("Nome"));
 					utente.put("Email", rs.getString("Email"));
 					utente.put("Password", rs.getString("Password"));

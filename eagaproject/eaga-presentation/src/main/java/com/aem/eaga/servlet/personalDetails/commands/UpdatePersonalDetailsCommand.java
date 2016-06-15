@@ -29,7 +29,7 @@ public class UpdatePersonalDetailsCommand extends AbstractContextCommand {
 	public void process(Context context) throws IOException {
 
 		SlingHttpServletRequest request = context.getSlingRequest();
-		final String id = "20";//request.getParameter(J_ID);
+		final String id = request.getParameter(J_ID);
 		final String password = request.getParameter(J_PASSWORD);
 		String result = "";
 		boolean status = true;
