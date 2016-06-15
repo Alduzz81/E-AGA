@@ -51,12 +51,11 @@ public class UpdatePersonalDetailsCommand extends AbstractContextCommand {
 			boolean res = stmt.execute(updateRecordSql);
 			if (res) {
 				result = "Failed update!";
-				logger.error(result);
+				status = false;
 				stmt.close();
 				conn.close();
 			} else {
 				result = "Success update!";
-				logger.error(result);
 				stmt.close();
 				conn.close();
 			}
@@ -65,7 +64,6 @@ public class UpdatePersonalDetailsCommand extends AbstractContextCommand {
 		} catch (SQLException e) {
 			logger.error(e.getMessage());
 		}
-
 		try {
 			JSONObject answer = new JSONObject();
 			answer.put(J_ID, id1);

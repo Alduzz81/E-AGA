@@ -7,31 +7,43 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.apache.sling.commons.json.JSONObject;
-
 import com.aem.eaga.Context;
 import com.aem.eaga.common.DbUtility;
 import com.aem.eaga.servlet.commands.AbstractContextCommand;
 import com.aem.eaga.servlet.commands.HttpMethodEnum;
 
 public class LoadPersonalDetailsCommand extends AbstractContextCommand {
+	private static final String J_ID = "j_id";
+	
 	public LoadPersonalDetailsCommand(HttpMethodEnum methods) {
 		super(methods);
 	}
 
 	@Override
-	public void process(Context context) throws IOException {
+	public void process(Context context) throws IOException {		
+		String result = "";
+		boolean status = true;
+		
+		// MOCK
+		String J_ID1="20";
+		// FINE MOCK
+		
 		DbUtility dbu = new DbUtility();
 		try {
 			Connection conn = dbu.getConnection();
 			Statement stmt;
 			ResultSet rs;
 			stmt = conn.createStatement();
-			String loadRecordSql = "SELECT * " + "FROM utenti ";
+			
+			String loadRecordSql = "SELECT utenti.Nome, utenti.Email, utenti.Password "
+					+"FROM utenti "
+					+"WHERE utenti.IdUtente='" + J_ID1 + "' ";
+				
 			rs = stmt.executeQuery(loadRecordSql);
 			JSONObject utente = new JSONObject();
 			while (rs.next()) {
 				try {
-					utente.put("IdUtente", rs.getInt("IdUtente"));
+					utente.put("IdUtente", J_ID1);
 					utente.put("Nome", rs.getString("Nome"));
 					utente.put("Email", rs.getString("Email"));
 					utente.put("Password", rs.getString("Password"));

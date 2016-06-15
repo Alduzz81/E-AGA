@@ -1,5 +1,5 @@
 <div data-sly-unwrap></div>
-<div id="my-personaldetail-container" class="container-fluid" ng-controller="PersonalDetailsController">
+<div id="my-personaldetail-container" class="container-fluid">
 	<div id="my-personaldetail-base" class="row">
 		<div class="accordion-container margin-bottom-50">
 			<div class="accordion active">
@@ -12,20 +12,19 @@
 							<div class="col-sm-4">
 								<div class="box-data">
 									<span class="text-bold"> ${properties.name ? properties.name : "Customer Name:" @ context='html'} </span> 
-									<span>Da popolare</span>
-								</div>
-								
+									<span id="nameC"></span>
+								</div>					
 							</div>
 							<div class="col-sm-4">
 								<div class="box-data">
 									<span class="text-bold"> ${properties.email ? properties.email : "E-mail Address:" @ context='html'} </span> 
-									<span>Da popolare</span>
+									<span id="emailC"></span>
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class="box-data">
 									<span class="text-bold"> ${properties.password ? properties.password : "Password:" @ context='html'} </span> 
-									<span class="personalV dots"> <!--{{logindetails.Password}}  --> ......</span>
+									<span id="passwordC" class="personalV dots">.......</span>
 									<span class="personalM"><input type="password" name="password" required /></span>
 								</div>
 							</div>
