@@ -8279,6 +8279,10 @@ START HELPERS
     margin-right: 20px;
 }
 
+.float-right {
+    float: right;
+}
+
 .border-none {
     border: none !important;
 }
