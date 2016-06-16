@@ -8,7 +8,7 @@
         jcr:primaryType="cq:PageContent"
         jcr:title="Cookie Privacy Policy"
         sling:resourceType="eaga/components/page/cookiePrivacyPolicy"
-		hideInNav="true">
+        hideInNav="true">
         <cookiePrivacyPolicy
             jcr:lastModified="{Date}2016-05-26T17:45:52.120+02:00"
             jcr:lastModifiedBy="admin"

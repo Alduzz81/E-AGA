@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Dialog"
+    height="600"
+    title="Personal Details"
+    width="1000"
+    xtype="dialog">
+    <items
+        jcr:primaryType="cq:Widget"
+        width="1000"
+        xtype="tabpanel">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <tab1
+                jcr:primaryType="cq:Panel"
+                title="Personal Details">
+                <items jcr:primaryType="cq:WidgetCollection">
+                	 <name
+                        jcr:primaryType="cq:Widget"
+                        fieldDescription="Leave empty to use the default label."
+                        fieldLabel="Name Label"
+                        name="./name"
+                        width="400"
+                        xtype="textfield"/>
+                    <email
+                        jcr:primaryType="cq:Widget"
+                        fieldDescription="Leave empty to use the default label."
+                        fieldLabel="Email Address Label"
+                        name="./email"
+                        width="400"
+                        xtype="textfield"/>
+                    <password
+                        jcr:primaryType="cq:Widget"
+                        fieldDescription="Leave empty to use the default label."
+                        fieldLabel="Password Label:"
+                        name="./password"
+                        width="400"
+                        xtype="textfield"/>
+				</items>
+            </tab1>
+		</items>     
+    </items>
+</jcr:root>

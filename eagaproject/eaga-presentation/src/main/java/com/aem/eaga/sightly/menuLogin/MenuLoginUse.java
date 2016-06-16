@@ -43,7 +43,7 @@ public class MenuLoginUse extends CommonUse {
                 menuloginlinks.put(json.getString("label"), getValidLink(url));
             }
         }
-        menuloginlinks.put("My Profile", "/content/eaga/products.html");
+        menuloginlinks.put("My Profile", "/content/eaga/personalDetails.html");
         menuloginlinks.put("Logout", "/content/eaga.html");
 	}
 	
