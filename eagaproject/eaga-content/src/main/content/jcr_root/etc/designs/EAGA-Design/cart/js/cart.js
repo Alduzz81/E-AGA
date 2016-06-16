@@ -129,8 +129,29 @@ var list = {
 
 eagaApp.controller("CartController", ['$scope', '$window', function($scope, $window) {
 	
-	$scope.saluta = function(){
-		alert("ciaooo!!!! typeof list: "+ typeof list);
+	$scope.goToCheckout = function(){
+		var modifiedItems = [];
+		for(var key in $scope.cartList){
+			if($scope.cartList[key].QuantitaSelezionata > $scope.cartList[key].QuantitaProdotto){
+				$scope.cartList[key].QuantitaSelezionata = $scope.cartList[key].QuantitaProdotto;
+				modifiedItems.push($scope.cartList[key].NomeProdotto);
+			}
+		}
+		if(modifiedItems.length == 0){
+			alert("Acquisto effettuato correttamente!\n\nProcedi con il pagamento.");
+		} else {
+			var cartItemsList = "";
+			for(var i = 0; i < modifiedItems.length; i++){
+				cartItemsList += "   - " + modifiedItems[i] + "\n";
+				if(i == modifiedItems.length -1){
+					cartItemsList += "\n";
+				}
+			}
+			modifiedItems = [];
+			alert("Attenzione! Il quantitativo dei seguenti articoli superava la disponibilità in magazzino.\n\n" +
+				cartItemsList + "È stata impostata la quantità massima disponibile.\n\n" +
+				"Controlla l'ordine e procedi con l'acquisto.\n");
+		}
 	};
 	
 	$scope.cartList = list;
@@ -142,7 +163,7 @@ eagaApp.controller("CartController", ['$scope', '$window', function($scope, $win
 				arr.push(i);
 			}
 		} else {
-			arr = [1,2,3,4,5,6,7,8,9,10];
+			arr = [1,2,3,4,5,6,7,8,9,'10+'];
 		}
 		return arr;
 	}
@@ -172,7 +193,7 @@ eagaApp.controller("CartController", ['$scope', '$window', function($scope, $win
 		return tot;
 	};
 	
-	$scope.wishList = {};
+	$scope.savedList = {};
 	
 	/*$scope.removeProduct = function(id){
 		var i = $scope.cartList.findIndex(function(item){
@@ -199,36 +220,37 @@ eagaApp.controller("CartController", ['$scope', '$window', function($scope, $win
 	$scope.moveToSavedForLater = function(id){
 		for(var key in $scope.cartList){
 			if($scope.cartList[key].IdProdotto == id){
-				$scope.wishList[key] = $scope.cartList[key];
+				$scope.savedList[key] = $scope.cartList[key];
 				delete $scope.cartList[key];
 			}
 		}
 	};
 	
-	$scope.removeWishProduct = function(id){
-		for(var key in $scope.wishList){
-			if($scope.wishList[key].IdProdotto == id){
-				delete $scope.wishList[key];
+	$scope.removeSavedProduct = function(id){
+		for(var key in $scope.savedList){
+			if($scope.savedList[key].IdProdotto == id){
+				delete $scope.savedList[key];
 			}
 		}
 	};
 	
 	$scope.moveToCart = function(id){
-		for(var key in $scope.wishList){
-			if($scope.wishList[key].IdProdotto == id){
-				$scope.cartList[key] = $scope.wishList[key];
-				delete $scope.wishList[key];
+		for(var key in $scope.savedList){
+			if($scope.savedList[key].IdProdotto == id){
+				$scope.cartList[key] = $scope.savedList[key];
+				delete $scope.savedList[key];
 			}
 		}
 	};
 	
-	$scope.totalWishQnt = function(){
+	$scope.totalSavedQnt = function(){
 		var tot = 0;
-		for(var i in $scope.wishList){
+		for(var i in $scope.savedList){
 			tot++;
 		}
 		return tot;
 	};
+	
 	
 }]);
 
@@ -238,7 +260,9 @@ eagaApp.controller("CartController", ['$scope', '$window', function($scope, $win
 
 
 $(document).ready(function () {
-	
+	if($(document).find("title").text() == "Cart"){
+		
+	}
 	
 });
 
