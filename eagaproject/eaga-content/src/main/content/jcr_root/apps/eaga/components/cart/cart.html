@@ -45,7 +45,7 @@
 						 ng-options="opt for opt in options(value.QuantitaProdotto)" ng-change="value.QuantitaSelezionata == '10+' ? value.QuantitaSelezionata = 10 : value.QuantitaSelezionata"></select>
 						</div>
 						<div ng-show="value.QuantitaSelezionata >= 10 || value.QuantitaSelezionata == '10+'">
-						<input type="number" id="cartPage-input" class="cart-list-quantity-select" ng-model="value.QuantitaSelezionata" />
+						<input type="number" id="cartPage-input" class="cart-list-quantity-select" ng-model="value.QuantitaSelezionata" min="0" />
 						</div>
 					</div>
 					<hr class="col-sm-12 cart-item-separator">

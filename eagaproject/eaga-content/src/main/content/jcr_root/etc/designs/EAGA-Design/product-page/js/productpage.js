@@ -1,6 +1,17 @@
 /*******************************************************************************
  * START PRODUCT PAGE
  ******************************************************************************/
+var product = {};
+var mock = {
+			IdProdotto: 6,
+			NomeProdotto: "Iphone4",
+			DescrizioneProdotto: "iphone4",
+			PrezzoProdotto: 299,
+			QuantitaProdotto: 100,
+			QuantitaSelezionata: 1,
+			CategoriaProdotto: "Telefono"
+			};
+
 
 function loadSingleProductByID(idProdotto) {
 	
@@ -16,6 +27,13 @@ function loadSingleProductByID(idProdotto) {
         url: path + '.LoadSingleProduct.json',
         data: params,
         success: function (msg) {
+        	console.log("msg: " + typeof msg + ", msg text: "+ msg+ ", mock: "+ typeof mock);
+        	if(typeof msg  == "string"){
+        		console.log("dentro a undefined");
+        		msg = mock;
+        		console.log("msg: " + typeof msg + ", mock: "+ typeof mock);
+        	};
+        	
         	console.log('Load Single Product success!!\n\n\tID Prodotto:\t\t'
         	+ msg.IdProdotto 
 			+ ',\n\tName:\t\t\t\t'+ msg.NomeProdotto
@@ -23,7 +41,7 @@ function loadSingleProductByID(idProdotto) {
 			+ ',\n\tPrice:\t\t\t\t'+ msg.PrezzoProdotto
 			+ ',\n\tQuantity:\t\t\t'+ msg.QuantitaProdotto
 			+ ',\n\tCategogy:\t\t\t'+ msg.CategoriaProdotto);
-        	
+        	    	
         	$(".product-name").text(msg.NomeProdotto);
         	$(".product-desc").text(msg.DescrizioneProdotto);
         	$(".product-price").text(msg.PrezzoProdotto);
@@ -41,6 +59,7 @@ function loadSingleProductByID(idProdotto) {
     			$('<option>').val(i).text(i).appendTo('#productPage-select');
 			}
         	
+    		product = msg;    		
         	deleteCookie(ckToFind);
         	
         },
@@ -52,10 +71,37 @@ function loadSingleProductByID(idProdotto) {
 };
 
 function addToCart(){
-	var addedProducts = $( "#productPage-select" ).val();
-	alert("ciao, i prodotti acquistati sono " + addedProducts);
 	
+	alert("ciao, questa è una proprietà del prodott: " + product.NomeProdotto);
 };
+
+/*function trackCartAdd() {
+	var productQuantity = $( "#productPage-select" ).val();
+	alert("ciao, i prodotti acquistati sono " + productQuantity);
+	
+    if (CQ_Analytics.Sitecatalyst) {
+        var productQuantity = Number($("input[name='product-quantity']", form).val() || '1');
+        var productPrice    = Number($("input[name='product-size']:checked", form).data('price').replace(/[^0-9\\.]/g, ''));
+        var productChildSku =        $("input[name='product-size']:checked", form).data('sku');
+        CQ_Analytics.record({
+            "event": ["cartAdd"<%= (session.getCartEntryCount() == 0) ? ", 'cartOpen'" : "" %>],
+            "values": {
+                "product": [{
+                    "category": "",
+                    "sku": "<%= xssAPI.encodeForJSString(baseProduct.getSKU()) %>",
+                    "price": productPrice * productQuantity,
+                    "quantity": productQuantity,
+                    "evars": {
+                        "childSku": CQ.shared.Util.htmlEncode(productChildSku)
+                    }
+                }]
+            },
+            "componentPath": "<%= xssAPI.encodeForJSString(resource.getResourceType()) %>"
+        });
+    }
+    return true;
+}*/
+
 
 function addToWishList(){
 	var addedProducts = $( "#productPage-select" ).val();
