@@ -26,7 +26,7 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="cart-product-info">
-							<p class="cart-product-title" >{{value.NomeProdotto}}</p>
+							<p class="cart-product-title" ng-bind="value.NomeProdotto"></p>
 							<p class="cart-product-producer">marca</p>
 							<p class="cart-product-availability">disponibilità</p>
 							<div class="cart-product-actions">
@@ -36,7 +36,7 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="cart-price-container">
-							<span>Euro:</span><span class="cart-product-price" >{{value.PrezzoProdotto | currency : '' : 2}}</span>
+							<span>Euro:</span><span class="cart-product-price" ng-bind="value.PrezzoProdotto | currency : '' : 2"></span>
 						</div>
 					</div>
 					<div class="col-sm-2">
@@ -53,8 +53,8 @@
 				<div class="col-sm-12">
 					<div class="cart-total-container">
 						<span class="">Totale provvisorio (
-						<span class="cart-total-items-number"> {{totalQnt() != 0 ? (totalQnt() == 1 ? "1 articolo" : totalQnt() + " articoli") : "0 articoli"}} </span>): </span>
-						<span class="cart-total-value" >EURO {{total() | currency : '' : 2}}</span>
+						<span class="cart-total-items-number" ng-bind="totalQnt() != 0 ? (totalQnt() == 1 ? '1 articolo ' : totalQnt() + ' articoli ') : '0 articoli '"></span>): </span>
+						<span class="cart-total-value" >EURO <span ng-bind="total() | currency : '' : 2"></span></span>
 					</div>
 				</div>
 				<div class="col-sm-12">
@@ -64,7 +64,7 @@
 				</div>
 				<div class="col-sm-12">
 					<div class="cart-title">Salvati per dopo (
-						<span class=""> {{totalSavedQnt() != 0 ? (totalSavedQnt() == 1 ? "1 articolo" : totalSavedQnt() + " articoli") : "0 articoli"}} </span>):
+						<span class="" ng-bind="totalSavedQnt() != 0 ? (totalSavedQnt() == 1 ? '1 articolo ' : totalSavedQnt() + ' articoli ') : '0 articoli '"></span>):
 					</div> 
 				</div>
 				<div class="col-sm-12">
@@ -79,7 +79,7 @@
 					</div>
 					<div class="col-sm-8">
 						<div class="cart-product-info">
-							<p class="cart-product-title">{{value.NomeProdotto}}</p>
+							<p class="cart-product-title" ng-bind="value.NomeProdotto"></p>
 							<p class="cart-product-producer">marca</p>
 							<p class="cart-product-availability">disponibilità</p>
 							<div class="cart-product-actions">
@@ -89,7 +89,7 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="cart-price-container">
-							<span>Euro:</span><span class="cart-product-price-saved">{{value.PrezzoProdotto | currency : '' : 2}}</span>
+							<span>Euro:</span><span class="cart-product-price-saved" ng-bind="value.PrezzoProdotto | currency : '' : 2"></span>
 						</div>
 					</div>
 					<hr class="col-sm-12 cart-item-separator">
@@ -99,8 +99,8 @@
 		<div class="col-sm-3 ">
 			<div class="checkout-container">
 				<span class="cart-total-label">Totale provvisorio (
-				<span class="cart-total-items-number"> {{totalQnt() != 0 ? (totalQnt() == 1 ? "1 articolo" : totalQnt() + " articoli") : "0 articoli"}} </span>): </span>
-				<p class="cart-total-value">EURO {{total() | currency : '' : 2}}</p>
+				<span class="cart-total-items-number" ng-bind="totalQnt() != 0 ? (totalQnt() == 1 ? '1 articolo ' : totalQnt() + ' articoli ') : '0 articoli '"></span>): </span>
+				<p class="cart-total-value">EURO <span ng-bind="total() | currency : '' : 2"></span></p>
 				<input class="cart-checkout" type="submit" value="Procedi all'acquisto" ng-click="goToCheckout()"/>
 			</div> 
 		</div>

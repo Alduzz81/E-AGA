@@ -71,36 +71,12 @@ function loadSingleProductByID(idProdotto) {
 };
 
 function addToCart(){
+	console.log("ciao, questa è una proprietà del prodotto: " + product.NomeProdotto);
+	var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId"); 
+	alert("questo è l'id: " + authorizableId);
 	
-	alert("ciao, questa è una proprietà del prodott: " + product.NomeProdotto);
 };
 
-/*function trackCartAdd() {
-	var productQuantity = $( "#productPage-select" ).val();
-	alert("ciao, i prodotti acquistati sono " + productQuantity);
-	
-    if (CQ_Analytics.Sitecatalyst) {
-        var productQuantity = Number($("input[name='product-quantity']", form).val() || '1');
-        var productPrice    = Number($("input[name='product-size']:checked", form).data('price').replace(/[^0-9\\.]/g, ''));
-        var productChildSku =        $("input[name='product-size']:checked", form).data('sku');
-        CQ_Analytics.record({
-            "event": ["cartAdd"<%= (session.getCartEntryCount() == 0) ? ", 'cartOpen'" : "" %>],
-            "values": {
-                "product": [{
-                    "category": "",
-                    "sku": "<%= xssAPI.encodeForJSString(baseProduct.getSKU()) %>",
-                    "price": productPrice * productQuantity,
-                    "quantity": productQuantity,
-                    "evars": {
-                        "childSku": CQ.shared.Util.htmlEncode(productChildSku)
-                    }
-                }]
-            },
-            "componentPath": "<%= xssAPI.encodeForJSString(resource.getResourceType()) %>"
-        });
-    }
-    return true;
-}*/
 
 
 function addToWishList(){
