@@ -1,0 +1,116 @@
+<div class="row">
+	<div class="col-sm-12" ng-controller="CartController">
+		<div class="col-sm-9">
+			<div class="cart-list-container"> 
+				<div class="col-sm-12">
+					<div class="cart-title">Carrello</div>  
+				</div>
+				<div class="col-sm-12">
+					<div class="cart-header-container"> 
+						<div class="col-sm-2"></div>
+						<div class="col-sm-6"></div>
+						<div class="col-sm-2">
+							<div class="cart-label-price">Prezzo</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="cart-label-qnt">Quantità</div>
+						</div>
+					</div>
+					<hr class="col-sm-12 cart-top-separator">
+				</div>
+				<div class="cart-product-item" ng-repeat="(key, value) in cartList"> 
+					<div class="col-sm-2">
+						<div class="cart-product-list-img">
+							<img class="cart-product-img" src="/etc/designs/EAGA-Design/images/icons/alert-icon-red.png" />
+						</div>			
+					</div>
+					<div class="col-sm-6">
+						<div class="cart-product-info">
+							<p class="cart-product-title" >{{value.NomeProdotto}}</p>
+							<p class="cart-product-producer">marca</p>
+							<p class="cart-product-availability">disponibilità</p>
+							<div class="cart-product-actions">
+								<a class="" ng-click="removeProduct(value.IdProdotto)" >Rimuovi</a> | <a class="" ng-click="moveToSavedForLater(value.IdProdotto)">Salva per dopo</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="cart-price-container">
+							<span>Euro:</span><span class="cart-product-price" >{{value.PrezzoProdotto | currency : '' : 2}}</span>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div ng-show="value.QuantitaSelezionata < 10">
+						<select id="cartPage-select" class="cart-list-quantity-select" ng-model="value.QuantitaSelezionata" 
+						 ng-options="opt for opt in options(value.QuantitaProdotto)" ng-change="value.QuantitaSelezionata == '10+' ? value.QuantitaSelezionata = 10 : value.QuantitaSelezionata"></select>
+						</div>
+						<div ng-show="value.QuantitaSelezionata >= 10 || value.QuantitaSelezionata == '10+'">
+						<input type="number" id="cartPage-input" class="cart-list-quantity-select" ng-model="value.QuantitaSelezionata" />
+						</div>
+					</div>
+					<hr class="col-sm-12 cart-item-separator">
+				</div>
+				<div class="col-sm-12">
+					<div class="cart-total-container">
+						<span class="">Totale provvisorio (
+						<span class="cart-total-items-number"> {{totalQnt() != 0 ? (totalQnt() == 1 ? "1 articolo" : totalQnt() + " articoli") : "0 articoli"}} </span>): </span>
+						<span class="cart-total-value" >EURO {{total() | currency : '' : 2}}</span>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="shadow-spacer">
+						<div class="mask"></div>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="cart-title">Salvati per dopo (
+						<span class=""> {{totalSavedQnt() != 0 ? (totalSavedQnt() == 1 ? "1 articolo" : totalSavedQnt() + " articoli") : "0 articoli"}} </span>):
+					</div> 
+				</div>
+				<div class="col-sm-12">
+					<div class="cart-header-container"></div>
+					<hr class="col-sm-12 cart-top-separator">
+				</div>
+				<div class="cart-product-item" ng-repeat="(key, value) in savedList" > 
+					<div class="col-sm-2">
+						<div class="cart-product-list-img">
+							<img class="cart-product-img" src="/etc/designs/EAGA-Design/images/icons/alert-icon-red.png" />
+						</div>			
+					</div>
+					<div class="col-sm-8">
+						<div class="cart-product-info">
+							<p class="cart-product-title">{{value.NomeProdotto}}</p>
+							<p class="cart-product-producer">marca</p>
+							<p class="cart-product-availability">disponibilità</p>
+							<div class="cart-product-actions">
+								<a class="" ng-click="removeSavedProduct(value.IdProdotto)" >Rimuovi</a> | <a class="" ng-click="moveToCart(value.IdProdotto)">Sposta nel carrello</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="cart-price-container">
+							<span>Euro:</span><span class="cart-product-price-saved">{{value.PrezzoProdotto | currency : '' : 2}}</span>
+						</div>
+					</div>
+					<hr class="col-sm-12 cart-item-separator">
+				</div>
+			</div> 
+		</div>
+		<div class="col-sm-3 ">
+			<div class="checkout-container">
+				<span class="cart-total-label">Totale provvisorio (
+				<span class="cart-total-items-number"> {{totalQnt() != 0 ? (totalQnt() == 1 ? "1 articolo" : totalQnt() + " articoli") : "0 articoli"}} </span>): </span>
+				<p class="cart-total-value">EURO {{total() | currency : '' : 2}}</p>
+				<input class="cart-checkout" type="submit" value="Procedi all'acquisto" ng-click="goToCheckout()"/>
+			</div> 
+		</div>
+		<div class="col-sm-12">
+			<div class="details-container">
+				<hr>
+				qui la descrizione estesa
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div class=""> </div>       -->
