@@ -27,12 +27,12 @@ function loadSingleProductByID(idProdotto) {
         url: path + '.LoadSingleProduct.json',
         data: params,
         success: function (msg) {
-        	console.log("msg: " + typeof msg + ", msg text: "+ msg+ ", mock: "+ typeof mock);
+        	/*console.log("msg: " + typeof msg + ", msg text: "+ msg+ ", mock: "+ typeof mock);
         	if(typeof msg  == "string"){
         		console.log("dentro a undefined");
         		msg = mock;
         		console.log("msg: " + typeof msg + ", mock: "+ typeof mock);
-        	};
+        	};*/
         	
         	console.log('Load Single Product success!!\n\n\tID Prodotto:\t\t'
         	+ msg.IdProdotto 
@@ -71,9 +71,38 @@ function loadSingleProductByID(idProdotto) {
 };
 
 function addToCart(){
-	console.log("ciao, questa è una proprietà del prodotto: " + product.NomeProdotto);
-	var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId"); 
-	alert("questo è l'id: " + authorizableId);
+	//console.log("ciao, questa è una proprietà del prodotto: " + product.NomeProdotto);
+	/*var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId"); 
+	alert("questo è l'id: " + authorizableId);*/
+	
+	var customerId = getRandomId();
+	console.log("Customer ID: " + customerId);
+	var addedProducts = $( "#productPage-select" ).val();
+	console.log("Product quantity: " + addedProducts);
+	console.log("Product ID: " + product.IdProdotto);
+	
+	var params = {
+	        'j_customerId': customerId,
+	        'j_productId': product.IdProdotto,
+	        'j_productAddedQuantity': addedProducts,
+    	};
+	
+    var path = CQ.shared.HTTP.getPath();
+	
+	$.ajax({
+        type: 'POST',
+        url: path + '.InsertProductToCart.json',
+        data: params,
+        success: function (msg) {
+        	console.log("Insert Product To Cart Success!");
+        	console.log("Msg: " + msg.J_RESULT);
+        	console.log("Msg cart quantity: " + msg.J_TOT_QNT);
+        	$("#total-cart-qnt-topnav").text(msg.J_TOT_QNT);
+        },
+        error: function (data, status) {
+            console.log('Insert Product To Cart procedure failed: ' + status);
+        }
+    });
 	
 };
 
@@ -85,6 +114,17 @@ function addToWishList(){
 	
 };
 
+function getRandomId(){
+	var randomID = parseInt(( Math.random()*3 ) + 1);
+	return randomID;
+	/*if(randomID == 1){
+		return "abcd@gmail.com";
+	} else if(randomID == 2){
+		return "efgh@gmail.com";
+	} else {
+		return "ilmn@gmail.com";
+	}*/
+};
 
 /*******************************************************************************
  * PRODUCT PAGE AT DOCUMENT READY

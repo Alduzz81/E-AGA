@@ -2,9 +2,7 @@ package com.aem.eaga.servlet.shoppingCart;
 
 import com.aem.eaga.servlet.StrategyContextServlet;
 import com.aem.eaga.servlet.commands.HttpMethodEnum;
-import com.aem.eaga.servlet.products.commands.InsertProductCommand;
-import com.aem.eaga.servlet.products.commands.LoadProductsCommand;
-import com.aem.eaga.servlet.products.commands.LoadSingleProductCommand;
+import com.aem.eaga.servlet.shoppingCart.commands.InsertProductToCartCommand;
 
 import org.apache.felix.scr.annotations.Service;
 import org.apache.felix.scr.annotations.sling.SlingServlet;
@@ -22,7 +20,7 @@ public class ShoppingCart extends StrategyContextServlet {
 
     @Override
     protected void initStrategies() {
-        addStrategy("InsertProductToCart", new InsertProductCommand(HttpMethodEnum.POST));
+        addStrategy("InsertProductToCart", new InsertProductToCartCommand(HttpMethodEnum.POST));
     }
 
 }

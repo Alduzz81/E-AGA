@@ -1,9 +1,8 @@
 .header-menuLogin 
 {
-    top: -20px;
-    float: right;
-    left: 40px;
-    position: relative;
+    top: 0;
+    right: 0;
+    position: absolute;
     color: #000000;
     width: 10%;
     background: #C5C2C2;

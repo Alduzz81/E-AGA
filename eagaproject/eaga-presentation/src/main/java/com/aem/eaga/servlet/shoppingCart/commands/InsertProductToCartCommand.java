@@ -22,12 +22,11 @@ import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 public class InsertProductToCartCommand extends AbstractContextCommand {
-	private static final String j_nomeProdotto = "j_nomeProdotto";
-	private static final String j_descrizioneProdotto = "j_descrizioneProdotto";
-    private static final String j_prezzoProdotto = "j_prezzoProdotto";
-    private static final String j_quantitaProdotto = "j_quantitaProdotto";
-    private static final String j_categoriaProdotto = "j_categoriaProdotto";
+	private static final String j_customerId = "j_customerId";
+	private static final String j_productId = "j_productId";
+    private static final String j_productAddedQuantity = "j_productAddedQuantity";
 
     public InsertProductToCartCommand(HttpMethodEnum methods) {
         super(methods);
@@ -38,65 +37,46 @@ public class InsertProductToCartCommand extends AbstractContextCommand {
     
     	SlingHttpServletRequest request = context.getSlingRequest();
     	SlingHttpServletResponse response = context.getSlingResponse();
-    	final String nomeProdotto = request.getParameter(j_nomeProdotto);
-    	final String descrizioneProdotto = request.getParameter(j_descrizioneProdotto);
-        final String prezzoProdotto = request.getParameter(j_prezzoProdotto);
-        final String quantitaProdotto = request.getParameter(j_quantitaProdotto);
-        final String categoriaProdotto = request.getParameter(j_categoriaProdotto);
+    	final String customerId = request.getParameter(j_customerId);
+    	final String productId = request.getParameter(j_productId);
+        final String productAddedQuantity = request.getParameter(j_productAddedQuantity);
+
         String result = "";
-        boolean status = true;
-    	int idprodotto=-1;
+    	int totQuantity = 0;
+        
         try {
         	DbUtility dbu = new DbUtility();
-	   		  
-	   		 Connection conn = dbu.getConnection();
-	   		 Statement stmt;
-	   		 ResultSet rs;
-	   		 stmt = conn.createStatement();
-	   		 String sqlCheckProdotto = "SELECT * "
-	   		 		+ "FROM eaga.prodotti "
-	   		 		+ "WHERE nome = '"+nomeProdotto+"'";
-	   		 rs = stmt.executeQuery(sqlCheckProdotto);
-	   		 
-	   		 if(!rs.next()){
-	   			 String newRecordSql = "INSERT INTO eaga.prodotti (Nome,Descrizione,Prezzo,Quantita,Categoria)VALUES(?,?,?,?,?);";
-	   			 PreparedStatement preparedStmt = conn.prepareStatement(newRecordSql);
-	   	      preparedStmt.setString (1, nomeProdotto);
-	   	      preparedStmt.setString (2, descrizioneProdotto);
-	   	      preparedStmt.setString   (3, prezzoProdotto);
-	   	      preparedStmt.setInt    (4, Integer.parseInt(quantitaProdotto));
-	   	   preparedStmt.setString   (5, categoriaProdotto);
-	   	      // execute the preparedstatement
-	   	boolean res = preparedStmt.execute();
-	   	       
-	   	      
-	   
-		   		 
-		   		 if (!res){
-		   			 result = "Success";
-		   			
-		   			  sqlCheckProdotto = "SELECT * "
-			   		 		+ "FROM eaga.prodotti "
-			   		 		+ "WHERE nome = '"+nomeProdotto+"'";
-		   			ResultSet rsconferma = stmt.executeQuery(sqlCheckProdotto);
-		   			 
-		   			if(rsconferma.next()){
-		   			  idprodotto=rsconferma.getInt("IdProdotto");
-		   			rsconferma.close();
-		   			}
-		   			 logger.error(result);
-		   			 stmt.close(); 
-		       		 conn.close();
-		       		 
-		       		 rs.close();
-		       	}
-	   		 } else {
-	   			 result = "Error! This product is already recorded";
-	   			 status = false;
-	   			 stmt.close(); 
-	       		 conn.close();
-	       		 rs.close();
-	   		 }
+	   		Connection conn = dbu.getConnection();
+	   		Statement stmt;
+	   		ResultSet rs = null;
+	   		stmt = conn.createStatement();
+
+	   		String newRecordSql = "INSERT INTO eaga.carrello_utenti (IdUtente, IdProdotto, Quantita) VALUES(?,?,?);";
+   			PreparedStatement preparedStmt = conn.prepareStatement(newRecordSql);
+			preparedStmt.setInt (1, Integer.parseInt(customerId));
+			preparedStmt.setInt (2, Integer.parseInt(productId));
+			preparedStmt.setInt (3, Integer.parseInt(productAddedQuantity));
+			boolean res = preparedStmt.execute();
+
+			if (!res){
+				result = "Success! Well done insert into cart!";
+				logger.info(result);
+				
+				String totalQuantity = "SELECT SUM(Quantita) FROM carrello_utenti WHERE IdUtente = 1"; //+ customerId;
+				rs = stmt.executeQuery(totalQuantity);
+				if(rs.next()){
+					totQuantity = rs.getInt(1);
+				}
+								
+			} else {
+				result = "Error! Something's gone wrong!";
+			}
+			
+			preparedStmt.close();
+			stmt.close(); 
+			conn.close();
+			rs.close();
+			
 	   	} catch(ClassNotFoundException e) {
 	   		logger.error(e.getMessage());
 	   	} catch(SQLException e) {
@@ -105,9 +85,8 @@ public class InsertProductToCartCommand extends AbstractContextCommand {
         
         try {            
         	JSONObject answer = new JSONObject();
-            
             answer.put("J_RESULT", result);
-            answer.put("J_IdProdotto",idprodotto);
+            answer.put("J_TOT_QNT", totQuantity);
             
             write(context, answer);
         } catch (Exception e) {
