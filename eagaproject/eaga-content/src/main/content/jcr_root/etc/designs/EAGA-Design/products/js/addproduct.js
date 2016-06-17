@@ -45,7 +45,7 @@ function initImageUpload(id) {
    for(var i = 0; i<cont; i++){
 		formData.append(id, images[i]);
     }
-     sendXHRequest(formData);
+    sendXHRequest(formData);
 };
 function sendXHRequest(formData) {
 	var test = 0;
@@ -60,7 +60,6 @@ function sendXHRequest(formData) {
            $('.pimage').remove();
            $('.submit-img').removeAttr('id');
            $('.submit-prod').removeClass('move-add-btn');
-
            cont = 0;
    	   }
    });
@@ -138,7 +137,7 @@ function addProductInDB() {
     });
 	$('#add-product-result').html(suc);
 	$('#eagamodal').css('display','block');
-	interval = setInterval(doModal, 2000);
+	interval = setInterval(doModal, 4000);
 };
 
 /*******************************************************************************
