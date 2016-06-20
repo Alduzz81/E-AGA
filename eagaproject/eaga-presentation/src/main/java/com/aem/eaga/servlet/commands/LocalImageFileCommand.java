@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilder;
@@ -27,7 +28,9 @@ import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.Rendition;
 
 public class LocalImageFileCommand{
-	private final String localPath = "C://EAGA//eaga-repo//eagaproject//eaga-content//src//main//content//jcr_root//content//dam//eaga//common//products//";
+	private final String relPath = "C://EAGA//eaga-repo";
+	//private final String relPath = "C://...";
+	private final String localPath = relPath+"//eagaproject//eaga-content//src//main//content//jcr_root//content//dam//eaga//common//products//";
 	private final String renditionsPath = "//_jcr_content//renditions//";
 	private Asset asset;
 	private String category, fileName;
@@ -50,13 +53,14 @@ public class LocalImageFileCommand{
 	}
 	
 	private void createLocalFile(Map<String, Object> assetMap, String fileName) {
+		Properties props = System.getProperties();
 		 String local_image = localPath+category+"//"+fileName;
 		 File contentfile = new File(local_image+"//.content.xml");
 		 String resp;
 		 try{
 			 if(!contentfile.exists()){
 				new File(local_image).mkdirs();
-				createXmlFile(contentfile, assetMap, fileName);
+				createXmlFile(contentfile, assetMap, fileName, false);
 			 }else{
 				 resp = "Image already exists!";
 			 }
@@ -65,16 +69,23 @@ public class LocalImageFileCommand{
 		 }
 	}
 	
-	private void createXmlFile(File localxml, Map<String, Object> metaMap, String fileName){
+	private void createXmlFile(File localxml, Map<String, Object> metaMap, String param, boolean status){
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			doc = docBuilder.newDocument();
 			//ROOT_ELEMENT
-			Element root = createRootElement();
+			Element root = createRootElement(status);
 			doc.appendChild(root);
+			if(status){
+				//ROOT_ELEMENT:JCR_CONTENT
+				Element jcr_con = createJCRContent(param,  status);
+				root.appendChild(jcr_con);
+			}else{
 			//ROOT_ELEMENT:JCR_CONTENT
-			Element jcr_con = createJCRContent(fileName);
+			String[] list = fileName.split("[.]");
+			String type = list[(list.length)-1];
+			Element jcr_con = createJCRContent(param, status);
 			root.appendChild(jcr_con);
 			//ROOT_ELEMENT:JCR_CONTENT:METADATA
 			Element meta = createMetaData(metaMap);
@@ -83,6 +94,7 @@ public class LocalImageFileCommand{
 			Element related = doc.createElement("related");
 			addAttribute(related, "jcr:primaryType", "nt:unstructured");
 			jcr_con.appendChild(related);
+			}			
 			
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
@@ -104,24 +116,31 @@ public class LocalImageFileCommand{
 		attr.setValue(value_attr);
 		ele.setAttributeNode(attr);
 	}
-	private Element createRootElement(){
+	private Element createRootElement(boolean xmlBase){
 		Element rootElement = doc.createElement("jcr:root");
-		addAttribute(rootElement, "xmlns:tiff", "http://ns.adobe.com/tiff/1.0/");
-		addAttribute(rootElement, "xmlns:dc", "http://purl.org/dc/elements/1.1/");
-		addAttribute(rootElement, "xmlns:dam", "http://www.day.com/dam/1.0");
-		addAttribute(rootElement, "xmlns:cq", "http://www.day.com/jcr/cq/1.0");
+		if(!xmlBase){
+			addAttribute(rootElement, "xmlns:tiff", "http://ns.adobe.com/tiff/1.0/");
+			addAttribute(rootElement, "xmlns:dc", "http://purl.org/dc/elements/1.1/");
+			addAttribute(rootElement, "xmlns:dam", "http://www.day.com/dam/1.0");
+			addAttribute(rootElement, "xmlns:cq", "http://www.day.com/jcr/cq/1.0");
+			addAttribute(rootElement, "jcr:primaryType", "dam:Asset");
+		}
 		addAttribute(rootElement, "xmlns:jcr", "http://www.jcp.org/jcr/1.0");
 		addAttribute(rootElement, "xmlns:nt", "http://www.jcp.org/jcr/nt/1.0");
-		addAttribute(rootElement, "jcr:primaryType", "dam:Asset");
+		
 		return rootElement;
 	}
-	private Element createJCRContent(String fileName){ 
+	private Element createJCRContent(String param, boolean contentBase){ 
 		Element jcr_cont = doc.createElement("jcr:content");
-		addAttribute(jcr_cont, "cq:name", fileName);
-		addAttribute(jcr_cont, "cq:parentPath", localPath+category);
-		addAttribute(jcr_cont, "jcr:data", "{Binary}");
-		addAttribute(jcr_cont, "jcr:mimeType", "image/jpeg");
-		addAttribute(jcr_cont, "jcr:primaryType", "dam:AssetContent");
+		String primarytype = "nt:resource";
+		if(!contentBase){
+			addAttribute(jcr_cont, "cq:name", param);
+			addAttribute(jcr_cont, "cq:parentPath", localPath+category);
+			addAttribute(jcr_cont, "jcr:data", "{Binary}");
+			primarytype = "dam:AssetContent";
+		}
+		addAttribute(jcr_cont, "jcr:mimeType", param);
+		addAttribute(jcr_cont, "jcr:primaryType", primarytype);
 		return jcr_cont;
 	}
 	private Element createMetaData(Map<String, Object> metaMap){
@@ -151,10 +170,15 @@ public class LocalImageFileCommand{
 				String typeimg;
 				if(rendName.equals("original")){
 					typeimg ="jpeg";
-					//myrendition = myrendition.getAsset().getOriginal();
+					String mime =  myrendition.getMimeType().split("/")[1];
+					String origPath = local_renditions+renditionsPath+"//original.dir";
+					new File(origPath).mkdir();
+					File orig = new File(origPath+"//.content.xml");
+					createXmlFile(orig, null, mime, true);
+					File dataBinary = new File(local_renditions+"//_jcr_content//_jcr_data.binary");
+					ImageIO.write( ImageIO.read(myrendition.getStream()), "mime", dataBinary);
 				}else{
 					String[] x  = rendName.split("[.]");
-					//int j = x.length;
 					typeimg = x[(x.length)-1];
 				}
 				File newfile = new File(local_renditions+renditionsPath+rendName);
