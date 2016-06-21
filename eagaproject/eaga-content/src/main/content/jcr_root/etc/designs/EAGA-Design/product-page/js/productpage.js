@@ -27,12 +27,12 @@ function loadSingleProductByID(idProdotto) {
         url: path + '.LoadSingleProduct.json',
         data: params,
         success: function (msg) {
-        	/*console.log("msg: " + typeof msg + ", msg text: "+ msg+ ", mock: "+ typeof mock);
+        	console.log("msg: " + typeof msg + ", msg text: "+ msg+ ", mock: "+ typeof mock);
         	if(typeof msg  == "string"){
         		console.log("dentro a undefined");
         		msg = mock;
         		console.log("msg: " + typeof msg + ", mock: "+ typeof mock);
-        	};*/
+        	};
         	
         	console.log('Load Single Product success!!\n\n\tID Prodotto:\t\t'
         	+ msg.IdProdotto 
@@ -96,8 +96,23 @@ function addToCart(){
         success: function (msg) {
         	console.log("Insert Product To Cart Success!");
         	console.log("Msg: " + msg.J_RESULT);
-        	console.log("Msg cart quantity: " + msg.J_TOT_QNT);
+        	console.log("Cart total quantity: " + msg.J_TOT_QNT);
+        	console.log("Cart updated? " + msg.J_IS_UPDATED);
         	$("#total-cart-qnt-topnav").text(msg.J_TOT_QNT);
+        	if(msg.J_IS_UPDATED){
+        		$(".cart-msg-text").text("Congratulazioni!  La quantità del tuo articolo è stata modificata correttamente nel carrello.");
+	        	$("#cart-msg-container").slideDown();
+	        	setTimeout(function(){
+	        		$("#cart-msg-container").slideUp();
+	        	}, 5000);
+        	} else {
+        		$(".cart-msg-text").text("Congratulazioni!  Articolo aggiunto correttamente nel carrello.");
+	        	$("#cart-msg-container").slideDown();
+	        	setTimeout(function(){
+	        		$("#cart-msg-container").slideUp();
+	        	}, 5000);
+        	}
+        	$("#productPage-select").val('1');
         },
         error: function (data, status) {
             console.log('Insert Product To Cart procedure failed: ' + status);
@@ -132,6 +147,8 @@ function getRandomId(){
 
 
 $(document).ready(function () {
+	
+	$(".cart-msg-container").hide();
 	
 	if($(document).find("title").text() == "Product"){
 		

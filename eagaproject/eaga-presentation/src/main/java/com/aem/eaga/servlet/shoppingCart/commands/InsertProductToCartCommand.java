@@ -41,6 +41,8 @@ public class InsertProductToCartCommand extends AbstractContextCommand {
     	final String productId = request.getParameter(j_productId);
         final String productAddedQuantity = request.getParameter(j_productAddedQuantity);
 
+        boolean isProductAlreadySaved = false;
+        boolean isDesiredQuantityReduced = false;
         String result = "";
     	int totQuantity = 0;
         
@@ -50,33 +52,81 @@ public class InsertProductToCartCommand extends AbstractContextCommand {
 	   		Statement stmt;
 	   		ResultSet rs = null;
 	   		stmt = conn.createStatement();
-
-	   		String newRecordSql = "INSERT INTO eaga.carrello_utenti (IdUtente, IdProdotto, Quantita) VALUES(?,?,?);";
-   			PreparedStatement preparedStmt = conn.prepareStatement(newRecordSql);
-			preparedStmt.setInt (1, Integer.parseInt(customerId));
-			preparedStmt.setInt (2, Integer.parseInt(productId));
-			preparedStmt.setInt (3, Integer.parseInt(productAddedQuantity));
-			boolean res = preparedStmt.execute();
-
-			if (!res){
-				result = "Success! Well done insert into cart!";
-				logger.info(result);
-				
-				String totalQuantity = "SELECT SUM(Quantita) FROM carrello_utenti WHERE IdUtente = 1"; //+ customerId;
-				rs = stmt.executeQuery(totalQuantity);
-				if(rs.next()){
-					totQuantity = rs.getInt(1);
+	   		
+	   		String checkPresence = "SELECT * FROM eaga.carrello_utenti "
+	   				+ "WHERE IdUtente = " + Integer.parseInt(customerId) + " AND "
+	   				+ "IdProdotto = " + Integer.parseInt(productId);
+	   		rs = stmt.executeQuery(checkPresence);
+	   		
+	   		if(rs.next()){
+	   			isProductAlreadySaved = true;
+	   			int subTot = rs.getInt("Quantita");
+	   			int newSubTot = subTot + Integer.parseInt(productAddedQuantity);
+	   			
+	   			String checkMaxAvailableProductQuantity = "SELECT Quantita FROM eaga.prodotti"
+	   					+ " WHERE IdProdotto = " + Integer.parseInt(productId);
+	   			rs = stmt.executeQuery(checkMaxAvailableProductQuantity);
+	   			
+	   			if(rs.next()){
+	   				int maxQuantity = rs.getInt(1);
+	   				if( maxQuantity <= newSubTot ){
+	   					newSubTot = maxQuantity;
+	   					isDesiredQuantityReduced = true;
+	   				}
+	   			}	
+	   			
+	   			String updateQuantity = "UPDATE eaga.carrello_utenti"
+	   					+ " SET Quantita = " + newSubTot 
+	   					+ " WHERE IdUtente = " + Integer.parseInt(customerId) + " AND "
+		   				+ " IdProdotto = " + Integer.parseInt(productId);
+	   			boolean res = stmt.execute(updateQuantity);
+	   			
+	   			if(!res){
+	   				result = "Success! Well done insert into cart!";
+					logger.info(result);
+					
+					String totalQuantity = "SELECT SUM(Quantita) FROM carrello_utenti WHERE IdUtente = " + Integer.parseInt(customerId);
+					rs = stmt.executeQuery(totalQuantity);
+					if(rs.next()){
+						totQuantity = rs.getInt(1);
+					}
+					
+	   			} else {
+	   				result = "Error! Something's gone wrong!";
+	   			}
+	   			
+				stmt.close(); 
+				conn.close();
+				rs.close();
+   			
+	   		} else {
+		   		
+		   		String newRecordSql = "INSERT INTO eaga.carrello_utenti (IdUtente, IdProdotto, Quantita) VALUES(?,?,?);";
+	   			PreparedStatement preparedStmt = conn.prepareStatement(newRecordSql);
+				preparedStmt.setInt (1, Integer.parseInt(customerId));
+				preparedStmt.setInt (2, Integer.parseInt(productId));
+				preparedStmt.setInt (3, Integer.parseInt(productAddedQuantity));
+				boolean res = preparedStmt.execute();
+	
+				if (!res){
+					result = "Success! Well done insert into cart!";
+					logger.info(result);
+					
+					String totalQuantity = "SELECT SUM(Quantita) FROM carrello_utenti WHERE IdUtente = " + Integer.parseInt(customerId);
+					rs = stmt.executeQuery(totalQuantity);
+					if(rs.next()){
+						totQuantity = rs.getInt(1);
+					}
+									
+				} else {
+					result = "Error! Something's gone wrong!";
 				}
-								
-			} else {
-				result = "Error! Something's gone wrong!";
-			}
-			
-			preparedStmt.close();
-			stmt.close(); 
-			conn.close();
-			rs.close();
-			
+				
+				preparedStmt.close();
+				stmt.close(); 
+				conn.close();
+				rs.close();
+	   		}
 	   	} catch(ClassNotFoundException e) {
 	   		logger.error(e.getMessage());
 	   	} catch(SQLException e) {
@@ -87,8 +137,11 @@ public class InsertProductToCartCommand extends AbstractContextCommand {
         	JSONObject answer = new JSONObject();
             answer.put("J_RESULT", result);
             answer.put("J_TOT_QNT", totQuantity);
+            answer.put("J_IS_UPDATED", isProductAlreadySaved);
+            answer.put("J_IS_QNT_REDUCED", isDesiredQuantityReduced);
             
             write(context, answer);
+            
         } catch (Exception e) {
             throw new IOException(e);
         }
