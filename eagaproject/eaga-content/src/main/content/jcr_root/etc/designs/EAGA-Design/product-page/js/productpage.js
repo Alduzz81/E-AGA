@@ -1,6 +1,17 @@
 /*******************************************************************************
  * START PRODUCT PAGE
  ******************************************************************************/
+var product = {};
+var mock = {
+			IdProdotto: 6,
+			NomeProdotto: "Iphone4",
+			DescrizioneProdotto: "iphone4",
+			PrezzoProdotto: 299,
+			QuantitaProdotto: 100,
+			QuantitaSelezionata: 1,
+			CategoriaProdotto: "Telefono"
+			};
+
 
 function loadSingleProductByID(idProdotto) {
 	
@@ -16,6 +27,13 @@ function loadSingleProductByID(idProdotto) {
         url: path + '.LoadSingleProduct.json',
         data: params,
         success: function (msg) {
+        	console.log("msg: " + typeof msg + ", msg text: "+ msg+ ", mock: "+ typeof mock);
+        	if(typeof msg  == "string"){
+        		console.log("dentro a undefined");
+        		msg = mock;
+        		console.log("msg: " + typeof msg + ", mock: "+ typeof mock);
+        	};
+        	
         	console.log('Load Single Product success!!\n\n\tID Prodotto:\t\t'
         	+ msg.IdProdotto 
 			+ ',\n\tName:\t\t\t\t'+ msg.NomeProdotto
@@ -23,7 +41,7 @@ function loadSingleProductByID(idProdotto) {
 			+ ',\n\tPrice:\t\t\t\t'+ msg.PrezzoProdotto
 			+ ',\n\tQuantity:\t\t\t'+ msg.QuantitaProdotto
 			+ ',\n\tCategogy:\t\t\t'+ msg.CategoriaProdotto);
-        	
+        	    	
         	$(".product-name").text(msg.NomeProdotto);
         	$(".product-desc").text(msg.DescrizioneProdotto);
         	$(".product-price").text(msg.PrezzoProdotto);
@@ -41,6 +59,7 @@ function loadSingleProductByID(idProdotto) {
     			$('<option>').val(i).text(i).appendTo('#productPage-select');
 			}
         	
+    		product = msg;    		
         	deleteCookie(ckToFind);
         	
         },
@@ -52,10 +71,57 @@ function loadSingleProductByID(idProdotto) {
 };
 
 function addToCart(){
+	//console.log("ciao, questa è una proprietà del prodotto: " + product.NomeProdotto);
+	/*var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId"); 
+	alert("questo è l'id: " + authorizableId);*/
+	
+	var customerId = getRandomId();
+	console.log("Customer ID: " + customerId);
 	var addedProducts = $( "#productPage-select" ).val();
-	alert("ciao, i prodotti acquistati sono " + addedProducts);
+	console.log("Product quantity: " + addedProducts);
+	console.log("Product ID: " + product.IdProdotto);
+	
+	var params = {
+	        'j_customerId': customerId,
+	        'j_productId': product.IdProdotto,
+	        'j_productAddedQuantity': addedProducts,
+    	};
+	
+    var path = CQ.shared.HTTP.getPath();
+	
+	$.ajax({
+        type: 'POST',
+        url: path + '.InsertProductToCart.json',
+        data: params,
+        success: function (msg) {
+        	console.log("Insert Product To Cart Success!");
+        	console.log("Msg: " + msg.J_RESULT);
+        	console.log("Cart total quantity: " + msg.J_TOT_QNT);
+        	console.log("Cart updated? " + msg.J_IS_UPDATED);
+        	$("#total-cart-qnt-topnav").text(msg.J_TOT_QNT);
+        	if(msg.J_IS_UPDATED){
+        		$(".cart-msg-text").text("Congratulazioni!  La quantità del tuo articolo è stata modificata correttamente nel carrello.");
+	        	$("#cart-msg-container").slideDown();
+	        	setTimeout(function(){
+	        		$("#cart-msg-container").slideUp();
+	        	}, 5000);
+        	} else {
+        		$(".cart-msg-text").text("Congratulazioni!  Articolo aggiunto correttamente nel carrello.");
+	        	$("#cart-msg-container").slideDown();
+	        	setTimeout(function(){
+	        		$("#cart-msg-container").slideUp();
+	        	}, 5000);
+        	}
+        	$("#productPage-select").val('1');
+        },
+        error: function (data, status) {
+            console.log('Insert Product To Cart procedure failed: ' + status);
+        }
+    });
 	
 };
+
+
 
 function addToWishList(){
 	var addedProducts = $( "#productPage-select" ).val();
@@ -63,6 +129,17 @@ function addToWishList(){
 	
 };
 
+function getRandomId(){
+	var randomID = parseInt(( Math.random()*3 ) + 1);
+	return randomID;
+	/*if(randomID == 1){
+		return "abcd@gmail.com";
+	} else if(randomID == 2){
+		return "efgh@gmail.com";
+	} else {
+		return "ilmn@gmail.com";
+	}*/
+};
 
 /*******************************************************************************
  * PRODUCT PAGE AT DOCUMENT READY
@@ -70,6 +147,8 @@ function addToWishList(){
 
 
 $(document).ready(function () {
+	
+	$(".cart-msg-container").hide();
 	
 	if($(document).find("title").text() == "Product"){
 		

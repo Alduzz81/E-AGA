@@ -54,10 +54,12 @@
 }
 
 .label-header{
-	color: #ffffff;
-	padding-left: 15px;
-	font-variant: small-caps;
-	font-family: "verdana";
+	color: #05f1f1;
+    font-variant: small-caps;
+    font-family: VodafoneLight;
+    font-size: 23px;
+    font-weight: bold;
+    vertical-align: text-top;
 }
 
 /******************************

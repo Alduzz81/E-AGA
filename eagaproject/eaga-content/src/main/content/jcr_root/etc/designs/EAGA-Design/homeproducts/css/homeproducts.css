@@ -5,6 +5,7 @@ START SLIDER HOME PROD
 	font-family: VodafoneLight;
     font-size: 30px;
     margin-left: 30px;
+    margin-top: 5px;
 }
 
 .slider-wrap-prod {
@@ -174,6 +175,7 @@ START SLIDER HOME PROD
 .slider-wrap-prod .control-wrap-prod .dots-wrap-prod {
     vertical-align: middle;
     text-align: center;
+    margin-bottom: 5px;
 }
 
 .slider-wrap-prod .control-wrap-prod .dots-wrap-prod ul {
