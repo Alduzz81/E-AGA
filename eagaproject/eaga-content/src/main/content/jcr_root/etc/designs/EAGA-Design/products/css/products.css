@@ -1,11 +1,17 @@
 /******************************************/
 /*     START  ADD PRODUCT 			      */
 /******************************************/
+.addProduct{
+	background-color: #008080;	
+}
 .addproduct-container{
 	display: inline-block;
-    border: 1px dotted;
+    border: 5px ridge;
     margin: 30px;
-    width: 500px;
+    width: 510px;
+    background-color: #F4F4F4;
+    padding-top: 10px;
+    border-radius: initial;
 }
 .product-form-group input{
 	margin-bottom: 20px;
@@ -55,7 +61,53 @@
 	float: none;
     width: 35%;
     margin-left: 28px;
-    margin-right: 55px;
+    margin-right: 3px;
+}
+.move-add-btn[type="submit"]{
+	float: right;
+	margin-top: -18px;
+}
+#add-product-result{
+	padding-top: 20px;
+}
+.productimage[type="file"]{
+    float: left;
+    padding-left: 20px;
+    margin-bottom: 17px;
+}
+.myimage{
+    padding-bottom: 15px;
+    margin-right: 40px;
+    margin-bottom: -25px;
+	float: right;
+	width: 70px;
+	height: 60px;
+}
+.productimage[type="file"], .myimage{
+	display: none;
+}    
+#prod-img{
+	float: left;
+	margin-right: 100px;
+	margin-top: 15px;
+    margin-left: 21px;
+}
+.add-product-padding {
+    padding-bottom: 15px;
+}
+.add-product-logo{
+	max-width: 200px;
+}
+.del-img-btn[type="submit"]{
+    width: 18px;
+    size: 5px;
+    height: 20px;
+    font-size: 12px;
+    display: none;
+    margin-right: -93px;
+    padding: 0px 0px 0px 0px;
+    border-radius: 1px; 
+    color: red;
 }
 /******************************************/
 /*     END ADD PRODUCT					  */
@@ -95,32 +147,6 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
-#add-product-result{
-	padding-top: 20px;
-}
-.productimage[type="file"]{
-    float: left;
-    padding-left: 20px;
-    margin-bottom: -10px;
-}
-.myimage{
-    padding-bottom: 15px;
-    margin-right: 90px;
-	float: left;
-	width: 70px;
-	height: 70px;
-}
-.productimage[type="file"], .myimage{
-	display: none;
-}    
-#prod-img{
-    margin-left: 21px;
-	float: left;
-	margin-top: 20px;
-}
-.add-product-padding {
-    padding-bottom: 15px;
 }
 /******************************************/
 /*     END MODAL						  */
