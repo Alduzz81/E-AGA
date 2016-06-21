@@ -24,7 +24,7 @@ public class LoadProductsCommand extends AbstractContextCommand {
 
 		int i = 0;
 		JSONObject prodotti = new JSONObject();
-		while (i < 5) {
+		while (i < 9) {
 			try {
 				JSONObject prodotto = new JSONObject();
 				prodotto.put("IdProdotto", "IdProdotto-" + i);

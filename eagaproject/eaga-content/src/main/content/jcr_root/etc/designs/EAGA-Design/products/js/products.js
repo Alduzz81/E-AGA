@@ -1,27 +1,17 @@
-eagaApp.controller("ProductsController", [ '$scope', function($scope) {
-	$scope.products =  callAjaxProducts();
-    $scope.abcde = $scope.products;
-	function callAjaxProducts() {
+eagaApp.controller("ProductsController", [ '$scope', '$http', function($scope, $http) {
+	$scope.products = [];
+	$scope.callAjaxProducts = function() {
 		var path = CQ.shared.HTTP.getPath();
-		$.ajax({
-			type : 'GET',
-			url : path + '.LoadProducts.json',
-			success : function(msg) {
-				console.log('Load Products success!!'+msg+ ' asd');
-           		 $scope.products = msg;
-           		 for(var key in msg){
-					console.log('Load Products success msg!!'+msg[key].IdProdotto+ ' ' + key);
-       			 }
-               for(var key in msg){
-					console.log('Load Products success products!!'+msg[key].IdProdotto+ ' ' + key);
-       			 }
-
-            	console.log('Load Products success fine products!!'+$scope.products+ ' asd');
-				return msg;
-			},
-			error : function(data, status) {
-				console.log('Load Products procedure failed: ');
-			}
+		$http({
+			method : 'GET',
+			url : path + '.LoadProducts.json'
+		}).success(function(data) {
+			$scope.products = data;
+			console.log('Load Products success products!!' + data);
+		}).error(function(data) {
+			console.log('Load Products success products!!' + data);
+			// called asynchronously if an error occurs
+			// or server returns response with an error status.
 		});
 	};
 }]);
