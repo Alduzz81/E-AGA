@@ -13,7 +13,7 @@
 		<div class="products-container">
 			<div class="product-items" ng-repeat="(key, prods) in products">
 				<div ng-bind="prods.NomeProdotto"></div>
-				<img class="imageProduct" src="/etc/designs/EAGA-Design/images/products/iphone6.jpg" />
+				<img class="imageProduct" ng-src="{{prods.PathImmagine}}" />
 				<div ng-bind="prods.DescrizioneProdotto"></div>
 				<div ng-bind="prods.PrezzoProdotto"></div>
 				<div ng-bind="prods.QuantitaProdotto"></div>

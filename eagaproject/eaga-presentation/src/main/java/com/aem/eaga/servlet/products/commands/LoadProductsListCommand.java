@@ -13,13 +13,12 @@ import com.aem.eaga.common.DbUtility;
 import com.aem.eaga.servlet.commands.AbstractContextCommand;
 import com.aem.eaga.servlet.commands.HttpMethodEnum;
 
-public class LoadProductsCommand  extends AbstractContextCommand {
-	 public LoadProductsCommand(HttpMethodEnum methods) {
+public class LoadProductsListCommand  extends AbstractContextCommand {
+	 public LoadProductsListCommand(HttpMethodEnum methods) {
 	        super(methods);
 	    }
 	 @Override
 	    public void process(Context context) throws IOException {
-		 logger.error("Alduzz sono dentro alla servlet");
 		 DbUtility dbu = new DbUtility();
 		 try {
    		 Connection conn = dbu.getConnection();
@@ -27,7 +26,7 @@ public class LoadProductsCommand  extends AbstractContextCommand {
  		 ResultSet rs;
  		 stmt = conn.createStatement();
  		 String sqlProdotti = "SELECT * "
- 		 		+ "FROM prodotti ";
+ 		 		+ "FROM V_lista_prodotti ";
  		 rs = stmt.executeQuery(sqlProdotti);
  		 JSONObject prodotti = new JSONObject();
  		 while (rs.next())
@@ -39,10 +38,10 @@ public class LoadProductsCommand  extends AbstractContextCommand {
  			prodotto.put("DescrizioneProdotto", rs.getString("Descrizione"));
  			prodotto.put("PrezzoProdotto", rs.getString("Prezzo"));
  			prodotto.put("QuantitaProdotto", rs.getInt("Quantita"));
- 			prodotto.put("CategoriaProdotto", rs.getString("Categoria"));
+ 			prodotto.put("PathImmagine", rs.getString("PathImmagine"));
  			prodotti.put("Prodotto-"+rs.getInt("IdProdotto"), prodotto);
  			 } catch (Exception e) {
- 				logger.error("Alduzz Errore =" +e.getMessage());
+ 				logger.error("Errore =" +e.getMessage());
  	            throw new IOException(e);
  	        }
  		 }

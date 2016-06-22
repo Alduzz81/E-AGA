@@ -4,12 +4,12 @@ eagaApp.controller("ProductsController", [ '$scope', '$http', function($scope, $
 		var path = CQ.shared.HTTP.getPath();
 		$http({
 			method : 'GET',
-			url : path + '.LoadProducts.json'
+			url : path + '.LoadProductsList.json'
 		}).success(function(data) {
 			$scope.products = data;
-			console.log('Load Products success products!!' + data);
+			console.log('Load Products success!!' + data);
 		}).error(function(data) {
-			console.log('Load Products success products!!' + data);
+			console.log('Load Products error!!' + data);
 			// called asynchronously if an error occurs
 			// or server returns response with an error status.
 		});
