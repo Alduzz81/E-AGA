@@ -9,7 +9,12 @@ var mock = {
 			PrezzoProdotto: 299,
 			QuantitaProdotto: 100,
 			QuantitaSelezionata: 1,
-			CategoriaProdotto: "Telefono"
+			CategoriaProdotto: "Telefono",
+			ImmaginiProdotto: {	ImmagineProdotto_1: "/content/dam/eaga/common/products/provaaaCAT/americano.jpg",
+								ImmagineProdotto_2: "/content/dam/eaga/common/products/provaaaCAT/espresso.jpg",
+								ImmagineProdotto_3: "/content/dam/eaga/common/products/provaaaCAT/macchiato.jpg",
+								ImmagineProdotto_4: "/content/dam/eaga/common/products/provaaaCAT/espresso.jpg"
+							  }
 			};
 
 
@@ -41,7 +46,37 @@ function loadSingleProductByID(idProdotto) {
 			+ ',\n\tPrice:\t\t\t\t'+ msg.PrezzoProdotto
 			+ ',\n\tQuantity:\t\t\t'+ msg.QuantitaProdotto
 			+ ',\n\tCategogy:\t\t\t'+ msg.CategoriaProdotto);
-        	    	
+        	console.log('\tImage 1:\t\t\t'+ msg.ImmaginiProdotto.ImmagineProdotto_1);
+        	
+        	for(var key in msg.ImmaginiProdotto){
+        		$(".img-column-container").append("<img class='img-column-item' src='" + msg.ImmaginiProdotto[key] + "' />")
+        	}
+        	
+        	var pathForFrontImg = $(".img-column-item").first().attr("src");
+    		$(".front-img").attr("src", pathForFrontImg);
+    		//var pathForFrontLargeImg = pathForFrontImg.replace("icons", "large");
+    		var pathForFrontLargeImg = pathForFrontImg + "/jcr:content/renditions/cq5dam.web.1280.1280.jpeg";
+    		$(".front-img").attr("data-zoom-image", pathForFrontLargeImg);
+    		$(".img-column-item").first().addClass("img-shadow");
+    		
+    		$(".img-column-item").click(function(){
+    			$(".img-column-item").removeClass("img-shadow");
+    			$(this).addClass("img-shadow");
+    			var pathForFrontImg = $(this).attr("src");
+    			$(".front-img").attr("src", pathForFrontImg);
+    			
+    			var zoomWindowStyle = $(".zoomWindow").attr("style");
+    			var zoomWindowStyleBegin = zoomWindowStyle.substr(0, zoomWindowStyle.indexOf('"/')+1);
+    			var zoomWindowStyleEnd = zoomWindowStyle.substr(zoomWindowStyle.indexOf('");'));
+    			//var pathForFrontLargeImg = pathForFrontImg.replace("/icons/", "/large/");
+    			var pathForFrontLargeImg = pathForFrontImg + "/jcr:content/renditions/cq5dam.web.1280.1280.jpeg";
+    			zoomWindowStyle = zoomWindowStyleBegin + pathForFrontLargeImg + zoomWindowStyleEnd;
+    			$(".zoomWindow").attr("style", zoomWindowStyle);
+    			$(".front-img").attr("data-zoom-image", pathForFrontLargeImg);
+    		});
+    		
+    		$(".front-img").elevateZoom({zoomWindowPosition: 1, zoomWindowOffetx: 20, zoomWindowHeight: 500, zoomWindowWidth:500, scrollZoom : true});
+        	
         	$(".product-name").text(msg.NomeProdotto);
         	$(".product-desc").text(msg.DescrizioneProdotto);
         	$(".product-price").text(msg.PrezzoProdotto);
@@ -71,10 +106,7 @@ function loadSingleProductByID(idProdotto) {
 };
 
 function addToCart(){
-	//console.log("ciao, questa è una proprietà del prodotto: " + product.NomeProdotto);
-	/*var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId"); 
-	alert("questo è l'id: " + authorizableId);*/
-	
+		
 	var customerId = getRandomId();
 	console.log("Customer ID: " + customerId);
 	var addedProducts = $( "#productPage-select" ).val();
@@ -98,10 +130,18 @@ function addToCart(){
         	console.log("Msg: " + msg.J_RESULT);
         	console.log("Cart total quantity: " + msg.J_TOT_QNT);
         	console.log("Cart updated? " + msg.J_IS_UPDATED);
+        	console.log("Max quantity reduced? " + msg.J_IS_QNT_REDUCED);
+        	
         	$("#total-cart-qnt-topnav").text(msg.J_TOT_QNT);
         	if(msg.J_IS_UPDATED){
-        		$(".cart-msg-text").text("Congratulazioni!  La quantità del tuo articolo è stata modificata correttamente nel carrello.");
-	        	$("#cart-msg-container").slideDown();
+        		if(msg.J_IS_QNT_REDUCED){
+        			$(".cart-msg-text").text("Attenzione!  La quantità desiderata eccedeva la disponibilità in magazzino.\n" +
+        					"È stata inserita la quantità massima a disposizione.\n" +
+        					"Puoi modificarla nuovamente nel carrello.");
+        		} else {
+        			$(".cart-msg-text").text("Congratulazioni!  La quantità del tuo articolo è stata modificata correttamente nel carrello.");
+        		}
+        		$("#cart-msg-container").slideDown();
 	        	setTimeout(function(){
 	        		$("#cart-msg-container").slideUp();
 	        	}, 5000);
@@ -141,6 +181,7 @@ function getRandomId(){
 	}*/
 };
 
+
 /*******************************************************************************
  * PRODUCT PAGE AT DOCUMENT READY
  ******************************************************************************/
@@ -159,15 +200,15 @@ $(document).ready(function () {
 		if(ck != "" && ck != undefined){
 			loadSingleProductByID(ck);
 		}
-
-		var pathForFrontImg = $(".img-column-item").first().attr("src");
+		
+		/*var pathForFrontImg = $(".img-column-item").first().attr("src");
 		$(".front-img").attr("src", pathForFrontImg);
 		var pathForFrontLargeImg = pathForFrontImg.replace("icons", "large");
 		$(".front-img").attr("data-zoom-image", pathForFrontLargeImg);
-		$(".img-column-item").first().addClass("img-shadow");	
+		$(".img-column-item").first().addClass("img-shadow");*/
 	}	
 	
-	$(".img-column-item").click(function(){
+	/*$(".img-column-item").click(function(){
 		$(".img-column-item").removeClass("img-shadow");
 		$(this).addClass("img-shadow");
 		var pathForFrontImg = $(this).attr("src");
@@ -182,7 +223,7 @@ $(document).ready(function () {
 		$(".front-img").attr("data-zoom-image", pathForFrontLargeImg);
 	});
 	
-	$(".front-img").elevateZoom({zoomWindowPosition: 1, zoomWindowOffetx: 20, zoomWindowHeight: 500, zoomWindowWidth:500, scrollZoom : true});
+	$(".front-img").elevateZoom({zoomWindowPosition: 1, zoomWindowOffetx: 20, zoomWindowHeight: 500, zoomWindowWidth:500, scrollZoom : true});*/
 	
 });
 

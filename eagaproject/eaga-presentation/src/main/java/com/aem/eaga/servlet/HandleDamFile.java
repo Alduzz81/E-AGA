@@ -62,7 +62,9 @@ private static final long serialVersionUID = 2598426539166789515L;
 						final org.apache.sling.api.request.RequestParameter param = pArr[i];
 						final InputStream stream = param.getInputStream();
 						// Process the image
-						addImage(id, writeToDam(stream, param.getFileName()));
+						//addImage(id, writeToDam(stream, param.getFileName()));
+						
+						writeToDam(stream, param.getFileName());
 					}
 				}
 

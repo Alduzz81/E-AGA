@@ -2,10 +2,6 @@
  * START CART
  ******************************************************************************/
 
-function goToCheckout(){
-	alert("ciao");
-}
-
 var list = {
 		Prodotto_1: {
 					IdProdotto: 1,
@@ -254,13 +250,59 @@ eagaApp.controller("CartController", ['$scope', '$window', function($scope, $win
 	
 }]);
 
+function getRandomId(){
+	var randomID = parseInt(( Math.random()*3 ) + 1);
+	return randomID;
+};
+
+function loadCartListByID(customerId){
+	
+	var params = {
+	        'j_customerId': 1
+    	};
+	
+    var path = CQ.shared.HTTP.getPath();
+    
+    
+    /*$http({
+    	  method: 'GET',
+    	  url: path + '.LoadCartProducts.json',
+          data: params
+    	}).then(function successCallback(response) {
+    		console.log("Show Cart List Success!");
+        	console.log("Msg: " + msg);
+    	  }, function errorCallback(response, status) {
+    		  console.log('Show Cart List procedure failed: ' + status);
+    	  });*/
+    
+	
+	$.ajax({
+        type: 'GET',
+        url: path + '.LoadCartProducts.json',
+        data: params,
+        success: function (msg) {
+        	console.log("Show Cart List Success!");
+        	console.log("Msg: " + msg);
+  	
+        	
+        },
+        error: function (data, status) {
+            console.log('Show Cart List procedure failed: ' + status);
+        }
+    });
+}
+
+
 /*******************************************************************************
  * CART AT DOCUMENT READY
  ******************************************************************************/
 
 
 $(document).ready(function () {
+	
 	if($(document).find("title").text() == "Cart"){
+		
+		loadCartListByID(getRandomId());
 		
 	}
 	

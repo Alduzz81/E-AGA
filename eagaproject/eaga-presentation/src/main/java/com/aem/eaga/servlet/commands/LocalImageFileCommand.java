@@ -27,7 +27,8 @@ import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.Rendition;
 
 public class LocalImageFileCommand{
-	private final String localPath = "C://EAGA//eaga-repo//eagaproject//eaga-content//src//main//content//jcr_root//content//dam//eaga//common//products//";
+	private final String localPathRoot = "D://e_aga//";
+	private final String localPath = localPathRoot + "eagaproject//eaga-content//src//main//content//jcr_root//content//dam//eaga//common//products//";
 	private final String renditionsPath = "//_jcr_content//renditions//";
 	private Asset asset;
 	private String category, fileName;

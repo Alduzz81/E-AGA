@@ -119,6 +119,9 @@ function addProductInDB() {
         success: function (msg) {
         	if(msg.J_RESULT === ""){
         		suc = "SERVER DOWN!";
+        		 if(hasImage){
+ 					initImageUpload(20 + ","+ $("input[name=productcategory]").val());
+                 }
         	}else if(msg.J_RESULT === "Success"){
         		suc = "Prodotto "+ $("input[name=productname]").val() +" aggiunto!";
                 if(hasImage){
