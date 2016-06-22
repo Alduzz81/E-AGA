@@ -9,6 +9,7 @@
     border: 5px ridge;
     margin: 30px;
     width: 510px;
+    height: auto;
     background-color: #F4F4F4;
     padding-top: 10px;
     border-radius: initial;
@@ -34,6 +35,9 @@
 	margin-right: 60px;
 	text-align: left;
 	auto
+}
+.product-form-group ul{
+	position: relative;
 }
 .product-form-empty{
 	border-right-color: red;
@@ -63,9 +67,10 @@
     margin-left: 28px;
     margin-right: 3px;
 }
+
 .move-add-btn[type="submit"]{
 	float: right;
-	margin-top: -18px;
+	margin-top: -55px;
 }
 #add-product-result{
 	padding-top: 20px;

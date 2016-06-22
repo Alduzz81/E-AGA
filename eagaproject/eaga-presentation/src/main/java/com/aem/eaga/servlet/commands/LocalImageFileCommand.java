@@ -24,13 +24,13 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.aem.eaga.impl.FindFile;
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.api.Rendition;
 
 public class LocalImageFileCommand{
-	private final String relPath = "C://EAGA//eaga-repo";
-	//private final String relPath = "C://...";
-	private final String localPath = relPath+"//eagaproject//eaga-content//src//main//content//jcr_root//content//dam//eaga//common//products//";
+	private  String localPath = "C://...";
+	private final String staticpath = "//eaga-content//src//main//content//jcr_root//content//dam//eaga//common//products//";
 	private final String renditionsPath = "//_jcr_content//renditions//";
 	private Asset asset;
 	private String category, fileName;
@@ -42,7 +42,12 @@ public class LocalImageFileCommand{
 		this.fileName = fileName;
 	}
 	
-	public void createLocalFile(){
+	public String createLocalFile(){
+		String path = FindFile.findPath();
+		if(path.equals("File not found")){
+			return path;
+		}
+		localPath = path+staticpath;
 		Map<String, Object> assetMap = asset.getMetadata();
 		List<Rendition> renditions = asset.getRenditions();
 		//Creates the .content.xml file
@@ -50,6 +55,7 @@ public class LocalImageFileCommand{
 		//Creates the renditions
 		createRenditions(renditions, fileName);
 		// Return the path to the file was stored
+		return localPath;
 	}
 	
 	private void createLocalFile(Map<String, Object> assetMap, String fileName) {
@@ -171,12 +177,12 @@ public class LocalImageFileCommand{
 				if(rendName.equals("original")){
 					typeimg ="jpeg";
 					String mime =  myrendition.getMimeType().split("/")[1];
-					String origPath = local_renditions+renditionsPath+"//original.dir";
+					String origPath = local_renditions+renditionsPath+"original.dir";
 					new File(origPath).mkdir();
 					File orig = new File(origPath+"//.content.xml");
 					createXmlFile(orig, null, mime, true);
 					File dataBinary = new File(local_renditions+"//_jcr_content//_jcr_data.binary");
-					ImageIO.write( ImageIO.read(myrendition.getStream()), "mime", dataBinary);
+					ImageIO.write( ImageIO.read(myrendition.getStream()), mime, dataBinary);
 				}else{
 					String[] x  = rendName.split("[.]");
 					typeimg = x[(x.length)-1];

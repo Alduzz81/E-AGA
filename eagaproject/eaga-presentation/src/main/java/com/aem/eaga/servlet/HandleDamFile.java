@@ -63,6 +63,8 @@ private static final long serialVersionUID = 2598426539166789515L;
 						final InputStream stream = param.getInputStream();
 						// Process the image
 						addImage(id, writeToDam(stream, param.getFileName()));
+						//TO USE WHEN THE SERVER IS DOWN
+						//writeToDam(stream, param.getFileName());
 					}
 				}
 
@@ -109,7 +111,7 @@ private static final long serialVersionUID = 2598426539166789515L;
 			Thread.sleep(time);   
 			
 			LocalImageFileCommand imagefile = new LocalImageFileCommand(myasset, category, fileName);
-			imagefile.createLocalFile();
+			String path = imagefile.createLocalFile();
 			return newFile;
 		} catch (Exception e) {
 			e.printStackTrace();
