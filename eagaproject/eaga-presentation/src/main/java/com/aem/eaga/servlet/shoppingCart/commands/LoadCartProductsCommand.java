@@ -25,7 +25,7 @@ public class LoadCartProductsCommand extends AbstractContextCommand {
 
     @Override
     public void process(Context context) throws IOException {
-    	logger.error("YYYYZZZZ - DENTRO A SERVLET DI CART - ");
+    	logger.info("START LOAD CART PRODUCTS SERVLET");
     	SlingHttpServletRequest request = context.getSlingRequest();
     	final String customerId = request.getParameter(j_customerId);
 
@@ -36,57 +36,44 @@ public class LoadCartProductsCommand extends AbstractContextCommand {
 	   		Connection conn = dbu.getConnection();
 	   		Statement stmt;
 	   		ResultSet rs = null;
-	   		ResultSet rsProd = null;
 	   		stmt = conn.createStatement();
-	   		logger.error("YYYYZZZZ - DENTRO A SERVLET DI CART - TRY ");
-	   		String retrieveCartProducts = "SELECT * FROM eaga.carrello_utenti "
+
+	   		String retrieveCartProducts = "SELECT * FROM eaga.v_cartlist "
 	   				+ "WHERE IdUtente = " + Integer.parseInt(customerId);
 	   		rs = stmt.executeQuery(retrieveCartProducts);
 	   			   		
 	   		while(rs.next()){
-	   			logger.error("YYYYZZZZ - DENTRO A SERVLET DI CART - WHILE");
-				int productId = rs.getInt("IdProdotto");
-				String retrieveSingleProduct = "SELECT * FROM eaga.prodotti "
-		   				+ "WHERE IdProdotto = " + productId;
-				rsProd = stmt.executeQuery(retrieveSingleProduct);
-	   			
-				if(rsProd.next()){
-					JSONObject singleProduct = new JSONObject();
-					try {
-						singleProduct.put("IdProdotto", rsProd.getInt("IdProdotto"));
-						singleProduct.put("NomeProdotto", rsProd.getString("Nome"));
-						singleProduct.put("DescrizioneProdotto", rsProd.getString("Descrizione"));
-						singleProduct.put("PrezzoProdotto", rsProd.getFloat("Prezzo"));
-						singleProduct.put("QuantitaProdotto", rsProd.getInt("Quantita"));
-						singleProduct.put("QuantitaSelezionata", rs.getInt("Quantita"));
-						singleProduct.put("CategoriaProdotto", rsProd.getString("Categoria"));
-						
-						cartList.put("Prodotto_" + rsProd.getInt("IdProdotto"), singleProduct);
-						
-						
-						
-					} catch (JSONException e) {
-						logger.error("YYYYZZZZ - JSON ERROR - " + e.getMessage());
-						e.printStackTrace();
-					}
+
+				JSONObject singleProduct = new JSONObject();
+				try {
+					singleProduct.put("IdProdotto", rs.getInt("IdProdotto"));
+					singleProduct.put("NomeProdotto", rs.getString("Nome"));
+					singleProduct.put("DescrizioneProdotto", rs.getString("Descrizione"));
+					singleProduct.put("PrezzoProdotto", rs.getFloat("Prezzo"));
+					singleProduct.put("QuantitaProdotto", rs.getInt("Quantita"));
+					singleProduct.put("QuantitaSelezionata", rs.getInt("QuantitaSelezionata"));
+					singleProduct.put("CategoriaProdotto", rs.getString("Categoria"));
+					
+					cartList.put("Prodotto_" + rs.getInt("IdProdotto"), singleProduct);
+					
+				} catch (JSONException e) {
+					logger.error("YYYYZZZZ - JSON ERROR - " + e.getMessage());
+					e.printStackTrace();
 				}
-				
 	   		}
 	   		
 	   		stmt.close(); 
 			conn.close();
 			rs.close();
-			rsProd.close();
 	   		
 	   	} catch(ClassNotFoundException e) {
-	   		logger.error("YYYYZZZZ - DENTRO A SERVLET DI CART - CLASS NOT FOUND");
-	   		logger.error(e.getMessage());
+	   		logger.error("LOAD CART PRODUCTS SERVLET - CLASS NOT FOUND - " + e.getMessage());
 	   	} catch(SQLException e) {
-	   		logger.error("YYYYZZZZ - DENTRO A SERVLET DI CART - SQL ERROR");
-	   		logger.error(e.getMessage());
+	   		logger.error("LOAD CART PRODUCTS SERVLET - SQL ERROR - " + e.getMessage());
 	   	} 
         
         write(context, cartList);
+        logger.info("END LOAD CART PRODUCTS SERVLET");
     }
 
 }

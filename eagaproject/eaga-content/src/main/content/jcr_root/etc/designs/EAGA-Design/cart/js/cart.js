@@ -123,7 +123,7 @@ var list = {
 	};
 
 
-eagaApp.controller("CartController", ['$scope', '$window', function($scope, $window) {
+eagaApp.controller("CartController", ['$scope', '$window', '$http', function($scope, $window, $http) {
 	
 	$scope.goToCheckout = function(){
 		var modifiedItems = [];
@@ -248,6 +248,28 @@ eagaApp.controller("CartController", ['$scope', '$window', function($scope, $win
 	};
 	
 	
+	
+	$scope.loadCartListByID = function(customerId){
+		
+		var params = {
+		        'j_customerId': customerId
+	    	};
+		
+	    var path = CQ.shared.HTTP.getPath();
+		
+		$http({
+	    	  method: 'GET',
+	    	  url: path + '.LoadCartProducts.json',
+	          data: params
+	    	}).then(function successCallback(response) {
+	    		console.log("Show Cart List Success! ang");
+	    		console.log("Msg: " + msg.Prodotto_1.DescrizioneProdotto);
+	    	  }, function errorCallback(response, status) {
+	    		  console.log('Show Cart List procedure failed ang: ' + status);
+	    	  });
+		
+	}
+	
 }]);
 
 function getRandomId(){
@@ -255,10 +277,10 @@ function getRandomId(){
 	return randomID;
 };
 
-function loadCartListByID(customerId){
+function loadCartListByIDs(customerId){
 	
 	var params = {
-	        'j_customerId': 1
+	        'j_customerId': customerId
     	};
 	
     var path = CQ.shared.HTTP.getPath();
@@ -282,7 +304,7 @@ function loadCartListByID(customerId){
         data: params,
         success: function (msg) {
         	console.log("Show Cart List Success!");
-        	console.log("Msg: " + msg);
+        	console.log("Msg: " + msg.Prodotto_1.NomeProdotto);
   	
         	
         },
@@ -302,7 +324,8 @@ $(document).ready(function () {
 	
 	if($(document).find("title").text() == "Cart"){
 		
-		loadCartListByID(getRandomId());
+		//loadCartListByID(getRandomId());
+		angular.element(document.getElementById('main-cart-id')).scope().loadCartListByID(getRandomId());
 		
 	}
 	
