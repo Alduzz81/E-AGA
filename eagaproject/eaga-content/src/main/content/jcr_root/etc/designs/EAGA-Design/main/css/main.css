@@ -11560,7 +11560,7 @@ START SLIDER HOME
 .slider-wrap .cta-slider-wrap .slick-list {
     overflow: visible;
     padding: 0 !important;
-    height: 200px;
+    /*height: 200px;*/
     margin-top: -110px;
 }
 
@@ -11576,6 +11576,7 @@ START SLIDER HOME
 .slider-wrap .cta-slider-wrap .cta-slider-single a {
     display: block;
     color: #999;
+    height: 50px;
 }
 
 .slider-wrap .cta-slider-wrap .cta-slider-single .cta-slider-headline {

@@ -21,20 +21,19 @@ public class LoadProductsCommand  extends AbstractContextCommand {
 	    public void process(Context context) throws IOException {
 		 logger.error("Alduzz sono dentro alla servlet");
 		 DbUtility dbu = new DbUtility();
-		    try {
+		 try {
    		 Connection conn = dbu.getConnection();
-   		Statement stmt;
+   		 Statement stmt;
  		 ResultSet rs;
  		 stmt = conn.createStatement();
  		 String sqlProdotti = "SELECT * "
  		 		+ "FROM prodotti ";
  		 rs = stmt.executeQuery(sqlProdotti);
- 		JSONObject prodotti = new JSONObject();
+ 		 JSONObject prodotti = new JSONObject();
  		 while (rs.next())
  		 {
- 			  try { 
- 			JSONObject prodotto = new JSONObject();
- 			 
+ 			try { 
+ 			JSONObject prodotto = new JSONObject();		 
  			prodotto.put("IdProdotto", rs.getInt("IdProdotto"));
  			prodotto.put("NomeProdotto", rs.getString("Nome"));
  			prodotto.put("DescrizioneProdotto", rs.getString("Descrizione"));

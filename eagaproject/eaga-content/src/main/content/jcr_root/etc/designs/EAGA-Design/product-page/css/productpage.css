@@ -2,6 +2,22 @@
 START PRODUCT PAGE
 *********************/
 
+#cart-msg-container{
+	margin: 20px;
+	background: #f0f8ff;
+	text-align: center;
+	display: flex;
+}
+
+.cart-msg-img{
+	width: 50%;
+}
+
+.cart-msg-text{
+	font-size: 30px;
+	padding-top: 10px;
+}
+
 .img-column-container{
 	padding: 20px 10px 0px 20px;
 }
