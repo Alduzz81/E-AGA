@@ -29,6 +29,7 @@ private static final long serialVersionUID = 2598426539166789515L;
 
 	// private List<String> paths = new ArrayList<String>();
 	private String id, category;
+	private static String productname;
 	private final String damPath = "/content/dam/eaga/common/products/";
 	private int time;	
 
@@ -39,7 +40,7 @@ private static final long serialVersionUID = 2598426539166789515L;
 	@Override
 	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response)
 			throws ServerException, IOException {
-
+		
 		try {
 			final boolean isMultipart = org.apache.commons.fileupload.servlet.ServletFileUpload
 					.isMultipartContent(request);
@@ -55,23 +56,21 @@ private static final long serialVersionUID = 2598426539166789515L;
 					String paramArray[] = paramSet.split(",");
 					id = paramArray[0];
 					category = paramArray[1];
+					productname = paramArray[2];
 
 					final org.apache.sling.api.request.RequestParameter[] pArr = pairs.getValue();
-					time = pArr.length * 1500;
+					time = pArr.length * 2000;
 					for (int i = 0; i < pArr.length; i++) {
 						final org.apache.sling.api.request.RequestParameter param = pArr[i];
 						final InputStream stream = param.getInputStream();
 						// Process the image
 						addImage(id, writeToDam(stream, param.getFileName()));
-						//TO USE WHEN THE SERVER IS DOWN
+						//TO USE WHEN THE SERVER IS DOWN for testing
 						//writeToDam(stream, param.getFileName());
 					}
 				}
-
 			}
-		}
-
-		catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -79,7 +78,6 @@ private static final long serialVersionUID = 2598426539166789515L;
 	public static boolean addImage(String idProduct, String productImagePath) throws IOException {
 		try {
 			DbUtility dbu = new DbUtility();
-
 			Connection conn = dbu.getConnection();
 
 			String newRecordSql = "INSERT INTO eaga.immagini_prodotti (IdProdotto,PathImmagine)VALUES(?,?);";
@@ -105,13 +103,13 @@ private static final long serialVersionUID = 2598426539166789515L;
 
 			// Use AssetManager to place the file into the AEM DAM
 			com.day.cq.dam.api.AssetManager assetMgr = resourceResolver.adaptTo(com.day.cq.dam.api.AssetManager.class);
-			String newFile = damPath + category + "/" + fileName;
+			String newFile = (damPath + category +"/"+ productname +"/"+ fileName).toLowerCase();
 
 			Asset myasset = assetMgr.createAsset(newFile, is, "image/jpeg", true);
 			Thread.sleep(time);   
 			
-			LocalImageFileCommand imagefile = new LocalImageFileCommand(myasset, category, fileName);
-			String path = imagefile.createLocalFile();
+			LocalImageFileCommand imagefile = new LocalImageFileCommand(myasset, category+"//"+productname, fileName);
+			String path = imagefile.createLocalFile().toLowerCase();
 			return newFile;
 		} catch (Exception e) {
 			e.printStackTrace();

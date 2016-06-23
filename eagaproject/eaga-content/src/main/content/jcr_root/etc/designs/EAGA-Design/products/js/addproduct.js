@@ -29,8 +29,6 @@ function imageIsLoaded(e) {
 function loadImage(e){
     if (e.files && e.files[0]) {
 		var reader = new FileReader();
-        console.log(e.files[0]);
-        console.log(cont);
         reader.readAsDataURL(e.files[0]);
         reader.onload = imageIsLoaded;
 		$('.myimage').css('display','block');
@@ -122,7 +120,7 @@ function addProductInDB() {
         	}else if(msg.J_RESULT === "Success"){
         		suc = "Prodotto "+ $("input[name=productname]").val() +" aggiunto!";
                 if(hasImage){
-					initImageUpload(msg.J_IdProdotto + ","+ $("input[name=productcategory]").val());
+					initImageUpload(msg.J_IdProdotto + ","+ $("input[name=productcategory]").val() + "," + $("input[name=productname]").val());
                 }
         	}else{
         		suc = "Product "+ $("input[name=productname]").val() +" gia' esistente!";

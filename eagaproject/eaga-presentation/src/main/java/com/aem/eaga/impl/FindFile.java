@@ -16,11 +16,6 @@ public class FindFile {
 		if(stat){
 			return finalPath;
 		}else if(!stat) { 
-			try {
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			finalPath = tempPAth = "D:";
 			if(mainSearch("D:")){
 			return finalPath;
@@ -36,14 +31,16 @@ public class FindFile {
 			finalPath = rootPath;
 			advanceSearch = true;
 			String[] files = getList(rootPath);
-			for (String file : files ){
-				tempPAth = finalPath+div+file;
-				isfound = findFile(tempPAth);
-				if(isfound){
-					return isfound;
-				}
-				else{
-					tempPAth = finalPath;
+			if(files != null){
+				for (String file : files ){
+					tempPAth = finalPath+div+file;
+					isfound = findFile(tempPAth);
+					if(isfound){
+						return isfound;
+					}
+					else{
+						tempPAth = finalPath;
+					}
 				}
 			}
 		}
