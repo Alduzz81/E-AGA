@@ -191,20 +191,6 @@ eagaApp.controller("CartController", ['$scope', '$window', '$http', function($sc
 	
 	$scope.savedList = {};
 	
-	/*$scope.removeProduct = function(id){
-		var i = $scope.cartList.findIndex(function(item){
-			return item.id === id ;
-		});
-		$scope.cartList.splice(i, 1);
-	};
-	
-	$scope.moveToSavedForLater = function(id){
-		var i = $scope.cartList.findIndex(function(item){
-			return item.id === id ;
-		});
-		$scope.cartList.splice(i, 1);
-	};*/
-	
 	$scope.removeProduct = function(id){
 		for(var key in $scope.cartList){
 			if($scope.cartList[key].IdProdotto == id){
@@ -251,7 +237,7 @@ eagaApp.controller("CartController", ['$scope', '$window', '$http', function($sc
 	
 	$scope.loadCartListByID = function(customerId){
 		
-		var params = {
+		var data = {
 		        'j_customerId': customerId
 	    	};
 		
@@ -260,14 +246,16 @@ eagaApp.controller("CartController", ['$scope', '$window', '$http', function($sc
 		$http({
 	    	  method: 'GET',
 	    	  url: path + '.LoadCartProducts.json',
-	          data: params
+	          params: data
 	    	}).then(function successCallback(response) {
-	    		console.log("Show Cart List Success! ang");
-	    		console.log("Msg: " + msg.Prodotto_1.DescrizioneProdotto);
+	    		console.log("Show Cart List Success! ang " + response.data.Prodotto_1.NomeProdotto);
+	    		
+	    		$scope.cartList = response.data;
+	    		$("#total-cart-qnt-topnav").text($scope.totalQnt);
+	    		
 	    	  }, function errorCallback(response, status) {
 	    		  console.log('Show Cart List procedure failed ang: ' + status);
 	    	  });
-		
 	}
 	
 }]);
@@ -276,44 +264,6 @@ function getRandomId(){
 	var randomID = parseInt(( Math.random()*3 ) + 1);
 	return randomID;
 };
-
-function loadCartListByIDs(customerId){
-	
-	var params = {
-	        'j_customerId': customerId
-    	};
-	
-    var path = CQ.shared.HTTP.getPath();
-    
-    
-    /*$http({
-    	  method: 'GET',
-    	  url: path + '.LoadCartProducts.json',
-          data: params
-    	}).then(function successCallback(response) {
-    		console.log("Show Cart List Success!");
-        	console.log("Msg: " + msg);
-    	  }, function errorCallback(response, status) {
-    		  console.log('Show Cart List procedure failed: ' + status);
-    	  });*/
-    
-	
-	$.ajax({
-        type: 'GET',
-        url: path + '.LoadCartProducts.json',
-        data: params,
-        success: function (msg) {
-        	console.log("Show Cart List Success!");
-        	console.log("Msg: " + msg.Prodotto_1.NomeProdotto);
-  	
-        	
-        },
-        error: function (data, status) {
-            console.log('Show Cart List procedure failed: ' + status);
-        }
-    });
-}
-
 
 /*******************************************************************************
  * CART AT DOCUMENT READY
@@ -324,9 +274,7 @@ $(document).ready(function () {
 	
 	if($(document).find("title").text() == "Cart"){
 		
-		//loadCartListByID(getRandomId());
-		angular.element(document.getElementById('main-cart-id')).scope().loadCartListByID(getRandomId());
-		
+		angular.element(document.getElementById('main-cart-id')).scope().loadCartListByID(getRandomId());	
 	}
 	
 });

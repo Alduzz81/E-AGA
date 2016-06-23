@@ -37,7 +37,7 @@ public class LoadCartProductsCommand extends AbstractContextCommand {
 	   		Statement stmt;
 	   		ResultSet rs = null;
 	   		stmt = conn.createStatement();
-
+	   		
 	   		String retrieveCartProducts = "SELECT * FROM eaga.v_cartlist "
 	   				+ "WHERE IdUtente = " + Integer.parseInt(customerId);
 	   		rs = stmt.executeQuery(retrieveCartProducts);
@@ -65,7 +65,7 @@ public class LoadCartProductsCommand extends AbstractContextCommand {
 	   		stmt.close(); 
 			conn.close();
 			rs.close();
-	   		
+
 	   	} catch(ClassNotFoundException e) {
 	   		logger.error("LOAD CART PRODUCTS SERVLET - CLASS NOT FOUND - " + e.getMessage());
 	   	} catch(SQLException e) {

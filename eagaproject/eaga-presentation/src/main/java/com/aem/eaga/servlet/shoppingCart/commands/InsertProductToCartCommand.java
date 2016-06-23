@@ -34,7 +34,7 @@ public class InsertProductToCartCommand extends AbstractContextCommand {
 
     @Override
     public void process(Context context) throws IOException {
-    
+    	logger.info("START INSERT PRODUCT TO CART SERVLET");
     	SlingHttpServletRequest request = context.getSlingRequest();
     	SlingHttpServletResponse response = context.getSlingResponse();
     	final String customerId = request.getParameter(j_customerId);
@@ -126,6 +126,8 @@ public class InsertProductToCartCommand extends AbstractContextCommand {
 				stmt.close(); 
 				conn.close();
 				rs.close();
+				
+				logger.info("END INSERT PRODUCT TO CART SERVLET");
 	   		}
 	   	} catch(ClassNotFoundException e) {
 	   		logger.error(e.getMessage());
