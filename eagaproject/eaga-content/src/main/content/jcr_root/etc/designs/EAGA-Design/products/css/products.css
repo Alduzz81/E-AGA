@@ -28,6 +28,13 @@
 	border-top-style: none;
 	border-right-style: none;
 	margin-bottom: 10px;
+	text-align: center;
+}
+
+.desription-product{
+	width: 100px;
+    text-align: left;
+    margin-left: 105px;
 }
 
 .imageProduct{

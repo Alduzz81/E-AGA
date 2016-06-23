@@ -45,9 +45,9 @@
 			<div class="product-items" ng-repeat="(key, prods) in products">
 				<div ng-bind="prods.NomeProdotto"></div>
 				<div><img class="imageProduct" ng-src="{{prods.PathImmagine}}"/></div>
-				<div ng-bind="prods.DescrizioneProdotto"></div>
-				<div><span>EUR: </span><span ng-bind="prods.PrezzoProdotto"></span></div>
-				<div><span>Quantita: </span><span ng-bind="prods.QuantitaProdotto"></span></div>
+				<div class="desription-product" ng-bind="prods.DescrizioneProdotto"></div>
+				<div class="desription-product"><span>EUR: </span><span ng-bind="prods.PrezzoProdotto"></span></div>
+				<div class="desription-product"><span>Quantita: </span><span ng-bind="prods.QuantitaProdotto"></span></div>
 			</div>
 		</div>
 	</div>

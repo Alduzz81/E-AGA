@@ -5,5 +5,5 @@ xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:title="Products Page"
     sling:resourceSuperType="foundation/components/parbase"
     allowedParents="[*/parsys]"
-    componentGroup="eaga"/>
+    componentGroup=".hidden"/>
  
