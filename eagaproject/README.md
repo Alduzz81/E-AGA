@@ -48,3 +48,11 @@ https://helpx.adobe.com/experience-manager/using/creating-aem-project-using-ecli
 </workspaceFilter>
 
 ----------------------------------------------------------------------------------------
+
+Configurazione DbUtility Giuseppe
+Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/eaga?" 
+   				 		   + "user=root&password=admin" );
+   				 		   
+Configurazione DbUtility Aldo
+Connection conn = DriverManager.getConnection("jdbc:mysql://10.107.104.16/eaga?" 
+   				 		   + "user=eaga&password=eaga" );
