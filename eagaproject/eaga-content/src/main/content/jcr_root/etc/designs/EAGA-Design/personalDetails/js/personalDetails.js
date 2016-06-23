@@ -12,10 +12,7 @@ function updatePDDB() {
         	$('.personalM').hide();
         	$('.personalV').show();
         	loadPD();
-        	console.log('Update success! - \n\tid: ' + msg.j_id 
-        			+ ',\n\tpassword: '+ msg.j_password
-        			+ ',\n\tresult: '+ msg.j_result
-        			+ ',\n\tstatus: '+ msg.j_status);
+        	console.log('Update success!');
         },
         error: function (data, status) {
             console.log('Update failed: ' + status);
@@ -23,8 +20,7 @@ function updatePDDB() {
     });
 };
 function loadPD(){
-var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId");
-    console.log('ID: ' + authorizableId);
+	var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId");
     var params = {
     		'j_id': authorizableId
     	};
@@ -36,10 +32,6 @@ var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId");
         success: function (msg) {
         	$('.personalM').hide();
         	$('.personalV').show();
-        	console.log('Load data success! - \n\tid: ' + msg.IdUtente
-        			+ ',\n\tnome: '+ msg.Nome
-        			+ ',\n\temail: '+ msg.Email
-        			+ ',\n\tpassword: '+ msg.Password);
         	$("#nameC").text(msg.Nome);
         	$("#emailC").text(msg.Email);
         	$("#passwordC").text(msg.Password);

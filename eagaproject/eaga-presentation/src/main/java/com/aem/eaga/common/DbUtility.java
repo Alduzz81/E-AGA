@@ -13,8 +13,8 @@ public class DbUtility {
     private final Logger LOG = LoggerFactory.getLogger(getClass());
     public Connection getConnection() throws ClassNotFoundException, SQLException {
     	 Class.forName("com.mysql.jdbc.Driver");
-   		 Connection conn = DriverManager.getConnection("jdbc:mysql://10.107.104.16/eaga?" 
-   				 		   + "user=eaga&password=eaga" );
+   		 Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/eaga?" 
+   				 		   + "user=root&password=admin" );
    		 return conn;
    		
   		 //Aldo's ip 10.107.104.16, user=eaga&password=eaga
