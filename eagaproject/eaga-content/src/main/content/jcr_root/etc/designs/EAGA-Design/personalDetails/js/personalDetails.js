@@ -21,7 +21,6 @@ function updatePDDB() {
 };
 function loadPD(){
 	var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId");
-    console.log('ID: ' + authorizableId);
     var params = {
     		'j_id': authorizableId
     	};
@@ -33,7 +32,6 @@ function loadPD(){
         success: function (msg) {
         	$('.personalM').hide();
         	$('.personalV').show();
-        	console.log('Load data success!');
         	$("#nameC").text(msg.Nome);
         	$("#emailC").text(msg.Email);
         	$("#passwordC").text(msg.Password);

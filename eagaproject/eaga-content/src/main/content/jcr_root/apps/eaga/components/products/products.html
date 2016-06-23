@@ -1,22 +1,53 @@
 <div class="row" ng-controller="ProductsController">
 	<div class="col-sm-2 menu-container">
-		<div>Marca</div>
-		<div>Disponibilita</div>
-		<div>Nuovi Arrivi</div>
-		<div>Recensioni</div>
-		<div>Produttore</div>
-		<div>Venditore</div>
-		<div>Eaga</div>
+		<ol>
+			<li><a href="#"><b>Informatica</b></a></li>
+			<ul>
+				<li><a href="#">Portatili</a></li>
+				<li><a href="#">Desktop</a></li>
+				<li><a href="#">Tablet PC</a></li>
+				<li><a href="#">Tastiere</a></li>
+				<li><a href="#">Custodie morbide e rigide per Tablet PC</a></li>
+				<li><a href="#">Unita di lettura DVD esterne</a></li>
+			</ul>
+			<li><a href="#"><b>Elettronica</b></a></li>
+			<ul>
+				<li><a href="#">Custodie e cover</a></li>
+				<li><a href="#">Supporti</a></li>
+				<li><a href="#">Cavi per trasmissione dati</a></li>
+				<li><a href="#">Accessori</a></li>
+				<li><a href="#">Cellulari e Smartphone</a></li>
+				<li><a href="#">Cuffie con cavo per cellulari</a></li>
+			</ul>
+			<li><a href="#"><b>Libri</b></a></li>
+			<ul>
+				<li><a href="#">Libri scolastici</a></li>
+				<li><a href="#">Lingua, linguistica e scrittura</a></li>
+				<li><a href="#">Letteratura e narrativa</a></li>
+				<li><a href="#">Economia, affari e finanza</a></li>
+				<li><a href="#">Informatica, Web e Digital Media</a></li>
+				<li><a href="#">Biografie, diari e memorie</a></li>
+			</ul>
+		</ol>
 	</div>
 	<div class="col-sm-10">
-		<button ng-click="callAjaxProducts()">Cerca</button>
+		<div class="search-product">
+			<select>
+				<option>- Categoria -</option>
+				<option>Informatica</option>
+				<option>Elettronica</option>
+				<option>Libri</option>
+			</select>
+			<input type="search" placeholder="Cerca prodotto">
+			<button ng-click="callAjaxProducts()">Cerca</button>
+		</div>
 		<div class="products-container">
 			<div class="product-items" ng-repeat="(key, prods) in products">
 				<div ng-bind="prods.NomeProdotto"></div>
-				<img class="imageProduct" ng-src="{{prods.PathImmagine}}" />
+				<div><img class="imageProduct" ng-src="{{prods.PathImmagine}}"/></div>
 				<div ng-bind="prods.DescrizioneProdotto"></div>
-				<div ng-bind="prods.PrezzoProdotto"></div>
-				<div ng-bind="prods.QuantitaProdotto"></div>
+				<div><span>EUR: </span><span ng-bind="prods.PrezzoProdotto"></span></div>
+				<div><span>Quantita: </span><span ng-bind="prods.QuantitaProdotto"></span></div>
 			</div>
 		</div>
 	</div>

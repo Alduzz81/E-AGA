@@ -7,7 +7,6 @@ eagaApp.controller("ProductsController", [ '$scope', '$http', function($scope, $
 			url : path + '.LoadProductsList.json'
 		}).success(function(data) {
 			$scope.products = data;
-			console.log('Load Products success!!' + data);
 		}).error(function(data) {
 			console.log('Load Products error!!' + data);
 			// called asynchronously if an error occurs
