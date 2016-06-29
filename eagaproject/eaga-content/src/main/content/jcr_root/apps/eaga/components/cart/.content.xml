@@ -4,4 +4,4 @@
     jcr:title="Cart"
     sling:resourceSuperType="foundation/components/parbase"
     allowedParents="[*/parsys]"
-    componentGroup="eaga"/>
+    componentGroup=".hidden"/>
