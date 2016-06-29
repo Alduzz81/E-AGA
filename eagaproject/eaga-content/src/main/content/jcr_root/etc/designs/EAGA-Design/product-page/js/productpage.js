@@ -1,51 +1,55 @@
 /*******************************************************************************
  * START PRODUCT PAGE
  ******************************************************************************/
-var product = {};
-var mock = {
-			IdProdotto: 6,
-			NomeProdotto: "Iphone4",
-			DescrizioneProdotto: "iphone4",
-			PrezzoProdotto: 299,
-			QuantitaProdotto: 100,
-			QuantitaSelezionata: 1,
-			CategoriaProdotto: "Telefono"
-			};
 
+var product = {};
 
 function loadSingleProductByID(idProdotto) {
-	
-	var ckToFind = "singleIdProduct";
 	var params = {
 	        'j_idProdotto': idProdotto
     	};
-	
+
     var path = CQ.shared.HTTP.getPath();
+    var positionPath=path.indexOf(".html/id");
+    path=path.substring(0,positionPath);
 
     $.ajax({
         type: 'GET',
         url: path + '.LoadSingleProduct.json',
         data: params,
         success: function (msg) {
-        	console.log("msg: " + typeof msg + ", msg text: "+ msg+ ", mock: "+ typeof mock);
-        	if(typeof msg  == "string"){
-        		console.log("dentro a undefined");
-        		msg = mock;
-        		console.log("msg: " + typeof msg + ", mock: "+ typeof mock);
-        	};
+			for(var key in msg.ImmaginiProdotto){
+        		$(".img-column-container").append("<img class='img-column-item' src='" + msg.ImmaginiProdotto[key] + "' />")
+        	}
         	
-        	console.log('Load Single Product success!!\n\n\tID Prodotto:\t\t'
-        	+ msg.IdProdotto 
-			+ ',\n\tName:\t\t\t\t'+ msg.NomeProdotto
-			+ ',\n\tDescription:\t\t'+ msg.DescrizioneProdotto
-			+ ',\n\tPrice:\t\t\t\t'+ msg.PrezzoProdotto
-			+ ',\n\tQuantity:\t\t\t'+ msg.QuantitaProdotto
-			+ ',\n\tCategogy:\t\t\t'+ msg.CategoriaProdotto);
-        	    	
+        	var pathForFrontImg = $(".img-column-item").first().attr("src");
+    		$(".front-img").attr("src", pathForFrontImg);
+    		var pathForFrontLargeImg = pathForFrontImg ;
+    		$(".front-img").attr("data-zoom-image", pathForFrontLargeImg);
+    		$(".img-column-item").first().addClass("img-shadow");
+
+    		$(".img-column-item").click(function(){
+    			$(".img-column-item").removeClass("img-shadow");
+    			$(this).addClass("img-shadow");
+    			var pathForFrontImg = $(this).attr("src");
+    			$(".front-img").attr("src", pathForFrontImg);
+    			
+    			var zoomWindowStyle = $(".zoomWindow").attr("style");
+    			var zoomWindowStyleBegin = zoomWindowStyle.substr(0, zoomWindowStyle.indexOf('"/')+1);
+    			var zoomWindowStyleEnd = zoomWindowStyle.substr(zoomWindowStyle.indexOf('");'));
+    			var pathForFrontLargeImg = pathForFrontImg + "/jcr:content/renditions/cq5dam.web.1280.1280.jpeg";
+    			zoomWindowStyle = zoomWindowStyleBegin + pathForFrontLargeImg + zoomWindowStyleEnd;
+    			$(".zoomWindow").attr("style", zoomWindowStyle);
+    			$(".front-img").attr("data-zoom-image", pathForFrontLargeImg);
+    		});
+    		
+    		$(".front-img").elevateZoom({zoomWindowPosition: 1, zoomWindowOffetx: 20, zoomWindowHeight: 500, zoomWindowWidth:500, scrollZoom : true});
+        	
         	$(".product-name").text(msg.NomeProdotto);
-        	$(".product-desc").text(msg.DescrizioneProdotto);
         	$(".product-price").text(msg.PrezzoProdotto);
-        	
+        	$(".trade-mark").text('Categoria: '+msg.CategoriaProdotto);
+        	var descrizione='<br>'+msg.DescrizioneProdotto;
+        	$(".product-desc").append(descrizione);
         	var quantity = 0;
         	if(msg.QuantitaProdotto != undefined){
         		if(msg.QuantitaProdotto < 30){
@@ -54,15 +58,14 @@ function loadSingleProductByID(idProdotto) {
         			quantity = 30;
         		}
         	}
-       		
+
     		for(var i = 1; i <= quantity; i++){
     			$('<option>').val(i).text(i).appendTo('#productPage-select');
-			}
-        	
+			}   
+
     		product = msg;    		
-        	deleteCookie(ckToFind);
-        	
         },
+
         error: function (data, status) {
             console.log('Load Single Product procedure failed: ' + status);
         }
@@ -71,10 +74,7 @@ function loadSingleProductByID(idProdotto) {
 };
 
 function addToCart(){
-	//console.log("ciao, questa è una proprietà del prodotto: " + product.NomeProdotto);
-	/*var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId"); 
-	alert("questo è l'id: " + authorizableId);*/
-	
+		
 	var customerId = getRandomId();
 	console.log("Customer ID: " + customerId);
 	var addedProducts = $( "#productPage-select" ).val();
@@ -88,7 +88,7 @@ function addToCart(){
     	};
 	
     var path = CQ.shared.HTTP.getPath();
-	
+
 	$.ajax({
         type: 'POST',
         url: path + '.InsertProductToCart.json',
@@ -98,10 +98,18 @@ function addToCart(){
         	console.log("Msg: " + msg.J_RESULT);
         	console.log("Cart total quantity: " + msg.J_TOT_QNT);
         	console.log("Cart updated? " + msg.J_IS_UPDATED);
+        	console.log("Max quantity reduced? " + msg.J_IS_QNT_REDUCED);
+        	
         	$("#total-cart-qnt-topnav").text(msg.J_TOT_QNT);
         	if(msg.J_IS_UPDATED){
-        		$(".cart-msg-text").text("Congratulazioni!  La quantità del tuo articolo è stata modificata correttamente nel carrello.");
-	        	$("#cart-msg-container").slideDown();
+        		if(msg.J_IS_QNT_REDUCED){
+        			$(".cart-msg-text").text("Attenzione!  La quantita desiderata eccedeva la disponibilita in magazzino.\n" +
+        					"È stata inserita la quantita massima a disposizione.\n" +
+        					"Puoi modificarla nuovamente nel carrello.");
+        		} else {
+        			$(".cart-msg-text").text("Congratulazioni!  La quantita del tuo articolo è stata modificata correttamente nel carrello.");
+        		}
+        		$("#cart-msg-container").slideDown();
 	        	setTimeout(function(){
 	        		$("#cart-msg-container").slideUp();
 	        	}, 5000);
@@ -122,7 +130,6 @@ function addToCart(){
 };
 
 
-
 function addToWishList(){
 	var addedProducts = $( "#productPage-select" ).val();
 	alert("ciao, i prodotti desiderati sono " + addedProducts);
@@ -132,58 +139,23 @@ function addToWishList(){
 function getRandomId(){
 	var randomID = parseInt(( Math.random()*3 ) + 1);
 	return randomID;
-	/*if(randomID == 1){
-		return "abcd@gmail.com";
-	} else if(randomID == 2){
-		return "efgh@gmail.com";
-	} else {
-		return "ilmn@gmail.com";
-	}*/
 };
+
 
 /*******************************************************************************
  * PRODUCT PAGE AT DOCUMENT READY
  ******************************************************************************/
 
-
 $(document).ready(function () {
-	
-	$(".cart-msg-container").hide();
-	
+    var url=window.location.href;
+    var positionID=url.indexOf("=");
+    var finalID=url.substring(positionID+1);
+	$(".cart-msg-container").hide();	
 	if($(document).find("title").text() == "Product"){
-		
-		var ckToFind = "singleIdProduct";
-		var ck = getCookie(ckToFind);
-		console.log("single id product cookie: " + ck);
-				
-		if(ck != "" && ck != undefined){
-			loadSingleProductByID(ck);
+		if(finalID != "" && finalID != undefined){
+			loadSingleProductByID(finalID);
 		}
-
-		var pathForFrontImg = $(".img-column-item").first().attr("src");
-		$(".front-img").attr("src", pathForFrontImg);
-		var pathForFrontLargeImg = pathForFrontImg.replace("icons", "large");
-		$(".front-img").attr("data-zoom-image", pathForFrontLargeImg);
-		$(".img-column-item").first().addClass("img-shadow");	
 	}	
-	
-	$(".img-column-item").click(function(){
-		$(".img-column-item").removeClass("img-shadow");
-		$(this).addClass("img-shadow");
-		var pathForFrontImg = $(this).attr("src");
-		$(".front-img").attr("src", pathForFrontImg);
-		
-		var zoomWindowStyle = $(".zoomWindow").attr("style");
-		var zoomWindowStyleBegin = zoomWindowStyle.substr(0, zoomWindowStyle.indexOf('"/')+1);
-		var zoomWindowStyleEnd = zoomWindowStyle.substr(zoomWindowStyle.indexOf('");'));
-		var pathForFrontLargeImg = pathForFrontImg.replace("/icons/", "/large/");
-		zoomWindowStyle = zoomWindowStyleBegin + pathForFrontLargeImg + zoomWindowStyleEnd;
-		$(".zoomWindow").attr("style", zoomWindowStyle);
-		$(".front-img").attr("data-zoom-image", pathForFrontLargeImg);
-	});
-	
-	$(".front-img").elevateZoom({zoomWindowPosition: 1, zoomWindowOffetx: 20, zoomWindowHeight: 500, zoomWindowWidth:500, scrollZoom : true});
-	
 });
 
 /*******************************************************************************

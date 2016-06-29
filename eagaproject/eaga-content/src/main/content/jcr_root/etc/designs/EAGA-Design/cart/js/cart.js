@@ -2,10 +2,6 @@
  * START CART
  ******************************************************************************/
 
-function goToCheckout(){
-	alert("ciao");
-}
-
 var list = {
 		Prodotto_1: {
 					IdProdotto: 1,
@@ -127,7 +123,7 @@ var list = {
 	};
 
 
-eagaApp.controller("CartController", ['$scope', '$window', function($scope, $window) {
+eagaApp.controller("CartController", ['$scope', '$window', '$http', function($scope, $window, $http) {
 	
 	$scope.goToCheckout = function(){
 		var modifiedItems = [];
@@ -195,20 +191,6 @@ eagaApp.controller("CartController", ['$scope', '$window', function($scope, $win
 	
 	$scope.savedList = {};
 	
-	/*$scope.removeProduct = function(id){
-		var i = $scope.cartList.findIndex(function(item){
-			return item.id === id ;
-		});
-		$scope.cartList.splice(i, 1);
-	};
-	
-	$scope.moveToSavedForLater = function(id){
-		var i = $scope.cartList.findIndex(function(item){
-			return item.id === id ;
-		});
-		$scope.cartList.splice(i, 1);
-	};*/
-	
 	$scope.removeProduct = function(id){
 		for(var key in $scope.cartList){
 			if($scope.cartList[key].IdProdotto == id){
@@ -252,7 +234,36 @@ eagaApp.controller("CartController", ['$scope', '$window', function($scope, $win
 	};
 	
 	
+	
+	$scope.loadCartListByID = function(customerId){
+		
+		var data = {
+		        'j_customerId': customerId
+	    	};
+		
+	    var path = CQ.shared.HTTP.getPath();
+		
+		$http({
+	    	  method: 'GET',
+	    	  url: path + '.LoadCartProducts.json',
+	          params: data
+	    	}).then(function successCallback(response) {
+	    		console.log("Show Cart List Success! ang " + response.data.Prodotto_1.NomeProdotto);
+	    		
+	    		$scope.cartList = response.data;
+	    		$("#total-cart-qnt-topnav").text($scope.totalQnt);
+	    		
+	    	  }, function errorCallback(response, status) {
+	    		  console.log('Show Cart List procedure failed ang: ' + status);
+	    	  });
+	}
+	
 }]);
+
+function getRandomId(){
+	var randomID = parseInt(( Math.random()*3 ) + 1);
+	return randomID;
+};
 
 /*******************************************************************************
  * CART AT DOCUMENT READY
@@ -260,8 +271,10 @@ eagaApp.controller("CartController", ['$scope', '$window', function($scope, $win
 
 
 $(document).ready(function () {
+	
 	if($(document).find("title").text() == "Cart"){
 		
+		angular.element(document.getElementById('main-cart-id')).scope().loadCartListByID(getRandomId());	
 	}
 	
 });

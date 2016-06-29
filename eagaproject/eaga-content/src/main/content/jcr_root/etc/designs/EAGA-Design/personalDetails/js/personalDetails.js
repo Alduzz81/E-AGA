@@ -45,7 +45,9 @@ function loadPD(){
 $(document).ready(function () {
 	$('.personalM').hide();
 	$('.personalV').show();
-	loadPD();
+    var path = CQ.shared.HTTP.getPath();
+    if(path=="/content/eaga/personalDetails")
+		loadPD();
 });
 
 $('#modifiy-personal-details').on('click', function(){

@@ -77,7 +77,7 @@ function controlImageType(sel){
         }
 		return true;
     }
-	$('#add-product-result').html("Il file inserito non è valido.");
+	$('#add-product-result').html("Il file inserito non � valido.");
     return false;
 };
 var deleteImage = function(par){
@@ -155,9 +155,6 @@ function addProductInDB() {
         success: function (msg) {
         	if(msg.J_RESULT === ""){
         		suc = "SERVER DOWN!";
-         if(hasImage){
-					initImageUpload("20,"+ $("input[name=productcategory]").val() + "," + $("input[name=productname]").val());
-                }
         	}else if(msg.J_RESULT === "Success"){
         		if(hasImage){
 					initImageUpload(msg.J_IdProdotto + ","+ $("input[name=productcategory]").val() + "," + $("input[name=productname]").val());
