@@ -80,6 +80,10 @@ function controlImageType(sel){
 	$('#add-product-result').html("Il file inserito non � valido.");
     return false;
 };
+function showModal(){
+	$('#add-product-result').html(suc);
+	$('#eagamodal').css('display','block');
+};
 var deleteImage = function(par){
     $('.pimage'+par).empty();
     $('.pimage'+par).remove();
@@ -171,8 +175,7 @@ function addProductInDB() {
            done = true;
         }
     });
-	$('#add-product-result').html(suc);
-	$('#eagamodal').css('display','block');
+    setTimeout(showModal(), 5000);
 	interval = setInterval(doModal, 4000);
 };
 
