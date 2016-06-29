@@ -14,18 +14,17 @@
     border-radius: initial;
 }
 .product-form-group input{
-	margin-bottom: 20px;
-    width: 65%;
-    margin-left: auto;
-    margin-right: auto;
-    height: 35px;
-    border-radius: 3px;
+    width: 90%;
+    float: left;
+	right: 5px;
     padding: 0px 15px;
-    right: 5px;
+	margin-left: auto;
+    margin-right: auto;
     position: relative;
-    float: right;
-    auto
-}
+    margin-bottom: 20px;
+	height: 35px;
+    border-radius: 3px;
+}    
 .product-form-group label{
 	float: left;
 	margin-left: 15px;
@@ -33,6 +32,8 @@
 	margin-bottom: 20px;
 	margin-right: 60px;
 	text-align: left;
+    font-size: 18px;
+    width: 100%;
 	auto
 }
 .product-form-empty{
@@ -41,31 +42,14 @@
     border-right-style: dotted;
     border-bottom-style: dotted;
 }
-#productquantity, #productprice{
-	width: 32%;
-    margin-right: 163px;
-}
-#productquantitylabel{
-	float: right;
-    margin-right: -195px;
-}
-#productpricelabel{
-	float: right;
-    margin-right: -170px;
-}
-#productnamelabel{
-	margin-right: 5px;
-	width: 25%
-}
 .submit-prod[type="submit"], .submit-img[type="submit"]{
 	float: none;
-    width: 35%;
-    margin-left: 28px;
-    margin-right: 3px;
+    width: 45%;
+    margin-left: 105px;
 }
 .move-add-btn[type="submit"]{
 	float: right;
-	margin-top: -18px;
+	margin-top: -55px;
 }
 #add-product-result{
 	padding-top: 20px;
@@ -74,23 +58,32 @@
     float: left;
     padding-left: 20px;
     margin-bottom: 17px;
+    width: 60%;
 }
 .myimage{
     padding-bottom: 15px;
     margin-right: 40px;
     margin-bottom: -25px;
+    margin-top: -4px;
 	float: right;
 	width: 70px;
 	height: 60px;
 }
 .productimage[type="file"], .myimage{
 	display: none;
-}    
+}
+#productquantity, #productprice{
+    width: 32%;
+    margin-right: -9px;
+}
 #prod-img{
 	float: left;
 	margin-right: 100px;
 	margin-top: 15px;
     margin-left: 21px;
+}
+#productpricelabel, #productquantitylabel{
+	width: 20%;
 }
 .add-product-padding {
     padding-bottom: 15px;
@@ -104,10 +97,12 @@
     height: 20px;
     font-size: 12px;
     display: none;
-    margin-right: -93px;
-    padding: 0px 0px 0px 0px;
+    margin-right: -75px;
+    margin-top: -4px;
+	padding: 0px 0px 0px 0px;
     border-radius: 1px; 
     color: red;
+    float: right;
 }
 /******************************************/
 /*     END ADD PRODUCT					  */

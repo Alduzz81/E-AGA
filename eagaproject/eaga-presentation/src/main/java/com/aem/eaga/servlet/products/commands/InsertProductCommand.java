@@ -22,97 +22,94 @@ import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 public class InsertProductCommand extends AbstractContextCommand {
 	private static final String j_nomeProdotto = "j_nomeProdotto";
 	private static final String j_descrizioneProdotto = "j_descrizioneProdotto";
-    private static final String j_prezzoProdotto = "j_prezzoProdotto";
-    private static final String j_quantitaProdotto = "j_quantitaProdotto";
-    private static final String j_categoriaProdotto = "j_categoriaProdotto";
+	private static final String j_prezzoProdotto = "j_prezzoProdotto";
+	private static final String j_quantitaProdotto = "j_quantitaProdotto";
+	private static final String j_categoriaProdotto = "j_categoriaProdotto";
 
-    public InsertProductCommand(HttpMethodEnum methods) {
-        super(methods);
-    }
+	public InsertProductCommand(HttpMethodEnum methods) {
+		super(methods);
+	}
 
-    @Override
-    public void process(Context context) throws IOException {
-    
-    	SlingHttpServletRequest request = context.getSlingRequest();
-    	SlingHttpServletResponse response = context.getSlingResponse();
-    	final String nomeProdotto = request.getParameter(j_nomeProdotto);
-    	final String descrizioneProdotto = request.getParameter(j_descrizioneProdotto);
-        final String prezzoProdotto = request.getParameter(j_prezzoProdotto);
-        final String quantitaProdotto = request.getParameter(j_quantitaProdotto);
-        final String categoriaProdotto = request.getParameter(j_categoriaProdotto);
-        String result = "";
-        boolean status = true;
-    	int idprodotto=-1;
-        try {
-        	DbUtility dbu = new DbUtility();
-	   		  
-	   		 Connection conn = dbu.getConnection();
-	   		 Statement stmt;
-	   		 ResultSet rs;
-	   		 stmt = conn.createStatement();
-	   		 String sqlCheckProdotto = "SELECT * "
-	   		 		+ "FROM eaga.prodotti "
-	   		 		+ "WHERE nome = '"+nomeProdotto+"'";
-	   		 rs = stmt.executeQuery(sqlCheckProdotto);
-	   		 
-	   		 if(!rs.next()){
-	   			 String newRecordSql = "INSERT INTO eaga.prodotti (Nome,Descrizione,Prezzo,Quantita,Categoria)VALUES(?,?,?,?,?);";
-	   			 PreparedStatement preparedStmt = conn.prepareStatement(newRecordSql);
-	   	      preparedStmt.setString (1, nomeProdotto);
-	   	      preparedStmt.setString (2, descrizioneProdotto);
-	   	      preparedStmt.setString   (3, prezzoProdotto);
-	   	      preparedStmt.setInt    (4, Integer.parseInt(quantitaProdotto));
-	   	   preparedStmt.setString   (5, categoriaProdotto);
-	   	      // execute the preparedstatement
-	   	boolean res = preparedStmt.execute();
-	   	       
-	   	      
-	   
-		   		 
-		   		 if (!res){
-		   			 result = "Success";
-		   			
-		   			  sqlCheckProdotto = "SELECT * "
-			   		 		+ "FROM eaga.prodotti "
-			   		 		+ "WHERE nome = '"+nomeProdotto+"'";
-		   			ResultSet rsconferma = stmt.executeQuery(sqlCheckProdotto);
-		   			 
-		   			if(rsconferma.next()){
-		   			  idprodotto=rsconferma.getInt("IdProdotto");
-		   			rsconferma.close();
-		   			}
-		   			 logger.error(result);
-		   			 stmt.close(); 
-		       		 conn.close();
-		       		 
-		       		 rs.close();
-		       	}
-	   		 } else {
-	   			 result = "Error! This product is already recorded";
-	   			 status = false;
-	   			 stmt.close(); 
-	       		 conn.close();
-	       		 rs.close();
-	   		 }
-	   	} catch(ClassNotFoundException e) {
-	   		logger.error(e.getMessage());
-	   	} catch(SQLException e) {
-	   		logger.error(e.getMessage());
-	   	} 
-        
-        try {            
-        	JSONObject answer = new JSONObject();
-            
-            answer.put("J_RESULT", result);
-            answer.put("J_IdProdotto",idprodotto);
-            
-            write(context, answer);
-        } catch (Exception e) {
-            throw new IOException(e);
-        }
-    }
+	@Override
+	public void process(Context context) throws IOException {
+
+		SlingHttpServletRequest request = context.getSlingRequest();
+		SlingHttpServletResponse response = context.getSlingResponse();
+		final String nomeProdotto = request.getParameter(j_nomeProdotto);
+		final String descrizioneProdotto = request.getParameter(j_descrizioneProdotto);
+		final String prezzoProdotto = request.getParameter(j_prezzoProdotto);
+		final String quantitaProdotto = request.getParameter(j_quantitaProdotto);
+		final String categoriaProdotto = request.getParameter(j_categoriaProdotto);
+		String result = "";
+		boolean status = true;
+		int idprodotto = -1;
+		try {
+			DbUtility dbu = new DbUtility();
+
+			Connection conn = dbu.getConnection();
+			Statement stmt;
+			ResultSet rs;
+			stmt = conn.createStatement();
+			String sqlCheckProdotto = "SELECT * " + "FROM eaga.prodotti " + "WHERE nome = '" + nomeProdotto + "'";
+			rs = stmt.executeQuery(sqlCheckProdotto);
+
+			if (!rs.next()) {
+				 String newRecordSql = "INSERT INTO eaga.prodotti (Nome,Descrizione,Prezzo,Quantita,Categoria)VALUES(?,?,?,?,?);";
+				//String newRecordSql = "INSERT INTO eaga.prodotti (Nome,Descrizione,Prezzo,Quantita,Categoria,IdProdotto)VALUES(?,?,?,?,?,?);";
+
+				PreparedStatement preparedStmt = conn.prepareStatement(newRecordSql);
+				preparedStmt.setString(1, nomeProdotto);
+				preparedStmt.setString(2, descrizioneProdotto);
+				preparedStmt.setString(3, prezzoProdotto);
+				preparedStmt.setInt(4, Integer.parseInt(quantitaProdotto));
+				preparedStmt.setString(5, categoriaProdotto);
+				//preparedStmt.setString(6, "22");
+				// execute the preparedstatement
+				boolean res = preparedStmt.execute();
+
+				if (!res) {
+					result = "Success";
+
+					sqlCheckProdotto = "SELECT * " + "FROM eaga.prodotti " + "WHERE nome = '" + nomeProdotto + "'";
+					ResultSet rsconferma = stmt.executeQuery(sqlCheckProdotto);
+
+					if (rsconferma.next()) {
+						idprodotto = rsconferma.getInt("IdProdotto");
+						rsconferma.close();
+					}
+					logger.error(result);
+					stmt.close();
+					conn.close();
+
+					rs.close();
+				}
+			} else {
+				result = "Error! This product is already recorded";
+				status = false;
+				stmt.close();
+				conn.close();
+				rs.close();
+			}
+		} catch (ClassNotFoundException e) {
+			logger.error(e.getMessage());
+		} catch (SQLException e) {
+			logger.error(e.getMessage());
+		}
+
+		try {
+			JSONObject answer = new JSONObject();
+
+			answer.put("J_RESULT", result);
+			answer.put("J_IdProdotto", idprodotto);
+
+			write(context, answer);
+		} catch (Exception e) {
+			throw new IOException(e);
+		}
+	}
 
 }
