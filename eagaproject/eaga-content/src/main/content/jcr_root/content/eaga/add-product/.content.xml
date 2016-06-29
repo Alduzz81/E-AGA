@@ -7,8 +7,7 @@
         cq:template="/apps/eaga/templates/noheader"
         jcr:primaryType="cq:PageContent"
         jcr:title="Add Product"
-        sling:resourceType="eaga/components/page/noheader"
-        hideInNav="true">
+        sling:resourceType="eaga/components/page/noheader">
         <par
             jcr:primaryType="nt:unstructured"
             sling:resourceType="foundation/components/parsys">
