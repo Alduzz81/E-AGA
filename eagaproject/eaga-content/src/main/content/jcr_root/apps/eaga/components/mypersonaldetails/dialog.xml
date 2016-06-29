@@ -31,8 +31,36 @@
                     <password
                         jcr:primaryType="cq:Widget"
                         fieldDescription="Leave empty to use the default label."
-                        fieldLabel="Password Label:"
+                        fieldLabel="Password Label"
                         name="./password"
+                        width="400"
+                        xtype="textfield"/>
+                    <dateOfBirth
+                        jcr:primaryType="cq:Widget"
+                        fieldDescription="Leave empty to use the default label."
+                        fieldLabel="Date of Birth Label"
+                        name="./dateOfBirth"
+                        width="400"
+                        xtype="textfield"/>
+                    <address
+                        jcr:primaryType="cq:Widget"
+                        fieldDescription="Leave empty to use the default label."
+                        fieldLabel="Address Label"
+                        name="./address"
+                        width="400"
+                        xtype="textfield"/>
+                    <city
+                        jcr:primaryType="cq:Widget"
+                        fieldDescription="Leave empty to use the default label."
+                        fieldLabel="City Label"
+                        name="./city"
+                        width="400"
+                        xtype="textfield"/>
+                    <gender
+                        jcr:primaryType="cq:Widget"
+                        fieldDescription="Leave empty to use the default label."
+                        fieldLabel="Gender Label"
+                        name="/.gender"
                         width="400"
                         xtype="textfield"/>
 				</items>

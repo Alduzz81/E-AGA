@@ -1,4 +1,6 @@
-<div data-sly-unwrap></div>
+<div 	data-sly-use.mpd="${ 'com.aem.eaga.sightly.personalDetails.PersonalDetailsUse' @ currentNode=currentNode }"
+		data-sly-test="${ mpd.componentVisible }"
+		data-sly-unwrap>
 <div id="my-personaldetail-container" class="container-fluid">
 	<div id="my-personaldetail-base" class="row">
 		<div class="accordion-container margin-bottom-50">
@@ -28,6 +30,32 @@
 									<span class="personalM"><input type="password" name="password" required /></span>
 								</div>
 							</div>
+							<div class="col-sm-4">
+								<div class="box-data">
+									<span class="text-bold"> ${properties.dateOfBirth ? properties.dateOfBirth : "Date Of Birth:" @ context='html'} </span>
+									<span id="dateOfBirthC"></span>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="box-data">
+									<span class="text-bold"> ${properties.address ? properties.address : "Address:" @context='html'} </span>
+									<span id="addressC"></span>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="box-data">
+									<span class="text-bold"> ${properties.city ? properties.city : "City:" @context='html'} </span>
+									<span id="cityC"></span>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="box-data">
+									<span class="text-bold"> ${properties.gender ? properties.gender : "Gender:" @context='html'} </span>
+									<select class="select-info">
+										<option class="" value="${properties.gender}"></option>
+									</select>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -36,4 +64,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
