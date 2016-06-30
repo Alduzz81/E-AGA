@@ -35,7 +35,6 @@ public class LoadProductsListCommand  extends AbstractContextCommand {
  			JSONObject prodotto = new JSONObject();		 
  			prodotto.put("IdProdotto", rs.getInt("IdProdotto"));
  			prodotto.put("NomeProdotto", rs.getString("Nome"));
- 			prodotto.put("DescrizioneProdotto", rs.getString("Descrizione"));
  			prodotto.put("PrezzoProdotto", rs.getString("Prezzo"));
  			prodotto.put("QuantitaProdotto", rs.getInt("Quantita"));
  			prodotto.put("PathImmagine", rs.getString("PathImmagine"));
