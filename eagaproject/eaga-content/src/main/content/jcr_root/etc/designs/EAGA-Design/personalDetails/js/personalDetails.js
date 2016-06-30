@@ -1,4 +1,5 @@
 function updatePDDB() {
+    checkFields();
     var params = {
     		'j_id': $("input[name=id]").val(),
 	        'j_password': $("input[name=password]").val()
@@ -41,11 +42,17 @@ function loadPD(){
                }
            });
 };
+function checkFields(){
+    if($("#nameC")==''||$("#nameC")=='/[0-9]|!"£$%&()=?^/'){
+        $("#nameC").css({"borderColor": "red"});
+    }
+};
 
 $(document).ready(function () {
 	$('.personalM').hide();
 	$('.personalV').show();
     var path = CQ.shared.HTTP.getPath();
+    $("#nameC").css({"borderColor": ""});
     if(path=="/content/eaga/personalDetails")
 		loadPD();
 });
