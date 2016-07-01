@@ -65,7 +65,6 @@ private static final long serialVersionUID = 2598426539166789515L;
 						final InputStream stream = param.getInputStream();
 						// Process the image
 						addImage(id, writeToDam(stream, param.getFileName()));
-						
 						//TO USE WHEN THE SERVER IS DOWN for testing
 						//writeToDam(stream, param.getFileName());
 					}
