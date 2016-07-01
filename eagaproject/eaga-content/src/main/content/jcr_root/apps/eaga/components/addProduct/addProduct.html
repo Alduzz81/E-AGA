@@ -3,7 +3,7 @@
 		<img class="add-product-logo" src="/etc/designs/EAGA-Design/images/icons/eaga_trasparent.png">
 	</a>
 </div>
-<div class="addproduct-container">
+<div class="addproduct-container" ng-controller="CategoriesController" data-ng-init="loadCategoriesOptions()">
 	<div class="text-center add-product-padding">		
 		<div class="add-product-padding">
 			<h2><b>Add a Product</b></h2>
@@ -24,10 +24,10 @@
 				</div>
                 <div class ="col-sm-8">
 					<input class="tfield" type="text" id="productname" name="productname" />
-					<input class="tfield" type="text"id="productcategory" name="productcategory" />
-                     <!--  <select class="categories-dropdown"></select>
-                     -->  
-					<input class="tfield" id="productdescription" name="productdescription"/>
+					<!-- <input class="tfield" type="text"id="productcategory" name="productcategory" /> --> 
+                    <select class="categories-dropdown" ng-options="cat as cat.Nome for cat in categorie track by cat.IdCategoria" 
+                      		name="select" ng-model="selected"></select>
+                    <input class="tfield" id="productdescription" name="productdescription"/>
 					<input class="tfield" type="text" id="productprice" name="productprice" onkeypress="return isNumberKey(event)">
 						<label id="productpricelabel">
 							${properties.priceunit ? properties.priceunit : '&euro;' @ context='html'}</label>

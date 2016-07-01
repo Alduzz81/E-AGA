@@ -1,4 +1,25 @@
 /*******************************************************************************
+ * START LOAD CATEGORIES
+ ******************************************************************************/
+eagaApp.controller("CategoriesController", ['$scope', function($scope) {
+	$scope.categorie = [];
+    $scope.loadCategoriesOptions = function loadCategoriesOptions(){
+    	$.ajax({
+    		type: 'GET',
+    		url: CQ.shared.HTTP.getPath() + '.LoadCategorie.json',
+    		success: function (data) {
+    			$scope.categorie = data;
+    		},
+    		error: function (data, status) {
+    			console.log("Error in Loading Categories");
+    		}
+    	});
+    };
+}]);
+/*******************************************************************************
+ * END LOAD CATEGORIES
+ ******************************************************************************/
+/*******************************************************************************
  * START ADD PRODUCT
  ******************************************************************************/
 var notready, interval, hasImage, cont, img_ready, suc;
@@ -179,11 +200,9 @@ function addProductInDB() {
     setTimeout(showModal(), 5000);
 	interval = setInterval(doModal, 4000);
 };
-
 /*******************************************************************************
  * END ADD PRODUCT
  ******************************************************************************/
-
 $(document).ready(function () {
     hasImage = false;
     cont=0;
