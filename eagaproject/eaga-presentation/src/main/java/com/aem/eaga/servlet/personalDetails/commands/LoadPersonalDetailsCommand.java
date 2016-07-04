@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.commons.json.JSONObject;
 import com.aem.eaga.Context;
 import com.aem.eaga.common.DbUtility;
@@ -20,15 +21,9 @@ public class LoadPersonalDetailsCommand extends AbstractContextCommand {
 	}
 
 	@Override
-	public void process(Context context) throws IOException {		
-/*
-		String result = "";
-		boolean status = true;
-		
-		// MOCK
-		String J_ID1="20";
-		// FINE MOCK*/
-		
+	public void process(Context context) throws IOException {	
+		SlingHttpServletRequest request = context.getSlingRequest();
+		final String idutente = request.getParameter(J_ID);
 		DbUtility dbu = new DbUtility();
 		try {
 			Connection conn = dbu.getConnection();
@@ -38,7 +33,7 @@ public class LoadPersonalDetailsCommand extends AbstractContextCommand {
 			
 			String loadRecordSql = "SELECT utenti.Nome, utenti.Email, utenti.Password "
 					+"FROM utenti "
-					+"WHERE utenti.IdUtente='" + J_ID + "' ";
+					+"WHERE utenti.IdUtente='" + idutente + "' ";
 				
 			rs = stmt.executeQuery(loadRecordSql);
 			JSONObject utente = new JSONObject();

@@ -4,11 +4,11 @@
 }
 
 .search-product{
-	margin-left: 350px;
+	margin-left: 366px;
     margin-top: 15px;
     margin-bottom: 15px;
     border-style: groove;
-    width: 302px;
+    width: 366px;
     border-width: 5px;
 }
 
@@ -29,6 +29,13 @@
 	border-right-style: none;
 	margin-bottom: 10px;
 	text-align: center;
+}
+
+.text-search{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+    font-size: xx-large;
 }
 
 .desription-product{
