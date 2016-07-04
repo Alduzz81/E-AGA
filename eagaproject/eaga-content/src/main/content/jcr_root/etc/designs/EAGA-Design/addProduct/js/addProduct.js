@@ -61,6 +61,7 @@ function sendXHRequest(formData) {
            $('.submit-prod').removeClass('move-add-btn');
            $('.sbmt-btn-addprod').addClass('col-sm-10');
            cont = 0;
+           images = [];
    	   }
    });
 };

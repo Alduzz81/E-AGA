@@ -23,9 +23,11 @@
 							${properties.quantity ? properties.quantity : 'Quantita' @ context='html'}: </label>		
 				</div>
                 <div class ="col-sm-8">
-					<input class="tfield" type="text" id="productname" name="productname" /></li>
-					<input class="tfield" type="text"id="productcategory" name="productcategory" /></li>
-					<input class="tfield" id="productdescription" name="productdescription"/></li>
+					<input class="tfield" type="text" id="productname" name="productname" />
+					<input class="tfield" type="text"id="productcategory" name="productcategory" />
+                     <!--  <select class="categories-dropdown"></select>
+                     -->  
+					<input class="tfield" id="productdescription" name="productdescription"/>
 					<input class="tfield" type="text" id="productprice" name="productprice" onkeypress="return isNumberKey(event)">
 						<label id="productpricelabel">
 							${properties.priceunit ? properties.priceunit : '&euro;' @ context='html'}</label>

@@ -4,9 +4,9 @@
     condition=""
     description=""
     enabled="{Boolean}true"
-    eventType="{Long}16"
-    excludeList="event-user-data:changedByWorkflowProcess"
-    glob="/content/dam/eaga(/.*/)renditions/original"
+    eventType="{Long}1"
+    excludeList=""
+    glob="/content/dam/eaga/common/products(/.*/)renditions/original"
     nodetype="nt:file"
-    runModes="author"
+    runModes="author,publish"
     workflow="/etc/workflow/models/eaga/update_asset/jcr:content/model" />
