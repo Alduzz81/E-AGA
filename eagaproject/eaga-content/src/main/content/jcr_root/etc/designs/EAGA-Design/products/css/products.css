@@ -4,12 +4,36 @@
 }
 
 .search-product{
-	margin-left: 366px;
+	margin-left: 25%;
     margin-top: 15px;
     margin-bottom: 15px;
-    border-style: groove;
-    width: 366px;
-    border-width: 5px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+select{
+	border-radius: 3px;
+	background-color: rgb(226, 226, 226);
+	height:30px;
+}
+
+option:not(:checked) { 
+    background-color: white; 
+    color:#000;
+}
+
+input[type="search"]{
+    -webkit-appearance: inherit;
+    height:30px;
+    width: 25%;
+    margin-left: -4px;
+    border-radius: 3px;
+    border-color: rgb(226, 226, 226);
+}
+
+.button-format{
+	height:30px;
 }
 
 .menu-container{
@@ -48,4 +72,3 @@
 	width: 150px;
     height: 150px;
 }
-

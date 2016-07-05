@@ -438,6 +438,7 @@ input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-oute
     max-width: 20px;
     padding-left: 0px;
     height: 20px;
+    margin-left: 25px;
 }
 .topnav-list .cart{
     right: 0px;

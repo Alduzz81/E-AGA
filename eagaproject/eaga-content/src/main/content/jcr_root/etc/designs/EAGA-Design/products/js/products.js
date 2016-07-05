@@ -12,6 +12,7 @@ eagaApp.controller("ProductsController", [ '$scope', '$http', function($scope, $
 	   		}
 		}).success(function(data) {
 			$scope.products = data;
+			$scope.selected={IdCategoria: categoria};
 			$scope.isEmptyProducts();				
 		}).error(function(data) {
             $scope.isEmptyProducts();

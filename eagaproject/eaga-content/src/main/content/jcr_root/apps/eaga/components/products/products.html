@@ -8,7 +8,7 @@
 		<div class="search-product">
 			<select ng-options="cat as cat.Nome for cat in categorie track by cat.IdCategoria" name="select" ng-model="selected"></select>
 			<input type="search" name="search" placeholder="Cerca prodotto">
-			<button ng-click="callAjaxProducts(selected.IdCategoria)">Cerca</button>
+			<button class="button-format" ng-click="callAjaxProducts(selected.IdCategoria)">Cerca</button>
 		</div>
         <div class="text-search" ng-bind="noproducts"></div>
 		<div class="products-container">

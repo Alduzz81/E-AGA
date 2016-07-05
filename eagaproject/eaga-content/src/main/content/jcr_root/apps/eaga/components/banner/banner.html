@@ -1,0 +1,7 @@
+<div>
+	<img src="${properties.image @context='html'}">
+	<div>${properties.title @context='html'}</div>
+</div>
+<div data-sly-test="${properties.image @context='html'}=='' || ${properties.title @context='html'}==''">
+	Configure Banner Component
+</div>
