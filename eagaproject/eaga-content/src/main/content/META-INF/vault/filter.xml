@@ -7,4 +7,7 @@
     <filter root="/home/groups/e/AGYjJ0S9MnGJ3f-cFKBy">
         <include pattern=".*/rep:policy(/.*)?" />
     </filter> 
+    <filter root="/home/users/i/iqmH90AzzaBD0i5dgP4g">
+        <include pattern=".*/rep:policy(/.*)?" />
+    </filter> 
 </workspaceFilter>
