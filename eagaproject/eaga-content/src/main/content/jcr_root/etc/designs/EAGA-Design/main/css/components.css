@@ -455,6 +455,10 @@ input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-oute
     line-height: 30px;
 }
 
+.position-header-components{
+	float: right;
+    margin-right: 150px;
+}
 
 /******************************************/
 /*     END ADDITIONAL TOPNAV			  */
