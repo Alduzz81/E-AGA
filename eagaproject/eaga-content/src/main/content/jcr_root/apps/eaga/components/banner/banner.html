@@ -1,7 +1,10 @@
-<div>
-	<img src="${properties.image @context='html'}">
-	<div>${properties.title @context='html'}</div>
+<div class="container-banner text-center">
+	<a href="#">
+		<img class="img-banner" src="${properties.image @context='html'}">
+	</a>
+	<div class="text-banner">${properties.title @context='html'}</div>
+	<hr class="hr-banner">
 </div>
-<div data-sly-test="${properties.image @context='html'}=='' || ${properties.title @context='html'}==''">
-	Configure Banner Component
+<div data-sly-test="${!properties.title}">
+	 Configure Banner Component
 </div>

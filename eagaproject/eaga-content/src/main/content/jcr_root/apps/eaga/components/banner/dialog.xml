@@ -19,7 +19,7 @@
 	            width="400"
 	            fieldLabel="Label url image"
 	            allowBlank="false"
-	            rootPath="/content/dam/eaga"
+	            rootPath="/content/dam/eaga/common/products"
 	            xtype="pathfield" />
    		</items>
 </jcr:root>

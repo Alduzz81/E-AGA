@@ -15,7 +15,7 @@
             <div class="product-items" ng-repeat="(key, prods) in products">
 				<div ng-bind="prods.NomeProdotto"></div>
                 <div><a href="/content/eaga/product.html/id={{prods.IdProdotto}}"><img class="imageProduct" ng-src="{{prods.PathImmagine}}""/></a></div>
-				<div class="desription-product"><span>EUR: </span><span ng-bind="prods.PrezzoProdotto"></span></div>
+				<div class="desription-product"><span>EUR </span><span ng-bind="prods.PrezzoProdotto | number: 2"></span></div>
 				<div class="desription-product"><span>Quantita: </span><span ng-bind="prods.QuantitaProdotto"></span></div>
 			</div>
 		</div>
