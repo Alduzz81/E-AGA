@@ -6,27 +6,29 @@
 <div class="addproduct-container" ng-controller="CategoriesController" data-ng-init="loadCategoriesOptions()">
 	<div class="text-center add-product-padding">		
 		<div class="add-product-padding">
-			<h2><b>Add a Product</b></h2>
+            <h2><b>Add a Product</b></h2>
 		</div>
 		<form id="product-form" autocomplete="off">
 			<fieldset class="product-form-group">
 				<div class ="col-sm-4">
-					<label for="productname" id="productnamelabel">
-                			${properties.name ? properties.name : 'Nome del prodotto' @ context='html'}: </label>
-					<label for="productcategory">
-							${properties.category ? properties.category : 'Categoria' @ context='html'}: </label>
-					<label for="productdescription">
-							${properties.description ? properties.description : 'Descrizione' @ context='html'}: </label>
-					<label for="productprice">
-							${properties.price ? properties.price : 'Prezzo' @ context='html'}: </label>		
-					<label for="productquantity">
-							${properties.quantity ? properties.quantity : 'Quantita' @ context='html'}: </label>		
+					<label for="productname" id="productnamelabel">${properties.name ? properties.name : 'Nome del prodotto' @ context='html'}: </label>
+					<label for="productcategory">${properties.category ? properties.category : 'Categoria' @ context='html'}: </label>
+					<label for="productdescription">${properties.description ? properties.description : 'Descrizione' @ context='html'}: </label>
+					<label for="productprice">${properties.price ? properties.price : 'Prezzo' @ context='html'}: </label>		
+					<label for="productquantity">${properties.quantity ? properties.quantity : 'Quantita' @ context='html'}: </label>		
 				</div>
                 <div class ="col-sm-8">
 					<input class="tfield" type="text" id="productname" name="productname" />
-					<!-- <input class="tfield" type="text"id="productcategory" name="productcategory" /> --> 
-                    <select class="categories-dropdown" ng-options="cat as cat.Nome for cat in categorie track by cat.IdCategoria" 
-                      		name="select" ng-model="selected"></select>
+                   <div class="categories-dropdown">
+                    	<div class="list-sel-items hidden"></div>
+						<input class="tfield" type="text" id="productcategory" name="productcategory"/>
+                        <i class="ddcat" onClick="dropdownActivate()">&#x25BC</i>
+						<select multiple class="categories-dropdown-sel" ng-options="cat as cat.Nome for cat in categorie track by cat.Nome" 
+                      		 ng-model="selected" name="productcategory">
+                        </select>
+						<div class="menu-categories hidden"></div>
+                    </div>
+
                     <input class="tfield" id="productdescription" name="productdescription"/>
 					<input class="tfield" type="text" id="productprice" name="productprice" onkeypress="return isNumberKey(event)">
 						<label id="productpricelabel">

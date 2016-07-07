@@ -1,21 +1,49 @@
 /*******************************************************************************
  * START LOAD CATEGORIES
  ******************************************************************************/
-eagaApp.controller("CategoriesController", ['$scope', function($scope) {
-	$scope.categorie = [];
-    $scope.loadCategoriesOptions = function loadCategoriesOptions(){
-    	$.ajax({
-    		type: 'GET',
-    		url: CQ.shared.HTTP.getPath() + '.LoadCategorie.json',
-    		success: function (data) {
-    			$scope.categorie = data;
-    		},
-    		error: function (data, status) {
-    			console.log("Error in Loading Categories");
-    		}
-    	});
-    };
-}]);
+var dd_flag=false;
+var categories = [];
+function setMenuCategories(){
+    $('select[multiple] option').each(function(){
+        var c = $(this).text();
+        var newcategory = "<div class='item-cat' data-value='"+c+"'>"+c+"</div>";
+		$('.menu-categories').append(newcategory);
+    });
+};
+function deleteItem(cat){
+	console.log(cat);
+};
+function addCategory(cat){
+    var addCat = "<a class='selected-item' data-value='"+cat+"'>"+cat+"&nbsp;<i class='del-icon'>&times</i></a>";
+	$('.list-sel-items').append(addCat);
+};
+var dropdownActivate = function(){
+    if(!dd_flag){
+		$('.menu-categories').removeClass('hidden');
+        $('.list-sel-items').removeClass('hidden');
+        setMenuCategories();
+        dd_flag = true;
+        $('.item-cat').on('click', function(){
+            var val = $(this).attr('data-value');
+    		categories.push(val);
+            $(this).css('display','none');
+            if(categories.length >= 0){
+                $('.cat-list').css('display','block');
+            }
+            addCategory(val);
+        });
+        $('.list-sel-items').on('click', function(){
+            	$
+			// var val = $(this).attr('data-value');
+            	console.log("hello");
+        });
+    }else{
+		$('.menu-categories').addClass('hidden');
+        $('.list-sel-items').addClass('hidden');
+        dd_flag = false;
+    }
+};
+
 /*******************************************************************************
  * END LOAD CATEGORIES
  ******************************************************************************/
@@ -153,13 +181,14 @@ var addImage = function(){
 var productSubmit = function(){
 	notready=false;
 	if($('#productname').val() == '' ){
-        formEmpty('#productname', '**Inserisci un nome.');
+        formEmpty('#productname', '-- Inserisci un nome. --');
 	}if($('#productcategory').val() == '' ){
-        formEmpty('#productcategory', '**Inserisci una categoria.');
+        formEmpty('#productcategory', '-- Inserisci una categoria.-- ');
+		$('.categories-dropdown').attr('id','catempty');
 	}if($('#productprice').val() == '' ){
-		formEmpty('#productprice', '**prezzo');
+		formEmpty('#productprice', '--prezzo-- ');
 	}if($('#productquantity').val() == '' ){
-		formEmpty('#productquantity', '**quantita');
+		formEmpty('#productquantity', '--quantita-- ');
 	} if(notready === false){
 		addProductInDB();
 	}
@@ -168,7 +197,7 @@ function addProductInDB() {
     suc = "Sta caricando...."
     var params = {
 	        'j_nomeProdotto': $("input[name=productname]").val(),
-	        'j_categoriaProdotto': $("input[name=productcategory]").val(),
+	        'j_categoriaProdotto': $("select[name=productcategory]").val(),
 	        'j_descrizioneProdotto': $("input[name=productdescription]").val(),
 	        'j_prezzoProdotto': $("input[name=productprice]").val(),
 	        'j_quantitaProdotto': $("input[name=productquantity]").val(),
@@ -203,15 +232,38 @@ function addProductInDB() {
 /*******************************************************************************
  * END ADD PRODUCT
  ******************************************************************************/
+/*******************************************************************************
+ * START LOAD CATEGORIES CONTROLLER
+ ******************************************************************************/
+eagaApp.controller("CategoriesController", ['$scope','$http', function($scope,$http) {
+	$scope.categorie = [];
+    $scope.loadCategoriesOptions = function loadCategoriesOptions(){
+		$http({
+			method : 'GET',
+			url : CQ.shared.HTTP.getPath() + '.LoadCategorie.json'
+		}).success(function(data) {
+            delete data['IdCategoria_0'];
+			$scope.categorie = data;
+		}).error(function(data) {
+			console.log("Error in Loading Categories");
+		});
+    };
+}]);
+/*******************************************************************************
+ * END LOAD CATEGORIES CONTROLLER
+ ******************************************************************************/
 $(document).ready(function () {
-    hasImage = false;
+    hasImage = false, dd_flag=false;;
     cont=0;
     imgcnt=1;
     img_ready = true;
     $('input').on('click',function() {
-		var compare = $(this).val().indexOf("**") > -1;
+		var compare = $(this).val().indexOf("--") > -1;
     	if(compare)
     	{
+            if($(this).val().indexOf("categoria") > -1){
+				$('.categories-dropdown').removeAttr('id');
+            }
         	$(this).val('');
 			$(this).removeClass('product-form-empty');
      	}

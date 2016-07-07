@@ -8,7 +8,7 @@
 	display: inline-block;
     border: 5px ridge;
     margin: 30px;
-    width: 510px;
+    width: 600px;
     background-color: #F4F4F4;
     padding-top: 10px;
     border-radius: initial;
@@ -36,11 +36,14 @@
     width: 100%;
 	auto
 }
-.product-form-empty{
+.product-form-empty, #catempty{
 	border-right-color: red;
     border-bottom-color: red;
     border-right-style: dotted;
     border-bottom-style: dotted;
+}
+#catempty{
+        border-width: 2px;
 }
 .submit-prod[type="submit"], .submit-img[type="submit"]{
 	float: none;
@@ -74,7 +77,7 @@
 }
 #productquantity, #productprice{
     width: 32%;
-    margin-right: -9px;
+    margin-right: -6px;
 }
 #prod-img{
 	float: left;
@@ -146,11 +149,27 @@
 /******************************************/
 /*     END MODAL						  */
 /******************************************/
-.categories-dropdown {
+.categories-dropdown{
+	background: #FFF;
     width: 90%;
     float: left;
     right: 5px;
-    padding: 0px 15px;
+    padding: 0px 3px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    margin-bottom: 20px;
+    height: 35px;
+    border-radius: 3px;
+    border-width: 2px 0px 0px 2px;
+    border-style: inset;
+    border-color: initial;
+}
+.categories-dropdown-sel{
+    width: 90%;
+    float: left;
+    right: 5px;
+    padding: 0px 3px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -159,16 +178,114 @@
     border-radius: 3px;
     border-width: 2px 0px 0px 2px;    
 }
-.categories-dropdown option{
-    width: 90%;
-    float: left;
-    right: 5px;
-    padding: 0px 15px;
-    margin-left: auto;
-    margin-right: auto;
+.categories-dropdown select{
+	display: none;
+}
+.ddcat{
+    position: absolute;
+	float: right;
+    height: 2px;
+    line-height:2;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    width: auto;
+    right: 2px;
+    cursor: pointer;
+    z-index: 2;    
+}
+.menu-categories{
+    position: absolute;
+	z-index: 1;
+	top: 100%;
+    right: -2px;    
+	background-color: white;
+    border-width: 2px 0px 0px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;    
+	overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-overflow-scrolling: touch;
+    border-top-width: 0!important;
+    outline: 0;
+    max-height: 180px;    
+    min-width: calc(100% + 2px);
+    width: calc(100% + 4px);
+    -webkit-transition: opacity .1s ease;
+    transition: opacity .1s ease; 
+}
+.cat-list {
+    display: none;
+    position: absolute;
+    top: 1px;
+    right: 35px;
+}
+.hidden{
+	display:block;
+}
+.item-cat{
+    border-top: 1px solid #FAFAFA;
+    border-left: initial;
+    padding: .78571429rem 1.14285714rem!important;
+    white-space: normal;
+    word-wrap: normal;
+    cursor: pointer;
+    text-align: left;
+}
+.item-cat:hover{
+	background-color: #dddddd;
+}
+#productcategory{
+    width: 94%;
+    right: 3px;
+    border-width: 2px;
+    border-style: none;
+    height: 29px;
+}
+.selected-item{
+	display: inline-block !important;
+    line-height: 18px;
+    background-color: whitesmoke;
+    height: 28px;
     position: relative;
-    margin-bottom: 20px;
-    height: 35px;
-    border-radius: 3px;
-    border-width: 2px 0px 0px 2px;    
+    border-radius: 6px;
+    padding: 5px;
+    font-weight: 600;
+    top: 1px;
+    right: 0px;
+    text-align: left;
+    box-sizing: inherit;
+    border-color: #E0E0E0;
+    color: rgba(0,0,0,.8);
+    font-size: 14px;
+    cursor: pointer;
+    float: left;
+    margin: 1px 1px 1px 1px;
+}
+.del-icon{
+	font-style: normal;
+    float: right;
+    font-size: 20px;
+    color: rgba(0,0,0,.6);
+    margin-top: -2px;
+}
+.list-sel-items{
+	display: block;
+    position: absolute;
+    z-index: 1;
+    right: 0px;
+    background-color: #e5e5e5;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    width: 100%;
+    min-height: 38px;
+    max-height: 122px;
+    bottom: 100%;
+    overflow-y: auto;
 }
