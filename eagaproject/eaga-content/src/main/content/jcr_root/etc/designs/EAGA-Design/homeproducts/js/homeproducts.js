@@ -1,9 +1,7 @@
 /*******************************************************************************
  * START SLIDER HOME PROD
  ******************************************************************************/
-
-function initSliderHomeProd () {
-
+function initSliderHomeProd (id) {
     var numSlideShow = 3;
     var numSlideShowTablet = 2;
     var numSlideShowMobile = 1;
@@ -29,24 +27,36 @@ function initSliderHomeProd () {
         numSlideShow = 3;
         break;
     }
-    $('.slider-wrap-prod .image-slider-wrap-prod').slick({
-        slidesToShow: numSlideToShow,
-        slidesToScroll: 1,
-        centerMode: true,
-        centerPadding: '60px',
-        arrows: true,
-        appendArrows: $('.arrows-prod'),
-        lazyLoad: 'ondemand',
-        pauseOnHover: true,
-        dots: true,
-        appendDots: $('.control-wrap-prod .dots-wrap-prod'),
-        autoplay: true,
-        autoplaySpeed: $('.slider-wrap-prod').attr('data-time-autoplay')
-    });
+    $('#banner-'+id).slick({
+		slidesToShow: numSlideToShow,
+        	slidesToScroll: 1,
+        	centerMode: true,
+        	centerPadding: '60px',
+        	arrows: true,
+        	appendArrows: $('.arrows-prod'),
+        	lazyLoad: 'ondemand',
+        	pauseOnHover: true,
+        	dots: true,
+        	appendDots: $('.control-wrap-prod .dots-wrap-prod'),
+        	autoplay: true,
+        	autoplaySpeed: $('.slider-wrap-prod').attr('data-time-autoplay')
+    	});
+    if($('.dots-wrap-prod').length > 1){
+        var i =0;
+    	var parentElem = $('#banner-'+id).parent();
+    	setTimeout(function(){
+            $(parentElem).find('.slick-dots').each(function(){
+            	if(id !== i){
+                	$(this).remove();
+            	}
+           	 i++;
+    		});
+       	},10);
+    }
+
 }
 
 eagaApp.controller("HomeProductController", ['$scope', '$window', function($scope,$window) {
-	
 	$scope.goToSingleProductPageById = function(idProduct){
 	
 		//probabilmente bisogna settare anche l'utente per evitare conflitti
@@ -56,16 +66,17 @@ eagaApp.controller("HomeProductController", ['$scope', '$window', function($scop
 
 	}
 }]);
-
-
 /*******************************************************************************
  * END SLIDER HOME PROD
  ******************************************************************************/
-
-
 $(document).ready(function () {
-	initSliderHomeProd ();
-	
+    var index = 0;
+    $('.slider-wrap-prod .image-slider-wrap-prod').each(function(){
+        $(this).attr('id','banner-'+index);
+        initSliderHomeProd(index);
+        $('.dots-wrap-prod').css('display','block');
+        index++;
+	});
 	$('.arrows-prod .slick-prev').html("<span class='prev-arr'>❮</span>");
 	$('.arrows-prod .slick-next').html("<span class='next-arr'>❯</span>");
 	
