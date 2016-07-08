@@ -1,37 +1,19 @@
-eagaApp.controller("BannerController", [ '$scope', '$http', function($scope, $http) {
+eagaApp.controller("BannerController", [ '$scope', '$http', '$window', function($scope, $http, $window) {
 	$scope.callAjaxImage = function(idImg) {
-        var f="IdImage1";
-        $scope.idTagImg=idImg;
-		console.log(idImg);
-        console.log('param_ '+$scope.idTagImg+' param1: ' +idImg);
-
-		var path = CQ.shared.HTTP.getPath();
+		var path = CQ.shared.HTTP.getPath(); 
 		$http({
 			method : 'GET',
 			url : path + '.LoadImage.json',
             params:{
-            	'J_pathI': $('#'+idImg).attr('src')
-
+            	'J_pathI': $(idImg.toElement).attr('src').toString()
 	   		}
 		}).success(function(data) {
 			$scope.image = data;
-            console.log('json: '+$scope.image.IdProdotto);
+            $window.location.href = '/content/eaga/product.html/id='+$scope.image.IdProdotto; 
 		}).error(function(data) {
-			console.log('Load Products error!!' + data);
+            console.log('Load Image error!!' + data);
 			// called asynchronously if an error occurs
 			// or server returns response with an error status.
 		});
 	};
-}]);
-
-
-$(document).ready(function(){
-	var x=1;
-    var string='IdImage';
-	$('.imageBanner').each(function(){
-		var idImage=string+x;
-		$(this).attr('id',(idImage));
-        $(this).parent().attr("ng-click","callAjaxImage('"+idImage+"')");
-        x++;
-	});
-});
+}]); 

@@ -1,5 +1,5 @@
 <div class="container-banner text-center" ng-controller="BannerController">
-	<a href="#" ng-click="callAjaxImage()">
+	<a href="#" class="banner-img" ng-click="callAjaxImage($event)">
 		<img class="imageBanner img-banner" src="${properties.image @context='html'}">
 	</a>
 	<div class="text-banner">${properties.title @context='html'}</div>
