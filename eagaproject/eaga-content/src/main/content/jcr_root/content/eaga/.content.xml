@@ -7,7 +7,7 @@
     <login/>
     <registration/>
     <jcr:content
-        cq:lastModified="{Date}2016-07-06T11:46:04.403+02:00"
+        cq:lastModified="{Date}2016-07-08T17:15:09.220+02:00"
         cq:lastModifiedBy="admin"
         cq:lastReplicated="{Date}2016-05-17T17:33:26.038+02:00"
         cq:lastReplicatedBy="admin"
@@ -109,11 +109,6 @@
             jcr:primaryType="nt:unstructured"
             sling:resourceType="eaga/components/cookie-policy"
             cookiePolicy="By using E-aga, you're consenting to the use of cookies in accordance with our. Click here for info!!!"/>
-        <menuLogin
-            jcr:lastModified="{Date}2016-06-08T11:56:58.981+02:00"
-            jcr:lastModifiedBy="admin"
-            jcr:primaryType="nt:unstructured"
-            sling:resourceType="eaga/components/menuLogin"/>
         <par
             jcr:primaryType="nt:unstructured"
             sling:resourceType="foundation/components/parsys">
@@ -126,25 +121,49 @@
                 sling:resourceType="eaga/components/banner"
                 image="/content/dam/eaga/common/products/abbigliamento/t-shirt nike/maglia_1.jpg"
                 title="T-shirt nike"/>
-            <banner_1798893127
-                jcr:created="{Date}2016-07-06T11:44:53.263+02:00"
+            <banner_125266742
+                jcr:created="{Date}2016-07-08T17:07:39.235+02:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2016-07-06T11:45:40.994+02:00"
+                jcr:lastModified="{Date}2016-07-08T17:13:27.918+02:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="eaga/components/banner"
-                image="/content/dam/eaga/common/products/app e giochi/uncharted 4/uncharted 4_1.jpg"
-                title="Uncharted"/>
-            <banner_855421003
-                jcr:created="{Date}2016-07-06T11:44:56.073+02:00"
+                image="/content/dam/eaga/common/products/cd e vinili/the platinum collection/the platinum collection_1.jpg"
+                title="The Platinum Collection"/>
+            <banner_2046384943
+                jcr:created="{Date}2016-07-08T17:08:36.416+02:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2016-07-06T11:46:04.400+02:00"
+                jcr:lastModified="{Date}2016-07-08T17:13:47.459+02:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="eaga/components/banner"
-                image="/content/dam/eaga/common/products/elettronica/orologio radio/orologio_1.jpg"
-                title="Orologio"/>
+                image="/content/dam/eaga/common/products/app e giochi/grand theft auto v/grand theft auto v_1.jpg"
+                title="Grand Theft Auto V"/>
+            <banner_179362492
+                jcr:created="{Date}2016-07-08T17:11:13.567+02:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2016-07-08T17:11:46.293+02:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="eaga/components/banner"
+                image="/content/dam/eaga/common/products/cd e vinili/freak out!/freak out!_1.jpg"
+                title="Freak Out!"/>
+            <banner_1360267201
+                jcr:created="{Date}2016-07-08T17:13:55.329+02:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2016-07-08T17:15:09.216+02:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="eaga/components/banner"
+                image="/content/dam/eaga/common/products/app e giochi/uncharted 4/uncharted 4_3.jpg"
+                title="Uncharted 4"/>
         </par>
+        <myAccountMenu
+            jcr:lastModified="{Date}2016-07-08T14:35:29.244+02:00"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="eaga/components/myAccountMenu"
+            myAccountMenu="[{&quot;label&quot;:&quot;I miei ordini&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;La mia lista desideri&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Consigliati per te&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Il mio E-aga Prime&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;I miei contenuti e dispositivi&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;La mia libreria musicale&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Il mio E-aga drive&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Le mie app e i miei dispositivi&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;}]"/>
     </jcr:content>
     <products/>
     <cookiePrivacyPolicy/>

@@ -1,4 +1,4 @@
-package com.aem.eaga.sightly.menuLogin;
+package com.aem.eaga.sightly.myAccountMenu;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -13,9 +13,9 @@ import org.apache.sling.commons.json.JSONObject;
 
 import com.aem.eaga.common.CommonUse;
 
-public class MenuLoginUse extends CommonUse {
+public class MyAccountMenuUse extends CommonUse {
 	private Node currentNode;
-	private final Map<String, String> menuloginlinks = new LinkedHashMap<>(new HashMap<String, String>());
+	private final Map<String, String> menuLinks = new LinkedHashMap<>(new HashMap<String, String>());
 
 	@Override
 	public void activate() throws Exception {
@@ -26,7 +26,10 @@ public class MenuLoginUse extends CommonUse {
         }
 
         Value[] values;
-        Property links = getProperty(currentNode, "menuLogin");
+        Property links = getProperty(currentNode, "myAccountMenu");
+        
+        menuLinks.put("Login", "/content/eaga/login.html");
+        menuLinks.put("Il mio account", "/content/eaga/personalDetails.html");
         
         if (links != null) {
             JSONObject json;
@@ -40,11 +43,10 @@ public class MenuLoginUse extends CommonUse {
             for (Value value : values) {
                 json = new JSONObject(value.getString());
                 url = json.getString("url");
-                menuloginlinks.put(json.getString("label"), getValidLink(url));
+                menuLinks.put(json.getString("label"), getValidLink(url));
             }
         }
-        menuloginlinks.put("My Profile", "/content/eaga/personalDetails.html");
-        menuloginlinks.put("Logout", "/content/eaga.html");
+        menuLinks.put("Logout", "/content/eaga.html");
 	}
 	
 	public static Property getProperty(Node currentNode, String propertyName) throws RepositoryException {
@@ -55,10 +57,10 @@ public class MenuLoginUse extends CommonUse {
     }
 	
 	public Map<String, String> getMap() {
-		return menuloginlinks;
+		return menuLinks;
 	}
 
 	public boolean isMenuEmpty() {
-		return menuloginlinks.isEmpty();
+		return menuLinks.isEmpty();
 	}
 }

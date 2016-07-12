@@ -10,13 +10,13 @@
         <items jcr:primaryType="cq:WidgetCollection">
             <tab1
                 jcr:primaryType="cq:Panel"
-                title="Menu Login">
+                title="My Account Menu">
                 <items jcr:primaryType="cq:WidgetCollection">
                     <multifielditems
                         jcr:primaryType="cq:Widget"
                         hideLabel="false"
-                        name="./menuLogin"
-                        title="Menu Links"
+                        name="./myAccountMenu"
+                        title="My Account Menu"
                         xtype="multifield">
                         <fieldConfig
                             jcr:primaryType="cq:Widget"

@@ -5,9 +5,9 @@
 </div>
 <div>
 	<div class="col-sm-10 page-content">	
-		<cq:include path="homeproducts" resourceType="eaga/components/homeproducts"/><hr>
-		<cq:include path="homeproducts" resourceType="eaga/components/homeproducts"/><hr>
-		<cq:include path="homeproducts" resourceType="eaga/components/homeproducts"/>
+		<cq:include path="homeproducts" resourceType="eaga/components/homeproducts"/><br><hr><br>
+		<cq:include path="homeproducts" resourceType="eaga/components/homeproducts"/><br><hr><br>
+		<cq:include path="homeproducts" resourceType="eaga/components/homeproducts"/><br><hr><br>
 		<cq:include path="contentHome" resourceType="foundation/components/parsys"/>		
 	</div>
 	<div class="col-sm-2 page-content">

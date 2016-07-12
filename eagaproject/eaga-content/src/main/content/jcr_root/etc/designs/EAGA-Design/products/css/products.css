@@ -46,7 +46,7 @@ input[type="search"]{
 
 .product-items{
 	display: inline-block;	 
-	width: 25%;
+	width: 33%;
 	border-style: groove;
 	border-left-style: none;
 	border-top-style: none;
@@ -63,12 +63,21 @@ input[type="search"]{
 }
 
 .desription-product{
-	width: 100px;
-    text-align: left;
-    margin-left: 65px;
+	text-align: left;
+    margin-left: 100px;
 }
 
 .imageProduct{
-	width: 150px;
-    height: 150px;
+	min-width: 150px;
+    min-height: 150px;
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.div-products-container{
+    <!--background-color: #e5e5e5;-->
+}
+
+.products-background-color{
+	background-color: #f5f5f5;
 }

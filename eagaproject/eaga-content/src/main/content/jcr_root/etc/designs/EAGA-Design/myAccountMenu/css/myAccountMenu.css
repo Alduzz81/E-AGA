@@ -1,0 +1,49 @@
+.myAccountMenu-position{
+	top: 40px;
+    position: absolute;
+}
+
+.img-myaccount{
+	width: 15px;
+    margin-bottom: 3px;
+    margin-left: 3px;
+}
+
+.text-img{
+	display: -webkit-inline-box;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.text-line{
+	color: #c3c3c3
+}
+
+.element-menu{
+	margin-left: 5%;
+    margin-bottom: 7px;
+}
+
+.container-menu{
+	border: 2px;
+    border-style: ridge;
+    background: #ffc;
+    width: 225px;
+}
+
+.div-button{
+	margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.button-menu{
+    background: -webkit-linear-gradient(top,#f8e3ad,#eeba37);
+    border: 1px solid;
+    border-color: #c89411;
+	width: 80%;
+    height: 33px;
+}
+
+.hr-division{
+	width: 90%;
+}
