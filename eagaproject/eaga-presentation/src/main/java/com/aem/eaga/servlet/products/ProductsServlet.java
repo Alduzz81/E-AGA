@@ -4,7 +4,7 @@ import com.aem.eaga.servlet.StrategyContextServlet;
 import com.aem.eaga.servlet.commands.HttpMethodEnum;
 import com.aem.eaga.servlet.products.commands.InsertProductCommand;
 import com.aem.eaga.servlet.products.commands.LoadProductsCommand;
-import com.aem.eaga.servlet.products.commands.LoadProductsListCommand;
+import com.aem.eaga.servlet.products.commands.LoadProductsListSearchCommand;
 import com.aem.eaga.servlet.products.commands.LoadSingleProductCommand;
 
 import org.apache.felix.scr.annotations.Service;
@@ -13,7 +13,7 @@ import org.apache.felix.scr.annotations.sling.SlingServlet;
 @Service
 @SlingServlet(
         resourceTypes = {"cq:Page"},
-        selectors = {"InsertProduct","LoadProducts","LoadProductsList","LoadSingleProduct"},
+        selectors = {"InsertProduct","LoadProducts","LoadProductsListSearch","LoadSingleProduct"},
         extensions = {"json"},
         methods = {"GET", "POST"}
 )
@@ -25,8 +25,10 @@ public class ProductsServlet extends StrategyContextServlet {
     protected void initStrategies() {
         addStrategy("InsertProduct", new InsertProductCommand(HttpMethodEnum.POST));
         addStrategy("LoadProducts", new LoadProductsCommand(HttpMethodEnum.GET));
-        addStrategy("LoadProductsList", new LoadProductsListCommand(HttpMethodEnum.GET));
+        addStrategy("LoadProductsListSearch", new LoadProductsListSearchCommand(HttpMethodEnum.GET));
         addStrategy("LoadSingleProduct", new LoadSingleProductCommand(HttpMethodEnum.GET));
+        
+        
     }
 
 }

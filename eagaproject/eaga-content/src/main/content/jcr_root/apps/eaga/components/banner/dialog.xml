@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cq:Dialog"
+          title="Banner Component"
+          width="600"
+          height="500"
+          xtype="panel">
+   		 <items jcr:primaryType="cq:WidgetCollection">
+	    	<title
+	            name="./title"
+	            jcr:primaryType="cq:Widget"
+	            width="400"
+	            fieldLabel="Label title"
+	            allowBlank="false"
+	            xtype="textfield" />
+	        <image
+	            name="./image"
+	            jcr:primaryType="cq:Widget"
+	            width="400"
+	            fieldLabel="Label url image"
+	            allowBlank="false"
+	            rootPath="/content/dam/eaga/common/products"
+	            xtype="pathfield" />
+   		</items>
+</jcr:root>

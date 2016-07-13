@@ -1,4 +1,4 @@
-package com.aem.eaga.servlet.personalDetails.commands;
+package com.aem.eaga.servlet.immagini.commands;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,17 +13,17 @@ import com.aem.eaga.common.DbUtility;
 import com.aem.eaga.servlet.commands.AbstractContextCommand;
 import com.aem.eaga.servlet.commands.HttpMethodEnum;
 
-public class LoadPersonalDetailsCommand extends AbstractContextCommand {
-	private static final String J_ID = "j_id";
+public class LoadImageCommand extends AbstractContextCommand {
+	private static final String J_PathI = "J_pathI";
 	
-	public LoadPersonalDetailsCommand(HttpMethodEnum methods) {
+	public LoadImageCommand(HttpMethodEnum methods) {
 		super(methods);
 	}
 
 	@Override
 	public void process(Context context) throws IOException {	
 		SlingHttpServletRequest request = context.getSlingRequest();
-		final String idutente = request.getParameter(J_ID);
+		final String pathimmagine = request.getParameter(J_PathI);
 		DbUtility dbu = new DbUtility();
 		try {
 			Connection conn = dbu.getConnection();
@@ -31,23 +31,21 @@ public class LoadPersonalDetailsCommand extends AbstractContextCommand {
 			ResultSet rs;
 			stmt = conn.createStatement();
 			
-			String loadRecordSql = "SELECT utenti.Nome, utenti.Email, utenti.Password "
-					+"FROM utenti "
-					+"WHERE utenti.IdUtente='" + idutente + "' ";
+			String loadRecordSql = "SELECT * "
+					+"FROM immagini_prodotti "
+					+"WHERE immagini_prodotti.PathImmagine='" + pathimmagine + "' ";
 				
 			rs = stmt.executeQuery(loadRecordSql);
-			JSONObject utente = new JSONObject();
+			JSONObject immagine = new JSONObject();
 			while (rs.next()) {
 				try {
-					utente.put("IdUtente", J_ID);
-					utente.put("Nome", rs.getString("Nome"));
-					utente.put("Email", rs.getString("Email"));
-					utente.put("Password", rs.getString("Password"));
+					immagine.put("IdProdotto", rs.getString("IdProdotto"));
+					immagine.put("PathImmagine", rs.getString("PathImmagine"));
 				} catch (Exception e) {
 					throw new IOException(e);
 				}
 			}
-			write(context, utente);
+			write(context, immagine);
 		} catch (ClassNotFoundException e) {
 			logger.error(e.getMessage());
 		} catch (SQLException e) {

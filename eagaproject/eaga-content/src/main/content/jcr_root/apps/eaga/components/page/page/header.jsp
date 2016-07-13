@@ -12,8 +12,16 @@
 			<div class="col-sm-6">
 				<cq:include path="search" resourceType="foundation/components/search"/>
 			</div>
-				<cq:include path="topnav" resourceType="eaga/components/topnav"/>
-				<cq:include path="<%=homePath + "/jcr:content/menuLogin"%>" resourceType="eaga/components/menuLogin" />
+			<div class="col-sm-2">
+				<cq:include path="<%=homePath + "/jcr:content/myAccountMenu"%>" resourceType="eaga/components/myAccountMenu" />
+			</div>
+			<div class="col-sm-2 position-myCart">	
+				<a href="/content/eaga/cart.html"> 
+					<span class="total-cart-qnt-topnav">0</span>
+			  		<img class="img-header topnav-item cart" src="/etc/designs/EAGA-Design/images/cart.png">
+				</a>
+			</div>
+			<cq:include path="topnav" resourceType="eaga/components/topnav"/>
 		</div>
 	</div>
 </header>

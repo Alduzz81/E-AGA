@@ -433,28 +433,28 @@ input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-oute
     display: block;
 }
 .topnav-item{
-    position: relative;
-    top: 4px;
-    max-width: 20px;
+    max-width: 30px;
     padding-left: 0px;
-    height: 20px;
+    height: 25px;
 }
 .topnav-list .cart{
     right: 0px;
 }
-.topnav-list .login{
-    right: 0px;
-}
 
-#total-cart-qnt-topnav{
-	color: #05f1f1;
-    font-family: VodafoneLight;
-    font-size: 23px;
+.total-cart-qnt-topnav{
+	color: #e60000;
+    font-size: 15px;
     font-weight: bold;
-    vertical-align: text-top;
-    line-height: 30px;
+    margin-left: 11px;
 }
 
+.position-myCart{	
+    top: 50px;
+    position: absolute;
+    right: 120px;
+    width: 36px;
+    height: 48px;
+}
 
 /******************************************/
 /*     END ADDITIONAL TOPNAV			  */

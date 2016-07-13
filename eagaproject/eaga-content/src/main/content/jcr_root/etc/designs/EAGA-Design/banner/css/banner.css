@@ -1,0 +1,22 @@
+.container-banner {
+	background-color: #c1c1c1;
+	margin-left: 10px;
+	margin-bottom: -80px;
+}
+
+.img-banner{
+	margin: 0 auto;
+	width: 80%;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.hr-banner{
+	width: 80%;
+	padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.text-banner{
+	margin-top: 20px;
+}

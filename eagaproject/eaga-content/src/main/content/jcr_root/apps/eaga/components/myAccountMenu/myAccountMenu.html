@@ -1,0 +1,35 @@
+<div data-sly-use.myMenu="${ 'com.aem.eaga.sightly.myAccountMenu.MyAccountMenuUse' @ currentNode=currentNode }">
+    <div class="myAccountMenu-position" onmouseover="openMenu(this)" onmouseout="closeMenu(this)">
+        <ul data-sly-test.emptyMenu="${ myMenu.author && myMenu.menuEmpty }">
+            <li>
+            	<a href='#'>Configure the component</a>
+            </li>
+        </ul>
+        <div class="text-line">Ciao. Accedi</div>
+		<div class="text-img">
+        	<div>Il mio account</div>
+        	<img class="img-myaccount" src="/etc/designs/EAGA-Design/images/myAccountMenu.png">
+        </div>
+        <div class="container-menu">
+            <div data-sly-test="${ !myMenu.menuEmpty }">
+                <ul data-sly-list.key="${ myMenu.map }">
+                    <li data-sly-test="${ (key == 'Login' && myMenu.author) || (key == 'Login' && !myMenu.authenticated) }">
+                        <div class="text-center div-button">
+                            <button class="button-menu" type="submit" onclick="redirectLogin()">${key}</button>
+                        </div>
+                        <hr class="text-center hr-division">
+                    </li>
+                    <li class="element-menu" data-sly-test="${ key != 'Logout' && key != 'Login' }">
+                        <a href='${ myMenu.map[key] }'>${key}</a>
+                    </li>
+                    <li data-sly-test="${ (key == 'Logout' && myMenu.author) || (key == 'Logout' && myMenu.authenticated) }">
+						<hr class="text-center hr-division">
+                        <div class="text-center div-button">
+                            <button class="button-menu" type="submit" onclick="$.portal.logout('${ myMenu.map[key] }');">${key}</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    	</div>
+    </div>
+</div>

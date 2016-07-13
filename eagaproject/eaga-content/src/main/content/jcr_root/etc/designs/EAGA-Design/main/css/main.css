@@ -1,4 +1,4 @@
-@charset "UTF-8";
+header-secondary-wrap@charset "UTF-8";
 /*********************
 SETTINGS
 *********************/
@@ -5044,7 +5044,7 @@ tbody.collapse.in {
 }
 
 .breadcrumb>li+li:before {
-    content: "/Â ";
+    content: "/ ";
     padding: 0 5px;
     color: #ccc;
 }
@@ -8488,7 +8488,7 @@ header .brand .brand-logo {
 }
 
 header .header-navigation {
-    top: 50px;
+    top: 51px;
     left: 0px;
     width: 100%;
     z-index: 8000;
@@ -8496,12 +8496,11 @@ header .header-navigation {
 }
 
 header .header-secondary-wrap {
-    background: #333;
-    background-color: rgba(51, 51, 51, 0.7);
     position: absolute;
     left: 0;
     padding-left: 40px;
     right: 0;
+    width: 66%;
 }
 
 header .header-secondary-wrap ul {
@@ -14319,7 +14318,7 @@ label.label-radio-green-flag {
 }
 
 .product-detail-accordion .background-pd ul li:before {
-    content: "Â·";
+    content: "·";
     width: 10px;
     height: 10px;
     top: 0px;

@@ -34,19 +34,12 @@ public class UpdatePersonalDetailsCommand extends AbstractContextCommand {
 		String result = "";
 		boolean status = true;
 		
-		/*// MOCK
-		String id1 = "20";
-		String password1 = "1234";
-		// FINE MOCK*/
-
 		DbUtility dbu = new DbUtility();
 		try {
 			Connection conn = dbu.getConnection();
 			Statement stmt;
 			stmt = conn.createStatement();
-			/*String updateRecordSql = "UPDATE utenti " + "SET Password='" + password1 + "' "
-									+"WHERE utenti.IdUtente='" + id1 + "' ";*/
-
+			
 			String updateRecordSql = "UPDATE utenti " + "SET Password='" + password + "' "
 									+"WHERE utenti.IdUtente='" + id + "' ";
 			
@@ -68,10 +61,6 @@ public class UpdatePersonalDetailsCommand extends AbstractContextCommand {
 		}
 		try {
 			JSONObject answer = new JSONObject();
-
-			/*answer.put(J_ID, id1);
-			answer.put(J_PASSWORD, password1);*/
-
 			answer.put(J_ID, id);
 			answer.put(J_PASSWORD, password);
 			answer.put(J_RESULT, result);
