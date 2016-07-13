@@ -27,7 +27,7 @@
 							<input class="tfield" type="text" id="productcategory" name="productcategory" onkeyup="searchCat(event)"/>
                         	<i class="ddcat">&#x25BC</i>
                         </div>
-						<select multiple class="categories-dropdown-sel" ng-options="cat as cat.Nome for cat in categorie track by (cat.Nome|lowercase)" 
+						<select multiple class="categories-dropdown-sel" ng-options="cat as cat.Nome for cat in categorie track by cat.IdCategoria" 
                       		 ng-model="selected" name="productcategory">
                         </select>
 						<div class="menu-categories hidden"></div>
