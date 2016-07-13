@@ -10,7 +10,7 @@
 		    	</a>
 			</div>
 			<div class="col-sm-6">
-				<cq:include path="search" resourceType="foundation/components/search"/>
+				<cq:include path="search-component" resourceType="eaga/components/search-component" />
 			</div>
 			<div class="col-sm-2">
 				<cq:include path="<%=homePath + "/jcr:content/myAccountMenu"%>" resourceType="eaga/components/myAccountMenu" />
