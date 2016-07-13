@@ -1,57 +1,170 @@
 /*******************************************************************************
+ * GLOBAL VARIABLES AND COMMON FUNCTIONS
+ ******************************************************************************/
+var notready, interval, hasImage, cont, img_ready, suc,
+	dd_flag=false, catloaded=false, done=false, search_flag=false,
+	categories = [], images = [], img_indx = [], 
+	index=0, deleted=0;
+function unhide(sel){
+	$(sel).removeClass('hidden');
+};
+function hide(sel){
+	$(sel).addClass('hidden');
+};
+/*******************************************************************************
  * START LOAD CATEGORIES
  ******************************************************************************/
-var dd_flag=false;
-var categories = [];
 function setMenuCategories(){
-    $('select[multiple] option').each(function(){
+    $('.categories-dropdown-sel option').each(function(){
         var c = $(this).text();
-        var newcategory = "<div class='item-cat' data-value='"+c+"'>"+c+"</div>";
+        var newcategory = "<div class='item-cat' data-value='"+(c.toLowerCase())+"'>"+c+"</div>";
 		$('.menu-categories').append(newcategory);
     });
+    $('.menu-categories').append("<div class='search_none hidden' data-value='nessun resultato'>Nessun resultato.</div>");
 };
-function deleteItem(cat){
-	console.log(cat);
-};
-function addCategory(cat){
-    var addCat = "<a class='selected-item' data-value='"+cat+"'>"+cat+"&nbsp;<i class='del-icon'>&times</i></a>";
-	$('.list-sel-items').append(addCat);
-};
-var dropdownActivate = function(){
-    if(!dd_flag){
-		$('.menu-categories').removeClass('hidden');
-        $('.list-sel-items').removeClass('hidden');
-        setMenuCategories();
-        dd_flag = true;
-        $('.item-cat').on('click', function(){
-            var val = $(this).attr('data-value');
-    		categories.push(val);
-            $(this).css('display','none');
-            if(categories.length >= 0){
-                $('.cat-list').css('display','block');
-            }
-            addCategory(val);
-        });
-        $('.list-sel-items').on('click', function(){
-            	$
-			// var val = $(this).attr('data-value');
-            	console.log("hello");
-        });
-    }else{
-		$('.menu-categories').addClass('hidden');
-        $('.list-sel-items').addClass('hidden');
-        dd_flag = false;
+function deleteItem(sel){
+    var s = $(sel).attr('data-value'),
+    	index = categories.indexOf($(sel).text().substr(0,s.length)),
+        search = s.indexOf($('#productcategory').val());
+	$(sel).remove();
+    if(!search_flag || search===0 || s[search-1] === ' '){
+    	unhide(".item-cat[data-value='"+s.toLowerCase()+"']");
+    }
+	$(".categories-dropdown-sel option[value='"+s.toLowerCase()+"']").removeAttr('selected');
+    if (index > -1) {
+    	categories.splice(index, 1);
     }
 };
+function addItem(sel, e){
+	e.stopImmediatePropagation();
+    var val = $(sel).text();
+    categories.push(val);
+    hide(sel);
+    addCategory(val);
+    $(".categories-dropdown-sel option[value='"+val.toLowerCase()+"']").attr('selected', 'true');
+    $('.cat-list').css('display','block');
+	unhide('.all');
+    if($('.item-cat').not('.hidden').length === 0){
+		$('#productcategory').val('');
+    }
+};
+function addCategory(cat){
+    var addCat = "<a class='selected-item' data-value='"+cat.toLowerCase()+"'>"+cat+"&nbsp;<i class='del-icon'>&times</i></a>";
+	$('.list-sel-items').append(addCat);
+};
+function closeDropdown(){
+	$('.menu-categories').addClass('hidden');
+    $('.list-sel-items').addClass('hidden');
+    dd_flag = false;
+    var l = categories.length;
+	var sel = '#productcategory';
+    if(l === 0){
+		formEmpty(sel, '');
+    } else if(l === 1){
+		formEmpty(sel, categories[0]);
+    } else if(l >1){
+        formEmpty(sel, (l)+' Categorie selezionate');
+    }
+	$('.categories-dropdown').removeAttr('id');
 
+};
+function initCategories(searchload){
+	if(!catloaded){
+		setMenuCategories();
+	    catloaded=true;
+	}
+    if(!search_flag && searchload !== ''){
+		unhide('.item-cat');
+    }
+    var l = categories.length;
+    if(l>0){
+        $(".categories-dropdown-sel option[selected = 'selected']").each(function(){
+			hide(".item-cat[data-value='"+$(this).attr('value')+"']");
+        });
+        if((l>1 && searchload.indexOf("selezionate")>-1) || (l === 1 &&  searchload === categories[0])) {
+			$('#productcategory').val('');
+    	}
+    }
+	hide('.search_none');
+};
+var dropdownActivate = function(event){
+    var searchload = $('#productcategory').val();
+    initCategories(searchload);
+	if(!dd_flag){
+        unhide('.menu-categories');
+        unhide('.list-sel-items');
+        dd_flag = true;
+        $('#productcategory').on('dblclick', function(e){
+        	$(this).val('');
+            search_flag=false;
+            initCategories(false);
+        });
+		$('.item-cat').on('click', function(e){
+			addItem(this, e);
+        });
+    	$('.list-sel-items').on('click', '.selected-item', function(){
+            deleteItem(this);
+    	});
+		$('.categories-dropdown').click(function(e){
+    		e.stopPropagation();
+		});
+        $('.addProduct').on('click', function() {
+            closeDropdown();
+		});
+    }else if(event !== undefined){
+        if(event.toElement.id !== 'productcategory'){
+            closeDropdown();
+        }
+    }
+};
+var deleteAll = function(){
+	categories = [];
+    $('.selected-item').remove();
+    hide('.all');
+    $(".categories-dropdown-sel option").removeAttr('selected');
+    if(($('#productcategory').val()) !== ''){
+		searchCat();
+    } else{
+		unhide('.item-cat');
+    }
+};
+var searchCat = function(){
+    var input_cat = $('#productcategory').val().toLowerCase();
+    var l = input_cat.length;
+    if(l === 0){
+        $('.categories-dropdown-sel option').not("[selected='selected']").each(function(){
+			unhide(".item-cat[data-value='"+$(this).val().toLowerCase() +"']");
+        });
+        search_flag=false;
+    } else if(l >= 1){
+        if(l === 1){
+			unhide('.list-sel-items');
+    		unhide('.menu-categories');
+		}
+        search_flag=true;
+		dropdownActivate();
+    	$('.categories-dropdown-sel option').not("[selected='selected']").each(function(){
+			var opt = $(this).attr('value').toLowerCase();
+            var index = opt.indexOf(input_cat);
+            var f = ".item-cat[data-value='"+$(this).val().toLowerCase() +"']";
+    		hide(f);
+            if( index > -1 ){
+                if(index === 0 || (opt[index-1] === ' ')){
+					unhide(f);
+                }
+            }
+    	});
+        if($('.item-cat').not('.hidden').length === 0){
+			unhide('.search_none');
+        }
+    } 
+};
 /*******************************************************************************
  * END LOAD CATEGORIES
  ******************************************************************************/
 /*******************************************************************************
  * START ADD PRODUCT
  ******************************************************************************/
-var notready, interval, hasImage, cont, img_ready, suc;
-var done = false, images = [], index=0, deleted=0, img_indx = [];
 function formEmpty(sel,mes){
 	$(sel).addClass('product-form-empty');
 	$(sel).val(mes);
@@ -134,6 +247,16 @@ function showModal(){
 	$('#add-product-result').html(suc);
 	$('#eagamodal').css('display','block');
 };
+function emptyForm(sel){
+	var compare = $(sel).val().indexOf("--") > -1;
+	if(compare)
+	{	if($(sel).val().indexOf("categoria") > -1 ){
+			$('.categories-dropdown').removeAttr('id');
+	    }
+		$(sel).val('');
+		$(sel).removeClass('product-form-empty');
+ 	}
+};
 var deleteImage = function(par){
     $('.pimage'+par).empty();
     $('.pimage'+par).remove();
@@ -178,11 +301,12 @@ var addImage = function(){
     	});
 	} img_ready = false;
 };
-var productSubmit = function(){
-	notready=false;
+var productSubmit = function(e){
+	e.stopImmediatePropagation();
 	if($('#productname').val() == '' ){
         formEmpty('#productname', '-- Inserisci un nome. --');
-	}if($('#productcategory').val() == '' ){
+    } if(categories.length === 0){
+    //if($('#productcategory').val() == '' ){
         formEmpty('#productcategory', '-- Inserisci una categoria.-- ');
 		$('.categories-dropdown').attr('id','catempty');
 	}if($('#productprice').val() == '' ){
@@ -253,26 +377,15 @@ eagaApp.controller("CategoriesController", ['$scope','$http', function($scope,$h
  * END LOAD CATEGORIES CONTROLLER
  ******************************************************************************/
 $(document).ready(function () {
-    hasImage = false, dd_flag=false;;
-    cont=0;
-    imgcnt=1;
-    img_ready = true;
-    $('input').on('click',function() {
-		var compare = $(this).val().indexOf("--") > -1;
-    	if(compare)
-    	{
-            if($(this).val().indexOf("categoria") > -1){
-				$('.categories-dropdown').removeAttr('id');
-            }
-        	$(this).val('');
-			$(this).removeClass('product-form-empty');
-     	}
+    hasImage = false, dd_flag=false, notready=false, img_ready = true,
+    cont=0, imgcnt=1;
+    $('input').on('click',function(e) {
+    	emptyForm(this);
 	});
     $('.close-modal').on('click',function() {
     	$('#eagamodal').css('display','none');
 	});
-	window.onclick = function(event) {
-    if (event.target == $('#eagamodal')) {
-        $('#eagamodal').css('display','none');
-    }};
+	$('#eagamodal').on('click', function(){
+		 $('this').css('display','none');
+    });
 });

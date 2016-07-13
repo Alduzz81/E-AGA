@@ -114,7 +114,7 @@
 /*     START MODAL						  */
 /******************************************/
 .modal {
-    display: hidden; 
+    display: hidden;  
     position: fixed; 
     z-index: 1; 
     left: 0;
@@ -161,7 +161,9 @@
     margin-bottom: 20px;
     height: 35px;
     border-radius: 3px;
-    border-width: 2px 0px 0px 2px;
+    border-width: 2px 2px 2px 2px;
+    border-bottom-color: white;
+    border-right-color: white;
     border-style: inset;
     border-color: initial;
 }
@@ -201,7 +203,7 @@
 	z-index: 1;
 	top: 100%;
     right: -2px;    
-	background-color: white;
+	background-color: #ffc;
     border-width: 2px 0px 0px 2px;
     border-width: 2px;
     border-style: inset;
@@ -228,8 +230,8 @@
 .hidden{
 	display:block;
 }
-.item-cat{
-    border-top: 1px solid #FAFAFA;
+.item-cat, .search_none{
+    border-top: 1px solid #eee;
     border-left: initial;
     padding: .78571429rem 1.14285714rem!important;
     white-space: normal;
@@ -283,9 +285,22 @@
     border-width: 1px;
     border-style: solid;
     border-color: white;
-    width: 100%;
-    min-height: 38px;
+    width: 101%;
+    min-height: 57px;
     max-height: 122px;
     bottom: 100%;
     overflow-y: auto;
+    padding-right: 2px;
+}
+.all{
+	font-size: 30px;
+    margin-top: -6px;
+    cursor: pointer;
+}
+.search_none{
+    pointer-events: none;
+    font-style: italic;
+    background-color: #eee;
+    border-color: white;
+    width: 101%;
 }
