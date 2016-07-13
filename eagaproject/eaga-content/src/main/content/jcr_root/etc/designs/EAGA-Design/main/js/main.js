@@ -911,11 +911,10 @@ var initCustomDatapicker = function() {
  *******************************************************************************/
 
 function setCookie(ckName, ckValue, expDays) {
-	console.log("cookie value :"+ ckValue +", type of: " + typeof ckValue);
     var d = new Date();
     d.setTime(d.getTime() + (expDays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
-    document.cookie = ckName + "=" + ckValue + "; " + expires;
+    document.cookie = ckName + "=" + ckValue + "; " + expires + "; path=/"+';';
 };
 
 function getCookie(ckName) {

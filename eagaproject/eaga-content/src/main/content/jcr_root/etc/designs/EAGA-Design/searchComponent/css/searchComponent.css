@@ -1,0 +1,24 @@
+.search-component-product{
+    display: inline-flex;
+}
+
+.search-component-button{
+	height: 35.5px;
+}
+
+select{
+	border-radius: 3px;
+    background-color: rgb(226, 226, 226);
+    width: 165px;
+    height: 35px;
+}
+
+option:not(:checked) { 
+	background-color: white; 
+    color:#000;
+}
+
+input[type="search"]{
+	height:35px;
+    width:400px;
+}

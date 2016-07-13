@@ -1,19 +1,32 @@
 eagaApp.controller("ProductsController", [ '$scope', '$http', function($scope, $http) {
 	$scope.products = [];
     $scope.noproducts="";
-	$scope.callAjaxProducts = function(categoria) {
+
+    $scope.searchRedirect = function(categories){
+        setCookie("searchProduct", $("input[name=search-products]").val(), 1);
+        setCookie("categoriesProduct", categories, 1);
+        setCookie("anotherPage", true, 1);
+		window.location.href = '/content/eaga/products.html';
+	};
+
+    $scope.callAjaxSearchProducts = function() {
+        var categoriesProducts=getCookie("categoriesProduct");
+        var searchProducts=getCookie("searchProduct");
 		var path = CQ.shared.HTTP.getPath();
 		$http({
 			method : 'GET',
 			url : path + '.LoadProductsListSearch.json',
             params:{
-            	'J_categoria': categoria,
-            	'J_search': $("input[name=search]").val()
+            	'J_categoria': categoriesProducts,
+            	'J_search': searchProducts
 	   		}
 		}).success(function(data) {
 			$scope.products = data;
-			$scope.selected={IdCategoria: categoria};
-			$scope.isEmptyProducts();				
+			$scope.selected={IdCategoria: categoriesProducts};
+			$scope.isEmptyProducts();        
+        	$('#selected-categories').val(categoriesProducts);
+            $('#text-search').val(searchProducts);
+            setCookie("anotherPage", false, 1);
 		}).error(function(data) {
             $scope.isEmptyProducts();
 			console.log('Load Products error!!' + data);
@@ -21,7 +34,7 @@ eagaApp.controller("ProductsController", [ '$scope', '$http', function($scope, $
 			// or server returns response with an error status.
 		});
 	};
-		
+
 	$scope.categorie = [];
 	$scope.selected={IdCategoria: 1};
 	$scope.callAjaxCategorie = function() {
@@ -45,3 +58,12 @@ eagaApp.controller("ProductsController", [ '$scope', '$http', function($scope, $
             $scope.noproducts="Lista prodotti:";
 	};
 }]);
+
+$(document).ready(function () {
+    if(CQ.shared.HTTP.getPath()==="/content/eaga/products"){
+        var anotherPage=getCookie("anotherPage");
+        if(anotherPage=='true'){
+            angular.element(document.getElementById('readyCallAjax')).scope().callAjaxSearchProducts();
+        }
+    }
+});

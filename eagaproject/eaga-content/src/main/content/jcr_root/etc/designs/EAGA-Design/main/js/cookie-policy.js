@@ -2,7 +2,7 @@ var cookie = {
     setCookie: function (key, value, time) {
         var expires = new Date();
         expires.setTime(expires.getTime() + time);
-        document.cookie = key + '=' + value + "; path=/content"+';'; ;//expires=' + expires.toUTCString();
+        document.cookie = key + '=' + value + "; path=/"+';'; ;//expires=' + expires.toUTCString();
     },
     getCookie: function (key) {
         var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
