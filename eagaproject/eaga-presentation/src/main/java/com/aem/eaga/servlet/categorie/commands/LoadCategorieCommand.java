@@ -32,7 +32,7 @@ public class LoadCategorieCommand extends AbstractContextCommand {
 			
 			
 			String loadRecordSql = "SELECT * "
-					+"FROM categorie ORDER BY IdCategoria ASC ";
+					+"FROM eaga.categorie ORDER BY IdCategoria ASC ";
 	
 			rs = stmt.executeQuery(loadRecordSql);
 			int i=0;

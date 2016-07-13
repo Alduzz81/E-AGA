@@ -3,31 +3,37 @@
 		<img class="add-product-logo" src="/etc/designs/EAGA-Design/images/icons/eaga_trasparent.png">
 	</a>
 </div>
-<div class="addproduct-container">
+<div class="addproduct-container" ng-controller="CategoriesController" data-ng-init="loadCategoriesOptions()">
 	<div class="text-center add-product-padding">		
 		<div class="add-product-padding">
-			<h2><b>Add a Product</b></h2>
+            <h2><b>Add a Product</b></h2>
 		</div>
 		<form id="product-form" autocomplete="off">
 			<fieldset class="product-form-group">
 				<div class ="col-sm-4">
-					<label for="productname" id="productnamelabel">
-                			${properties.name ? properties.name : 'Nome del prodotto' @ context='html'}: </label>
-					<label for="productcategory">
-							${properties.category ? properties.category : 'Categoria' @ context='html'}: </label>
-					<label for="productdescription">
-							${properties.description ? properties.description : 'Descrizione' @ context='html'}: </label>
-					<label for="productprice">
-							${properties.price ? properties.price : 'Prezzo' @ context='html'}: </label>		
-					<label for="productquantity">
-							${properties.quantity ? properties.quantity : 'Quantita' @ context='html'}: </label>		
+					<label for="productname" id="productnamelabel">${properties.name ? properties.name : 'Nome del prodotto' @ context='html'}: </label>
+					<label for="productcategory">${properties.category ? properties.category : 'Categoria' @ context='html'}: </label>
+					<label for="productdescription">${properties.description ? properties.description : 'Descrizione' @ context='html'}: </label>
+					<label for="productprice">${properties.price ? properties.price : 'Prezzo' @ context='html'}: </label>		
+					<label for="productquantity">${properties.quantity ? properties.quantity : 'Quantita' @ context='html'}: </label>		
 				</div>
                 <div class ="col-sm-8">
 					<input class="tfield" type="text" id="productname" name="productname" />
-					<input class="tfield" type="text"id="productcategory" name="productcategory" />
-                     <!--  <select class="categories-dropdown"></select>
-                     -->  
-					<input class="tfield" id="productdescription" name="productdescription"/>
+                   <div class="categories-dropdown">
+                    	<div class="list-sel-items hidden">
+                        	<i class='del-icon all hidden' onClick='deleteAll()'>&times</i>
+                        </div>
+                        <div class="cat-textfield" onClick="dropdownActivate(event)">
+							<input class="tfield" type="text" id="productcategory" name="productcategory" onkeyup="searchCat(event)"/>
+                        	<i class="ddcat">&#x25BC</i>
+                        </div>
+						<select multiple class="categories-dropdown-sel" ng-options="cat as cat.Nome for cat in categorie track by (cat.Nome|lowercase)" 
+                      		 ng-model="selected" name="productcategory">
+                        </select>
+						<div class="menu-categories hidden"></div>
+                    </div>
+
+                    <input class="tfield" id="productdescription" name="productdescription"/>
 					<input class="tfield" type="text" id="productprice" name="productprice" onkeypress="return isNumberKey(event)">
 						<label id="productpricelabel">
 							${properties.priceunit ? properties.priceunit : '&euro;' @ context='html'}</label>
@@ -39,7 +45,7 @@
                 <ul class="image-list"></ul>
 				<div class="sbmt-btn-addprod col-sm-10">
                 <input class="submit-img" type="submit" value="${properties.image ? properties.image : 'Aggiungi un immagine' @ context='html'}" onclick="addImage()"/>
-				<input class="submit-prod" type="submit" value="${properties.submit ? properties.submit : 'Aggiungi il prodotto' @ context='html'}" onclick="productSubmit()"/>
+				<input class="submit-prod" type="submit" value="${properties.submit ? properties.submit : 'Aggiungi il prodotto' @ context='html'}" onclick="productSubmit(event)"/>
 				</div>
             </fieldset>
 		</form>
