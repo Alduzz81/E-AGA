@@ -1,0 +1,21 @@
+IdProdotto,Nome,Descrizione,Prezzo,Quantita,Categoria
+1,Samsung S4,Ottimo cellulare,600,3,Telefono
+2,Samsung S2,Ottimo cellulare,300,5,Telefono
+3,Iphone 6s,Cellulare brillante,499,50,Telefono
+4,Iphone 5,Ottimo cellulare,399,50,Telefono
+5,Iphone 4,Bel cellulare,299,10,Telefono
+6,Samsung S5,Ottimo cellulare,349,100,Telefono
+7,Nokia 6610,Cellulare brillante,45,3453,Telefono
+8,Nokia 5510,Ottimo cellulare,89,1000,Telefono
+9,Nokia 3610,Cellulare brillante,8,8,Telefono
+10,Huawei 989,Ottimo cellulare,90,900,Telefono
+11,Iphone 3,Cellulare brillante,99,1000,Telefono
+12,Battery,Batteria di alta qualita,2,1000,Battery
+13,Bici skoda,Bicicletta,30,2,Bicicletta
+14,Modellini skoda,Modellino,44,3,Design
+15,Borsa skoda,Borsa elegante,3,5,Accessori
+16,Valigia skoda,Valigia,33,4,Accessori
+17,Calze corte,Calze fantastiche,333,333,Vestiti
+18,Occhiali skoda,Occhiali sportivi,23423,1,Accessori
+19,Porta merenda,Porta merenda da lavoro,3333,4,Oggetti
+20,Cravatta,Cravatta da cerimonia,3,4,Vestiti
