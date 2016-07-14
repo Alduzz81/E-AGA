@@ -15,13 +15,16 @@
 			<div class="col-sm-2">
 				<cq:include path="<%=homePath + "/jcr:content/myAccountMenu"%>" resourceType="eaga/components/myAccountMenu" />
 			</div>
-			<div class="col-sm-2 position-myCart">	
+			<div class="col-sm-1">
+				<cq:include path="<%=homePath + "/jcr:content/myWishListMenu"%>" resourceType="eaga/components/myWishlistMenu" />
+	      	</div>
+			<div class="col-sm-1 position-myCart">	
 				<a href="/content/eaga/cart.html"> 
 					<span class="total-cart-qnt-topnav">0</span>
 			  		<img class="img-header topnav-item cart" src="/etc/designs/EAGA-Design/images/cart.png">
 				</a>
 			</div>
-			<cq:include path="topnav" resourceType="eaga/components/topnav"/>
 		</div>
+		<cq:include path="topnav" resourceType="eaga/components/topnav"/>
 	</div>
 </header>

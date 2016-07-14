@@ -1,0 +1,33 @@
+.myWishlistMenu-position{
+	top: 40px;
+    position: absolute;
+    margin-left: 25px
+}
+
+.img-myWishlistMenu{
+	width: 15px;
+    margin-bottom: 3px;
+    margin-left: 3px;
+}
+
+.text-img-wishlist{
+	display: -webkit-inline-box;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.text-line-wishlist{
+	color: #c3c3c3;
+}
+
+.element-menu-wishlist{
+	margin-left: 5%;
+    margin-bottom: 7px;
+}
+
+.container-menu-wishlist{
+	border: 2px;
+    border-style: ridge;
+    background: #ffc;
+    width: 150px;
+}

@@ -4,10 +4,10 @@
             <li>
             	<a href='#'>Configure the component</a>
             </li>
-        </ul>
-        <div class="text-line">Ciao. Accedi</div>
+        </ul> 
+        <div class="text-line">${properties.textOneLine ? properties.textOneLine : 'Ciao. Accedi' @context='html'}</div>
 		<div class="text-img">
-        	<div>Il mio account</div>
+        	<div>${properties.textSecondLine ? properties.textSecondLine : 'Il mio account' @context='html'}</div>
         	<img class="img-myaccount" src="/etc/designs/EAGA-Design/images/myAccountMenu.png">
         </div>
         <div class="container-menu">

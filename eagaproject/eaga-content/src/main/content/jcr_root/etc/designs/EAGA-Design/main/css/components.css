@@ -449,11 +449,18 @@ input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-oute
 }
 
 .position-myCart{	
-    top: 50px;
+    top: 52px;
     position: absolute;
-    right: 120px;
+    right: 50px;
     width: 36px;
     height: 48px;
+}
+
+.position-myList{
+    top: 60px;
+    position: absolute;
+    right: 130px;
+    width: 45px;
 }
 
 /******************************************/

@@ -1,4 +1,4 @@
-package com.aem.eaga.sightly.myAccountMenu;
+package com.aem.eaga.sightly.myWishlistMenu;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -13,7 +13,7 @@ import org.apache.sling.commons.json.JSONObject;
 
 import com.aem.eaga.common.CommonUse;
 
-public class MyAccountMenuUse extends CommonUse {
+public class MyWishlistMenuUse extends CommonUse {
 	private Node currentNode;
 	private final Map<String, String> menuLinks = new LinkedHashMap<>(new HashMap<String, String>());
 
@@ -26,8 +26,8 @@ public class MyAccountMenuUse extends CommonUse {
         }
 
         Value[] values;
-        Property links = getProperty(currentNode, "myAccountMenu");
-        
+        Property links = getProperty(currentNode, "myWishListMenu");
+   
         if (links != null) {
             JSONObject json;
             String url;

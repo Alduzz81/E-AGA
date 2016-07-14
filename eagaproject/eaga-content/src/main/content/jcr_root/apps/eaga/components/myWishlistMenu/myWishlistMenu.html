@@ -1,0 +1,23 @@
+<div data-sly-use.myMenu="${ 'com.aem.eaga.sightly.myWishlistMenu.MyWishlistMenuUse' @ currentNode=currentNode }">
+    <div class="myWishlistMenu-position" onmouseover="openMenuWishlist(this)" onmouseout="closeMenuWishlist(this)">
+        <ul data-sly-test.emptyMenu="${ myMenu.author && myMenu.menuEmpty }">
+            <li>
+            	<a href='#'>Configure the component</a>
+            </li>
+        </ul>
+        <div class="text-line-wishlist">${properties.textOneLine ? properties.textOneLine : 'Le tue' @context='html'}</div>
+		<div class="text-img-wishlist">
+        	<div>${properties.textSecondLine ? properties.textSecondLine : 'Liste' @context='html'}</div>
+        	<img class="img-myWishlistMenu" src="/etc/designs/EAGA-Design/images/myAccountMenu.png">
+        </div>
+        <div class="container-menu-wishlist">
+            <div data-sly-test="${ !myMenu.menuEmpty }">
+                <ul data-sly-list.key="${ myMenu.map }">
+                    <li class="element-menu-wishlist">
+                        <a href='${ myMenu.map[key] }'>${key}</a>
+                    </li>
+                </ul>
+            </div>
+    	</div>
+    </div>
+</div>
