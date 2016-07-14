@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,6 +49,7 @@ public class InsertProductCommand extends AbstractContextCommand {
 		String result = "";
 		boolean status = true;
 		int idprodotto = -1;
+		final String[] categories = categoriaProdotto.split(",");
 		try {
 			DbUtility dbu = new DbUtility();
 
@@ -58,30 +61,38 @@ public class InsertProductCommand extends AbstractContextCommand {
 			rs = stmt.executeQuery(sqlCheckProdotto);
 
 			if (!rs.next()) {
-				 String newRecordSql = "INSERT INTO eaga.prodotti (Nome,Descrizione,Prezzo,Quantita,Categoria)VALUES(?,?,?,?,?);";
-				//String newRecordSql = "INSERT INTO eaga.prodotti (Nome,Descrizione,Prezzo,Quantita,Categoria,IdProdotto)VALUES(?,?,?,?,?,?);";
+				 String newRecordSql = "INSERT INTO eaga.prodotti (Nome,Descrizione,Prezzo,Quantita,NumCategorie)VALUES(?,?,?,?,?);";
 
 				PreparedStatement preparedStmt = conn.prepareStatement(newRecordSql);
 				preparedStmt.setString(1, nomeProdotto);
 				preparedStmt.setString(2, descrizioneProdotto);
 				preparedStmt.setString(3, prezzoProdotto);
 				preparedStmt.setInt(4, Integer.parseInt(quantitaProdotto));
-				preparedStmt.setString(5, categoriaProdotto);
-				//preparedStmt.setString(6, "22");
+				preparedStmt.setInt(5, categories.length);
 				// execute the preparedstatement
 				boolean res = preparedStmt.execute();
 
 				if (!res) {
 					result = "Success";
-
 					sqlCheckProdotto = "SELECT * " + "FROM eaga.prodotti " + "WHERE nome = '" + nomeProdotto + "'";
 					ResultSet rsconferma = stmt.executeQuery(sqlCheckProdotto);
-
 					if (rsconferma.next()) {
 						idprodotto = rsconferma.getInt("IdProdotto");
 						rsconferma.close();
 					}
-					logger.error(result);
+					//CREATE THE CATEGORIES SET
+					String newRecordCat = "INSERT INTO eaga.prodotti_categorie(FK_Prodotti,FK_Categorie)VALUES(?,?);";
+					for(int i=0;i<categories.length;i++){
+						PreparedStatement preparedStmt2 = conn.prepareStatement(newRecordCat);
+						preparedStmt2.setInt(1, idprodotto);
+						preparedStmt2.setInt(2, Integer.parseInt(categories[i]));
+						boolean catres = preparedStmt2.execute();
+						if(catres){
+							result = "Something went wrong on saving the categories";
+							status = false;
+						}
+					}
+					//logger.error(result);
 					stmt.close();
 					conn.close();
 

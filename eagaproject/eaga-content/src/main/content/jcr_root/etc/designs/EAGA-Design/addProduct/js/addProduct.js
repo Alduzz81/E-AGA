@@ -16,29 +16,30 @@ function hide(sel){
  ******************************************************************************/
 function setMenuCategories(){
     $('.categories-dropdown-sel option').each(function(){
-        var c = $(this).text();
-        var newcategory = "<div class='item-cat' data-value='"+(c.toLowerCase())+"'>"+c+"</div>";
+        var c = $(this).attr('label');
+        var newcategory = "<div class='item-cat' data-value='"+c+"'>"+c+"</div>";
 		$('.menu-categories').append(newcategory);
     });
     $('.menu-categories').append("<div class='search_none hidden' data-value='nessun resultato'>Nessun resultato.</div>");
 };
 function reLoadCat(){
 	$(".categories-dropdown-sel option[selected = 'selected']").each(function(){
-		hide(".item-cat[data-value='"+$(this).attr('value')+"']");
+		hide(".item-cat[data-value='"+$(this).attr('label')+"']");
 	});
 };
 function deleteItem(sel){
     var s = $(sel).attr('data-value'),
-    	index = categories.indexOf($(sel).text().substr(0,s.length)),
-        search = s.indexOf($('#productcategory').val());
+		search = s.toLowerCase().indexOf($('#productcategory').val().toLowerCase()),
+		idcat = $(".categories-dropdown-sel option[label='"+s+"']").attr('value'),
+    	index = categories.indexOf(idcat);
     if($('#productcategory').val() ==='' && $('.item-cat').not('.hidden').length==0){
 		unhide('.item-cat');
         reLoadCat();
     }
     $(sel).remove();
-	$(".categories-dropdown-sel option[value='"+s.toLowerCase()+"']").removeAttr('selected');
+	$(".categories-dropdown-sel option[label='"+s+"']").removeAttr('selected');
     if(!search_flag || search===0 || s[search-1] === ' '){
-    	unhide(".item-cat[data-value='"+s.toLowerCase()+"']");
+    	unhide(".item-cat[data-value='"+s+"']");
 		hide('.search_none');
     }
     if (index > -1) {
@@ -47,11 +48,12 @@ function deleteItem(sel){
 };
 function addItem(sel, e){
 	e.stopImmediatePropagation();
-    var val = $(sel).text();
-    categories.push(val);
+    var val = $(sel).text(),
+        idstr =  ".categories-dropdown-sel option[label='"+val+"']";
+    categories.push($(idstr).attr('value'));
     hide(sel);
     addCategory(val);
-    $(".categories-dropdown-sel option[value='"+val.toLowerCase()+"']").attr('selected', 'true');
+    $(idstr).attr('selected', 'true');
     $('.cat-list').css('display','block');
 	unhide('.all');
     if($('.item-cat').not('.hidden').length === 0){
@@ -59,7 +61,7 @@ function addItem(sel, e){
     }
 };
 function addCategory(cat){
-    var addCat = "<a class='selected-item' data-value='"+cat.toLowerCase()+"'>"+cat+"&nbsp;<i class='del-icon'>&times</i></a>";
+    var addCat = "<a class='selected-item' data-value='"+cat+"'>"+cat+"&nbsp;<i class='del-icon'>&times</i></a>";
 	$('.list-sel-items').append(addCat);
 };
 function closeDropdown(){
@@ -86,7 +88,7 @@ function initCategories(searchload,e){
 	}
     if((!search_flag && searchload !== '')|| l>0){
 		unhide('.item-cat');
-    }console.log(e.type);
+    }
     if(l>0 && e.type !== 'dblclick'){
 		reLoadCat();
         if((l>1 && searchload.indexOf("selezionate")>-1) || (l === 1 &&  searchload === categories[0])) {
@@ -105,7 +107,9 @@ var dropdownActivate = function(event){
         $('#productcategory').on('dblclick', function(e){
         	$(this).val('');
             search_flag=false;
-            initCategories(false,e);
+            if(categories.length == 0){
+            	initCategories(false,e);
+            }
         });
 		$('.item-cat').on('click', function(e){
 			addItem(this, e);
@@ -141,7 +145,7 @@ var searchCat = function(e){
     var l = input_cat.length;
     if(l === 0){
         $('.categories-dropdown-sel option').not("[selected='selected']").each(function(){
-			unhide(".item-cat[data-value='"+$(this).val().toLowerCase() +"']");
+			unhide(".item-cat[data-value='"+$(this).attr('label')+"']");
         });
         search_flag=false;
     } else if(l >= 1){
@@ -152,9 +156,9 @@ var searchCat = function(e){
         search_flag=true;
 		dropdownActivate(e);
     	$('.categories-dropdown-sel option').not("[selected='selected']").each(function(){
-			opt = $(this).attr('value').toLowerCase(),
+			opt = $(this).attr('label').toLowerCase(),
             index = opt.indexOf(input_cat),
-            f = ".item-cat[data-value='"+$(this).val().toLowerCase() +"']";
+            f = ".item-cat[data-value='"+$(this).attr('label')+"']";
     		hide(f);
             if( index > -1 ){
                 if(index === 0 || (opt[index-1] === ' ')){
@@ -225,7 +229,6 @@ function sendXHRequest(formData) {
        contentType: false,
        data:formData,
        success: function(){
-    	   $('.tfield').val('');
            $('.image-list').empty();
            $('.submit-img').removeAttr('id');
            $('.submit-prod').removeClass('move-add-btn');
@@ -310,11 +313,11 @@ var addImage = function(){
 	} img_ready = false;
 };
 var productSubmit = function(e){
+	notready=false;
 	e.stopImmediatePropagation();
 	if($('#productname').val() == '' ){
         formEmpty('#productname', '-- Inserisci un nome. --');
     } if(categories.length === 0){
-    //if($('#productcategory').val() == '' ){
         formEmpty('#productcategory', '-- Inserisci una categoria.-- ');
 		$('.categories-dropdown').attr('id','catempty');
 	}if($('#productprice').val() == '' ){
@@ -326,10 +329,17 @@ var productSubmit = function(e){
 	}
 };
 function addProductInDB() {
-    suc = "Sta caricando...."
+    suc = "Sta caricando....";
+    var cat='';
+    for(var c in categories){
+        if(c == categories.length){
+			cat +=categories[c];
+        } else{
+            cat += categories[c]+",";}
+    }
     var params = {
 	        'j_nomeProdotto': $("input[name=productname]").val(),
-	        'j_categoriaProdotto': $("select[name=productcategory]").val(),
+        	'j_categoriaProdotto': cat,
 	        'j_descrizioneProdotto': $("input[name=productdescription]").val(),
 	        'j_prezzoProdotto': $("input[name=productprice]").val(),
 	        'j_quantitaProdotto': $("input[name=productquantity]").val(),
@@ -347,6 +357,7 @@ function addProductInDB() {
 					initImageUpload(msg.J_IdProdotto + ","+ $("input[name=productcategory]").val() + "," + $("input[name=productname]").val());
                 }
         		suc = "Prodotto "+ $("input[name=productname]").val() +" aggiunto!";
+        		$('.tfield').val('');
         	}else{
         		suc = "Product "+ $("input[name=productname]").val() +" gia' esistente!";
         		$('#productname').val('');
