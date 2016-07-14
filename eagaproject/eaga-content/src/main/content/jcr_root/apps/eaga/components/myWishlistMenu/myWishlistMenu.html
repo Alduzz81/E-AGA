@@ -10,7 +10,7 @@
         	<div>${properties.textSecondLine ? properties.textSecondLine : 'Liste' @context='html'}</div>
         	<img class="img-myWishlistMenu" src="/etc/designs/EAGA-Design/images/myAccountMenu.png">
         </div>
-        <div class="container-menu-wishlist">
+        <div class="container-menu-wishlist hidden">
             <div data-sly-test="${ !myMenu.menuEmpty }">
                 <ul data-sly-list.key="${ myMenu.map }">
                     <li class="element-menu-wishlist">

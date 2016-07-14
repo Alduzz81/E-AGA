@@ -1,4 +1,5 @@
 function openMenuWishlist(x){
+    $('div .container-menu-wishlist').removeClass("hidden");
     $('.container-menu-wishlist').show();
 }
 

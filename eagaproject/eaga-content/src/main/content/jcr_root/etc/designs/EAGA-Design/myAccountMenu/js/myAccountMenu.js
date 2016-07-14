@@ -1,4 +1,5 @@
 function openMenu(x){
+    $('div .container-menu').removeClass("hidden");
     $('.container-menu').show();
 }
 

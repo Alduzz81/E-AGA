@@ -10,7 +10,7 @@
         	<div>${properties.textSecondLine ? properties.textSecondLine : 'Il mio account' @context='html'}</div>
         	<img class="img-myaccount" src="/etc/designs/EAGA-Design/images/myAccountMenu.png">
         </div>
-        <div class="container-menu">
+        <div class="container-menu hidden">
             <div data-sly-test="${ !myMenu.menuEmpty }">
                 <ul data-sly-list.key="${ myMenu.map }">
                     <li data-sly-test="${ (key == 'Login' && myMenu.author) || (key == 'Login' && !myMenu.authenticated) }">
