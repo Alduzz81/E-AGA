@@ -39,6 +39,10 @@ eagaApp.controller("ProductsController", [ '$scope', '$http', function($scope, $
 	$scope.selected={IdCategoria: 1};
 	$scope.callAjaxCategorie = function() {
 		var path = CQ.shared.HTTP.getPath();
+    	var positionPath=path.indexOf(".html/id");
+    	if(positionPath >-1){
+    		path=path.substring(0,positionPath);
+        }
 		$http({
 			method : 'GET',
 			url : path + '.LoadCategorie.json'
