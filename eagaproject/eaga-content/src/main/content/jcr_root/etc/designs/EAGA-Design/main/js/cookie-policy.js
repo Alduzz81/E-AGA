@@ -11,7 +11,7 @@ var cookie = {
 };
 
 function initNotification () {
-    var cookieValue = cookie.getCookie("cookie-policy-bar-vodafone");
+    var cookieValue = cookie.getCookie("cookie-policy-bar-eaga");
     if (cookieValue === "true") {
         $('div.notification').removeClass("notification-opened");
     } else {
@@ -21,13 +21,13 @@ function initNotification () {
     $(".js-notification-btn-close").on("click", function (e) {
         e.preventDefault();
         $(this).closest('.notification').removeClass('notification-opened');
-        cookie.setCookie("cookie-policy-bar-vodafone", "true", 10 * 60 * 1000);
+        cookie.setCookie("cookie-policy-bar-eaga", "true", 10 * 60 * 1000);
     });
     
     $("#clickClose").on("click", function (e) {
         e.preventDefault();
         $(this).closest('.notification').removeClass('notification-opened');
-        cookie.setCookie("cookie-policy-bar-vodafone", "true", 10 * 60 * 1000);
+        cookie.setCookie("cookie-policy-bar-eaga", "true", 10 * 60 * 1000);
         window.location.href = '/content/eaga/cookiePrivacyPolicy.html';
     });
 }
