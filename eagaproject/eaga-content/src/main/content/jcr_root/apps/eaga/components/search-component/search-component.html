@@ -2,6 +2,8 @@
 	<div class="search-component-product">
 		<select id="selected-categories" ng-options="cat as cat.Nome for cat in categorie track by cat.IdCategoria" name="select" ng-model="selected"></select>
 		<input id="text-search" type="search" name="search-products" placeholder="Cerca prodotto">
-		<button class="search-component-button" ng-click="searchRedirect(selected.IdCategoria)">Cerca</button>
+		<button class="search-component-button" ng-click="searchRedirect(selected.IdCategoria)">
+			<img class="img-search-component-button" src="/etc/designs/EAGA-Design/images/icon-search.png">
+		</button>
 	</div>
 </div>

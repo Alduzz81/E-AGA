@@ -1,12 +1,12 @@
 .myWishlistMenu-position{
 	top: 40px;
     position: absolute;
-    margin-left: 25px
+    margin-left: 15px
 }
 
 .img-myWishlistMenu{
 	width: 15px;
-    margin-bottom: 3px;
+    margin-bottom: 7px;
     margin-left: 3px;
 }
 
@@ -16,8 +16,15 @@
     color: #ffffff;
 }
 
-.text-line-wishlist{
-	color: #c3c3c3;
+.text-one-line-wishlist{
+	color: #ccc;
+}
+
+.text-second-line-wishlist{
+	font-size: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: arial,sans-serif;
 }
 
 .element-menu-wishlist{

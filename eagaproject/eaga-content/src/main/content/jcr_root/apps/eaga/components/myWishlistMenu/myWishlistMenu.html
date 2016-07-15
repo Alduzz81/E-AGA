@@ -5,10 +5,10 @@
             	<a href='#'>Configure the component</a>
             </li>
         </ul>
-        <div class="text-line-wishlist">${properties.textOneLine ? properties.textOneLine : 'Le tue' @context='html'}</div>
+        <div class="text-one-line-wishlist">${properties.textOneLine ? properties.textOneLine : 'Le tue' @context='html'}</div>
 		<div class="text-img-wishlist">
-        	<div>${properties.textSecondLine ? properties.textSecondLine : 'Liste' @context='html'}</div>
-        	<img class="img-myWishlistMenu" src="/etc/designs/EAGA-Design/images/myAccountMenu.png">
+        	<div class="text-second-line-wishlist">${properties.textSecondLine ? properties.textSecondLine : 'Liste' @context='html'}</div>
+        	<img class="img-myWishlistMenu" src="/etc/designs/EAGA-Design/images/icon-menu.png">
         </div>
         <div class="container-menu-wishlist hidden">
             <div data-sly-test="${ !myMenu.menuEmpty }">

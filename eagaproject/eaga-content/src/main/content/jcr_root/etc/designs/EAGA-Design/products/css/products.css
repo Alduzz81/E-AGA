@@ -18,6 +18,16 @@
 	border-left-style: none;
 }
 
+.menu-link-categories{
+	padding-left: 10px;
+    color: #333;
+}
+
+
+.menu-link-categories:hover{
+	color: #f08804;
+}
+
 .product-items{
 	display: inline-block;	 
 	width: 33%;
@@ -39,12 +49,4 @@
     min-height: 150px;
     max-width: 250px;
     max-height: 250px;
-}
-
-.div-products-container{
-    <!--background-color: #e5e5e5;-->
-}
-
-.products-background-color{
-	background-color: #f5f5f5;
 }
