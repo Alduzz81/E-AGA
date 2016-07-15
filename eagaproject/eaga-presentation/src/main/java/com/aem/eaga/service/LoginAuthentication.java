@@ -60,7 +60,7 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
     private static final String J_USER_NAME = "j_username";
     private static final String J_PASSWORD = "j_password";
     private static final String AUTH_TYPE = "TOKEN";
-    private static final String REQUEST_URL_SUFFIX = "eaga_security_check";
+    private static final String REQUEST_URL_SUFFIX = "/j_security_check";
     private static final String CUG_ID_PROP_DEFAULT = "eagacug";
     private static final String CUG_ID_PROP_NAME = "eagacug.cug.groupid";
 
@@ -101,17 +101,17 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
         		                                                                                                          httpServletResponse);
         final String username = httpServletRequest.getParameter(J_USER_NAME);
         final String password = httpServletRequest.getParameter(J_PASSWORD);
-        logger.error("Alduzz username="+username);  
-        logger.error("Alduzz password="+password);  
+        logger.info("Alduzz username="+username);  
+        logger.info("Alduzz password="+password);  
         if (REQUEST_METHOD.equals(httpServletRequest.getMethod())
             && httpServletRequest.getRequestURI().endsWith(REQUEST_URL_SUFFIX) && username != null) {
 
             if (!AuthUtil.isValidateRequest(httpServletRequest)) {
                 AuthUtil.setLoginResourceAttribute(httpServletRequest, httpServletRequest.getContextPath());
             }
-            logger.error("AFTER RETRIEVE TOKEN");
+            logger.info("AFTER RETRIEVE TOKEN");
             String token =  customer.getToken(username, password);
-            logger.error("TOKEN RETRIEVED: "+ token);
+            logger.info("TOKEN RETRIEVED: "+ token);
             if (token != null && !token.isEmpty()) {
                 SimpleCredentials creds = new SimpleCredentials(username, password.toCharArray());
                 creds.setAttribute(ATTR_HOST_NAME_FROM_REQUEST, httpServletRequest.getServerName());
@@ -165,7 +165,7 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
                 authenticationInfo.put(LAST_NAME, credentialMap.get(LAST_NAME));
             }
 
-            authenticationInfo.put(CUSTOMER_ID, credentialMap.get(CUSTOMER_ID));
+             authenticationInfo.put(CUSTOMER_ID, credentialMap.get(CUSTOMER_ID));
 
             return authenticationInfo;
 
