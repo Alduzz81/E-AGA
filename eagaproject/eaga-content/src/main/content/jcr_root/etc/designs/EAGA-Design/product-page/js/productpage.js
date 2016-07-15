@@ -47,7 +47,15 @@ function loadSingleProductByID(idProdotto) {
         	
         	$(".product-name").text(msg.NomeProdotto);
         	$(".product-price").text(msg.PrezzoProdotto);
-        	$(".trade-mark").text('Categoria: '+msg.CategoriaProdotto);
+        	$(".trade-mark").text('Categorie: ');
+    		var f=true;
+    		for(var i in cats =Object(msg.CategoriaProdotto) ){
+                if(!f){
+                    $(".trade-mark").append(", ");
+                }
+				$(".trade-mark").append(cats[i]);
+                f=false;
+            }
         	var descrizione='<br>'+msg.DescrizioneProdotto;
         	$(".product-desc").append(descrizione);
         	var quantity = 0;
