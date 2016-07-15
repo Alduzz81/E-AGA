@@ -34,6 +34,7 @@ import com.day.cq.personalization.UserPropertiesUtil;
 
  
 import com.aem.eaga.api.portal.customer.Customer;
+import com.aem.eaga.common.DbUtility;
  
 
 @Component
@@ -109,9 +110,7 @@ public class CustomerImpl implements Customer {
     public String getToken(String username, String password) {
     	try {
     		 Class.forName("com.mysql.jdbc.Driver");
-    		 Connection conn = DriverManager.getConnection(
-    		 "jdbc:mysql://10.107.104.16/eaga?" + "user=eaga&password=eaga"
-    		 );
+    		 Connection conn = new DbUtility().getConnection();
     		 Statement stmt;
     		 PreparedStatement pstmt;
     		 ResultSet rs;
