@@ -1,7 +1,9 @@
-<div class="row products-background-color" ng-controller="ProductsController" data-ng-init="callAjaxCategorie()">
+<div class="row" ng-controller="ProductsController" data-ng-init="callAjaxCategorie()">
 	<div class="col-sm-2 menu-container">
-		<ul ng-repeat="(key, cat) in categorie">
-			<li><a href="#" ng-bind="cat.Nome" ng-click="searchRedirect(cat.IdCategoria)"></a></li>
+		<ul>
+			<li ng-repeat="(key, cat) in categorie">
+                <a class="menu-link-categories" href="#" ng-bind="cat.Nome" ng-click="searchRedirect(cat.IdCategoria)"></a>
+            </li>
 		</ul>
 	</div>
 	<div class="col-sm-10 div-products-container" id="readyCallAjax">

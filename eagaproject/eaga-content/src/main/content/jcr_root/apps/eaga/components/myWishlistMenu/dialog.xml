@@ -10,27 +10,27 @@
         <items jcr:primaryType="cq:WidgetCollection">
             <tab1
                 jcr:primaryType="cq:Panel"
-                title="My Account Menu">
+                title="My Wishlist Menu">
                 <items jcr:primaryType="cq:WidgetCollection">
                     <textOneLine
 			            name="./textOneLine"
 			            jcr:primaryType="cq:Widget"
 			            fieldLabel="Testo prima riga"
 			            allowBlank="false"
-			            defaultValue="Ciao. Accedi"
+			            defaultValue="Le tue"
 			            xtype="textfield"/>
                     <textSecondLine
 			            name="./textSecondLine"
 			            jcr:primaryType="cq:Widget"
 			            fieldLabel="Testo seconda riga"
 			            allowBlank="false"
-			            defaultValue="Il mio account"
+			            defaultValue="Liste"
 			            xtype="textfield"/>
                     <multifielditems
                         jcr:primaryType="cq:Widget"
                         hideLabel="false"
-                        name="./myAccountMenu"
-                        title="My Account Menu"
+                        name="./myWishListMenu"
+                        title="My Wishlist Menu"
                         xtype="multifield">
                         <fieldConfig
                             jcr:primaryType="cq:Widget"

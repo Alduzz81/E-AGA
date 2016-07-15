@@ -12,7 +12,7 @@
 }
 
 .new-header {
-    background: #343c46;
+    background: #232f3e;
     width: 50%;
     height: 100px;
     padding: 0 20px 0 20px;
@@ -30,7 +30,7 @@
     margin-top: 20px;
     padding: 0 20px 20px 20px;
     clear: both;
-    background: #f9f9f9 url(images/footer_bg.gif) repeat-x 0 0;
+    background: #232f3e url(images/footer_bg.gif) repeat-x 0 0;
 }
 
 .new-footer {
@@ -38,7 +38,7 @@
     margin-top: 20px;
     padding: 0 20px 20px 20px;
     clear: both;
-    background: #343c46;
+    background: #232f3e;
 }
 
 .alpha {

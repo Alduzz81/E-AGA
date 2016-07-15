@@ -1,6 +1,5 @@
 <%@include file="../../../global.jsp"%><%@page session="false"%>
 
-<cq:include path="<%=homePath + "/jcr:content/cookie-policy"%>" resourceType="eaga/components/cookie-policy" />
 <header>
 	<div class="row">
 		<div class="col-sm-12 new-header">
@@ -15,13 +14,17 @@
 			<div class="col-sm-2">
 				<cq:include path="<%=homePath + "/jcr:content/myAccountMenu"%>" resourceType="eaga/components/myAccountMenu" />
 			</div>
-			<div class="col-sm-2 position-myCart">	
+			<div class="col-sm-1">
+				<cq:include path="<%=homePath + "/jcr:content/myWishListMenu"%>" resourceType="eaga/components/myWishlistMenu" />
+	      	</div>
+			<div class="col-sm-1">	
 				<a href="/content/eaga/cart.html"> 
-					<span class="total-cart-qnt-topnav">0</span>
-			  		<img class="img-header topnav-item cart" src="/etc/designs/EAGA-Design/images/cart.png">
+					<div class="total-cart-qnt-topnav">0</div>
+			  		<img class="shopping-cart-logo" src="/etc/designs/EAGA-Design/images/shopping-cart-logo.png">
+                    <span class="shopping-cart-text">Carrello</span>
 				</a>
 			</div>
-			<cq:include path="topnav" resourceType="eaga/components/topnav"/>
 		</div>
+		<cq:include path="topnav" resourceType="eaga/components/topnav"/>
 	</div>
 </header>

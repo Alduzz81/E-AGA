@@ -11,7 +11,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: path + '/eaga_security_check',
+                    url: path + '/j_security_check',
                     data: params,
                     success: function (data) {
                        // $.portal.closeMainMenu();

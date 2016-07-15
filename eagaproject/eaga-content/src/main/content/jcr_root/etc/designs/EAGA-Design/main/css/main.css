@@ -8488,7 +8488,7 @@ header .brand .brand-logo {
 }
 
 header .header-navigation {
-    top: 51px;
+    top: 70px;
     left: 0px;
     width: 100%;
     z-index: 8000;
@@ -8532,7 +8532,7 @@ header .header-secondary-wrap ul.header-secondary li a {
     font-family: VodafoneLight;
     font-size: 18px;
     line-height: 0.2;
-    color: #FFFFFF;
+    color: #ccc;
 }
 
 header .header-secondary-wrap ul.header-secondary li a:hover,
@@ -11537,7 +11537,7 @@ START SLIDER HOME
 .slider-wrap .image-slider-wrap .images-slider-single img {
     left: 50%;
     position: absolute;
-    top: 50%;
+    top: 49%;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);

@@ -1,0 +1,40 @@
+.myWishlistMenu-position{
+	top: 40px;
+    position: absolute;
+    margin-left: 15px
+}
+
+.img-myWishlistMenu{
+	width: 15px;
+    margin-bottom: 7px;
+    margin-left: 3px;
+}
+
+.text-img-wishlist{
+	display: -webkit-inline-box;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.text-one-line-wishlist{
+	color: #ccc;
+}
+
+.text-second-line-wishlist{
+	font-size: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: arial,sans-serif;
+}
+
+.element-menu-wishlist{
+	margin-left: 5%;
+    margin-bottom: 7px;
+}
+
+.container-menu-wishlist{
+	border: 2px;
+    border-style: ridge;
+    background: #ffc;
+    width: 150px;
+}

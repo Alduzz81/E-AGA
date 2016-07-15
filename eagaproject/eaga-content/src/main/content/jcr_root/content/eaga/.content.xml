@@ -7,7 +7,7 @@
     <login/>
     <registration/>
     <jcr:content
-        cq:lastModified="{Date}2016-07-08T17:15:09.220+02:00"
+        cq:lastModified="{Date}2016-07-14T11:18:10.127+02:00"
         cq:lastModifiedBy="admin"
         cq:lastReplicated="{Date}2016-05-17T17:33:26.038+02:00"
         cq:lastReplicatedBy="admin"
@@ -159,11 +159,21 @@
                 title="Uncharted 4"/>
         </par>
         <myAccountMenu
-            jcr:lastModified="{Date}2016-07-08T14:35:29.244+02:00"
+            jcr:lastModified="{Date}2016-07-14T11:18:10.121+02:00"
             jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="eaga/components/myAccountMenu"
-            myAccountMenu="[{&quot;label&quot;:&quot;I miei ordini&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;La mia lista desideri&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Consigliati per te&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Il mio E-aga Prime&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;I miei contenuti e dispositivi&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;La mia libreria musicale&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Il mio E-aga drive&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Le mie app e i miei dispositivi&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;}]"/>
+            myAccountMenu="[{&quot;label&quot;:&quot;Login&quot;\,&quot;url&quot;:&quot;/content/eaga/login&quot;},{&quot;label&quot;:&quot;Il mio account&quot;\,&quot;url&quot;:&quot;/content/eaga/personalDetails&quot;},{&quot;label&quot;:&quot;I miei ordini&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;La mia lista desideri&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Consigliati per te&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Il mio E-aga Prime&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;I miei contenuti e dispositivi&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;La mia libreria musicale&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Il mio E-aga drive&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Le mie app e i miei dispositivi&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Logout&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;}]"
+            textOneLine="Ciao. Accedi"
+            textSecondLine="Il mio account"/>
+        <myWishListMenu
+            jcr:lastModified="{Date}2016-07-14T10:31:18.718+02:00"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="eaga/components/myWishlistMenu"
+            myWishListMenu="[{&quot;label&quot;:&quot;Crea una lista&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Trova una lista&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Salva articoli dal web&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;}]"
+            textOneLine="Le tue"
+            textSecondLine="Liste"/>
     </jcr:content>
     <products/>
     <cookiePrivacyPolicy/>

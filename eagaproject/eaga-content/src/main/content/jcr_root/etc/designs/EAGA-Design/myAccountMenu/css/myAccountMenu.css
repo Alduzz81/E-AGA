@@ -1,11 +1,12 @@
 .myAccountMenu-position{
 	top: 40px;
+	margin-left: 70px;
     position: absolute;
 }
 
 .img-myaccount{
 	width: 15px;
-    margin-bottom: 3px;
+    margin-bottom: 7px;
     margin-left: 3px;
 }
 
@@ -15,8 +16,15 @@
     color: #ffffff;
 }
 
-.text-line{
-	color: #c3c3c3
+.text-one-line{
+	color: #ccc;
+}
+
+.text-second-line{
+	font-size: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: arial,sans-serif;
 }
 
 .element-menu{
