@@ -5,10 +5,10 @@
             	<a href='#'>Configure the component</a>
             </li>
         </ul> 
-        <div class="text-line">${properties.textOneLine ? properties.textOneLine : 'Ciao. Accedi' @context='html'}</div>
+        <div class="text-one-line">${properties.textOneLine ? properties.textOneLine : 'Ciao. Accedi' @context='html'}</div>
 		<div class="text-img">
-        	<div>${properties.textSecondLine ? properties.textSecondLine : 'Il mio account' @context='html'}</div>
-        	<img class="img-myaccount" src="/etc/designs/EAGA-Design/images/myAccountMenu.png">
+        	<div class="text-second-line">${properties.textSecondLine ? properties.textSecondLine : 'Il mio account' @context='html'}</div>
+        	<img class="img-myaccount" src="/etc/designs/EAGA-Design/images/icon-menu.png">
         </div>
         <div class="container-menu hidden">
             <div data-sly-test="${ !myMenu.menuEmpty }">
