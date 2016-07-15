@@ -8526,7 +8526,7 @@ header .header-secondary-wrap ul.header-secondary li {
 }
 
 header .header-secondary-wrap ul.header-secondary li a {
-    padding: 16px 27px;
+    padding: 13.3px 27px;
     letter-spacing: 0;
     display: block;
     font-family: VodafoneLight;
@@ -8537,8 +8537,7 @@ header .header-secondary-wrap ul.header-secondary li a {
 
 header .header-secondary-wrap ul.header-secondary li a:hover,
     header .header-secondary-wrap ul.header-secondary li a.item-active {
-    background: rgba(255, 255, 255, 0.95);
-    color: #333;
+    text-decoration: underline;
 }
 
 header .header-secondary-wrap ul.header-secondary>li ul {
