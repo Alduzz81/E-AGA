@@ -43,6 +43,7 @@ public class CustomerImpl implements Customer {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
     public final static String XTOKEN = "XTOKEN";
+    //TODO use hibernate for the mysql
 
      
     @Activate
@@ -115,17 +116,17 @@ public class CustomerImpl implements Customer {
     		 PreparedStatement pstmt;
     		 ResultSet rs;
     		 stmt = conn.createStatement();
-    		 String sql ="SELECT * from utenti where email='"+username+"' and password='"+password+"'";
-    		 logger.error("Alduzz sql="+sql);
+    		 String sql ="SELECT IdUtente,Nome from utenti where email='"+username+"' and password='"+password+"'";
     		 rs = stmt.executeQuery(sql);
     		 if (rs.next())
     		 {
+    			 String name = rs.getString("Nome");
     			 logger.error("loggato");
     			 stmt.close(); 
         		 
         		 rs.close();
         		 conn.close();
-    			 return "loggato";
+    			 return name;
     		 }
     		 else
     		 {

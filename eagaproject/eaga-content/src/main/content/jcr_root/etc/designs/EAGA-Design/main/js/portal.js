@@ -14,9 +14,7 @@
                     url: path + '/j_security_check',
                     data: params,
                     success: function (data) {
-                       // $.portal.closeMainMenu();
                         CQ_Analytics.ProfileDataMgr.loadProfile($("input[name=userEmail]").val());
-                       // $.portal.toggleAuthorized();
                         console.log('Login procedure correct: ' + status);
                         location.reload();
                         window.location.href = '/content/eaga.html';
@@ -33,6 +31,7 @@
                 }
                 CQ.shared.HTTP.clearCookie('CommercePersistence', '/');
                 CQ.shared.HTTP.clearCookie('XTOKEN', '/');
+                CQ.shared.HTTP.clearCookie('login-token', '/');
                 $.portal.clearSession();
                 CQ_Analytics.Utils.load('/system/sling/logout.html');
                 $.portal.closeMainMenu();

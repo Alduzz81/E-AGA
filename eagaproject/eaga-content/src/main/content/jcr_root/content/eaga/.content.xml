@@ -164,7 +164,7 @@
             jcr:primaryType="nt:unstructured"
             sling:resourceType="eaga/components/myAccountMenu"
             myAccountMenu="[{&quot;label&quot;:&quot;Login&quot;\,&quot;url&quot;:&quot;/content/eaga/login&quot;},{&quot;label&quot;:&quot;Il mio account&quot;\,&quot;url&quot;:&quot;/content/eaga/personalDetails&quot;},{&quot;label&quot;:&quot;I miei ordini&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;La mia lista desideri&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Consigliati per te&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Il mio E-aga Prime&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;I miei contenuti e dispositivi&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;La mia libreria musicale&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Il mio E-aga drive&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Le mie app e i miei dispositivi&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Logout&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;}]"
-            textOneLine="Ciao. Accedi"
+            textOneLine="Ciao"
             textSecondLine="Il mio account"/>
         <myWishListMenu
             jcr:lastModified="{Date}2016-07-14T10:31:18.718+02:00"

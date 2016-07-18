@@ -53,7 +53,7 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
     public static final String CQ_SECURITY_COMPONENTS_PROFILE_RESOURCE_TYPE = "cq/security/components/profile";
     public static final String PROFILE_NODE_NAME = "profile";
     public static final String FIRST_NAME = "first_name";
-    public static final String LAST_NAME = "last_name";
+//    public static final String LAST_NAME = "last_name";
     public static final String CUSTOMER_ID = "customer_id";
     private static final String CREDENTIALS = "user.jcr.credentials";
     private static final String TOKEN_ATTRIBUTE_NAME = ".token";
@@ -83,9 +83,8 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
 
     @Activate
     protected void activate(final Map<String, String> config) {
-    	logger.error("Alduzz mi Attivo");
+    	logger.info(logger.toString());
         this.wrappedIsAuthFeedbackHandler = false;
-        logger.error("Alduzz wrappedAuthHandler="+wrappedAuthHandler);
         if (wrappedAuthHandler != null) {
             logger.debug("Registered wrapped authentication feedback handler");
             this.wrappedIsAuthFeedbackHandler = wrappedAuthHandler instanceof AuthenticationFeedbackHandler;
@@ -101,35 +100,27 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
         		                                                                                                          httpServletResponse);
         final String username = httpServletRequest.getParameter(J_USER_NAME);
         final String password = httpServletRequest.getParameter(J_PASSWORD);
-        logger.info("Alduzz username="+username);  
-        logger.info("Alduzz password="+password);  
         if (REQUEST_METHOD.equals(httpServletRequest.getMethod())
             && httpServletRequest.getRequestURI().endsWith(REQUEST_URL_SUFFIX) && username != null) {
 
             if (!AuthUtil.isValidateRequest(httpServletRequest)) {
                 AuthUtil.setLoginResourceAttribute(httpServletRequest, httpServletRequest.getContextPath());
             }
-            logger.info("AFTER RETRIEVE TOKEN");
             String token =  customer.getToken(username, password);
-            logger.info("TOKEN RETRIEVED: "+ token);
             if (token != null && !token.isEmpty()) {
                 SimpleCredentials creds = new SimpleCredentials(username, password.toCharArray());
                 creds.setAttribute(ATTR_HOST_NAME_FROM_REQUEST, httpServletRequest.getServerName());
-                /*
-                * Call Web Service
-                */
+               
+                // Call Web Service
                 final Map<String, String> authenticationInfo = customer.getCustomer(token, username, password);
-                /*
-                * Set the cookie
-                */
+                
+                // Set the cookie
                 setCookie(httpServletResponse, token);
 
                 return retrieveAuthenticationInfo(httpServletRequest, authenticationInfo);
             }
-            logger.debug("AUTHENTICATION FAILED!!!!!!!!!");
             return AuthenticationInfo.FAIL_AUTH;
         }
-        logger.debug("AUTHENTICATION METHOD:");
         return wrappedAuthHandler.extractCredentials(httpServletRequest, deferredRedirectResponse);
     }
 
@@ -140,7 +131,6 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
         Session impersonatedSession = null;
 
         final String customerId = credentialMap.get("contactID");
-        logger.error("Alduzz contactID="+customerId);
         try {
             adminSession = slingRepository.loginAdministrative(null);
             JackrabbitSession jackrabbitSession = (JackrabbitSession) adminSession;
@@ -160,10 +150,10 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
             final AuthenticationInfo authenticationInfo = new AuthenticationInfo(AUTH_TYPE, customerId);
             authenticationInfo.put(CREDENTIALS, tokenCredentials);
 
-            if (credentialMap.get(FIRST_NAME) != null && credentialMap.get(LAST_NAME) != null) {
+       /*     if (credentialMap.get(FIRST_NAME) != null && credentialMap.get(LAST_NAME) != null) {
                 authenticationInfo.put(FIRST_NAME, credentialMap.get(FIRST_NAME));
                 authenticationInfo.put(LAST_NAME, credentialMap.get(LAST_NAME));
-            }
+            }*/
 
              authenticationInfo.put(CUSTOMER_ID, credentialMap.get(CUSTOMER_ID));
 
