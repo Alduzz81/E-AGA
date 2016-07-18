@@ -55,7 +55,7 @@
                             dName="image"
                             editable="{Boolean}true"
                             fieldLabel="Image Path"
-                            rootPath="/etc/designs/EAGA-Design/images/products"
+                            rootPath="/content/dam/eaga/common/products"
                             width="400"
                             xtype="pathfield"/>
                         <productAlt

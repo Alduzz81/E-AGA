@@ -14,7 +14,7 @@ import com.aem.eaga.servlet.commands.AbstractContextCommand;
 import com.aem.eaga.servlet.commands.HttpMethodEnum;
 
 public class LoadPersonalDetailsCommand extends AbstractContextCommand {
-	private static final String J_ID = "j_id";
+	private static final String J_UserMail = "j_userMail";
 	
 	public LoadPersonalDetailsCommand(HttpMethodEnum methods) {
 		super(methods);
@@ -23,7 +23,7 @@ public class LoadPersonalDetailsCommand extends AbstractContextCommand {
 	@Override
 	public void process(Context context) throws IOException {	
 		SlingHttpServletRequest request = context.getSlingRequest();
-		final String idutente = request.getParameter(J_ID);
+		final String userMail = request.getParameter(J_UserMail);
 		DbUtility dbu = new DbUtility();
 		try {
 			Connection conn = dbu.getConnection();
@@ -33,13 +33,13 @@ public class LoadPersonalDetailsCommand extends AbstractContextCommand {
 			
 			String loadRecordSql = "SELECT utenti.Nome, utenti.Email, utenti.Password "
 					+"FROM utenti "
-					+"WHERE utenti.IdUtente='" + idutente + "' ";
+					+"WHERE utenti.Email='" + userMail + "' ";
 				
 			rs = stmt.executeQuery(loadRecordSql);
 			JSONObject utente = new JSONObject();
 			while (rs.next()) {
 				try {
-					utente.put("IdUtente", J_ID);
+					utente.put("IdUtente", J_UserMail);
 					utente.put("Nome", rs.getString("Nome"));
 					utente.put("Email", rs.getString("Email"));
 					utente.put("Password", rs.getString("Password"));

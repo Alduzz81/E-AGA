@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class UpdatePersonalDetailsCommand extends AbstractContextCommand {
-	private static final String J_ID = "j_id";
+	private static final String j_UserMail = "j_userMail";
 	private static final String J_PASSWORD = "j_password";
 	private static final String J_RESULT = "j_result";
 	private static final String J_STATUS = "j_status";
@@ -29,7 +29,7 @@ public class UpdatePersonalDetailsCommand extends AbstractContextCommand {
 	public void process(Context context) throws IOException {
 
 		SlingHttpServletRequest request = context.getSlingRequest();
-		final String id = request.getParameter(J_ID);
+		final String userMail = request.getParameter(j_UserMail);
 		final String password = request.getParameter(J_PASSWORD);
 		String result = "";
 		boolean status = true;
@@ -41,7 +41,7 @@ public class UpdatePersonalDetailsCommand extends AbstractContextCommand {
 			stmt = conn.createStatement();
 			
 			String updateRecordSql = "UPDATE utenti " + "SET Password='" + password + "' "
-									+"WHERE utenti.IdUtente='" + id + "' ";
+									+"WHERE utenti.Email='" + userMail + "' ";
 			
 			boolean res = stmt.execute(updateRecordSql);
 			if (res) {
@@ -61,7 +61,7 @@ public class UpdatePersonalDetailsCommand extends AbstractContextCommand {
 		}
 		try {
 			JSONObject answer = new JSONObject();
-			answer.put(J_ID, id);
+			answer.put(j_UserMail, userMail);
 			answer.put(J_PASSWORD, password);
 			answer.put(J_RESULT, result);
 			answer.put(J_STATUS, status);
