@@ -43,6 +43,7 @@ public class CustomerImpl implements Customer {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
     public final static String XTOKEN = "XTOKEN";
+    private String session_token, username, userid;
     //TODO use hibernate for the mysql
 
      
@@ -116,17 +117,20 @@ public class CustomerImpl implements Customer {
     		 PreparedStatement pstmt;
     		 ResultSet rs;
     		 stmt = conn.createStatement();
-    		 String sql ="SELECT IdUtente,Nome from utenti where email='"+username+"' and password='"+password+"'";
+    		 String sql ="SELECT IdUtente,Nome,Session_token from utenti where email='"+username+"' and password='"+password+"'";
     		 rs = stmt.executeQuery(sql);
     		 if (rs.next())
     		 {
-    			 String name = rs.getString("Nome");
+    			 username = rs.getString("Nome");
+    			 userid = String.valueOf(rs.getInt("IdUtente"));
+    			 session_token = rs.getString("Session_token");
+    			 
     			 logger.error("loggato");
     			 stmt.close(); 
         		 
         		 rs.close();
         		 conn.close();
-    			 return name;
+    			 return username;
     		 }
     		 else
     		 {
@@ -176,8 +180,10 @@ public class CustomerImpl implements Customer {
          * TODO bind the JSON structure with CSM Customer Entity Object
          */
         customer = new HashMap<>();
-        customer.put("contactID", username);
+       // customer.put("contactID", username);
         customer.put("password", password);
+        customer.put("sessionToken", session_token);
+        customer.put("userID", userid);
         return customer;
          
     }
