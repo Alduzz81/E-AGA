@@ -135,7 +135,7 @@ public class CustomerImpl implements Customer {
         		 
         		 rs.close();
         		 conn.close();
-    			 return "non loggato";
+    			 return null;
     		 }
     		 
     		 

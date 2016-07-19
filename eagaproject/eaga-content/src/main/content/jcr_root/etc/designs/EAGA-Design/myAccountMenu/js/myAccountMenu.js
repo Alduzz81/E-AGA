@@ -12,7 +12,6 @@ function redirectLogin(){
 }
 function setName(){
 	var nome = CQ.shared.HTTP.getCookie('XTOKEN');
-	console.log(nome);
 	$('.text-clientname').contents().remove();
 	if(nome !== null){
 		$('.text-clientname').addClass('colored-attr');

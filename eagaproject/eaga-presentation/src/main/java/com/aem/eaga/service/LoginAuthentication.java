@@ -86,7 +86,6 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
     	logger.info(logger.toString());
         this.wrappedIsAuthFeedbackHandler = false;
         if (wrappedAuthHandler != null) {
-            logger.debug("Registered wrapped authentication feedback handler");
             this.wrappedIsAuthFeedbackHandler = wrappedAuthHandler instanceof AuthenticationFeedbackHandler;
         }
     }
@@ -116,7 +115,7 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
                 
                 // Set the cookie
                 setCookie(httpServletResponse, token);
-
+                
                 return retrieveAuthenticationInfo(httpServletRequest, authenticationInfo);
             }
             return AuthenticationInfo.FAIL_AUTH;
@@ -149,7 +148,7 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
                     .getAttribute(TOKEN_ATTRIBUTE_NAME));
             final AuthenticationInfo authenticationInfo = new AuthenticationInfo(AUTH_TYPE, customerId);
             authenticationInfo.put(CREDENTIALS, tokenCredentials);
-
+            //Token value is being assigned here
        /*     if (credentialMap.get(FIRST_NAME) != null && credentialMap.get(LAST_NAME) != null) {
                 authenticationInfo.put(FIRST_NAME, credentialMap.get(FIRST_NAME));
                 authenticationInfo.put(LAST_NAME, credentialMap.get(LAST_NAME));
@@ -255,7 +254,6 @@ final public class LoginAuthentication implements AuthenticationHandler, Authent
         cookie.setValue(token);
         cookie.setPath("/");
         cookie.setMaxAge(60 * 60 * 24);
-        cookie.setComment("Test vodafone cookie");
         httpServletResponse.addCookie(cookie);
     }
 

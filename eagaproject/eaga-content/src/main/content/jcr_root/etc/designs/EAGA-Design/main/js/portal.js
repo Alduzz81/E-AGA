@@ -21,6 +21,8 @@
                     },
                     error: function (data, status) {
                         console.log('Login procedure failed: ' + status);
+                       // location.reload();
+                       // window.location.href = path;
                     }
                 });
             },
@@ -34,9 +36,9 @@
                 CQ.shared.HTTP.clearCookie('login-token', '/');
                 $.portal.clearSession();
                 CQ_Analytics.Utils.load('/system/sling/logout.html');
-                $.portal.closeMainMenu();
-                $.portal.resetForm();
-                $.portal.toggleAnonymous();
+             //   $.portal.closeMainMenu();
+            //    $.portal.resetForm();
+            //    $.portal.toggleAnonymous();
                 if (redirectTarget) {
                     window.location.href = redirectTarget;
                 } else {
@@ -68,17 +70,17 @@
                     var expires = "";
                 document.cookie = name + "=" + value + expires + "; path=/";
             },
-            toggleAnonymous: function () {
+         /*   toggleAnonymous: function () {
                 $('.header-navigation .header-user-nudge').show();
                 $('.header-navigation .header-user-profile').hide();
                 $('.header-menu-trigger').removeClass('header-active');
             },
-            toggleAuthorized: function () {
+       /*     toggleAuthorized: function () {
                 $('.vodafone-overlay').find('button[type="button"]').click(); //TODO: put the correct behaviour
                 $('.header-navigation .header-user-nudge').hide();
                 $('.header-navigation .header-user-profile').show();
                 $('.header-menu-trigger').removeClass('header-active');
-            },
+            },*/
             closeMainMenu: function () {
                 $('#main-menu-loggedin').css('display', 'none');
                 $('#main-menu').css('display', 'none');
@@ -92,7 +94,7 @@
                 var value = regex.exec(document.cookie);
                 return (value != null) ? decodeURI(value[1]) : null;
             },
-            saveToDisk: function(pdfurl) {
+        /*    saveToDisk: function(pdfurl) {
                 var val = navigator.userAgent.toLowerCase();
                 if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) //IF IE > 10
                 {
@@ -109,7 +111,7 @@
                     link.dispatchEvent(clickEvent);
                 }
 
-            }
+            }*/
 
         };
     }
