@@ -28,8 +28,8 @@
 }
 
 .element-menu-wishlist{
-	margin-left: 5%;
-    margin-bottom: 7px;
+	margin-top: 5px;
+    margin-left: 5%;
 }
 
 .container-menu-wishlist{
@@ -38,4 +38,10 @@
     background: #ffc;
     width: 150px;
     margin-top: -3px;
+}
+
+.hr-division-wishlist{
+	width: 90%;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

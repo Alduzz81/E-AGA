@@ -12,23 +12,23 @@
         </div>
         <div class="container-menu hidden">
             <div data-sly-test="${ !myMenu.menuEmpty }">
-                <ul data-sly-list.key="${ myMenu.map }">
-                    <li data-sly-test="${ (key == 'Login' && myMenu.author) || (key == 'Login' && !myMenu.authenticated) }">
+                <dl data-sly-list.child="${ myMenu.map }">
+                    <dd data-sly-test="${ (myMenu.author && childList.index == 0) || (!myMenu.authenticated && childList.index == 0) }">
                         <div class="text-center div-button">
-                            <button class="button-menu" type="submit" onclick="redirectLogin()">${key}</button>
+                            <button class="button-menu" type="submit" onclick="redirectLogin()">${child}</button>
                         </div>
                         <hr class="text-center hr-division">
-                    </li>
-                    <li class="element-menu" data-sly-test="${ key != 'Logout' && key != 'Login' }">
-                        <a href='${ myMenu.map[key] }'>${key}</a>
-                    </li>
-                    <li data-sly-test="${ (key == 'Logout' && myMenu.author) || (key == 'Logout' && myMenu.authenticated) }">
+                    </dd>
+                    <dd class="element-menu" data-sly-test="${ (childList.index != 0) && (childList.last != true) }">
+                        <a href='${ myMenu.map[child] }'>${child}</a>
+                    </dd>
+                    <dd data-sly-test="${ (myMenu.author && childList.last == true ) || (myMenu.authenticated && childList.last == true) }">
 						<hr class="text-center hr-division">
                         <div class="text-center div-button">
-                            <button class="button-menu" type="submit" onclick="$.portal.logout('${ myMenu.map[key] }');">${key}</button>
+                            <button class="button-menu" type="submit" onclick="$.portal.logout('${ myMenu.map[child] }');">${child}</button>
                         </div>
-                    </li>
-                </ul>
+                    </dd>
+                </dl>
             </div>
     	</div>
     </div>

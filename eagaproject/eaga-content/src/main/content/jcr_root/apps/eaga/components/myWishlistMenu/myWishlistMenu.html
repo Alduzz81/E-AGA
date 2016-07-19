@@ -12,11 +12,15 @@
         </div>
         <div class="container-menu-wishlist hidden">
             <div data-sly-test="${ !myMenu.menuEmpty }">
-                <ul data-sly-list.key="${ myMenu.map }">
-                    <li class="element-menu-wishlist">
-                        <a href='${ myMenu.map[key] }'>${key}</a>
-                    </li>
-                </ul>
+                <dl data-sly-list.child="${ myMenu.map }">
+                	<dd class="element-menu-wishlist" data-sly-test="${ (myMenu.author && childList.index == 0) || (myMenu.authenticated && childList.index == 0) }">
+						<a href='${ myMenu.map[child] }'>${child}</a>
+						<hr class="text-center hr-division-wishlist">
+					</dd>
+                    <dd class="element-menu-wishlist" data-sly-test="${childList.index != 0}"> 
+                        <a href='${ myMenu.map[child] }'>${child}</a>
+                    </dd>
+                </dl>
             </div>
     	</div>
     </div>

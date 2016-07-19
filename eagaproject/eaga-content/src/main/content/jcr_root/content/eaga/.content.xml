@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
+    <wishlist/>
     <cart/>
     <add-product/>
     <product/>
     <login/>
     <registration/>
     <jcr:content
-        cq:lastModified="{Date}2016-07-14T11:18:10.127+02:00"
+        cq:lastModified="{Date}2016-07-18T12:24:21.089+02:00"
         cq:lastModifiedBy="admin"
         cq:lastReplicated="{Date}2016-05-17T17:33:26.038+02:00"
         cq:lastReplicatedBy="admin"
@@ -167,11 +168,11 @@
             textOneLine="Ciao. Accedi"
             textSecondLine="Il mio account"/>
         <myWishListMenu
-            jcr:lastModified="{Date}2016-07-14T10:31:18.718+02:00"
+            jcr:lastModified="{Date}2016-07-18T12:24:21.084+02:00"
             jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="eaga/components/myWishlistMenu"
-            myWishListMenu="[{&quot;label&quot;:&quot;Crea una lista&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Trova una lista&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;},{&quot;label&quot;:&quot;Salva articoli dal web&quot;\,&quot;url&quot;:&quot;/content/eaga&quot;}]"
+            myWishListMenu="[{&quot;label&quot;:&quot;Le tue Liste&quot;\,&quot;url&quot;:&quot;/content/eaga/wishlist&quot;},{&quot;label&quot;:&quot;Crea una lista&quot;\,&quot;url&quot;:&quot;/content/eaga/wishlist&quot;},{&quot;label&quot;:&quot;Trova una lista&quot;\,&quot;url&quot;:&quot;/content/eaga/wishlist&quot;},{&quot;label&quot;:&quot;Salva articoli dal web&quot;\,&quot;url&quot;:&quot;/content/eaga/wishlist&quot;}]"
             textOneLine="Le tue"
             textSecondLine="Liste"/>
     </jcr:content>

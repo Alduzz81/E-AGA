@@ -14956,6 +14956,10 @@ label.label-radio-green-flag {
     }
 }
 
+.par{
+	min-height: 347px;
+}
+
 /*********************
  END PIECHART
  *********************/
