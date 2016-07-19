@@ -42,7 +42,7 @@
                             dName="image"
                             editable="{Boolean}true"
                             fieldLabel="Image Path"
-                            rootPath="/content/dam/eaga/images"
+                            rootPath="/content/dam/eaga/common/products"
                             width="400"
                             xtype="pathfield"/>
                         <bannerAlt

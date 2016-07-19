@@ -1,68 +1,72 @@
-<div 	data-sly-use.mpd="${ 'com.aem.eaga.sightly.personalDetails.PersonalDetailsUse' @ currentNode=currentNode }"
-		data-sly-test="${ mpd.componentVisible }"
-		data-sly-unwrap>
-<div id="my-personaldetail-container" class="container-fluid">
-	<div id="my-personaldetail-base" class="row">
-		<div class="accordion-container margin-bottom-50">
-			<div class="accordion active">
-				<h2>	
-                	${properties.titletab1 ? properties.titletab1 : "My Personal Details" @ context='html'} 
-                </h2>
-				<div class="accordion-body" style="display: block;">
-					<div class="persona-data-container">
-						<div class="row padding-bottom-20">
-							<div class="col-sm-4">
-								<div class="box-data">
-									<span class="text-bold"> ${properties.name ? properties.name : "Customer Name:" @ context='html'} </span> 
-									<span id="nameC"></span>
-								</div>					
-							</div>
-							<div class="col-sm-4">
-								<div class="box-data">
-									<span class="text-bold"> ${properties.email ? properties.email : "E-mail Address:" @ context='html'} </span> 
-									<span id="emailC"></span>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="box-data">
-									<span class="text-bold"> ${properties.password ? properties.password : "Password:" @ context='html'} </span> 
-									<span id="passwordC" class="personalV dots">.......</span>
-									<span class="personalM"><input type="password" name="password" required /></span>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="box-data">
-									<span class="text-bold"> ${properties.dateOfBirth ? properties.dateOfBirth : "Date Of Birth:" @ context='html'} </span>
-									<span id="dateOfBirthC"></span>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="box-data">
-									<span class="text-bold"> ${properties.address ? properties.address : "Address:" @context='html'} </span>
-									<span id="addressC"></span>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="box-data">
-									<span class="text-bold"> ${properties.city ? properties.city : "City:" @context='html'} </span>
-									<span id="cityC"></span>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="box-data">
-									<span class="text-bold"> ${properties.gender ? properties.gender : "Gender:" @context='html'} </span>
-									<select class="select-info">
-										<option class="" value="${properties.gender}"></option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<input class="personalV" id="modifiy-personal-details" type="submit" value="Edit data"/>
-				<input class="personalM" type="submit" value="Update data" onclick="updatePDDB()"/>
-			</div>
-		</div>
-	</div>
-</div>
+<div data-sly-use.mpd="${ 'com.aem.eaga.sightly.personalDetails.PersonalDetailsUse' @ currentNode=currentNode }" data-sly-test="${ mpd.componentVisible }" data-sly-unwrap>
+    <div id="my-personaldetail-container" class="container-fluid">
+        <div id="my-personaldetail-base" class="row">
+            <div class="accordion-container margin-bottom-50">
+                <div class="accordion active">
+                    <h2>	
+                        ${properties.titletab1 ? properties.titletab1 : "My Personal Details" @ context='html'} 
+                    </h2>
+                    <div class="accordion-body" style="display: block;">
+                        <div class="persona-data-container">
+                            <div class="row padding-bottom-20">
+                                <div class="col-sm-4">
+                                    <div class="box-data">
+                                        <span class="text-bold"> ${properties.name ? properties.name : "Customer Name:" @ context='html'} </span> 
+                                        <span id="nameC"></span>
+                                    </div>					
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="box-data">
+                                        <span class="text-bold"> ${properties.email ? properties.email : "E-mail Address:" @ context='html'} </span> 
+                                        <span id="emailC"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="box-data">
+                                        <span class="text-bold"> ${properties.password ? properties.password : "Password:" @ context='html'} </span> 
+                                        <span id="passwordC" class="personalV">****</span>
+                                        <span class="personalM"><input type="password" name="password" required /></span>
+                                    </div>
+                                </div>
+                            </div>
+						<!--
+                            <div>
+                                <div class="col-sm-4">
+                                    <div class="box-data">
+                                        <span class="text-bold"> ${properties.dateOfBirth ? properties.dateOfBirth : "Date Of Birth:" @ context='html'} </span>
+                                        <span id="dateOfBirthC"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="box-data">
+                                        <span class="text-bold"> ${properties.address ? properties.address : "Address:" @context='html'} </span>
+                                        <span id="addressC"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="box-data">
+                                        <span class="text-bold"> ${properties.city ? properties.city : "City:" @context='html'} </span>
+                                        <span id="cityC"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="col-sm-4">
+                                    <div class="box-data">
+                                        <span class="text-bold"> ${properties.gender ? properties.gender : "Gender:" @context='html'} </span>
+                                        <select class="select-info">
+                                            <option class="" value="${properties.gender}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+						-->
+                        </div>
+                    </div>
+                    <input class="personalV" id="modifiy-personal-details" type="submit" value="Edit data"/>
+                    <input class="personalM" type="submit" value="Update data" onclick="updatePDDB()"/>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
