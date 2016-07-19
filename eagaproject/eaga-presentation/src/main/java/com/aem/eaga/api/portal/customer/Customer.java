@@ -34,5 +34,7 @@ public interface Customer {
     public String getCustomerID(SlingHttpServletRequest request);
 
     public void login(SlingHttpServletResponse response, String url);
+    
+    public boolean setSessionToken(String token, String userid);
      
 }
